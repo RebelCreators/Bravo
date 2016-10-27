@@ -1,0 +1,8 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/RebelCreators/BravoSpecs.git'
+ platform :ios, '9.0'
+target 'BravoTests' do
+  use_frameworks!
+
+  pod 'Bravo', :path => '../'
+end
