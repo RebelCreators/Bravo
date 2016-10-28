@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8D95E91D1DC1F3DD00CC1090"
+               BlueprintIdentifier = "8D95E9591DC1FC7700CC1090"
                BuildableName = "BravoTests.app"
                BlueprintName = "BravoTests"
                ReferencedContainer = "container:BravoTests.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D95E91D1DC1F3DD00CC1090"
+            BlueprintIdentifier = "8D95E9591DC1FC7700CC1090"
             BuildableName = "BravoTests.app"
             BlueprintName = "BravoTests"
             ReferencedContainer = "container:BravoTests.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D95E91D1DC1F3DD00CC1090"
+            BlueprintIdentifier = "8D95E9591DC1FC7700CC1090"
             BuildableName = "BravoTests.app"
             BlueprintName = "BravoTests"
             ReferencedContainer = "container:BravoTests.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8D95E91D1DC1F3DD00CC1090"
+            BlueprintIdentifier = "8D95E9591DC1FC7700CC1090"
             BuildableName = "BravoTests.app"
             BlueprintName = "BravoTests"
             ReferencedContainer = "container:BravoTests.xcodeproj">

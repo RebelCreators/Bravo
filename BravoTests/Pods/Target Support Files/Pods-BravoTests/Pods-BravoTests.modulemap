@@ -1,0 +1,6 @@
+framework module Pods_BravoTests {
+  umbrella header "Pods-BravoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

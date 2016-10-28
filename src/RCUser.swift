@@ -179,6 +179,7 @@ public class RCUser: RCModel {
         
         RCAuthCredential.removeToken()
         Bravo.sdk.credential = nil
+        currentUser = nil
         NotificationCenter.default.post(name: Notification.RC.RCDidSignOut, object: self, userInfo: nil)
     }
     

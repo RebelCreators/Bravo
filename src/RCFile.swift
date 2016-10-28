@@ -55,7 +55,7 @@ open class RCFile: NSObject {
         super.init()
     }
     
-    func downloadData(success:((Data) -> Void)?, failure:((RCError) -> Void)?) {
+    public func downloadData(success:((Data) -> Void)?, failure:((RCError) -> Void)?) {
         guard let url = relativePath else {
             failure?(RCError.NotFound(message: "No URL"))
             
@@ -68,7 +68,7 @@ open class RCFile: NSObject {
         })
     }
     
-    func uploadData(success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) {
+    public func uploadData(success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) {
         guard let data = self.data, let contentType = self.contentType else {
             failure(RCError.InvalidParameter(message: "Check Data and content Type"))
             return

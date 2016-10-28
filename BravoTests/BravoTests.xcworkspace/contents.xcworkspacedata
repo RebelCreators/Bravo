@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:../src"
+      name = "src">
+      <FileRef
+         location = "group:Bravo.h">
+      </FileRef>
+      <FileRef
+         location = "group:Bravo.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Config.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Notifications.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCAuthCredential.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCError.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCFile.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCFileInfo.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCModel.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCPatternMatcher.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCUser.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCValueTransformer.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Webservice+Upload.swift">
+      </FileRef>
+      <FileRef
+         location = "group:WebService.swift">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:BravoTests.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

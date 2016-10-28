@@ -7,83 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B4CE278F66718265FEDA47E /* Pods_BravoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20D12E401F604E5E3933E66 /* Pods_BravoTests.framework */; };
-		8D95E9221DC1F3DD00CC1090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E9211DC1F3DD00CC1090 /* AppDelegate.swift */; };
-		8D95E9241DC1F3DD00CC1090 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E9231DC1F3DD00CC1090 /* ViewController.swift */; };
-		8D95E9271DC1F3DD00CC1090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9251DC1F3DD00CC1090 /* Main.storyboard */; };
-		8D95E9291DC1F3DD00CC1090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9281DC1F3DD00CC1090 /* Assets.xcassets */; };
-		8D95E92C1DC1F3DD00CC1090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E92A1DC1F3DD00CC1090 /* LaunchScreen.storyboard */; };
+		8D95E95E1DC1FC7800CC1090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */; };
+		8D95E9601DC1FC7800CC1090 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95F1DC1FC7800CC1090 /* ViewController.swift */; };
+		8D95E9631DC1FC7800CC1090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9611DC1FC7800CC1090 /* Main.storyboard */; };
+		8D95E9651DC1FC7800CC1090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9641DC1FC7800CC1090 /* Assets.xcassets */; };
+		8D95E9681DC1FC7800CC1090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9661DC1FC7800CC1090 /* LaunchScreen.storyboard */; };
+		D82F927D8D942A23E0B4EA6E /* Pods_BravoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8D95E91E1DC1F3DD00CC1090 /* BravoTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BravoTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D95E9211DC1F3DD00CC1090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8D95E9231DC1F3DD00CC1090 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8D95E9261DC1F3DD00CC1090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8D95E9281DC1F3DD00CC1090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8D95E92B1DC1F3DD00CC1090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8D95E92D1DC1F3DD00CC1090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A97118809799BC72C3C663D4 /* Pods-BravoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C039EC535ED14E7D07ED5C34 /* Pods-BravoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.release.xcconfig"; sourceTree = "<group>"; };
-		E20D12E401F604E5E3933E66 /* Pods_BravoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47FA42C7B6BE4AE7D64F7087 /* Pods-BravoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.release.xcconfig"; sourceTree = "<group>"; };
+		68E28863ECA63C17F497AB5B /* Pods-BravoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D503AE71DC20A9E00DE998C /* BravoTests.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BravoTests.entitlements; sourceTree = "<group>"; };
+		8D95E95A1DC1FC7700CC1090 /* BravoTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BravoTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D95E95F1DC1FC7800CC1090 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8D95E9621DC1FC7800CC1090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D95E9641DC1FC7800CC1090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D95E9671DC1FC7800CC1090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D95E9691DC1FC7800CC1090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8D95E91B1DC1F3DD00CC1090 /* Frameworks */ = {
+		8D95E9571DC1FC7700CC1090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4CE278F66718265FEDA47E /* Pods_BravoTests.framework in Frameworks */,
+				D82F927D8D942A23E0B4EA6E /* Pods_BravoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D95E9151DC1F3DD00CC1090 = {
+		8D95E9511DC1FC7700CC1090 = {
 			isa = PBXGroup;
 			children = (
-				8D95E9201DC1F3DD00CC1090 /* BravoTests */,
-				8D95E91F1DC1F3DD00CC1090 /* Products */,
-				F4815C102DC4A63182D6E3B3 /* Pods */,
-				A813578D452E8E47DA47449D /* Frameworks */,
+				8D95E95C1DC1FC7700CC1090 /* BravoTests */,
+				8D95E95B1DC1FC7700CC1090 /* Products */,
+				C4255066F83F564DBBD17847 /* Pods */,
+				A87DE7CD0A00F3264BBCE423 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		8D95E91F1DC1F3DD00CC1090 /* Products */ = {
+		8D95E95B1DC1FC7700CC1090 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D95E91E1DC1F3DD00CC1090 /* BravoTests.app */,
+				8D95E95A1DC1FC7700CC1090 /* BravoTests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8D95E9201DC1F3DD00CC1090 /* BravoTests */ = {
+		8D95E95C1DC1FC7700CC1090 /* BravoTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D95E9211DC1F3DD00CC1090 /* AppDelegate.swift */,
-				8D95E9231DC1F3DD00CC1090 /* ViewController.swift */,
-				8D95E9251DC1F3DD00CC1090 /* Main.storyboard */,
-				8D95E9281DC1F3DD00CC1090 /* Assets.xcassets */,
-				8D95E92A1DC1F3DD00CC1090 /* LaunchScreen.storyboard */,
-				8D95E92D1DC1F3DD00CC1090 /* Info.plist */,
+				8D503AE71DC20A9E00DE998C /* BravoTests.entitlements */,
+				8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */,
+				8D95E95F1DC1FC7800CC1090 /* ViewController.swift */,
+				8D95E9611DC1FC7800CC1090 /* Main.storyboard */,
+				8D95E9641DC1FC7800CC1090 /* Assets.xcassets */,
+				8D95E9661DC1FC7800CC1090 /* LaunchScreen.storyboard */,
+				8D95E9691DC1FC7800CC1090 /* Info.plist */,
 			);
 			path = BravoTests;
 			sourceTree = "<group>";
 		};
-		A813578D452E8E47DA47449D /* Frameworks */ = {
+		A87DE7CD0A00F3264BBCE423 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E20D12E401F604E5E3933E66 /* Pods_BravoTests.framework */,
+				CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F4815C102DC4A63182D6E3B3 /* Pods */ = {
+		C4255066F83F564DBBD17847 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A97118809799BC72C3C663D4 /* Pods-BravoTests.debug.xcconfig */,
-				C039EC535ED14E7D07ED5C34 /* Pods-BravoTests.release.xcconfig */,
+				68E28863ECA63C17F497AB5B /* Pods-BravoTests.debug.xcconfig */,
+				47FA42C7B6BE4AE7D64F7087 /* Pods-BravoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -91,16 +93,16 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D95E91D1DC1F3DD00CC1090 /* BravoTests */ = {
+		8D95E9591DC1FC7700CC1090 /* BravoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8D95E9301DC1F3DD00CC1090 /* Build configuration list for PBXNativeTarget "BravoTests" */;
+			buildConfigurationList = 8D95E96C1DC1FC7800CC1090 /* Build configuration list for PBXNativeTarget "BravoTests" */;
 			buildPhases = (
-				01F05BD9940170B9CAC6BD33 /* [CP] Check Pods Manifest.lock */,
-				8D95E91A1DC1F3DD00CC1090 /* Sources */,
-				8D95E91B1DC1F3DD00CC1090 /* Frameworks */,
-				8D95E91C1DC1F3DD00CC1090 /* Resources */,
-				FE3C75E50DAF9003F177946B /* [CP] Embed Pods Frameworks */,
-				B015BA4E5355E45FB0A2837E /* [CP] Copy Pods Resources */,
+				F3C06DA07943763012F88CBE /* [CP] Check Pods Manifest.lock */,
+				8D95E9561DC1FC7700CC1090 /* Sources */,
+				8D95E9571DC1FC7700CC1090 /* Frameworks */,
+				8D95E9581DC1FC7700CC1090 /* Resources */,
+				5135FAD6EA37990B22AC9862 /* [CP] Embed Pods Frameworks */,
+				AF37F961D991DBDA31D34A2F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -108,26 +110,33 @@
 			);
 			name = BravoTests;
 			productName = BravoTests;
-			productReference = 8D95E91E1DC1F3DD00CC1090 /* BravoTests.app */;
+			productReference = 8D95E95A1DC1FC7700CC1090 /* BravoTests.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		8D95E9161DC1F3DD00CC1090 /* Project object */ = {
+		8D95E9521DC1FC7700CC1090 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Lorenzo Stanton";
 				TargetAttributes = {
-					8D95E91D1DC1F3DD00CC1090 = {
+					8D95E9591DC1FC7700CC1090 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = UXAB3BW444;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
-			buildConfigurationList = 8D95E9191DC1F3DD00CC1090 /* Build configuration list for PBXProject "BravoTests" */;
+			buildConfigurationList = 8D95E9551DC1FC7700CC1090 /* Build configuration list for PBXProject "BravoTests" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -135,61 +144,31 @@
 				en,
 				Base,
 			);
-			mainGroup = 8D95E9151DC1F3DD00CC1090;
-			productRefGroup = 8D95E91F1DC1F3DD00CC1090 /* Products */;
+			mainGroup = 8D95E9511DC1FC7700CC1090;
+			productRefGroup = 8D95E95B1DC1FC7700CC1090 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D95E91D1DC1F3DD00CC1090 /* BravoTests */,
+				8D95E9591DC1FC7700CC1090 /* BravoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		8D95E91C1DC1F3DD00CC1090 /* Resources */ = {
+		8D95E9581DC1FC7700CC1090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D95E92C1DC1F3DD00CC1090 /* LaunchScreen.storyboard in Resources */,
-				8D95E9291DC1F3DD00CC1090 /* Assets.xcassets in Resources */,
-				8D95E9271DC1F3DD00CC1090 /* Main.storyboard in Resources */,
+				8D95E9681DC1FC7800CC1090 /* LaunchScreen.storyboard in Resources */,
+				8D95E9651DC1FC7800CC1090 /* Assets.xcassets in Resources */,
+				8D95E9631DC1FC7800CC1090 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01F05BD9940170B9CAC6BD33 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		B015BA4E5355E45FB0A2837E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FE3C75E50DAF9003F177946B /* [CP] Embed Pods Frameworks */ = {
+		5135FAD6EA37990B22AC9862 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -204,33 +183,63 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AF37F961D991DBDA31D34A2F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3C06DA07943763012F88CBE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8D95E91A1DC1F3DD00CC1090 /* Sources */ = {
+		8D95E9561DC1FC7700CC1090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D95E9241DC1F3DD00CC1090 /* ViewController.swift in Sources */,
-				8D95E9221DC1F3DD00CC1090 /* AppDelegate.swift in Sources */,
+				8D95E9601DC1FC7800CC1090 /* ViewController.swift in Sources */,
+				8D95E95E1DC1FC7800CC1090 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8D95E9251DC1F3DD00CC1090 /* Main.storyboard */ = {
+		8D95E9611DC1FC7800CC1090 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8D95E9261DC1F3DD00CC1090 /* Base */,
+				8D95E9621DC1FC7800CC1090 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		8D95E92A1DC1F3DD00CC1090 /* LaunchScreen.storyboard */ = {
+		8D95E9661DC1FC7800CC1090 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8D95E92B1DC1F3DD00CC1090 /* Base */,
+				8D95E9671DC1FC7800CC1090 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -238,7 +247,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		8D95E92E1DC1F3DD00CC1090 /* Debug */ = {
+		8D95E96A1DC1FC7800CC1090 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -288,7 +297,7 @@
 			};
 			name = Debug;
 		};
-		8D95E92F1DC1F3DD00CC1090 /* Release */ = {
+		8D95E96B1DC1FC7800CC1090 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -331,11 +340,13 @@
 			};
 			name = Release;
 		};
-		8D95E9311DC1F3DD00CC1090 /* Debug */ = {
+		8D95E96D1DC1FC7800CC1090 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A97118809799BC72C3C663D4 /* Pods-BravoTests.debug.xcconfig */;
+			baseConfigurationReference = 68E28863ECA63C17F497AB5B /* Pods-BravoTests.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BravoTests/BravoTests.entitlements;
+				DEVELOPMENT_TEAM = UXAB3BW444;
 				INFOPLIST_FILE = BravoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Magnet.BravoTests;
@@ -344,11 +355,13 @@
 			};
 			name = Debug;
 		};
-		8D95E9321DC1F3DD00CC1090 /* Release */ = {
+		8D95E96E1DC1FC7800CC1090 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C039EC535ED14E7D07ED5C34 /* Pods-BravoTests.release.xcconfig */;
+			baseConfigurationReference = 47FA42C7B6BE4AE7D64F7087 /* Pods-BravoTests.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BravoTests/BravoTests.entitlements;
+				DEVELOPMENT_TEAM = UXAB3BW444;
 				INFOPLIST_FILE = BravoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Magnet.BravoTests;
@@ -360,25 +373,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8D95E9191DC1F3DD00CC1090 /* Build configuration list for PBXProject "BravoTests" */ = {
+		8D95E9551DC1FC7700CC1090 /* Build configuration list for PBXProject "BravoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D95E92E1DC1F3DD00CC1090 /* Debug */,
-				8D95E92F1DC1F3DD00CC1090 /* Release */,
+				8D95E96A1DC1FC7800CC1090 /* Debug */,
+				8D95E96B1DC1FC7800CC1090 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8D95E9301DC1F3DD00CC1090 /* Build configuration list for PBXNativeTarget "BravoTests" */ = {
+		8D95E96C1DC1FC7800CC1090 /* Build configuration list for PBXNativeTarget "BravoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8D95E9311DC1F3DD00CC1090 /* Debug */,
-				8D95E9321DC1F3DD00CC1090 /* Release */,
+				8D95E96D1DC1FC7800CC1090 /* Debug */,
+				8D95E96E1DC1FC7800CC1090 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 8D95E9161DC1F3DD00CC1090 /* Project object */;
+	rootObject = 8D95E9521DC1FC7700CC1090 /* Project object */;
 }

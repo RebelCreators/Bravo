@@ -1,0 +1,6 @@
+framework module Bravo {
+  umbrella header "Bravo-umbrella.h"
+
+  export *
+  module * { export * }
+}
