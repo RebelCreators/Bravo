@@ -23,9 +23,9 @@ import Alamofire
 import EVReflection
 
 public enum RCResponseType {
-   case json
-   case data
-   case nodata
+    case json
+    case data
+    case nodata
 }
 
 open class WebService: NSObject {
@@ -34,165 +34,203 @@ open class WebService: NSObject {
         super.init()
     }
     
-    open func post<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
-        request(relativePath: relativePath, requiresAuth: requiresAuth, method: .post, headers: headers, parameters: parameters, responseType: responseType, success: { res in
-            guard ModelType.self != RCNullModel.self else {
-                success(RCNullModel.null as! ModelType)
-                return
-            }
-            self.processSuccessFail(object: res, success: { (obj : ModelType) in
-                success(obj)
-                }, failure: failure)
-            }, failure: failure)
+    open func post<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+        return WebServiceBlockOp({ operation in
+            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .post, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+                guard ModelType.self != RCNullModel.self else {
+                    success(RCNullModel.null as! ModelType)
+                    operation.finish()
+                    return
+                }
+                self.processSuccessFail(object: res, success: { (obj : ModelType) in
+                    success(obj)
+                    operation.finish()
+                }, failure: { error in
+                    failure(error)
+                    operation.finish()
+                })
+            }, failure: { error in
+                failure(error)
+                operation.finish()
+            }))
+        })
     }
     
-    open func get<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
-        request(relativePath: relativePath, requiresAuth: requiresAuth, method: .get, headers: headers, parameters: parameters, responseType: responseType, success: { res in
-            guard ModelType.self != RCNullModel.self else {
-                success(RCNullModel.null as! ModelType)
-                return
-            }
-            self.processSuccessFail(object: res, success: { (obj : ModelType) in
-                success(obj)
-                }, failure: failure)
-            }, failure: failure)
+    open func get<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+        return WebServiceBlockOp({ operation in
+            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .get, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+                guard ModelType.self != RCNullModel.self else {
+                    success(RCNullModel.null as! ModelType)
+                    operation.finish()
+                    return
+                }
+                self.processSuccessFail(object: res, success: { (obj : ModelType) in
+                    success(obj)
+                    operation.finish()
+                }, failure: { error in
+                    failure(error)
+                    operation.finish()
+                })
+            }, failure: { error in
+                failure(error)
+                operation.finish()
+            }))
+        })
     }
     
-    open func put<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
-        request(relativePath: relativePath, requiresAuth: requiresAuth, method: .put, headers: headers, parameters: parameters, responseType: responseType, success: { res in
-            guard ModelType.self != RCNullModel.self else {
-                success(RCNullModel.null as! ModelType)
-                return
-            }
-            self.processSuccessFail(object: res, success: { (obj : ModelType) in
-                success(obj)
-                }, failure: failure)
-            }, failure: failure)
+    open func put<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+        return WebServiceBlockOp({ operation in
+            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .put, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+                guard ModelType.self != RCNullModel.self else {
+                    success(RCNullModel.null as! ModelType)
+                    operation.finish()
+                    return
+                }
+                self.processSuccessFail(object: res, success: { (obj : ModelType) in
+                    success(obj)
+                    operation.finish()
+                }, failure: { error in
+                    failure(error)
+                    operation.finish()
+                })
+            }, failure: { error in
+                failure(error)
+                operation.finish()
+            }))
+        })
     }
     
-    open func authenticate<ModelType: RModel>(relativePath: String, parameters: [String : Any], success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
-        
-        let utf8str = "\(Bravo.sdk.config.clientID):\(Bravo.sdk.config.clientSecret)".data(using: .utf8)
-        let base64Encoded = utf8str!.base64EncodedString()
-        
-        let headers = ["Authorization": "Basic \(base64Encoded)", "Content-Type": "application/x-www-form-urlencoded"]
-        request(relativePath: relativePath, requiresAuth: false, method: .post, headers: headers, parameters: parameters, success: { dict in
-            self.processSuccessFail(object: dict, success: { (obj : ModelType) in
-                success(obj)
-                }, failure: failure)
-            }, failure: failure)
+    open func authenticate<ModelType: RModel>(relativePath: String, parameters: [String : Any], success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+        return WebServiceBlockOp({ operation in
+            let utf8str = "\(Bravo.sdk.config.clientID):\(Bravo.sdk.config.clientSecret)".data(using: .utf8)
+            let base64Encoded = utf8str!.base64EncodedString()
+            
+            let headers = ["Authorization": "Basic \(base64Encoded)", "Content-Type": "application/x-www-form-urlencoded"]
+            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: false, method: .post, headers: headers, parameters: parameters, success: { dict in
+                self.processSuccessFail(object: dict, success: { (obj : ModelType) in
+                    success(obj)
+                    operation.finish()
+                }, failure: { error in
+                    failure(error)
+                    operation.finish()
+                })
+            }, failure: { error in
+                failure(error)
+                operation.finish()
+            }))
+        })
     }
     
-    private func request(relativePath: String, requiresAuth: Bool, method: Alamofire.HTTPMethod, headers: [String : String]?, parameters: [String: Any], responseType: RCResponseType = .json, success:@escaping ((Any) -> Void), failure:@escaping ((RCError) -> Void)) {
+    internal func request(webRequest: RCWebRequest) {
         
-        var headers = headers
+        var headers = webRequest.headers
         
-        if requiresAuth {
+        if webRequest.requiresAuth {
             if headers == nil {
                 headers = [:]
             }
             if Bravo.sdk.hasBearerAuthToken() {
                 headers?["Authorization"] = Bravo.sdk.bearerAuthToken()
             } else {
-                NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: nil)
+                NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
                 
-                failure(RCError.AccessDenied(message: "Access Denied"))
+                webRequest.failure(RCError.AccessDenied(message: "Access Denied"))
                 return
             }
         }
         
-        let matcher = RCPatternMatcher(string: relativePath, with: parameters)
+        let matcher = RCPatternMatcher(string: webRequest.relativePath, with: webRequest.parameters)
         let url = URL(string: matcher.matchedString , relativeTo: Bravo.sdk.config.baseUrl)!
         let updatedParameters = matcher.unmatchedParameters
-    
-        switch responseType {
+        
+        switch webRequest.responseType {
         case .data:
-            Alamofire.request(url, method: method, parameters: updatedParameters, headers: headers)
+            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, headers: headers)
                 .responseData(completionHandler: { response in
-                    guard !requiresAuth || response.response?.statusCode != 401 else {
+                    guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
-                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: nil)
+                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
                         
-                        failure(RCError.AccessDenied(message: "Access Denied"))
+                        webRequest.failure(RCError.AccessDenied(message: "Access Denied"))
                         return
                     }
                     
                     guard let error = response.result.error else {
                         guard let res = response.result.value else {
                             let error = AFError.responseValidationFailed(reason: .dataFileNil)
-                            failure(RCError.OtherNSError(nsError: error as NSError))
+                            webRequest.failure(RCError.OtherNSError(nsError: error as NSError))
                             return
                         }
                         
                         guard response.response?.statusCode == 200 else {
-                            failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
+                            webRequest.failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
                             
                             return
                         }
                         
-                        success(res)
+                        webRequest.success(res)
                         
                         return
                     }
-                    failure(RCError.OtherNSError(nsError: error as NSError))
+                    webRequest.failure(RCError.OtherNSError(nsError: error as NSError))
                 })
             break
         case .json:
-                Alamofire.request(url, method: method, parameters: updatedParameters, headers: headers)
-                    .responseJSON() { (response) -> Void in
-                        guard !requiresAuth || response.response?.statusCode != 401 else {
-                            
-                            NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: nil)
-                            
-                            failure(RCError.AccessDenied(message: "Access Denied"))
+            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, headers: headers)
+                .responseJSON() { (response) -> Void in
+                    guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
+                        
+                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
+                        
+                        webRequest.failure(RCError.AccessDenied(message: "Access Denied"))
+                        return
+                    }
+                    
+                    guard let error = response.result.error else {
+                        guard let res = response.result.value as? [String: Any] else {
+                            let error = AFError.responseValidationFailed(reason: .dataFileNil)
+                            webRequest.failure(RCError.OtherNSError(nsError: error as NSError))
                             return
                         }
                         
-                        guard let error = response.result.error else {
-                            guard let res = response.result.value as? [String: Any] else {
-                                let error = AFError.responseValidationFailed(reason: .dataFileNil)
-                                failure(RCError.OtherNSError(nsError: error as NSError))
-                                return
-                            }
-                            
-                            guard response.response?.statusCode == 200 else {
-                                failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
-                                
-                                return
-                            }
-                            
-                            success(res)
+                        guard response.response?.statusCode == 200 else {
+                            webRequest.failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
                             
                             return
                         }
-                        failure(RCError.OtherNSError(nsError: error as NSError))
+                        
+                        webRequest.success(res)
+                        
+                        return
+                    }
+                    webRequest.failure(RCError.OtherNSError(nsError: error as NSError))
             }
             break
         case .nodata:
-            Alamofire.request(url, method: method, parameters: updatedParameters, headers: headers)
+            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, headers: headers)
                 .response(completionHandler: { response in
-                    guard !requiresAuth || response.response?.statusCode != 401 else {
+                    guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
-                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: nil)
+                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
                         
-                        failure(RCError.AccessDenied(message: "Access Denied"))
+                        webRequest.failure(RCError.AccessDenied(message: "Access Denied"))
                         return
                     }
                     
                     guard let error = response.error else {
                         
                         guard response.response?.statusCode == 200 else {
-                            failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
+                            webRequest.failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
                             
                             return
                         }
                         
-                        success(NSNull())
+                        webRequest.success(NSNull())
                         
                         return
                     }
                     
-                    failure(RCError.OtherNSError(nsError: error as NSError))
+                    webRequest.failure(RCError.OtherNSError(nsError: error as NSError))
                 })
             break
         }

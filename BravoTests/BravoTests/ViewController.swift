@@ -155,7 +155,7 @@ class ViewController: UIViewController {
     
     @IBAction func fetchUser() {
         self.userLbl.text = ""
-        RCUser.userById(userID: RCUser.currentUser!.userID!, success: { user in
+        RCUser.userById(userID: "b343c8d0-9c8b-11e6-8dcc-71faed7d9317", success: { user in
             self.userLbl.text = user.description
             }, failure: { error in
                 self.userLbl.text = ""

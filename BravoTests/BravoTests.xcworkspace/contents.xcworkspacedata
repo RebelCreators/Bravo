@@ -26,6 +26,9 @@
          location = "group:RCFile.swift">
       </FileRef>
       <FileRef
+         location = "group:RCUser.swift">
+      </FileRef>
+      <FileRef
          location = "group:RCFileInfo.swift">
       </FileRef>
       <FileRef
@@ -35,9 +38,6 @@
          location = "group:RCPatternMatcher.swift">
       </FileRef>
       <FileRef
-         location = "group:RCUser.swift">
-      </FileRef>
-      <FileRef
          location = "group:RCValueTransformer.swift">
       </FileRef>
       <FileRef
@@ -45,6 +45,18 @@
       </FileRef>
       <FileRef
          location = "group:WebService.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCWebRequest.swift">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/lorenzo.stanton/Bravo/src/RCAsyncOperation.swift">
+      </FileRef>
+      <FileRef
+         location = "group:RCAsyncBlockOperation.swift">
+      </FileRef>
+      <FileRef
+         location = "group:WebServiceOp.swift">
       </FileRef>
    </Group>
    <FileRef

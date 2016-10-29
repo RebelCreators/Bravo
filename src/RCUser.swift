@@ -22,8 +22,8 @@ import Foundation
 
 public class RCUser: RCModel {
     
+    static public private(set) var authOperation: WebServiceOp?
     public fileprivate(set) static var currentUser: RCUser?
-    
     public var firstName: String?
     public var lastName: String?
     public var userID: String?
@@ -57,9 +57,9 @@ public class RCUser: RCModel {
         let file = RCFile(fileID: avatar, contentType: "image/png")
         file.downloadData(success: { data in
             success(data)
-            }, failure: { error in
-                failure(error)
-        })
+        }, failure: { error in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
@@ -74,8 +74,8 @@ public class RCUser: RCModel {
             user.updateUser(success: { user in
                 self.avatar = user.avatar
                 success(user)
-                }, failure: failure)
             }, failure: failure)
+        }, failure: failure).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public func updateUser(success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
@@ -87,7 +87,7 @@ public class RCUser: RCModel {
             success(self.copy() as! RCUser)
         }) { error in
             failure(error)
-        }
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public func register(success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
@@ -95,7 +95,7 @@ public class RCUser: RCModel {
             success(self.copy() as! RCUser)
         }) { error in
             failure(error)
-        }
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public static func login(credential: URLCredential, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
@@ -103,25 +103,51 @@ public class RCUser: RCModel {
     }
     
     public static func login(credential: URLCredential, saveToken: Bool, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
-        WebService().authenticate(relativePath: "oauth/token", parameters: ["username": credential.user!, "password": credential.password!, "grant_type": "password"], success: { (credential: RCAuthCredential) in
-            
-            Bravo.sdk.credential = credential
-            
-            WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
-                credential.updateExpiry()
-                if (saveToken) {
-                    let _ = credential.save()
+        if let op = self.authOperation {
+            WebServiceBlockOp({ operation in
+                guard let user = RCUser.currentUser else {
+                    failure(RCError.AccessDenied(message: "could not log in"))
+                    
+                    operation.finish()
+                    return
                 }
                 
-                RCUser.currentUser = user
-                NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
                 success(user)
+                operation.finish()
+            }).exeInBackground(dependencies: [op.asOperation()])
+            
+            return
+        }
+        
+        let authOperation = WebServiceBlockOp({ operation in
+            WebService().authenticate(relativePath: "oauth/token", parameters: ["username": credential.user!, "password": credential.password!, "grant_type": "password"], success: { (credential: RCAuthCredential) in
+                
+                Bravo.sdk.credential = credential
+                
+                WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
+                    credential.updateExpiry()
+                    if (saveToken) {
+                        let _ = credential.save()
+                    }
+                    
+                    RCUser.currentUser = user
+                    NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
+                    success(user)
+                    operation.finish()
                 }, failure: { (error) in
                     failure(error)
-            })
+                    operation.finish()
+                }).exeInBackground()
             }, failure: { error in
                 failure(error)
+                operation.finish()
+            }).exeInBackground()
         })
+        
+        self.authOperation = authOperation
+        authOperation.onFinished {
+            self.authOperation = nil
+            }.exeInBackground()
     }
     
     public static func canRefresh() -> Bool {
@@ -129,53 +155,81 @@ public class RCUser: RCModel {
     }
     
     public static func resume(success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
-        guard let credential = RCAuthCredential.savedToken() else {
+        if let op = self.authOperation {
+            WebServiceBlockOp({ operation in
+                guard let user = RCUser.currentUser else {
+                    failure(RCError.AccessDenied(message: "could not resume"))
+                    
+                    operation.finish()
+                    return
+                }
+                
+                success(user)
+                operation.finish()
+            }).exeInBackground(dependencies: [op.asOperation()])
+            
+            return
+        }
+        
+        guard let credential = (RCAuthCredential.savedToken() ?? Bravo.sdk.credential) else {
             failure(RCError.InvalidParameter(message: "Token Not Found"))
             return
         }
         
-        WebService().authenticate(relativePath: "oauth/token", parameters: ["refresh_token": credential.refreshToken, "grant_type": "refresh_token"], success: { (credential: RCAuthCredential) in
-            Bravo.sdk.credential = credential
-            
-            WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
-                credential.updateExpiry()
-                let _ = credential.save()
+        let authOperation = WebServiceBlockOp({ operation in
+            WebService().authenticate(relativePath: "oauth/token", parameters: ["refresh_token": credential.refreshToken, "grant_type": "refresh_token"], success: { (credential: RCAuthCredential) in
+                Bravo.sdk.credential = credential
                 
-                RCUser.currentUser = user
-                NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
-                success(user)
+                WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
+                    credential.updateExpiry()
+                    let _ = credential.save()
+                    
+                    RCUser.currentUser = user
+                    NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
+                    success(user)
+                    operation.finish()
                 }, failure: { (error) in
-                    let _ = RCAuthCredential.removeToken()
+                    RCAuthCredential.removeToken()
                     failure(error)
-            })
+                    operation.finish()
+                }).exeInBackground()
             }, failure: { error in
-                let _ = RCAuthCredential.removeToken()
+                RCAuthCredential.removeToken()
                 failure(error)
+                operation.finish()
+            }).exeInBackground()
         })
+        
+        self.authOperation = authOperation
+        authOperation.onFinished {
+            self.authOperation = nil
+            }.exeInBackground()
     }
     
     public static func userById(userID: String, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
         WebService().get(relativePath: "users/:userID/id", headers: nil, parameters: ["userID": userID], success: { (user: RCUser) in
             success(user)
-            }, failure: { (error) in
-                failure(error)
-        })
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
     }
     
     public static func userByUserName(userName: String, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
         WebService().get(relativePath: "users/:userName/name", headers: nil, parameters: ["userName": userName], success: { (user: RCUser) in
             success(user)
-            }, failure: { (error) in
-                failure(error)
-        })
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
     }
     
     public static func logout(success:(() -> Void)?, failure: ((RCError) -> Void)?) {
         WebService().get(relativePath: "oauth/logout", headers: nil, parameters: [:], responseType: .nodata, success: { (_: RCNullModel) in
             success?()
-            }, failure: { (error) in
-                failure?(error)
-        })
+        }, failure: { (error) in
+            failure?(error)
+        }).onFinished {
+            self.authOperation = nil
+            }.exeInBackground(dependencies: [self.authOperation?.asOperation()])
         
         RCAuthCredential.removeToken()
         Bravo.sdk.credential = nil

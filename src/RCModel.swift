@@ -146,10 +146,6 @@ extension Data: RModel {
     }
     
     override public func setValue(_ value: Any!, forUndefinedKey key: String) {
-        guard  keysForEnums()?[key] != nil else {
-            super.setValue(value, forUndefinedKey: key)
-            return
-        }
     }
     
     override public func propertyConverters() ->  [(String?, ((Any?)->())?, (() -> Any?)? )] {

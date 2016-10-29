@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'CD28556191E5C0C5B13DE3B1B50CE7DF'
+               BlueprintIdentifier = 'E08899E04341CBBC8613CBDB248E9C62'
                BlueprintName = 'Bravo'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Bravo.framework'>

@@ -39,8 +39,13 @@ public class Bravo: NSObject {
     
     func reAuthenticate(_ notification: Notification) {
         if RCUser.canRefresh() {
-            RCUser.resume(success: { _ in }, failure: { error in
-                RCUser.logout(success: nil, failure: nil)
+            RCUser.resume(success: { _ in
+                if let webRequest = notification.userInfo?[RCWebRequest.rcWebRequestKey] as? RCWebRequest {
+                    webRequest.begin()
+                }
+                
+            }, failure: { error in
+              RCUser.logout(success: nil, failure: nil)
             })
         } else if credential != nil {
             RCUser.logout(success: nil, failure: nil)

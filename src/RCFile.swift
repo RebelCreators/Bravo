@@ -55,30 +55,39 @@ open class RCFile: NSObject {
         super.init()
     }
     
-    public func downloadData(success:((Data) -> Void)?, failure:((RCError) -> Void)?) {
-        guard let url = relativePath else {
-            failure?(RCError.NotFound(message: "No URL"))
-            
-            return
-        }
-        WebService().get(relativePath: url, headers: nil, parameters: [:], responseType: .data, success: { (data: Data) in
-            success?(data)
+    public func downloadData(success:((Data) -> Void)?, failure:((RCError) -> Void)?) -> WebServiceOp {
+        return WebServiceBlockOp({ operation in
+            guard let url = self.relativePath else {
+                failure?(RCError.NotFound(message: "No URL"))
+                operation.finish()
+                return
+            }
+            WebService().get(relativePath: url, headers: nil, parameters: [:], responseType: .data, success: { (data: Data) in
+                success?(data)
+                operation.finish()
             }, failure: { error in
                 failure?(error)
+                operation.finish()
+            })
         })
     }
     
-    public func uploadData(success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) {
-        guard let data = self.data, let contentType = self.contentType else {
-            failure(RCError.InvalidParameter(message: "Check Data and content Type"))
-            return
-        }
-        
-        WebService().upload(relativePath: "files/upload", requiresAuth: true, parameters: nil, headers: nil, data: data, contentType: contentType, success: { (string: String) in
-            self.fileID = string
-            success()
+    public func uploadData(success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+        return WebServiceBlockOp({ operation in
+            guard let data = self.data, let contentType = self.contentType else {
+                failure(RCError.InvalidParameter(message: "Check Data and content Type"))
+                operation.finish()
+                return
+            }
+            
+            WebService().upload(relativePath: "files/upload", requiresAuth: true, parameters: nil, headers: nil, data: data, contentType: contentType, success: { (string: String) in
+                self.fileID = string
+                success()
+                operation.finish()
             }, failure: { error in
                 failure(error)
+                operation.finish()
+            })
         })
     }
     
