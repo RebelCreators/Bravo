@@ -1,0 +1,107 @@
+endpoints
+
+POST /users/profile/update
+GET /users/profile
+{
+email: String, 
+details: String , 
+profileImages:[String], 
+user: RCUser,
+type: enum {"Helper", "Client"},
+overallRating: Int
+}
+
+GET /users/:user_id/profile
+{
+email: String, 
+details: String , 
+profileImages:[String], 
+user: RCUser,
+type: enum {"Helper", "Client"},
+overallRating: Int
+}
+
+POST /users/search?limit&offset
+request
+{
+filters: {age:, hair, distance:{miles, zip}, date}, 
+sort: enum {"ASC", "DSC", "NEAR"}}
+
+response
+{userProfiles:[UserProfile]}
+
+GET /users/lists/promoted?limit&offset
+{userProfiles:[UserProfile]}
+
+GET /users/:user_id/ratings?limit&offset
+response
+{
+ratingDetail:[
+rating,
+date,
+comments
+]}
+
+POST /users/location/update
+{
+lat:String,
+lng: String
+}
+POST /users/availability/check
+{
+date: String
+}
+   -- {
+   date: String,
+   unavailableAllDay: Bool ,
+   timeUnavailable: [
+   time: String,
+   duration: Int
+   ], 
+   startOfDay: String,
+    endOfDay: String
+    }
+
+Get /users/availability/lists/exlusions
+{
+   date: String,
+   unavailableAllDay: Bool, 
+   duration: Int
+    }
+
+PUT /users/availability/exlusions/add
+{
+   date: String,
+   unavailableAllDay: Bool, 
+   duration: Int
+    }
+    
+POST service/:service_id/respond
+{action = {accept, reject}}
+
+services/lists/upcoming
+services/lists?limit&offset
+services/lists/pending
+services/lists/past?limit&offset
+services/search?q
+services/create
+services/request
+services/:service_id/update
+services/:service_id/rate/add
+services/search?q helpersOnly
+services/:service_id/flag/add
+services/:service_id/flag/list
+
+/settings/list
+/settings/bank
+/settings/bank/:id/delete
+/settings/bank/add
+/settings/phone/verify
+/settings/cards/:id/delete
+/settigs/card/add
+/settings/update
+/settings/block/user
+/setting/block/list
+/setting/trustscore
+
+

@@ -35,9 +35,20 @@ profiles
 		-- flaggedBy
    	      -- userID
    	      -- ""
-		
+		-- verified
+    -- trust score
 	-- helpers profile
-	      -- flaggedBy
+  -- generalAvailablity
+      -- dayOfWeek
+      -- startTime
+      -- endTime
+      -- exclusions
+         -- date
+         -- startTime
+         -- endTime
+         -- allDay
+
+	   -- flaggedBy
    	      -- userID
    	      -- ""
 		-- location
@@ -102,11 +113,12 @@ trust score
      -- email approved
      -- phone number verified
     rating
-            -- user Id
+      -- user Id
 			-- coments
 			-- rating
 			-- date
     license approved?
+    verifiedPhoto
     bank approved ?
     -- card 
 
