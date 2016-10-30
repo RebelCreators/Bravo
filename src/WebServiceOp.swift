@@ -31,10 +31,9 @@ public protocol WebServiceOp {
 
 open class WebServiceBlockOp: RCAsyncBlockOperation, WebServiceOp {
     
-    let queue: OperationQueue = {
+    static let queue: OperationQueue = {
         let queue = OperationQueue()
         queue.underlyingQueue = DispatchQueue.global(qos: .background)
-        queue.maxConcurrentOperationCount = 1
         
         return queue
     }()
@@ -81,11 +80,11 @@ open class WebServiceBlockOp: RCAsyncBlockOperation, WebServiceOp {
         
         for op in requirements ?? [] {
             if let op = op {
-                queue.addOperation(op)
+                WebServiceBlockOp.queue.addOperation(op)
                 addDependency(op)
             }
         }
         
-        queue.addOperation(self)
+        WebServiceBlockOp.queue.addOperation(self)
     }
 }

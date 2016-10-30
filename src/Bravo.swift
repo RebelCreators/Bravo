@@ -44,9 +44,7 @@ public class Bravo: NSObject {
                     webRequest.begin()
                 }
                 
-            }, failure: { error in
-              RCUser.logout(success: nil, failure: nil)
-            })
+            }, failure: { error in })
         } else if credential != nil {
             RCUser.logout(success: nil, failure: nil)
         }
