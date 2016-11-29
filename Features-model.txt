@@ -38,6 +38,7 @@ profiles
 		-- verified
     -- trust score
 	-- helpers profile
+  -- max radius
   -- generalAvailablity
       -- dayOfWeek
       -- startTime
@@ -121,4 +122,9 @@ trust score
     verifiedPhoto
     bank approved ?
     -- card 
+
+comments:
+client and helper informed on job status update
+
+
 
