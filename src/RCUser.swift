@@ -42,7 +42,7 @@ public class RCUser: RCModel {
     }
     
     override public func mapping() -> [String : String] {
-        return ["userID": "userId"]
+        return ["userID": "_id"]
     }
     
     public func profileImage(success:@escaping ((Data?) -> Void), failure:@escaping ((RCError)->Void)) {

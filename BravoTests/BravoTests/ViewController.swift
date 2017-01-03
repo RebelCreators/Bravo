@@ -79,9 +79,9 @@ class ViewController: UIViewController {
                 self.logoutBtn.isHidden = false
                 // self.sendImage()
                 self.test()
-                }, failure: { error in
-                    self.loginBtn.isHidden = false
-                    self.status.text = error.localizedDescription
+            }, failure: { error in
+                self.loginBtn.isHidden = false
+                self.status.text = error.localizedDescription
             })
         } else {
             loginBtn.isHidden = false
@@ -100,27 +100,27 @@ class ViewController: UIViewController {
         //            }, failure: { error in
         //
         //        })
-        //       let image = UIImage(named: "IMG_2275")!
-        ////        let data = UIImagePNGRepresentation(image)!
-        ////        RCUser.currentUser?.setProfileImage(pngData: data, success: { user in
-        ////
-        ////            }, failure: { error in
-        ////
-        ////        })
-        //        RCUser.currentUser?.profileImage(success: { data in
-        //            guard let data = data else {
-        //                return
-        //            }
-        //            let image = UIImage(data: data)
-        //
-        //            }, failure: { error in
-        //
-        //        })
-        
+       /* let image = UIImage(named: "72964028")!
+        let data = UIImagePNGRepresentation(image)!
+        RCUser.currentUser?.setProfileImage(pngData: data, success: { user in
+            
+        }, failure: { error in
+
+        })
+        RCUser.currentUser?.profileImage(success: { data in
+            guard let data = data else {
+                return
+            }
+            let image = UIImage(data: data)
+            
+        }, failure: { error in
+            
+        })*/
+        sendImage()
     }
     
     func sendImage() {
-        let image = UIImage(named: "IMG_2275")!
+        let image = UIImage(named: "img")!
         let data = UIImagePNGRepresentation(image)!
         let file = RCFile(data: data, contentType: "image/png")
         file.uploadData(success: {
@@ -129,12 +129,12 @@ class ViewController: UIViewController {
             newFile.downloadData(success: { data in
                 let image = UIImage(data: data)
                 
-                }, failure: { error in
-                    
-            })
             }, failure: { error in
                 
-        })
+            }).exeInBackground()
+        }, failure: { error in
+            
+        }).exeInBackground()
     }
     
     @IBAction func login(sender: UIButton) {
@@ -147,18 +147,18 @@ class ViewController: UIViewController {
             self.logoutBtn.isHidden = false
             //self.sendImage()
             self.test()
-            }, failure: { error in
-                self.loginBtn.isHidden = false
-                self.status.text = error.localizedDescription
+        }, failure: { error in
+            self.loginBtn.isHidden = false
+            self.status.text = error.localizedDescription
         })
     }
     
     @IBAction func fetchUser() {
         self.userLbl.text = ""
-        RCUser.userById(userID: "b343c8d0-9c8b-11e6-8dcc-71faed7d9317", success: { user in
+        RCUser.userByUserName(userName: RCUser.currentUser?.userName ?? "", success: { user in
             self.userLbl.text = user.description
-            }, failure: { error in
-                self.userLbl.text = ""
+        }, failure: { error in
+            self.userLbl.text = ""
         })
     }
     

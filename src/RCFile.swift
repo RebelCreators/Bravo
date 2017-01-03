@@ -68,7 +68,7 @@ open class RCFile: NSObject {
             }, failure: { error in
                 failure?(error)
                 operation.finish()
-            })
+            }).exeInBackground()
         })
     }
     

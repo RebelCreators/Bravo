@@ -50,7 +50,7 @@
          location = "group:RCWebRequest.swift">
       </FileRef>
       <FileRef
-         location = "group:/Users/lorenzo.stanton/Bravo/src/RCAsyncOperation.swift">
+         location = "group:RCAsyncOperation.swift">
       </FileRef>
       <FileRef
          location = "group:RCAsyncBlockOperation.swift">
