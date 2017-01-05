@@ -1,5 +1,5 @@
-source 'https://github.com/RebelCreators/BravoSpecs.git'
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/RebelCreators/BravoSpecs.git'
 
 inhibit_all_warnings!
 
@@ -7,6 +7,12 @@ target 'BravoTests' do
   use_frameworks!
 
   pod 'Bravo', :path => '../'
+end
+
+target 'BravoTestsUnitTests' do
+    use_frameworks!
+    
+    pod 'Bravo', :path => '../'
 end
 
 post_install do |installer|

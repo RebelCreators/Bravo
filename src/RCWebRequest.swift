@@ -30,16 +30,18 @@ open class RCWebRequest: NSObject {
     open private(set) var method: Alamofire.HTTPMethod
     open private(set) var headers: [String : String]?
     open private(set) var parameters: [String: Any]
+    open private(set) var encoding: ParameterEncoding
     open private(set) var responseType: RCResponseType = .json
     open private(set) var success:((Any) -> Void)
     open private(set) var failure:((RCError) -> Void)
     
-    public init(relativePath: String, requiresAuth: Bool, method: Alamofire.HTTPMethod, headers: [String : String]?, parameters: [String: Any], responseType: RCResponseType = .json, success:@escaping ((Any) -> Void), failure:@escaping ((RCError) -> Void)) {
+    public init(relativePath: String, requiresAuth: Bool, method: Alamofire.HTTPMethod, headers: [String : String]?, parameters: [String: Any], encoding: ParameterEncoding = JSONEncoding.default, responseType: RCResponseType = .json, success:@escaping ((Any) -> Void), failure:@escaping ((RCError) -> Void)) {
         self.relativePath = relativePath
         self.requiresAuth = requiresAuth
         self.method = method
         self.headers = headers
         self.parameters = parameters
+        self.encoding = encoding
         self.responseType = responseType
         self.success = success
         self.failure = failure

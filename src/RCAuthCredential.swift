@@ -19,14 +19,13 @@
 // THE SOFTWARE.
 
 import Foundation
-import EVReflection
 import SwiftKeychainWrapper
 
-public class RCAuthCredential: RCModel {
-    var accessToken: String
-    var expiration: Date
-    var refreshToken: String
-    var expires_in = 0
+@objc public class RCAuthCredential: RCModel {
+    var accessToken: String = ""
+    var expiration: Date = Date()
+    var refreshToken: String = ""
+    var expires_in: NSNumber = 0
     
     public init(accessToken: String, expiration: Date, refreshToken: String) {
         self.accessToken = accessToken
@@ -34,12 +33,6 @@ public class RCAuthCredential: RCModel {
         self.refreshToken = refreshToken
         
         super.init()
-    }
-    
-    override public func transforming() -> [RCValueTransformer] {
-        let transformers = [RCValueTransformer]()
-        
-        return transformers
     }
     
     static func keyChainKey() -> String {
@@ -56,7 +49,7 @@ public class RCAuthCredential: RCModel {
         }
         
         if let retrievedString = KeychainWrapper.standard.string(forKey: RCAuthCredential.keyChainKey()) {
-            let cred = RCAuthCredential(json: retrievedString)
+            let cred: RCAuthCredential = RCAuthCredential.generate(fromJson: retrievedString)
             
             if (cred.accessToken.characters.count > 0 && cred.refreshToken.characters.count > 0) {
                 return cred
@@ -84,18 +77,26 @@ public class RCAuthCredential: RCModel {
         return KeychainWrapper.standard.removeObject(forKey: RCAuthCredential.keyChainKey())
     }
     
-    override public func mapping() -> [String : String] {
-        return ["accessToken": "access_token", "refreshToken": "refresh_token"]
+    open override class func attributeMappings() -> [AnyHashable : Any]! {
+        var dict : [AnyHashable : Any] = ["accessToken": "access_token", "refreshToken": "refresh_token"]
+        return super.attributeMappings() + dict
     }
     
     required convenience public init?(coder: NSCoder) {
         self.init()
     }
     
-    required public init() {
+    required public override init() {
         self.accessToken = ""
         self.expiration = Date.distantPast
         self.refreshToken = ""
         super.init()
+    }
+    
+    required public init(dictionary dictionaryValue: [AnyHashable : Any]!) throws {
+        self.accessToken = ""
+        self.expiration = Date.distantPast
+        self.refreshToken = ""
+        try super.init(dictionary: dictionaryValue)
     }
 }

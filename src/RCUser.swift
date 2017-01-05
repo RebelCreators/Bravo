@@ -20,6 +20,11 @@
 
 import Foundation
 
+func ==(lhs: RCUser, rhs: RCUser) -> Bool {
+    return lhs.userID == rhs.userID
+}
+
+@objc(RCUser)
 public class RCUser: RCModel {
     
     static public private(set) var authOperation: WebServiceOp?
@@ -31,18 +36,14 @@ public class RCUser: RCModel {
     public var password: String?
     public var avatar: String?
     public var extras: [String: String]?
+    public var gender: RCGenderEnum = .none
     
-    
-    public required init() {
-        super.init()
+    open override class func attributeMappings() -> [AnyHashable : Any]! {
+        return super.attributeMappings() + ["userID" : "_id"]
     }
     
-    required convenience public init?(coder: NSCoder) {
-        self.init()
-    }
-    
-    override public func mapping() -> [String : String] {
-        return ["userID": "_id"]
+    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.enumAttributeTypes() ?? [:]) + ["gender" : RCGenderEnumObject.self]
     }
     
     public func profileImage(success:@escaping ((Data?) -> Void), failure:@escaping ((RCError)->Void)) {
@@ -83,19 +84,19 @@ public class RCUser: RCModel {
             failure(.ConditionNotMet(message: "No userID"))
             return
         }
-        WebService().put(relativePath: "users/update", headers: nil, parameters: self.toDictionary() as! [String: Any], success: { (_: RCUser) in
-            success(self.copy() as! RCUser)
+        WebService().put(relativePath: "users/update", headers: nil, parameters: self.toDictionary() as! [String: Any], success: { (user: RCUser) in
+            success(user)
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public func register(success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
-        WebService().put(relativePath: "users/register", requiresAuth: false, headers: nil, parameters: self.toDictionary() as! [String: Any], success: { (_: RCUser) in
-            success(self.copy() as! RCUser)
+        WebService().put(relativePath: "users/register", requiresAuth: false, headers: nil, parameters: self.toDictionary() as! [String: Any], success: { (user : RCUser) in
+            success(user)
         }) { error in
             failure(error)
-            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+            }.exeInBackground()
     }
     
     public static func login(credential: URLCredential, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
@@ -214,8 +215,24 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
     }
     
+    public static func userByIds(userIDs: [String], success:@escaping (([RCUser]) -> Void), failure: @escaping ((RCError) -> Void)) {
+        WebService().get(relativePath: "users/id", headers: nil, parameters: ["userIDs": userIDs], success: { (user: [RCUser]) in
+            success(user)
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
+    }
+    
+    public static func userByUserNames(userNames: [String], success:@escaping (([RCUser]) -> Void), failure: @escaping ((RCError) -> Void)) {
+        WebService().get(relativePath: "users/username", headers: nil, parameters: ["userNames": userNames], success: { (user: [RCUser]) in
+            success(user)
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
+    }
+    
     public static func userByUserName(userName: String, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
-        WebService().get(relativePath: "users/:userName/name", headers: nil, parameters: ["userName": userName], success: { (user: RCUser) in
+        WebService().get(relativePath: "users/:userName/username", headers: nil, parameters: ["userName": userName], success: { (user: RCUser) in
             success(user)
         }, failure: { (error) in
             failure(error)

@@ -4,11 +4,42 @@
    <Group
       location = "group:../src"
       name = "src">
+      <Group
+         location = "group:RestModel"
+         name = "RestModel">
+         <FileRef
+            location = "group:MMEnumAttributeContainer.h">
+         </FileRef>
+         <FileRef
+            location = "group:MMModel.h">
+         </FileRef>
+         <FileRef
+            location = "group:MMModel.m">
+         </FileRef>
+         <FileRef
+            location = "group:MMValueTransformer.h">
+         </FileRef>
+         <FileRef
+            location = "group:MMValueTransformer.m">
+         </FileRef>
+         <FileRef
+            location = "group:RCEnumerable.h">
+         </FileRef>
+         <FileRef
+            location = "group:RCEnumerable.m">
+         </FileRef>
+         <FileRef
+            location = "group:RCModel.swift">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:Bravo.h">
       </FileRef>
       <FileRef
          location = "group:Bravo.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Enums.swift">
       </FileRef>
       <FileRef
          location = "group:Config.swift">
@@ -29,10 +60,10 @@
          location = "group:RCUser.swift">
       </FileRef>
       <FileRef
-         location = "group:RCFileInfo.swift">
+         location = "group:RCUserProfile.swift">
       </FileRef>
       <FileRef
-         location = "group:RCModel.swift">
+         location = "group:RCFileInfo.swift">
       </FileRef>
       <FileRef
          location = "group:RCPatternMatcher.swift">

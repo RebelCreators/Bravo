@@ -17,6 +17,6 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
   s.dependency 'Alamofire', '~> 4.0'
-  s.dependency 'EVReflection', '~> 3.1.2'
   s.dependency 'SwiftKeychainWrapper', '~> 3.0'
+  s.dependency 'Mantle', '~> 2.1'
 end

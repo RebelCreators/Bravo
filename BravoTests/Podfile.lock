@@ -2,9 +2,11 @@ PODS:
   - Alamofire (4.0.1)
   - Bravo (1.0.0):
     - Alamofire (~> 4.0)
-    - EVReflection (~> 3.1.2)
+    - Mantle (~> 2.1)
     - SwiftKeychainWrapper (~> 3.0)
-  - EVReflection (3.1.3)
+  - Mantle (2.1.0):
+    - Mantle/extobjc (= 2.1.0)
+  - Mantle/extobjc (2.1.0)
   - SwiftKeychainWrapper (3.0.0)
 
 DEPENDENCIES:
@@ -16,10 +18,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  Bravo: 2d49ac96ad51c11e42f538a164aefdf858f90f6e
-  EVReflection: 342f8bdfa05a8c5b217dbb12a6f7213973f9a58d
+  Bravo: 29aed62ad36b62916958f49e4d0bc7dedd4ac97a
+  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   SwiftKeychainWrapper: aa69884eb623a6f7d644921bbf58c8cee416a9e6
 
-PODFILE CHECKSUM: 028402c0a8b789554f98420bafec1f33b2333c18
+PODFILE CHECKSUM: 1073b202db62359b7e30586db54b4b2c78db9582
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1

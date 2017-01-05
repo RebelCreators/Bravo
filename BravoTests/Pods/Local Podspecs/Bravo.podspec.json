@@ -27,11 +27,11 @@
     "Alamofire": [
       "~> 4.0"
     ],
-    "EVReflection": [
-      "~> 3.1.2"
-    ],
     "SwiftKeychainWrapper": [
       "~> 3.0"
+    ],
+    "Mantle": [
+      "~> 2.1"
     ]
   }
 }

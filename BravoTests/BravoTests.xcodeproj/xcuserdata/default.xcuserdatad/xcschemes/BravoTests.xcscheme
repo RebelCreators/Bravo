@@ -28,6 +28,24 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04E36BDB1E1D951900C13847"
+               BuildableName = "BravoTestsUnitTests.xctest"
+               BlueprintName = "BravoTestsUnitTests"
+               ReferencedContainer = "container:BravoTests.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "UserTests/test4ProfileImageUpload()">
+               </Test>
+               <Test
+                  Identifier = "UserTests/test5ProfileImageDownload()">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

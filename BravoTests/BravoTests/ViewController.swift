@@ -106,17 +106,28 @@ class ViewController: UIViewController {
             
         }, failure: { error in
 
-        })
-        RCUser.currentUser?.profileImage(success: { data in
-            guard let data = data else {
-                return
-            }
-            let image = UIImage(data: data)
-            
-        }, failure: { error in
-            
         })*/
-        sendImage()
+//        let user = RCUser.currentUser!
+//        user.lastName = "Stanton"
+//        user.extras?["height"] = "5' 10\""
+//        user.gender = .female
+//        user.updateUser(success: { _ in
+//            
+//        }, failure: { _ in
+//            
+//        })
+//        RCUser.currentUser?.profileImage(success: { data in
+//            guard let data = data else {
+//                return
+//            }
+//            let image = UIImage(data: data)
+//            
+//        }, failure: { error in
+//            
+//        })
+       // sendImage()
+        
+        
     }
     
     func sendImage() {
@@ -147,6 +158,7 @@ class ViewController: UIViewController {
             self.logoutBtn.isHidden = false
             //self.sendImage()
             self.test()
+            print("value \(user.gender)")
         }, failure: { error in
             self.loginBtn.isHidden = false
             self.status.text = error.localizedDescription

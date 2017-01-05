@@ -20,7 +20,6 @@
 
 import Foundation
 import Alamofire
-import EVReflection
 
 public enum RCResponseType {
     case json
@@ -58,7 +57,7 @@ open class WebService: NSObject {
     
     open func get<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
-            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .get, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default,responseType: responseType, success: { res in
                 guard ModelType.self != RCNullModel.self else {
                     success(RCNullModel.null as! ModelType)
                     operation.finish()
@@ -106,7 +105,7 @@ open class WebService: NSObject {
             let base64Encoded = utf8str!.base64EncodedString()
             
             let headers = ["Authorization": "Basic \(base64Encoded)", "Content-Type": "application/x-www-form-urlencoded"]
-            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: false, method: .post, headers: headers, parameters: parameters, success: { dict in
+            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: false, method: .post, headers: headers, parameters: parameters, encoding: URLEncoding.default, success: { dict in
                 self.processSuccessFail(object: dict, success: { (obj : ModelType) in
                     success(obj)
                     operation.finish()
@@ -145,7 +144,7 @@ open class WebService: NSObject {
         
         switch webRequest.responseType {
         case .data:
-            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, headers: headers)
+            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, encoding: webRequest.encoding, headers: headers)
                 .responseData(completionHandler: { response in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
@@ -176,7 +175,7 @@ open class WebService: NSObject {
                 })
             break
         case .json:
-            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, headers: headers)
+            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, encoding: webRequest.encoding, headers: headers)
                 .responseJSON() { (response) -> Void in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
@@ -187,7 +186,7 @@ open class WebService: NSObject {
                     }
                     
                     guard let error = response.result.error else {
-                        guard let res = response.result.value as? [String: Any] else {
+                        guard let res: Any = (response.result.value as? [String: Any] ?? response.result.value as? [Any]) else {
                             let error = AFError.responseValidationFailed(reason: .dataFileNil)
                             webRequest.failure(RCError.OtherNSError(nsError: error as NSError))
                             return
@@ -207,7 +206,7 @@ open class WebService: NSObject {
             }
             break
         case .nodata:
-            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, headers: headers)
+            Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, encoding: webRequest.encoding, headers: headers)
                 .response(completionHandler: { response in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
