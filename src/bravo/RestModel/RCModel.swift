@@ -98,19 +98,19 @@ extension Dictionary: RCParameter {
     }
 }
 
-@objc public class RCModel: MMModel, RModel, RCParameter {
+@objc open class RCModel: MMModel, RModel, RCParameter {
     
-    subscript(strings: [String]) -> RCParameterDictionary {
+    public subscript(strings: [String]) -> RCParameterDictionary {
         return self.toParameterDictionary().union(keys: strings)
     }
     
-    public static func generate<T: RModel>(fromJson: String) -> T {
+    open static func generate<T: RModel>(fromJson: String) -> T {
         let data = fromJson.data(using: .utf8)!
         let dict = try! JSONSerialization.jsonObject(with: data, options: []) as! [AnyHashable: Any]
         return T.generate(from: dict) as! T
     }
     
-    public static func generate(from: Any) -> Any? {
+    open static func generate(from: Any) -> Any? {
         guard let dict  = from as? [AnyHashable: Any] else {
             return nil
         }
@@ -118,16 +118,16 @@ extension Dictionary: RCParameter {
         return try? MTLJSONAdapter.model(of: self, fromJSONDictionary: dict)
     }
     
-    public func toParameterDictionary() -> RCParameterDictionary {
+    open func toParameterDictionary() -> RCParameterDictionary {
         return self.toDictionary() as! RCParameterDictionary
     }
     
-    public func toDictionary() -> NSDictionary {
+    open func toDictionary() -> NSDictionary {
         let dict = (try? MTLJSONAdapter.jsonDictionary(fromModel: self)) as? NSDictionary
         return dict ?? NSDictionary()
     }
     
-    public func toJsonString() -> String {
+    open func toJsonString() -> String {
         return String(data: try! JSONSerialization.data(withJSONObject: self.toDictionary(), options: .prettyPrinted), encoding: .utf8)!
     }
 }

@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>HHSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Mantle-iOS10.0.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,17 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>061627B66ACE1730733565C151FF6E3B</key>
+		<key>31258810E02763F7A36594884FF9058B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0DE7E300607F981FC5BF89EF4D7AE9BE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>35CDE14F7D8EA6B6FA5D67A012462767</key>
+		<key>32598A8B02ED42FE3E198630CAD0038C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,7 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A2285F72350E34EC9F993CE4542DFC8</key>
+		<key>81A625C0A1C683EB27CA1D454FFDD070</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8EBFB76B01A5133E9A021A60D4909357</key>
+		<key>8EE0BF7CAEF1DA21F654EBE7D4A12AC6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DA7221F346191F42C9C2349EF1FBCA2C</key>
+		<key>BB7BB34FAF22630E31D905BD864B97A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C31E78D42CCB082ECFE19977549A4A1F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C6DFC96876234DB18A4EAAC26050B578</key>
 		<dict>
 			<key>primary</key>
 			<true/>

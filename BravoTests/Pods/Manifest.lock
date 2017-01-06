@@ -4,6 +4,8 @@ PODS:
     - Alamofire (~> 4.0)
     - Mantle (~> 2.1)
     - SwiftKeychainWrapper (~> 3.0)
+  - HHSDK (1.0.0):
+    - Bravo
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
@@ -11,17 +13,21 @@ PODS:
 
 DEPENDENCIES:
   - Bravo (from `../`)
+  - HHSDK (from `../`)
 
 EXTERNAL SOURCES:
   Bravo:
     :path: ../
+  HHSDK:
+    :path: ../
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  Bravo: 29aed62ad36b62916958f49e4d0bc7dedd4ac97a
+  Bravo: 2adbac647b3451c7a6d7791321ef80d94b64ddfc
+  HHSDK: 98edfc23b1149da8c324089b7337c863543c2a9c
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   SwiftKeychainWrapper: aa69884eb623a6f7d644921bbf58c8cee416a9e6
 
-PODFILE CHECKSUM: 1073b202db62359b7e30586db54b4b2c78db9582
+PODFILE CHECKSUM: c46f64b65c92d7e73791f59b01e0560de6aafa50
 
 COCOAPODS: 1.1.1

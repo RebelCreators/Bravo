@@ -8,6 +8,7 @@
 
 import XCTest
 import Bravo
+import HHSDK
 
 let DefaultTestTimeout: TimeInterval = 10
 var userName = "bob.\(Date().timeIntervalSince1970)"

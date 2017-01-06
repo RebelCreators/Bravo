@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name               = 'Bravo'
+  s.name               = 'HHSDK'
   s.version            =  '1.0.0'
   s.license            =  { :type => 'Apache 2.0' }
   s.summary            =  'An iOS SDK to connect to Alpha servers'
@@ -10,13 +10,11 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.requires_arc = true
 
-  s.source_files = 'src/bravo/**/*.{swift,h,m}'
-  s.public_header_files = 'src/bravo/**/*.h'
+  s.source_files = 'src/hotthelpers/**/*.{swift,h,m}'
+  s.public_header_files = 'src/hotthelpers/**/*.h'
   s.frameworks = 'Foundation'
 
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
-  s.dependency 'Alamofire', '~> 4.0'
-  s.dependency 'SwiftKeychainWrapper', '~> 3.0'
-  s.dependency 'Mantle', '~> 2.1'
+  s.dependency 'Bravo'
 end

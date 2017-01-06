@@ -1,5 +1,5 @@
 {
-  "name": "Bravo",
+  "name": "HHSDK",
   "version": "1.0.0",
   "license": {
     "type": "Apache 2.0"
@@ -17,21 +17,15 @@
     "ios": "9.0"
   },
   "requires_arc": true,
-  "source_files": "src/bravo/**/*.{swift,h,m}",
-  "public_header_files": "src/bravo/**/*.h",
+  "source_files": "src/hotthelpers/**/*.{swift,h,m}",
+  "public_header_files": "src/hotthelpers/**/*.h",
   "frameworks": "Foundation",
   "pod_target_xcconfig": {
     "SWIFT_VERSION": "3.0"
   },
   "dependencies": {
-    "Alamofire": [
-      "~> 4.0"
-    ],
-    "SwiftKeychainWrapper": [
-      "~> 3.0"
-    ],
-    "Mantle": [
-      "~> 2.1"
+    "Bravo": [
+
     ]
   }
 }

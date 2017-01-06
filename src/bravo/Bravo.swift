@@ -21,7 +21,7 @@
 import Foundation
 import Alamofire
 
-func + <K,V> (lhs : [K : V], rhs : [K : V]) -> [K : V] {
+public func + <K,V> (lhs : [K : V], rhs : [K : V]) -> [K : V] {
     var dict = lhs
     for (k,v) in rhs {
         dict[k] = v
