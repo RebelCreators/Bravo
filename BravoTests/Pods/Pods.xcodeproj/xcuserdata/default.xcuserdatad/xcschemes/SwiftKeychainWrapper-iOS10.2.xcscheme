@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "31258810E02763F7A36594884FF9058B"
+               BlueprintIdentifier = "7533773F7C6CD0D0CCD55806B0360C66"
                BuildableName = "SwiftKeychainWrapper.framework"
                BlueprintName = "SwiftKeychainWrapper-iOS10.2"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "31258810E02763F7A36594884FF9058B"
+            BlueprintIdentifier = "7533773F7C6CD0D0CCD55806B0360C66"
             BuildableName = "SwiftKeychainWrapper.framework"
             BlueprintName = "SwiftKeychainWrapper-iOS10.2"
             ReferencedContainer = "container:Pods.xcodeproj">

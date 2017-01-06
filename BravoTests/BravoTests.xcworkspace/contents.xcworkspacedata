@@ -54,6 +54,9 @@
             location = "group:RCUser.swift">
          </FileRef>
          <FileRef
+            location = "group:/Users/default/Bravo/src/bravo/RCUserLocation.swift">
+         </FileRef>
+         <FileRef
             location = "group:RCValueTransformer.swift">
          </FileRef>
          <FileRef

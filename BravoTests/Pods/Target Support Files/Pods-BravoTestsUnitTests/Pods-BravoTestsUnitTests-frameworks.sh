@@ -86,14 +86,14 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS10.2/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Bravo-iOS10.2/Bravo.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HHSDK-iOS10.2/HHSDK.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Mantle-iOS10.2/Mantle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper-iOS10.2/SwiftKeychainWrapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HHSDK/HHSDK.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS10.2/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Bravo-iOS10.2/Bravo.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HHSDK-iOS10.2/HHSDK.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Mantle-iOS10.2/Mantle.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper-iOS10.2/SwiftKeychainWrapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/HHSDK/HHSDK.framework"
 fi

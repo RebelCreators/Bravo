@@ -1,5 +1,5 @@
 framework module HHSDK {
-  umbrella header "HHSDK-umbrella.h"
+  umbrella header "HHSDK-iOS10.0-umbrella.h"
 
   export *
   module * { export * }

@@ -1296,12 +1296,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "test5ProfileImageDownload()"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "test5_0_0ProfileImageDownload()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1359,12 +1359,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "test4ProfileImageUpload()"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "test4_0_0ProfileImageUpload()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1375,12 +1375,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "test5ProfileImageDownload()"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "test5_0_0ProfileImageDownload()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1486,12 +1486,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "test7FetchUsersByIds()"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "test7_0_0FetchUsersByIds()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1549,12 +1549,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
-            landmarkName = "test7FetchUsersByIds()"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "test7_0_0FetchUsersByIds()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1565,92 +1565,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "test7_0_0FetchUsersByIds()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385551.603778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "test7_0_0FetchUsersByIds()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385551.603778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "test7_0_0FetchUsersByIds()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385551.603778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "test7_0_0FetchUsersByIds()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385551.603778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "test7_0_0FetchUsersByIds()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
             endingLineNumber = "160"
-            landmarkName = "test7FetchUsersByIds()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "test7FetchUsersByIds()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "test7FetchUsersByIds()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "test7FetchUsersByIds()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "test7FetchUsersByIds()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "test7FetchUsersByIds()"
+            landmarkName = "test7_0_0FetchUsersByIds()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1693,44 +1693,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "test7FetchUsersByIds()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "test7FetchUsersByIds()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "169"
             endingLineNumber = "169"
-            landmarkName = "test7FetchUsersByIds()"
+            landmarkName = "test7_0_0FetchUsersByIds()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385551.603778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "test7_0_0FetchUsersByIds()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385551.603778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "test7_0_0FetchUsersByIds()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1805,12 +1805,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
-            landmarkName = "test8FetchUsersByUserName()"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "test8_0_0FetchUsersByUserName()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1868,12 +1868,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
-            landmarkName = "test7FetchUsersByIds()"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "test7_0_0FetchUsersByIds()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1932,45 +1932,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "test9UpdateUserProfile()"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "test9_0_0UpdateUserProfile()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.test8UpdateUserProfile () -&gt; ()"
-                  moduleName = "BravoTestsUnitTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505286932.809893"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197"
-                  offsetFromSymbolStart = "775">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.(test8UpdateUserProfile () -&gt; ()).(closure #1)"
-                  moduleName = "BravoTestsUnitTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505286932.811399"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "198"
-                  endingLineNumber = "198"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1980,12 +1948,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "test9UpdateUserProfile()"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "test9_0_0UpdateUserProfile()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -2028,12 +1996,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "test9UpdateUserProfile()"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "test9_0_0UpdateUserProfile()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2044,12 +2012,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "test9UpdateUserProfile()"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "test9_0_0UpdateUserProfile()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2060,12 +2028,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385706.609829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "test9UUFetchCurrentUserProfile()"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "test_2_0_0UUFetchCurrentUserProfile()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2076,57 +2044,57 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385706.609829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
-            landmarkName = "test9UUFetchCurrentUserProfile()"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "test_2_0_0UUFetchCurrentUserProfile()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.(test9UUFetchCurrentUserProfile () -&gt; ()).(closure #1)"
+                  symbolName = "BravoTestsUnitTests.UserTests.(test1_1_0UUFetchCurrentUserProfile () -&gt; ()).(closure #1)"
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505292193.187014"
+                  timestampString = "505383436.540061"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "214"
-                  endingLineNumber = "214"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
                   offsetFromSymbolStart = "86">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.(test9UUFetchCurrentUserProfile () -&gt; ()).(closure #1).(implicit closure #1)"
+                  symbolName = "BravoTestsUnitTests.UserTests.(test1_1_0UUFetchCurrentUserProfile () -&gt; ()).(closure #1).(implicit closure #1)"
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505292193.188644"
+                  timestampString = "505383436.541576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "214"
-                  endingLineNumber = "214"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.(test9UUFetchCurrentUserProfile () -&gt; ()).(closure #1).(implicit closure #2)"
+                  symbolName = "BravoTestsUnitTests.UserTests.(test1_1_0UUFetchCurrentUserProfile () -&gt; ()).(closure #1).(implicit closure #2)"
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505292193.190187"
+                  timestampString = "505383436.543091"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "214"
-                  endingLineNumber = "214"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
                   offsetFromSymbolStart = "4">
                </Location>
             </Locations>
@@ -2139,12 +2107,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385706.609829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "test9UUFetchCurrentUserProfile()"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "test_2_0_0UUFetchCurrentUserProfile()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -2187,57 +2155,57 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385852.59496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "test9UUFetchCurrentUserProfileByUserName()"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "test_4_0_0UUFetchCurrentUserProfileByUserName()"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.(test9UUFetchCurrentUserProfileByUserName () -&gt; ()).(closure #1)"
+                  symbolName = "BravoTestsUnitTests.UserTests.(test1_2_0UUFetchCurrentUserProfileByUserName () -&gt; ()).(closure #1)"
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505295516.365147"
+                  timestampString = "505383436.546027"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "227"
-                  endingLineNumber = "227"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
                   offsetFromSymbolStart = "86">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.(test9UUFetchCurrentUserProfileByUserName () -&gt; ()).(closure #1).(implicit closure #1)"
+                  symbolName = "BravoTestsUnitTests.UserTests.(test1_2_0UUFetchCurrentUserProfileByUserName () -&gt; ()).(closure #1).(implicit closure #1)"
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505295516.366852"
+                  timestampString = "505383436.547985"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "227"
-                  endingLineNumber = "227"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
                   offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BravoTestsUnitTests.UserTests.(test9UUFetchCurrentUserProfileByUserName () -&gt; ()).(closure #1).(implicit closure #2)"
+                  symbolName = "BravoTestsUnitTests.UserTests.(test1_2_0UUFetchCurrentUserProfileByUserName () -&gt; ()).(closure #1).(implicit closure #2)"
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
-                  timestampString = "505295516.368366"
+                  timestampString = "505383436.549456"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "227"
-                  endingLineNumber = "227"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
                   offsetFromSymbolStart = "4">
                </Location>
             </Locations>
@@ -2250,12 +2218,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385852.59496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
-            landmarkName = "test9UUFetchCurrentUserProfileByUserName()"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "test_4_0_0UUFetchCurrentUserProfileByUserName()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2266,12 +2234,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385852.59496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
-            landmarkName = "test9UUFetchCurrentUserProfileByUserName()"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "test_4_0_0UUFetchCurrentUserProfileByUserName()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2298,12 +2266,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385551.603778"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "test9UpdateUserProfile()"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "test9_0_0UpdateUserProfile()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -2346,12 +2314,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
-            timestampString = "505367654.787677"
+            timestampString = "505385852.59496"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "test9UUFetchCurrentUserProfileByUserName()"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "test_4_0_0UUFetchCurrentUserProfileByUserName()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2401,6 +2369,54 @@
             endingLineNumber = "16"
             landmarkName = "test111Configure()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/UserTests/UserTests.swift"
+            timestampString = "505385852.59496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "test_4_0_0UUFetchCurrentUserProfileByUserName()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BravoTestsUnitTests.UserTests.test1_2_0UUFetchCurrentUserProfileByUserName () -&gt; ()"
+                  moduleName = "BravoTestsUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
+                  timestampString = "505383446.469195"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "227"
+                  endingLineNumber = "227"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BravoTestsUnitTests.UserTests.(test1_2_0UUFetchCurrentUserProfileByUserName () -&gt; ()).(closure #1)"
+                  moduleName = "BravoTestsUnitTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/UserTests/UserTests.swift"
+                  timestampString = "505383446.471085"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "86">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
