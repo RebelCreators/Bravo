@@ -33,7 +33,7 @@ open class WebService: NSObject {
         super.init()
     }
     
-    open func post<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+    open func post<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .post, headers: headers, parameters: parameters, responseType: responseType, success: { res in
                 guard ModelType.self != RCNullModel.self else {
@@ -55,7 +55,7 @@ open class WebService: NSObject {
         })
     }
     
-    open func get<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+    open func get<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default,responseType: responseType, success: { res in
                 guard ModelType.self != RCNullModel.self else {
@@ -77,7 +77,7 @@ open class WebService: NSObject {
         })
     }
     
-    open func put<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: [String : Any], responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+    open func put<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .put, headers: headers, parameters: parameters, responseType: responseType, success: { res in
                 guard ModelType.self != RCNullModel.self else {
@@ -99,7 +99,7 @@ open class WebService: NSObject {
         })
     }
     
-    open func authenticate<ModelType: RModel>(relativePath: String, parameters: [String : Any], success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+    open func authenticate<ModelType: RModel>(relativePath: String, parameters: RCParameter, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             let utf8str = "\(Bravo.sdk.config.clientID):\(Bravo.sdk.config.clientSecret)".data(using: .utf8)
             let base64Encoded = utf8str!.base64EncodedString()
@@ -138,7 +138,7 @@ open class WebService: NSObject {
             }
         }
         
-        let matcher = RCPatternMatcher(string: webRequest.relativePath, with: webRequest.parameters)
+        let matcher = RCPatternMatcher(string: webRequest.relativePath, with: webRequest.parameters.toParameterDictionary())
         let url = URL(string: matcher.matchedString , relativeTo: Bravo.sdk.config.baseUrl)!
         let updatedParameters = matcher.unmatchedParameters
         

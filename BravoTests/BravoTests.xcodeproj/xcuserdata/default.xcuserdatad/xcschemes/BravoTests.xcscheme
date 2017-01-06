@@ -37,14 +37,6 @@
                BlueprintName = "BravoTestsUnitTests"
                ReferencedContainer = "container:BravoTests.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "UserTests/test4ProfileImageUpload()">
-               </Test>
-               <Test
-                  Identifier = "UserTests/test5ProfileImageDownload()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

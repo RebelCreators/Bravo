@@ -97,7 +97,7 @@ public class RCUserProfile: RCModel {
             failure(.ConditionNotMet(message: "No user logged in"))
             return
         }
-        WebService().put(relativePath: "userprofile/update", headers: nil, parameters: profile.toDictionary() as! [String: Any], success: { (profile: RCUserProfile) in
+        WebService().put(relativePath: "userprofile/update", headers: nil, parameters: profile, success: { (profile: RCUserProfile) in
             success(profile)
         }) { error in
             failure(error)

@@ -64,8 +64,45 @@ extension Array: RModel {
     }
 }
 
+extension Dictionary {
+    public func union(keys: [Key]) -> Dictionary<Key, Value> {
+        var dict = Dictionary<Key, Value>()
+        for key in keys {
+            if let value = self[key] {
+                dict[key] = value
+            }
+        }
+        
+        return dict
+    }
+}
 
-@objc public class RCModel: MMModel, RModel {
+extension Dictionary: RCParameter {
+    
+    public func toParameterDictionary() -> RCParameterDictionary {
+        var dict = RCParameterDictionary()
+        for (k, v) in self {
+            guard let key = k as? String else {
+                continue
+            }
+            
+            guard let model = v as? RCModel else {
+                dict[key] = v
+                continue
+            }
+            
+            dict[key] = model.toParameterDictionary()
+        }
+        
+        return dict
+    }
+}
+
+@objc public class RCModel: MMModel, RModel, RCParameter {
+    
+    subscript(strings: [String]) -> RCParameterDictionary {
+        return self.toParameterDictionary().union(keys: strings)
+    }
     
     public static func generate<T: RModel>(fromJson: String) -> T {
         let data = fromJson.data(using: .utf8)!
@@ -79,6 +116,10 @@ extension Array: RModel {
         }
         
         return try? MTLJSONAdapter.model(of: self, fromJSONDictionary: dict)
+    }
+    
+    public func toParameterDictionary() -> RCParameterDictionary {
+        return self.toDictionary() as! RCParameterDictionary
     }
     
     public func toDictionary() -> NSDictionary {

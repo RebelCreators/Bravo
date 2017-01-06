@@ -84,7 +84,7 @@ public class RCUser: RCModel {
             failure(.ConditionNotMet(message: "No userID"))
             return
         }
-        WebService().put(relativePath: "users/update", headers: nil, parameters: self.toDictionary() as! [String: Any], success: { (user: RCUser) in
+        WebService().put(relativePath: "users/update", headers: nil, parameters: self, success: { (user: RCUser) in
             success(user)
         }) { error in
             failure(error)
@@ -92,7 +92,7 @@ public class RCUser: RCModel {
     }
     
     public func register(success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
-        WebService().put(relativePath: "users/register", requiresAuth: false, headers: nil, parameters: self.toDictionary() as! [String: Any], success: { (user : RCUser) in
+        WebService().put(relativePath: "users/register", requiresAuth: false, headers: nil, parameters: self, success: { (user : RCUser) in
             success(user)
         }) { error in
             failure(error)

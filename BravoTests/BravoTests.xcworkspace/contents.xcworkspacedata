@@ -31,6 +31,9 @@
          <FileRef
             location = "group:RCModel.swift">
          </FileRef>
+         <FileRef
+            location = "group:/Users/default/Bravo/src/RestModel/RCParameter.swift">
+         </FileRef>
       </Group>
       <FileRef
          location = "group:Bravo.h">

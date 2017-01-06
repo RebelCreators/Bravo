@@ -25,12 +25,12 @@ class RCMultiPartRequest: NSObject {
     var data: Data?
     var request: URLRequest?
     
-    init(url: URL, parameters:[String: Any]?, headers:[String : String]?, files:[RCFileInfo]) {
+    init(url: URL, parameters:RCParameter?, headers:[String : String]?, files:[RCFileInfo]) {
         super.init()
         urlRequestWithFiles(url: url, parameters: parameters, headers: headers, files: files)
     }
     
-    private func urlRequestWithFiles(url: URL, parameters:[String: Any]?, headers:[String : String]?, files:[RCFileInfo]) {
+    private func urlRequestWithFiles(url: URL, parameters:RCParameter?, headers:[String : String]?, files:[RCFileInfo]) {
         // create url request to send
         var mutableURLRequest = URLRequest(url: url)
         mutableURLRequest.httpMethod = Alamofire.HTTPMethod.post.rawValue
@@ -51,7 +51,7 @@ class RCMultiPartRequest: NSObject {
             index = index != nil ? index! + 1 : 0
         }
         // add parameters
-        for (key, value) in parameters ?? [:] {
+        for (key, value) in parameters?.toParameterDictionary() ?? [:] {
             uploadData.append("\r\n--\(boundaryConstant)\r\n".data(using: .utf8)!)
             uploadData.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)".data(using: .utf8)!)
         }
@@ -64,9 +64,9 @@ class RCMultiPartRequest: NSObject {
 
 extension WebService {
     
-    open func upload<ModelType: RModel>(relativePath: String, requiresAuth: Bool = false, parameters: [String: Any]? = nil, headers: [String: String]? = nil, data: Data, contentType: String, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
+    open func upload<ModelType: RModel>(relativePath: String, requiresAuth: Bool = false, parameters: RCParameter? = nil, headers: [String: String]? = nil, data: Data, contentType: String, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
         
-        let matcher = RCPatternMatcher(string: relativePath, with: parameters ?? [:])
+        let matcher = RCPatternMatcher(string: relativePath, with: parameters?.toParameterDictionary() ?? [:])
         let unmatchedParameters = matcher.unmatchedParameters ?? [:]
         let url = URL(string: matcher.matchedString , relativeTo: Bravo.sdk.config.baseUrl)!
         var headers = headers
