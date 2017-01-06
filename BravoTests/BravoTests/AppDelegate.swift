@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let config = BravoPlistConfig.loadPlist(name: "Config")
+        Bravo.sdk.configure(dictionary: config.asDictionary()!["develop"] ?? [:])
         
-         Bravo.sdk.configure(urlPath: "http://localhost:3000/", clientID: "dafdfdfdsfafdxadsfdsfafds", clientSecret: "dsjfle32421jde1r23sdsfeqfwer21r324234fewqe3")
         return true
     }
 

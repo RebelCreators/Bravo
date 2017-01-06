@@ -30,6 +30,29 @@ public func + <K,V> (lhs : [K : V], rhs : [K : V]) -> [K : V] {
     return dict
 }
 
+public class BravoPlistConfig: NSObject {
+    private var data: Any?
+    
+    public static func loadPlist(name: String, bundle: Bundle = Bundle.main) -> BravoPlistConfig {
+        var config = BravoPlistConfig()
+        guard let fileUrl = bundle.url(forResource: name, withExtension: "plist"), let data = try? Data(contentsOf: fileUrl) else {
+            assertionFailure("Bravo not configured correctly, make sure \(name) exists in bundle: \(bundle.localizedInfoDictionary?["CFBundleDisplayName"] ?? "null")")
+            return config
+        }
+        
+        config.data = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil)
+        return config
+    }
+    
+    public func asDictionary<T>() -> [String: T]? {
+        return data as? [String: T]
+    }
+    
+    public func asArray() -> [[String: Any]]? {
+        return data as? [[String: Any]]
+    }
+}
+
 public class Bravo: NSObject {
     
     public static var sdk = Bravo()
@@ -59,13 +82,22 @@ public class Bravo: NSObject {
         }
     }
     
-    public func configure(url: URL, clientID: String, clientSecret: String) {
+    public func configure(baseURL: URL, clientID: String, clientSecret: String) {
+        config = Config(baseUrl: baseURL, clientID: clientID, clientSecret: clientSecret)
+    }
+    
+    public func configure(withString baseURL: String, clientID: String, clientSecret: String) {
+        let url = URL(string: baseURL)!
         config = Config(baseUrl: url, clientID: clientID, clientSecret: clientSecret)
     }
     
-    public func configure(urlPath: String, clientID: String, clientSecret: String) {
-        let url = URL(string: urlPath)!
-        config = Config(baseUrl: url, clientID: clientID, clientSecret: clientSecret)
+    public func configure(dictionary: [String: Any]) {
+        guard  let baseURL = dictionary["baseURL"] as? String, let clientID = dictionary["clientID"] as? String, let clientSecret = dictionary["clientSecret"] as? String else {
+            assertionFailure("Bravo not configured correctly")
+            return
+        }
+        
+        configure(withString: baseURL, clientID: clientID, clientSecret: clientSecret)
     }
     
     public func hasBearerAuthToken() -> Bool {

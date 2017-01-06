@@ -52,6 +52,7 @@ public class RCUserProfile: RCModel {
     public var profileType: RCProfileTypeEnum = .client
     public var appearance = [String: String]()
     public var services = [ProfileService]()
+    public var homeCity: String?
     
     open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
         return (super.mapAttributeTypes() ?? [:]) + ["user" : RCUser.self]

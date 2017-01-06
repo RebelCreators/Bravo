@@ -12,7 +12,8 @@ import Bravo
 class AllConfig: XCTestCase {
     
     func test111Configure() {
-        Bravo.sdk.configure(urlPath: "http://localhost:3000/", clientID: "dafdfdfdsfafdxadsfdsfafds", clientSecret: "dsjfle32421jde1r23sdsfeqfwer21r324234fewqe3")
+        let config = BravoPlistConfig.loadPlist(name: "Config", bundle: Bundle(for: type(of: self)))
+        Bravo.sdk.configure(dictionary: config.asDictionary()!["develop"] ?? [:])
     }
     
 }
