@@ -84,14 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Bravo/Bravo.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/EVReflection/EVReflection.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS10.0/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Bravo-iOS10.0/Bravo.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HHSDK-iOS10.0/HHSDK.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Mantle-iOS10.0/Mantle.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Bravo/Bravo.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/EVReflection/EVReflection.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper/SwiftKeychainWrapper.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Alamofire-iOS10.0/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Bravo-iOS10.0/Bravo.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HHSDK-iOS10.0/HHSDK.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Mantle-iOS10.0/Mantle.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework"
 fi

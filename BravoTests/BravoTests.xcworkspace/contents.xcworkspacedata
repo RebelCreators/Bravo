@@ -4,60 +4,105 @@
    <Group
       location = "group:../src"
       name = "src">
-      <FileRef
-         location = "group:Bravo.h">
-      </FileRef>
-      <FileRef
-         location = "group:Bravo.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Config.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Notifications.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCAuthCredential.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCError.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCFile.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCUser.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCFileInfo.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCModel.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCPatternMatcher.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCValueTransformer.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Webservice+Upload.swift">
-      </FileRef>
-      <FileRef
-         location = "group:WebService.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCWebRequest.swift">
-      </FileRef>
-      <FileRef
-         location = "group:/Users/lorenzo.stanton/Bravo/src/RCAsyncOperation.swift">
-      </FileRef>
-      <FileRef
-         location = "group:RCAsyncBlockOperation.swift">
-      </FileRef>
-      <FileRef
-         location = "group:WebServiceOp.swift">
-      </FileRef>
+      <Group
+         location = "group:hotthelpers"
+         name = "hotthelpers">
+         <FileRef
+            location = "group:RCUserProfile.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:bravo"
+         name = "bravo">
+         <FileRef
+            location = "group:Bravo.h">
+         </FileRef>
+         <FileRef
+            location = "group:Bravo.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Config.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Enums.swift">
+         </FileRef>
+         <FileRef
+            location = "group:Notifications.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCAsyncBlockOperation.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCAsyncOperation.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCAuthCredential.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCError.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCFile.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCFileInfo.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCPatternMatcher.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCUser.swift">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/default/Bravo/src/bravo/RCUserLocation.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCValueTransformer.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCWebRequest.swift">
+         </FileRef>
+         <Group
+            location = "group:RestModel"
+            name = "RestModel">
+            <FileRef
+               location = "group:MMEnumAttributeContainer.h">
+            </FileRef>
+            <FileRef
+               location = "group:MMModel.h">
+            </FileRef>
+            <FileRef
+               location = "group:MMModel.m">
+            </FileRef>
+            <FileRef
+               location = "group:MMValueTransformer.h">
+            </FileRef>
+            <FileRef
+               location = "group:MMValueTransformer.m">
+            </FileRef>
+            <FileRef
+               location = "group:RCEnumerable.h">
+            </FileRef>
+            <FileRef
+               location = "group:RCEnumerable.m">
+            </FileRef>
+            <FileRef
+               location = "group:RCModel.swift">
+            </FileRef>
+            <FileRef
+               location = "group:RCParameter.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:Webservice+Upload.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebService.swift">
+         </FileRef>
+         <FileRef
+            location = "group:WebServiceOp.swift">
+         </FileRef>
+      </Group>
    </Group>
    <FileRef
       location = "group:BravoTests.xcodeproj">

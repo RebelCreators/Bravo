@@ -1,0 +1,31 @@
+{
+  "name": "HHSDK",
+  "version": "1.0.0",
+  "license": {
+    "type": "Apache 2.0"
+  },
+  "summary": "An iOS SDK to connect to Alpha servers",
+  "homepage": "https://www.rebelcreators.com",
+  "authors": {
+    "Lorenzo Stanton": "lstanii@nmsu.edu"
+  },
+  "source": {
+    "git": "git@github.com:RebelCreators/Bravo.git",
+    "branch": "master"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "requires_arc": true,
+  "source_files": "src/hotthelpers/**/*.{swift,h,m}",
+  "public_header_files": "src/hotthelpers/**/*.h",
+  "frameworks": "Foundation",
+  "pod_target_xcconfig": {
+    "SWIFT_VERSION": "3.0"
+  },
+  "dependencies": {
+    "Bravo": [
+
+    ]
+  }
+}

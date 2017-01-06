@@ -10,13 +10,13 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.requires_arc = true
 
-  s.source_files = 'src/**/*.{swift,h,m}'
-  s.public_header_files = 'src/**/*.h'
+  s.source_files = 'src/bravo/**/*.{swift,h,m}'
+  s.public_header_files = 'src/bravo/**/*.h'
   s.frameworks = 'Foundation'
 
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
 
   s.dependency 'Alamofire', '~> 4.0'
-  s.dependency 'EVReflection', '~> 3.1.2'
   s.dependency 'SwiftKeychainWrapper', '~> 3.0'
+  s.dependency 'Mantle', '~> 2.1'
 end

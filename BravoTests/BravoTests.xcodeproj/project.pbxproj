@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04E36BEA1E1DA67F00C13847 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BE91E1DA67F00C13847 /* UserTests.swift */; };
+		04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */; };
+		04E36BEF1E1DA7A400C13847 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
+		04E36BF01E1DA8C700C13847 /* image.png in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
+		04E36BF21E1F73E600C13847 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BF11E1F73E600C13847 /* Config.plist */; };
+		04E36BF31E1F7D0000C13847 /* Config.plist in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BF11E1F73E600C13847 /* Config.plist */; };
+		2E2400741E84F7A1AB0AFA14 /* Pods_BravoTestsUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86EA74C1469CFBF6E95A05B /* Pods_BravoTestsUnitTests.framework */; };
 		8D95E95E1DC1FC7800CC1090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */; };
 		8D95E9601DC1FC7800CC1090 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95F1DC1FC7800CC1090 /* ViewController.swift */; };
 		8D95E9631DC1FC7800CC1090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9611DC1FC7800CC1090 /* Main.storyboard */; };
@@ -15,8 +22,25 @@
 		D82F927D8D942A23E0B4EA6E /* Pods_BravoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		04E36BE11E1D951900C13847 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D95E9521DC1FC7700CC1090 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D95E9591DC1FC7700CC1090;
+			remoteInfo = BravoTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		04E36BDC1E1D951900C13847 /* BravoTestsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BravoTestsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E36BE01E1D951900C13847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04E36BE91E1DA67F00C13847 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = UserTests/UserTests.swift; sourceTree = "<group>"; };
+		04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllConfig.swift; sourceTree = "<group>"; };
+		04E36BEE1E1DA7A400C13847 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
+		04E36BF11E1F73E600C13847 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		47FA42C7B6BE4AE7D64F7087 /* Pods-BravoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.release.xcconfig"; sourceTree = "<group>"; };
+		56E4F39E717DA27D82D7F0CA /* Pods-BravoTestsUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTestsUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTestsUnitTests/Pods-BravoTestsUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		68E28863ECA63C17F497AB5B /* Pods-BravoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D503AE71DC20A9E00DE998C /* BravoTests.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BravoTests.entitlements; sourceTree = "<group>"; };
 		8D95E95A1DC1FC7700CC1090 /* BravoTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BravoTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +50,20 @@
 		8D95E9641DC1FC7800CC1090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D95E9671DC1FC7800CC1090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D95E9691DC1FC7800CC1090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A86EA74C1469CFBF6E95A05B /* Pods_BravoTestsUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTestsUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5D146D24147894875BBF796 /* Pods-BravoTestsUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTestsUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTestsUnitTests/Pods-BravoTestsUnitTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		04E36BD91E1D951900C13847 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E2400741E84F7A1AB0AFA14 /* Pods_BravoTestsUnitTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D95E9571DC1FC7700CC1090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -41,10 +75,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E36BDD1E1D951900C13847 /* BravoTestsUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				04E36BED1E1DA7A400C13847 /* images */,
+				04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */,
+				04E36BE01E1D951900C13847 /* Info.plist */,
+				04E36BE81E1D965400C13847 /* UserTests */,
+			);
+			path = BravoTestsUnitTests;
+			sourceTree = "<group>";
+		};
+		04E36BE81E1D965400C13847 /* UserTests */ = {
+			isa = PBXGroup;
+			children = (
+				04E36BE91E1DA67F00C13847 /* UserTests.swift */,
+			);
+			name = UserTests;
+			sourceTree = "<group>";
+		};
+		04E36BED1E1DA7A400C13847 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				04E36BEE1E1DA7A400C13847 /* image.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		8D95E9511DC1FC7700CC1090 = {
 			isa = PBXGroup;
 			children = (
 				8D95E95C1DC1FC7700CC1090 /* BravoTests */,
+				04E36BDD1E1D951900C13847 /* BravoTestsUnitTests */,
 				8D95E95B1DC1FC7700CC1090 /* Products */,
 				C4255066F83F564DBBD17847 /* Pods */,
 				A87DE7CD0A00F3264BBCE423 /* Frameworks */,
@@ -55,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8D95E95A1DC1FC7700CC1090 /* BravoTests.app */,
+				04E36BDC1E1D951900C13847 /* BravoTestsUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +132,7 @@
 				8D95E9641DC1FC7800CC1090 /* Assets.xcassets */,
 				8D95E9661DC1FC7800CC1090 /* LaunchScreen.storyboard */,
 				8D95E9691DC1FC7800CC1090 /* Info.plist */,
+				04E36BF11E1F73E600C13847 /* Config.plist */,
 			);
 			path = BravoTests;
 			sourceTree = "<group>";
@@ -77,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */,
+				A86EA74C1469CFBF6E95A05B /* Pods_BravoTestsUnitTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -86,6 +151,8 @@
 			children = (
 				68E28863ECA63C17F497AB5B /* Pods-BravoTests.debug.xcconfig */,
 				47FA42C7B6BE4AE7D64F7087 /* Pods-BravoTests.release.xcconfig */,
+				56E4F39E717DA27D82D7F0CA /* Pods-BravoTestsUnitTests.debug.xcconfig */,
+				D5D146D24147894875BBF796 /* Pods-BravoTestsUnitTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -93,6 +160,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		04E36BDB1E1D951900C13847 /* BravoTestsUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E36BE51E1D951900C13847 /* Build configuration list for PBXNativeTarget "BravoTestsUnitTests" */;
+			buildPhases = (
+				A261B20BAAA2899BF6E24003 /* [CP] Check Pods Manifest.lock */,
+				04E36BD81E1D951900C13847 /* Sources */,
+				04E36BD91E1D951900C13847 /* Frameworks */,
+				04E36BDA1E1D951900C13847 /* Resources */,
+				4B5DA0815584D4D418F31A9D /* [CP] Embed Pods Frameworks */,
+				F4C7757437A377AEE22EED99 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04E36BE21E1D951900C13847 /* PBXTargetDependency */,
+			);
+			name = BravoTestsUnitTests;
+			productName = BravoTestsUnitTests;
+			productReference = 04E36BDC1E1D951900C13847 /* BravoTestsUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8D95E9591DC1FC7700CC1090 /* BravoTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D95E96C1DC1FC7800CC1090 /* Build configuration list for PBXNativeTarget "BravoTests" */;
@@ -119,10 +207,15 @@
 		8D95E9521DC1FC7700CC1090 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Lorenzo Stanton";
 				TargetAttributes = {
+					04E36BDB1E1D951900C13847 = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
 					8D95E9591DC1FC7700CC1090 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = UXAB3BW444;
@@ -150,15 +243,25 @@
 			projectRoot = "";
 			targets = (
 				8D95E9591DC1FC7700CC1090 /* BravoTests */,
+				04E36BDB1E1D951900C13847 /* BravoTestsUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		04E36BDA1E1D951900C13847 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E36BEF1E1DA7A400C13847 /* image.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D95E9581DC1FC7700CC1090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E36BF21E1F73E600C13847 /* Config.plist in Resources */,
 				8D95E9681DC1FC7800CC1090 /* LaunchScreen.storyboard in Resources */,
 				8D95E9651DC1FC7800CC1090 /* Assets.xcassets in Resources */,
 				8D95E9631DC1FC7800CC1090 /* Main.storyboard in Resources */,
@@ -168,6 +271,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4B5DA0815584D4D418F31A9D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BravoTestsUnitTests/Pods-BravoTestsUnitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5135FAD6EA37990B22AC9862 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +299,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A261B20BAAA2899BF6E24003 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		AF37F961D991DBDA31D34A2F /* [CP] Copy Pods Resources */ = {
@@ -210,12 +343,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F4C7757437A377AEE22EED99 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BravoTestsUnitTests/Pods-BravoTestsUnitTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		04E36BD81E1D951900C13847 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E36BEA1E1DA67F00C13847 /* UserTests.swift in Sources */,
+				04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */,
+				04E36BF31E1F7D0000C13847 /* Config.plist in Sources */,
+				04E36BF01E1DA8C700C13847 /* image.png in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D95E9561DC1FC7700CC1090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,6 +385,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04E36BE21E1D951900C13847 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D95E9591DC1FC7700CC1090 /* BravoTests */;
+			targetProxy = 04E36BE11E1D951900C13847 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8D95E9611DC1FC7800CC1090 /* Main.storyboard */ = {
@@ -247,6 +414,37 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		04E36BE31E1D951900C13847 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56E4F39E717DA27D82D7F0CA /* Pods-BravoTestsUnitTests.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				INFOPLIST_FILE = BravoTestsUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RC.BravoTestsUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		04E36BE41E1D951900C13847 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5D146D24147894875BBF796 /* Pods-BravoTestsUnitTests.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				INFOPLIST_FILE = BravoTestsUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = RC.BravoTestsUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		8D95E96A1DC1FC7800CC1090 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -373,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		04E36BE51E1D951900C13847 /* Build configuration list for PBXNativeTarget "BravoTestsUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E36BE31E1D951900C13847 /* Debug */,
+				04E36BE41E1D951900C13847 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8D95E9551DC1FC7700CC1090 /* Build configuration list for PBXProject "BravoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -17,8 +17,8 @@
     "ios": "9.0"
   },
   "requires_arc": true,
-  "source_files": "src/**/*.{swift,h,m}",
-  "public_header_files": "src/**/*.h",
+  "source_files": "src/bravo/**/*.{swift,h,m}",
+  "public_header_files": "src/bravo/**/*.h",
   "frameworks": "Foundation",
   "pod_target_xcconfig": {
     "SWIFT_VERSION": "3.0"
@@ -27,11 +27,11 @@
     "Alamofire": [
       "~> 4.0"
     ],
-    "EVReflection": [
-      "~> 3.1.2"
-    ],
     "SwiftKeychainWrapper": [
       "~> 3.0"
+    ],
+    "Mantle": [
+      "~> 2.1"
     ]
   }
 }
