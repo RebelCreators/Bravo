@@ -44,6 +44,7 @@ public class ProfileService: RCModel {
 
 public class RCUserProfile: RCModel {
     
+    public var distance: NSNumber?
     public var birthDate: Date?
     public var email: String?
     public var details: String?

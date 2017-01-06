@@ -13,11 +13,11 @@
 		04E36BF01E1DA8C700C13847 /* image.png in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
 		04E36BF21E1F73E600C13847 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BF11E1F73E600C13847 /* Config.plist */; };
 		04E36BF31E1F7D0000C13847 /* Config.plist in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BF11E1F73E600C13847 /* Config.plist */; };
+		04E36BF51E1FBF0800C13847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BF41E1FBF0800C13847 /* Assets.xcassets */; };
 		2E2400741E84F7A1AB0AFA14 /* Pods_BravoTestsUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86EA74C1469CFBF6E95A05B /* Pods_BravoTestsUnitTests.framework */; };
 		8D95E95E1DC1FC7800CC1090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */; };
 		8D95E9601DC1FC7800CC1090 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95F1DC1FC7800CC1090 /* ViewController.swift */; };
 		8D95E9631DC1FC7800CC1090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9611DC1FC7800CC1090 /* Main.storyboard */; };
-		8D95E9651DC1FC7800CC1090 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9641DC1FC7800CC1090 /* Assets.xcassets */; };
 		8D95E9681DC1FC7800CC1090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9661DC1FC7800CC1090 /* LaunchScreen.storyboard */; };
 		D82F927D8D942A23E0B4EA6E /* Pods_BravoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */; };
 /* End PBXBuildFile section */
@@ -39,6 +39,7 @@
 		04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllConfig.swift; sourceTree = "<group>"; };
 		04E36BEE1E1DA7A400C13847 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		04E36BF11E1F73E600C13847 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		04E36BF41E1FBF0800C13847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47FA42C7B6BE4AE7D64F7087 /* Pods-BravoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.release.xcconfig"; sourceTree = "<group>"; };
 		56E4F39E717DA27D82D7F0CA /* Pods-BravoTestsUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTestsUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTestsUnitTests/Pods-BravoTestsUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		68E28863ECA63C17F497AB5B /* Pods-BravoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -47,7 +48,6 @@
 		8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D95E95F1DC1FC7800CC1090 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D95E9621DC1FC7800CC1090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8D95E9641DC1FC7800CC1090 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D95E9671DC1FC7800CC1090 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D95E9691DC1FC7800CC1090 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A86EA74C1469CFBF6E95A05B /* Pods_BravoTestsUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTestsUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,11 +125,11 @@
 		8D95E95C1DC1FC7700CC1090 /* BravoTests */ = {
 			isa = PBXGroup;
 			children = (
+				04E36BF41E1FBF0800C13847 /* Assets.xcassets */,
 				8D503AE71DC20A9E00DE998C /* BravoTests.entitlements */,
 				8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */,
 				8D95E95F1DC1FC7800CC1090 /* ViewController.swift */,
 				8D95E9611DC1FC7800CC1090 /* Main.storyboard */,
-				8D95E9641DC1FC7800CC1090 /* Assets.xcassets */,
 				8D95E9661DC1FC7800CC1090 /* LaunchScreen.storyboard */,
 				8D95E9691DC1FC7800CC1090 /* Info.plist */,
 				04E36BF11E1F73E600C13847 /* Config.plist */,
@@ -263,7 +263,7 @@
 			files = (
 				04E36BF21E1F73E600C13847 /* Config.plist in Resources */,
 				8D95E9681DC1FC7800CC1090 /* LaunchScreen.storyboard in Resources */,
-				8D95E9651DC1FC7800CC1090 /* Assets.xcassets in Resources */,
+				04E36BF51E1FBF0800C13847 /* Assets.xcassets in Resources */,
 				8D95E9631DC1FC7800CC1090 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

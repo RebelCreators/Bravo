@@ -211,9 +211,8 @@ class UserTests: XCTestCase {
     
     func test_1_0_0UUUpdateCurrentUserLocation() {
         let ex = expectation(description: "")
-        
-        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: 51.5033640,
-                                                                                   longitude: -0.1276250))
+        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: -121.89452987346158,
+                                                                                   longitude: 37.336152840875776))
         location.updateLocation(success: {
             ex.fulfill()
         }, failure: { error in
@@ -262,6 +261,68 @@ class UserTests: XCTestCase {
         
         RCUserProfile.profiles(userNames: [RCUser.currentUser!.userName!], success: { profiles in
             XCTAssert(profiles.count > 0, "Profiles not found")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test_5_0_0UUFetchuserDistance() {
+         let userID = RCUser.currentUser!.userID!
+        
+        var ex = expectation(description: "logout")
+        RCUser.logout(success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        
+        let cred = URLCredential(user: users[0].userName!, password: password, persistence: .none)
+        
+        ex = expectation(description: "login")
+        RCUser.login(credential: cred, saveToken: true, success: { user in
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        
+        ex = expectation(description: "udate location")
+        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: -122.03132629394531,
+                                                                                   longitude: 36.9688209872153))
+        location.updateLocation(success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        
+//        ex = expectation(description: "")
+//        let profile = RCUserProfile()!
+//        profile.appearance = ["hair" : "orange"]
+//        profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
+//        profile.details = "I am the second user"
+//        profile.email = "joe@gmail.com"
+//        profile.profileType = .client
+//        
+//        RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
+//            ex.fulfill()
+//        }, failure: { error in
+//            XCTFail(error.localizedDescription)
+//            ex.fulfill()
+//        })
+//        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        
+        ex = expectation(description: "")
+        RCUserProfile.profiles(userIDs: [userID], success: { profiles in
+            XCTAssert(profiles.count > 0, "Profiles not found")
+            XCTAssert(profiles.first?.distance != nil, "distance not returned")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
