@@ -16,9 +16,9 @@ var userName = "bob.\(Date().timeIntervalSince1970)"
 var password = "gogogo"
 var users = [RCUser]()
 
-class UserTests: XCTestCase {
+class Test0_0_0_0_1_UserTests: XCTestCase {
     
-    func test0_0_0RegisterUser() {
+    func test00000RegisterUser() {
         let user = RCUser()!
         user.userName = userName
         user.password = password
@@ -33,7 +33,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test1_0_0Login() {
+    func test00001Login() {
         let cred = URLCredential(user: userName, password: password, persistence: .none)
         let ex = expectation(description: "")
         RCUser.login(credential: cred, saveToken: true, success: { user in
@@ -46,7 +46,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test2_0_0FetchUserByUserName() {
+    func test00002FetchUserByUserName() {
         let ex = expectation(description: "")
         RCUser.userByUserName(userName: userName, success: { user in
             ex.fulfill()
@@ -57,7 +57,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test3_0_0FetchUserByUserID() {
+    func test00003FetchUserByUserID() {
         let ex = expectation(description: "")
         RCUser.userById(userID: RCUser.currentUser!.userID!, success: { user in
             ex.fulfill()
@@ -68,7 +68,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test4_0_0ProfileImageUpload() {
+    func test00004ProfileImageUpload() {
         let ex = expectation(description: "")
         let image = UIImage.init(named: "image.png", in: Bundle.init(for: type(of: self)), compatibleWith: nil)!
         let data = UIImagePNGRepresentation(image)!
@@ -81,7 +81,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test5_0_0ProfileImageDownload() {
+    func test00005ProfileImageDownload() {
         let ex = expectation(description: "")
         let image = UIImage.init(named: "image.png", in: Bundle.init(for: type(of: self)), compatibleWith: nil)!
         let imageData = UIImagePNGRepresentation(image)!
@@ -100,7 +100,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test6_0_0UpdateUser() {
+    func test00006UpdateUser() {
         let ex = expectation(description: "")
         let fname = "John"
         let lname = "smith"
@@ -123,7 +123,7 @@ class UserTests: XCTestCase {
         })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
-    func test7_0_0FetchUsersByIds() {
+    func test00006FetchUsersByIds() {
         let ex = expectation(description: "")
         
         let group = DispatchGroup()
@@ -175,7 +175,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test8_0_0FetchUsersByUserName() {
+    func test00007FetchUsersByUserName() {
         let ex = expectation(description: "")
         RCUser.userByUserNames(userNames: users.map({ $0.userName! }), success: { u in
             XCTAssert(users.count == u.count, "User counts not equal")
@@ -188,7 +188,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test9_0_0UpdateUserProfile() {
+    func test00008UpdateUserProfile() {
         let ex = expectation(description: "")
         let profile = RCUserProfile()!
         profile.appearance = ["hair" : "red"]
@@ -209,7 +209,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test_1_0_0UUUpdateCurrentUserLocation() {
+    func test00009UUUpdateCurrentUserLocation() {
         let ex = expectation(description: "")
         let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: -121.89452987346158,
                                                                                    longitude: 37.336152840875776))
@@ -222,7 +222,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test_2_0_0UUFetchCurrentUserProfile() {
+    func test00019UUFetchCurrentUserProfile() {
         let ex = expectation(description: "")
         
         RCUserProfile.currentUserProfile(success: { profile in
@@ -235,7 +235,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test_3_0_0UpdateUserProfile() {
+    func test00029UpdateUserProfile() {
         let ex = expectation(description: "")
         let profile = RCUserProfile()!
         profile.appearance = ["hair" : "blue"]
@@ -256,7 +256,7 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test_4_0_0UUFetchCurrentUserProfileByUserName() {
+    func test00039UUFetchCurrentUserProfileByUserName() {
         let ex = expectation(description: "")
         
         RCUserProfile.profiles(userNames: [RCUser.currentUser!.userName!], success: { profiles in
@@ -269,8 +269,8 @@ class UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test_5_0_0UUFetchuserDistance() {
-         let userID = RCUser.currentUser!.userID!
+    func test00049UUFetchuserDistance() {
+        let userID = RCUser.currentUser!.userID!
         
         var ex = expectation(description: "logout")
         RCUser.logout(success: {
@@ -303,26 +303,37 @@ class UserTests: XCTestCase {
         })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
         
-//        ex = expectation(description: "")
-//        let profile = RCUserProfile()!
-//        profile.appearance = ["hair" : "orange"]
-//        profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
-//        profile.details = "I am the second user"
-//        profile.email = "joe@gmail.com"
-//        profile.profileType = .client
-//        
-//        RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
-//            ex.fulfill()
-//        }, failure: { error in
-//            XCTFail(error.localizedDescription)
-//            ex.fulfill()
-//        })
-//        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        //        ex = expectation(description: "")
+        //        let profile = RCUserProfile()!
+        //        profile.appearance = ["hair" : "orange"]
+        //        profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
+        //        profile.details = "I am the second user"
+        //        profile.email = "joe@gmail.com"
+        //        profile.profileType = .client
+        //
+        //        RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
+        //            ex.fulfill()
+        //        }, failure: { error in
+        //            XCTFail(error.localizedDescription)
+        //            ex.fulfill()
+        //        })
+        //        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
         
         ex = expectation(description: "")
         RCUserProfile.profiles(userIDs: [userID], success: { profiles in
             XCTAssert(profiles.count > 0, "Profiles not found")
             XCTAssert(profiles.first?.distance != nil, "distance not returned")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func testLogout() {
+        let ex = expectation(description: "")
+        RCUser.logout(success: {
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)

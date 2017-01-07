@@ -9,7 +9,7 @@
 import XCTest
 import Bravo
 
-class AllConfig: XCTestCase {
+class Test0_0_0_0_0_AllConfig: XCTestCase {
     
     func test111Configure() {
         let config = BravoPlistConfig.loadPlist(name: "Config", bundle: Bundle(for: type(of: self)))

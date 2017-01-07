@@ -66,46 +66,46 @@ profiles
 		    -- hourly rate
 		-- detail ratings
 			-- user Id
-			-- coments
 			-- rating
-			-- date
 	-- trust score
 	-- overall ratings
 	-- about me
     --services(helper)
     -- distance from me
 
-services
-   - service detail
-   	   -- flaggedBy
-   	      -- userID
-   	      -- ""
-       -- service
-           -- name
-           -- ""
-   		 -- serviceOwner  - ["Client", "Helper"]
-   		 -- ownerID
-   		 -- clientID
-   		 -- name
-   		 -- helper ID
-   		 -- service ID
-   		 -- location
-   		 -- time
-   		 -- date
-   		 -- helper profile
-   			-- userID
-   			-- "" 
-   			-- ""
-   		-- duration
-   		-- cost per hour
-   		-- description
-   		-- comments  (may be chat here)
-   		-- status - ["canceled", "pending", "in_transit", "arrived",  "completed"]
-   		-- canceledBy - ["Client", "Helper"]
-   		-- clientCompleted
-   		-- helper completed
-   		-- client Rating
-   		-- helper rating
+services {
+-- date
+ -- service detail
+ -- flaggedBy
+    -- userID
+    -- ""
+ -- coments
+ -- name
+ -- serviceOwner  - ["Client", "Helper"]
+ -- ownerID
+ -- name
+ -- ownerID
+ -- description
+ -- hourlyRate
+}
+
+ServiceRequest {
+-- clientID
+-- selperID
+-- serviceID
+-- location
+-- hourlyRate
+-- duration
+-- comments  (may be chat here)
+-- clientCompleted
+-- helper completed
+-- client Rating
+-- helper rating
+-- status - ["canceled", "pending", "accepted", "onway", "arrived", "completed"]
+-- canceledBy - ["Client", "Helper"]
+-- time
+-- date
+}
 
 trust score
     : factors
