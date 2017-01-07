@@ -20,6 +20,7 @@
 
 import Foundation
 import CoreLocation
+import Bravo
 
 public class RCUserLocation: RCModel {
     
