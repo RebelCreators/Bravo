@@ -196,9 +196,6 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
         profile.details = "this is a test"
         profile.email = "john.doe@gmail.com"
         profile.profileType = .helper
-        let bartending = ProfileService.service(name: "bartending", hourlyRate: 30.40, minimumHours: 3.5)
-        let cooking = ProfileService.service(name: "cooking", hourlyRate: 40.01, minimumHours: 2.0)
-        profile.services = [cooking, bartending]
         
         RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
             ex.fulfill()
@@ -243,9 +240,6 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
         profile.details = "this is a test"
         profile.email = "john.doe@gmail.com"
         profile.profileType = .helper
-        let bartending = ProfileService.service(name: "bartending", hourlyRate: 30.40, minimumHours: 3.5)
-        let cooking = ProfileService.service(name: "cooking", hourlyRate: 40.01, minimumHours: 2.0)
-        profile.services = [cooking, bartending]
         
         RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
             ex.fulfill()

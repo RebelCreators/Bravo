@@ -21,27 +21,6 @@
 import Foundation
 import Bravo
 
-public class ProfileService: RCModel {
-    
-    public var hourlyRate: NSNumber = 0
-    public var minimumHours: NSNumber = 0
-    public var name: String?
-    public var serviceID: String?
-    
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        return super.attributeMappings() + ["serviceID" : "_id"]
-    }
-    
-    public static func service(name: String?, hourlyRate: NSNumber, minimumHours: NSNumber) -> ProfileService {
-        let service = ProfileService()!
-        service.name = name
-        service.hourlyRate = hourlyRate
-        service.minimumHours = minimumHours
-        
-        return service
-    }
-}
-
 public class RCUserProfile: RCModel {
     
     public var distance: NSNumber?
@@ -52,7 +31,8 @@ public class RCUserProfile: RCModel {
     public var profileImages = [String]()
     public var profileType: RCProfileTypeEnum = .client
     public var appearance = [String: String]()
-    public var services = [ProfileService]()
+    //owners are not included in profile services
+    public var services = [RCService]()
     public var homeCity: String?
     
     open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
@@ -60,7 +40,7 @@ public class RCUserProfile: RCModel {
     }
     
     open override class func listAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.listAttributeTypes() ?? [:]) + ["services" : ProfileService.self]
+        return (super.listAttributeTypes() ?? [:]) + ["services" : RCService.self]
     }
     
     open override class func enumAttributeTypes() -> [AnyHashable : Any]! {

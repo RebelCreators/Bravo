@@ -27,10 +27,14 @@ public class RCService: RCModel {
     public var details: String?
     public var name: String?
     public var hourlyRate: NSNumber?
-    public var ownerType: String?
+    public var minimumHours: NSNumber = 0
     
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         return super.attributeMappings() + ["serviceID" : "_id"]
+    }
+    
+    open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.mapAttributeTypes() ?? [:]) + ["owner" : RCUser.self]
     }
     
     public static func servicesForCurrentUser(success: @escaping ([RCService]) -> Void, failure: @escaping (RCError) -> Void) {

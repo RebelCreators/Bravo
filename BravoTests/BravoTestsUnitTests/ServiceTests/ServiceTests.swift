@@ -13,10 +13,10 @@ import Bravo
 var currentService: RCService?
 
 class Test0_0_0_0_2_ServiceTests: XCTestCase {
-    
+    static var user2 = "\(userName)2"
     func test000000RegisterUser() {
         let user = RCUser()!
-        user.userName = "\(userName)2"
+        user.userName = Test0_0_0_0_2_ServiceTests.user2
         user.password = password
         let ex = expectation(description: "")
         user.register(success: { u in
@@ -30,7 +30,7 @@ class Test0_0_0_0_2_ServiceTests: XCTestCase {
     }
     
     func test0000011Login() {
-        let cred = URLCredential(user: "\(userName)2", password: password, persistence: .none)
+        let cred = URLCredential(user: Test0_0_0_0_2_ServiceTests.user2, password: password, persistence: .none)
         let ex = expectation(description: "")
         RCUser.login(credential: cred, saveToken: true, success: { user in
             ex.fulfill()
@@ -39,6 +39,30 @@ class Test0_0_0_0_2_ServiceTests: XCTestCase {
             ex.fulfill()
         })
         
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test000001SetupUserProfile() {
+        let ex = expectation(description: "")
+        let profile = RCUserProfile()!
+        profile.appearance = ["hair" : "red"]
+        profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
+        profile.details = "this is a test"
+        profile.email = "john.doe@gmail.com"
+        profile.profileType = .helper
+        //should not save
+        let bartending = RCService()!
+        bartending.name = "bartending"
+        bartending.hourlyRate = 10
+        profile.services = [bartending]
+        
+        RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
+            XCTAssert(profile.services.count == 0, "Services should not be saved in profile")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
@@ -104,6 +128,19 @@ class Test0_0_0_0_2_ServiceTests: XCTestCase {
         let ex = expectation(description: "")
         RCService.servicesByIDs(serviceIDs: [currentService!.serviceID!], success: { services in
             XCTAssert(services.count > 0, "No Services")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test00005fetchProfile() {
+        let ex = expectation(description: "")
+        RCUserProfile.currentUserProfile(success: { profile in
+            XCTAssert((profile?.services.count ?? 0) > 0, "No Services in profile")
+            XCTAssert((profile?.services.filter({ $0.owner != nil}) ?? []).count == 0, "owner should not be in service when in profile")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)

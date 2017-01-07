@@ -193,7 +193,7 @@ open class WebService: NSObject {
                         }
                         
                         guard response.response?.statusCode == 200 else {
-                            webRequest.failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
+                             webRequest.failure(self.getError(dict: res as? [String: Any], code: response.response?.statusCode ?? 0 ))
                             
                             return
                         }
@@ -241,5 +241,14 @@ open class WebService: NSObject {
         } else {
             failure(RCError.UnexpectedError(message: "Could Not Parse"))
         }
+    }
+    
+    
+    func getError(dict: [String: Any]?, code: Int) -> RCError {
+        guard  let message = dict?["message"] as? String else {
+            return RCError.HttpError(message: "HTTP ERROR", code: code)
+        }
+        
+        return RCError.HttpError(message: message, code: code)
     }
 }
