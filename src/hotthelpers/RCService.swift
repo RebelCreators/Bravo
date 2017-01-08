@@ -22,6 +22,7 @@ import Foundation
 import Bravo
 
 public class RCService: RCModel {
+    
     public var serviceID: String?
     public var owner: RCUser?
     public var details: String?

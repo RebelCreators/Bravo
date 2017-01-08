@@ -91,21 +91,59 @@ services {
 
 ServiceRequest {
 -- clientID
--- selperID
+-- [helperID]
 -- serviceID
 -- location
 -- hourlyRate
 -- duration
 -- comments  (may be chat here)
 -- clientCompleted
--- helper completed
+-- helpers completed [helperIDs]
 -- client Rating
--- helper rating
--- status - ["canceled", "pending", "accepted", "onway", "arrived", "completed"]
+-- helpersStatuses [{ helper -> "ready", "onway", "arrived", "completed", "canceled"}]
+-- status - ["canceled", "pending", "accepted", "completed"]
+-- ServiceCharge
 -- canceledBy - ["Client", "Helper"]
 -- time
 -- date
 }
+
+
+ServiceCharge {
+  service,
+  helpers: [],
+  client_id
+}
+
+Rating
+
+getCurrentUserClientServiceRequests
+getCurrentUserHelperServiceRequests
+
+submitServiceRequest 
+acceptServiceRequest / if is helper and "pending"
+rejectServiceRequest / if is helper and "pending"
+cancelServiceRequest 
+arrivedAtVenue/ if is in helpers
+completeService / if is in helpers or client
+addHelpersToServiceRequest / before will be pending once helper is added accteped
+rateClient(rating) / not rated & must be helper
+rateHelpers(ratings: [{}]) / not rated & user is client & must be in helpers 
+
+Rating {
+      -- user - unique
+      -- service - unique
+      -- comments
+      -- rating: 0 - 5
+      -- date
+      -- rater - unique
+}
+ratingsForUser(id)
+^^^^^
+ratingsForCurrentUser
+ratingByID(id)
+flagRating(id)
+
 
 trust score
     : factors
