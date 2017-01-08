@@ -99,13 +99,13 @@ ServiceRequest {
 -- comments  (may be chat here)
 -- clientCompleted
 -- helpers completed [helperIDs]
--- client Rating
 -- helpersStatuses [{ helper -> "ready", "onway", "arrived", "completed", "canceled"}]
 -- status - ["canceled", "pending", "accepted", "completed"]
 -- ServiceCharge
 -- canceledBy - ["Client", "Helper"]
 -- time
 -- date
+-- ratings* { user : rating}
 }
 
 
@@ -123,13 +123,32 @@ getCurrentUserHelperServiceRequests
 submitServiceRequest 
 acceptServiceRequest / if is helper and "pending"
 rejectServiceRequest / if is helper and "pending"
-cancelServiceRequest 
+cancelHelperServiceRequest 
+cancelClientServiceRequest 
 arrivedAtVenue/ if is in helpers
 completeService / if is in helpers or client
 addHelpersToServiceRequest / before will be pending once helper is added accteped
 rateClient(rating) / not rated & must be helper
 rateHelpers(ratings: [{}]) / not rated & user is client & must be in helpers 
 
+
+/*
+ getCurrentUserClientServiceRequests*
+ getCurrentUserHelperServiceRequests*
+
+ submitServiceRequest*
+ acceptServiceRequest / if is helper and "pending" *
+ rejectServiceRequest / if is helper and "pending" *
+ cancelServiceRequest*
+ addCurrentUserForConideration *
+arrivingStatus/ if is in helpers *
+ workingStatus / if is in helpers or client*
+ completeService / if is in helpers or client *
+ addHelpersToServiceRequest / before will be pending once helper is added accteped *
+ rateClient(rating) / not rated & must be helper
+ rateHelpers(ratings: [{}]) / not rated & user is client & must be in helpers
+ */
+ 
 Rating {
       -- user - unique
       -- service - unique
@@ -143,7 +162,6 @@ ratingsForUser(id)
 ratingsForCurrentUser
 ratingByID(id)
 flagRating(id)
-
 
 trust score
     : factors
