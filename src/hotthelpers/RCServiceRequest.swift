@@ -173,18 +173,3 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
 }
-
-//getCurrentUserClientServiceRequests*
-//getCurrentUserHelperServiceRequests*
-//
-//submitServiceRequest*
-//acceptServiceRequest / if is helper and "pending" *
-//rejectServiceRequest / if is helper and "pending" *
-//cancelServiceRequest*
-//addCurrentUserForConideration *
-//arrivingStatus/ if is in helpers *
-//workingStatus / if is in helpers or client*
-//completeService / if is in helpers or client *
-//addHelpersToServiceRequest / before will be pending once helper is added accteped *
-
-
