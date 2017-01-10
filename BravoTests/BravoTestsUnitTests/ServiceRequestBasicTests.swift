@@ -213,6 +213,7 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
             for status in self.me.serviceRequest.helperStatus {
                 found = status.helperID == (RCUser.currentUser?.userID ?? "") && status.status == RCHelperRequestStatusEnum.completed
             }
+            XCTAssert(found, "Request not completed")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)

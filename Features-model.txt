@@ -109,11 +109,13 @@ ServiceRequest {
 }
 
 
+create service charge when both completed by helper and client
 ServiceCharge {
   service,
   helpers: [],
   client_id
 }
+
 
 Rating
 
@@ -148,7 +150,7 @@ arrivingStatus/ if is in helpers *
  rateClient(rating) / not rated & must be helper
  rateHelpers(ratings: [{}]) / not rated & user is client & must be in helpers
  */
- 
+
 Rating {
       -- user - unique
       -- service - unique
