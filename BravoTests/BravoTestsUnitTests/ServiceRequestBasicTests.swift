@@ -163,7 +163,7 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
         me.serviceRequest.accept(success: {
             var found = false
             for status in self.me.serviceRequest.helperStatus {
-                found = status.helperID == (RCUser.currentUser?.userID ?? "")
+                found = status.helperID == (RCUser.currentUser?.userID ?? "") && status.status == RCHelperRequestStatusEnum.accepted
             }
             XCTAssert(found, "Request not accepted")
             ex.fulfill()
@@ -177,6 +177,11 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
     func test000399onWayToRequest() {
         let ex = expectation(description: "")
         me.serviceRequest.onWay(success: {
+            var found = false
+            for status in self.me.serviceRequest.helperStatus {
+                found = status.helperID == (RCUser.currentUser?.userID ?? "") && status.status == RCHelperRequestStatusEnum.onWay
+            }
+            XCTAssert(found, "Request not accepted")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
@@ -188,6 +193,11 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
     func test000699ClockInRequest() {
         let ex = expectation(description: "")
         me.serviceRequest.clockIn(success: {
+            var found = false
+            for status in self.me.serviceRequest.helperStatus {
+                found = status.helperID == (RCUser.currentUser?.userID ?? "") && status.status == RCHelperRequestStatusEnum.clockedIn
+            }
+            XCTAssert(found, "Request not accepted")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
@@ -199,6 +209,10 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
     func test000999CompleteRequest() {
         let ex = expectation(description: "")
         me.serviceRequest.complete(success: {
+            var found = false
+            for status in self.me.serviceRequest.helperStatus {
+                found = status.helperID == (RCUser.currentUser?.userID ?? "") && status.status == RCHelperRequestStatusEnum.completed
+            }
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
@@ -211,6 +225,7 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
         let ex = expectation(description: "")
         me.serviceRequest.cancel(success: {
             XCTFail("Should not cancel completed request")
+            
             ex.fulfill()
         }, failure: { error in
             XCTAssert(error.code == 403, "Should be forbidden")

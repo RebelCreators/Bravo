@@ -23,10 +23,14 @@ import Bravo
 
 open class RCHelperStatus: HHModel {
     open var helperID: String?
-    open var status: String? // enum
+    open var status: RCHelperRequestStatusEnum = .pending // enum
     
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         return super.attributeMappings() + ["helperID" : "helperId"]
+    }
+    
+    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.enumAttributeTypes() ?? [:]) + ["status" : RCHelperRequestStatusEnumObject.self]
     }
 }
 
@@ -46,7 +50,7 @@ open class RCServiceRequest: HHModel {
     public var helpersCompleted: [String] = []
     public var consideredUsers: [String] = []
     public var helperStatus: [RCHelperStatus] = []
-    public var status: String? // enum
+    public var status: RCRequestStatusEnum = .pending // enum
     public var serviceCharge: NSNumber?
     
     open override class func listAttributeTypes() -> [AnyHashable : Any]! {
@@ -55,6 +59,10 @@ open class RCServiceRequest: HHModel {
     
     open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
         return (super.mapAttributeTypes() ?? [:])  + ["client": RCUser.self]
+    }
+    
+    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.enumAttributeTypes() ?? [:]) + ["status" : RCRequestStatusEnumObject.self]
     }
     
     open static func service(withName: String, details: String, location: String, hourlyRate: NSNumber, date: Date, duration: NSNumber, helpers: [RCUser]? = nil) -> RCServiceRequest {

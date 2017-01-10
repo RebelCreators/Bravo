@@ -81,3 +81,70 @@ public final class RCProfileTypeEnum: RCEnumerable {
         return ["client" : RCProfileTypeEnum.client, "helper" : RCProfileTypeEnum.helper]
     }
 }
+
+public final class RCRequestStatusEnum: RCEnumerable {
+    public static let pending: RCRequestStatusEnum = <<0
+    public static let canceled: RCRequestStatusEnum = <<2
+    public static let completed: RCRequestStatusEnum = <<3
+    
+    public override var description: String {
+        switch self {
+        case RCRequestStatusEnum.pending:
+            return "pending"
+        case RCRequestStatusEnum.completed:
+            return "completed"
+        case RCRequestStatusEnum.canceled:
+            return "canceled"
+        default:
+            break
+        }
+        
+        return ""
+    }
+}
+
+@objc public class RCRequestStatusEnumObject: NSObject, MMEnumAttributeContainer {
+    public static func mappings() -> [AnyHashable : Any]! {
+        return ["pending": RCRequestStatusEnum.pending , "completed": RCRequestStatusEnum.completed, "canceled": RCRequestStatusEnum.canceled]
+    }
+}
+
+public final class RCHelperRequestStatusEnum: RCEnumerable {
+    public static let pending: RCHelperRequestStatusEnum = <<0
+    public static let accepted: RCHelperRequestStatusEnum = <<3
+    public static let rejected: RCHelperRequestStatusEnum = <<4
+    public static let onWay: RCHelperRequestStatusEnum = <<5
+    public static let clockedIn: RCHelperRequestStatusEnum = <<6
+    public static let canceled: RCHelperRequestStatusEnum = <<7
+    public static let completed: RCHelperRequestStatusEnum = <<8
+    
+    public override var description: String {
+        switch self {
+        case RCHelperRequestStatusEnum.pending:
+            return "pending"
+        case RCHelperRequestStatusEnum.completed:
+            return "completed"
+        case RCHelperRequestStatusEnum.canceled:
+            return "canceled"
+        case RCHelperRequestStatusEnum.accepted:
+            return "accepted"
+        case RCHelperRequestStatusEnum.rejected:
+            return "rejected"
+        case RCHelperRequestStatusEnum.clockedIn:
+            return "clocked_in"
+        case RCHelperRequestStatusEnum.onWay:
+            return "arriving"
+        default:
+            break
+        }
+        
+        return ""
+    }
+}
+
+@objc public class RCHelperRequestStatusEnumObject: NSObject, MMEnumAttributeContainer {
+    public static func mappings() -> [AnyHashable : Any]! {
+        return ["pending": RCHelperRequestStatusEnum.pending , "completed": RCHelperRequestStatusEnum.completed, "canceled": RCHelperRequestStatusEnum.canceled, "accepted": RCHelperRequestStatusEnum.accepted, "rejected": RCHelperRequestStatusEnum.rejected, "clocked_in" :RCHelperRequestStatusEnum.clockedIn, "arriving": RCHelperRequestStatusEnum.onWay]
+    }
+}
+
