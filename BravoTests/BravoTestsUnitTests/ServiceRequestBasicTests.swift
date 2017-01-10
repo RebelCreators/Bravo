@@ -146,6 +146,18 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
+    func test000099fetchRequestWithID() {
+        let ex = expectation(description: "")
+        RCServiceRequest.serviceRequestsWithId(requestID: me.serviceRequest.requestID ?? "", success: { request in
+            self.me.serviceRequest = request
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
     func test000199AcceptRequest() {
         let ex = expectation(description: "")
         me.serviceRequest.accept(success: {
@@ -190,6 +202,18 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
+            ex.fulfill()
+        });
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test001999CancelRequest() {
+        let ex = expectation(description: "")
+        me.serviceRequest.cancel(success: {
+            XCTFail("Should not cancel completed request")
+            ex.fulfill()
+        }, failure: { error in
+            XCTAssert(error.code == 403, "Should be forbidden")
             ex.fulfill()
         });
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)

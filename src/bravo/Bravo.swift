@@ -30,6 +30,12 @@ public func + <K,V> (lhs : [K : V], rhs : [K : V]) -> [K : V] {
     return dict
 }
 
+prefix operator ??
+
+public prefix func ??<T>(o:T?) -> Bool {
+    return o != nil
+}
+
 public class BravoPlistConfig: NSObject {
     private var data: Any?
     

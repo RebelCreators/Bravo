@@ -70,6 +70,15 @@ open class RCServiceRequest: HHModel {
         return request
     }
     
+    
+    open static func serviceRequestsWithId(requestID: String, success: @escaping (RCServiceRequest) -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().get(relativePath: "servicerequest/:requestID/id", headers: nil, parameters: ["requestID": requestID], success: { (requests: RCServiceRequest) in
+            success(requests)
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
     open static func clientServiceRequests(success: @escaping ([RCServiceRequest]) -> Void, failure: @escaping (RCError) -> Void) {
         WebService().get(relativePath: "servicerequest/client/list", headers: nil, parameters: [:], success: { (requests: [RCServiceRequest]) in
             success(requests)
@@ -90,7 +99,6 @@ open class RCServiceRequest: HHModel {
         var params = self.toDictionary()
         params.setValue(helper, forKey: "helper")
         WebService().put(relativePath: "servicerequest/helper/add", headers: nil, parameters: params, success: { (request:RCServiceRequest) in
-            let _ = request
             self.helpers = request.helpers
             self.helperStatus = request.helperStatus
             success()
@@ -101,7 +109,6 @@ open class RCServiceRequest: HHModel {
     
     open func submit(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().post(relativePath: "servicerequest/submit", headers: nil, parameters: self, success: { (request: RCServiceRequest) in
-            let _ = request
             self.modelID = request.modelID
             success()
         }, failure: { (error) in
@@ -111,7 +118,6 @@ open class RCServiceRequest: HHModel {
     
     open func accept(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/accept", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
-            let _ = request
             self.helperStatus = request.helperStatus
             success()
         }, failure: { (error) in
@@ -121,7 +127,6 @@ open class RCServiceRequest: HHModel {
     
     open func reject(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/reject", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
-            let _ = request
             self.helperStatus = request.helperStatus
             success()
         }, failure: { (error) in
@@ -130,12 +135,40 @@ open class RCServiceRequest: HHModel {
     }
     
     open func cancel(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
-        //TODO: Implement
+        guard let currentUser = RCUser.currentUser else {
+            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            
+            return
+        }
+        
+        if  client == currentUser {
+            
+            cancelForClient(success: success, failure: failure)
+            return
+        }
+        
+        var isHelper = false
+        
+        if !isHelper {
+            for helper in helpers ?? [] {
+                if helper == currentUser {
+                    isHelper = true
+                    break
+                }
+            }
+        }
+        
+        guard isHelper else {
+            failure(RCError.AccessDenied(message: "need to be helper or client to cancel"))
+            
+            return
+        }
+        
+        cancelForHelper(success: success, failure: failure)
     }
     
     open func submitMeForConsideration(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().put(relativePath: "servicerequest/submit/consideration", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
-            let _ = request
             self.consideredUsers = request.consideredUsers
             success()
         }, failure: { (error) in
@@ -145,7 +178,6 @@ open class RCServiceRequest: HHModel {
     
     open func onWay(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/arriving", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
-            let _ = request
             self.helperStatus = request.helperStatus
             success()
         }, failure: { (error) in
@@ -155,7 +187,6 @@ open class RCServiceRequest: HHModel {
     
     open  func clockIn(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/clockin", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
-            let _ = request
             self.helperStatus = request.helperStatus
             success()
         }, failure: { (error) in
@@ -164,9 +195,70 @@ open class RCServiceRequest: HHModel {
     }
     
     open func complete(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        guard let currentUser = RCUser.currentUser else {
+            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            
+            return
+        }
+        
+        if  client == currentUser {
+            
+            completeForClient(success: success, failure: failure)
+            return
+        }
+        
+        var isHelper = false
+        
+        if !isHelper {
+            for helper in helpers ?? [] {
+                if helper == currentUser {
+                    isHelper = true
+                    break
+                }
+            }
+        }
+        
+        guard isHelper else {
+            failure(RCError.AccessDenied(message: "need to be helper or client to complete"))
+            
+            return
+        }
+        
+        completeForHelper(success: success, failure: failure)
+    }
+    
+    //MARK: Private Methods
+    
+    private func completeForHelper(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/complete", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
-            let _ = request
             self.helperStatus = request.helperStatus
+            success()
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    private func completeForClient(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().put(relativePath: "servicerequest/client/complete", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
+            self.status = request.status
+            success()
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    private func cancelForClient(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().put(relativePath: "servicerequest/client/cancel", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
+            self.helperStatus = request.helperStatus
+            success()
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    private func cancelForHelper(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().put(relativePath: "servicerequest/helper/cancel", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
+            self.status = request.status
             success()
         }, failure: { (error) in
             failure(error)
