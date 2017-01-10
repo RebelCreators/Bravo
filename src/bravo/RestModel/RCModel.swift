@@ -98,6 +98,28 @@ extension Dictionary: RCParameter {
     }
 }
 
+
+extension NSDictionary: RCParameter {
+    
+    public func toParameterDictionary() -> RCParameterDictionary {
+        var dict = RCParameterDictionary()
+        for (k, v) in self {
+            guard let key = k as? String else {
+                continue
+            }
+            
+            guard let model = v as? RCModel else {
+                dict[key] = v
+                continue
+            }
+            
+            dict[key] = model.toParameterDictionary()
+        }
+        
+        return dict
+    }
+}
+
 @objc open class RCModel: MMModel, RModel, RCParameter {
     
     public subscript(strings: [String]) -> RCParameterDictionary {

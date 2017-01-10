@@ -99,6 +99,28 @@ open class WebService: NSObject {
         })
     }
     
+    open func delete<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+        return WebServiceBlockOp({ operation in
+            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .delete, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+                guard ModelType.self != RCNullModel.self else {
+                    success(RCNullModel.null as! ModelType)
+                    operation.finish()
+                    return
+                }
+                self.processSuccessFail(object: res, success: { (obj : ModelType) in
+                    success(obj)
+                    operation.finish()
+                }, failure: { error in
+                    failure(error)
+                    operation.finish()
+                })
+            }, failure: { error in
+                failure(error)
+                operation.finish()
+            }))
+        })
+    }
+    
     open func authenticate<ModelType: RModel>(relativePath: String, parameters: RCParameter, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             let utf8str = "\(Bravo.sdk.config.clientID):\(Bravo.sdk.config.clientSecret)".data(using: .utf8)
@@ -193,7 +215,7 @@ open class WebService: NSObject {
                         }
                         
                         guard response.response?.statusCode == 200 else {
-                             webRequest.failure(self.getError(dict: res as? [String: Any], code: response.response?.statusCode ?? 0 ))
+                            webRequest.failure(self.getError(dict: res as? [String: Any], code: response.response?.statusCode ?? 0 ))
                             
                             return
                         }

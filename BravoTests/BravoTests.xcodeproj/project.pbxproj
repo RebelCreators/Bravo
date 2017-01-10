@@ -15,6 +15,7 @@
 		04E36BF31E1F7D0000C13847 /* Config.plist in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BF11E1F73E600C13847 /* Config.plist */; };
 		04E36BF51E1FBF0800C13847 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BF41E1FBF0800C13847 /* Assets.xcassets */; };
 		04E36BF81E20CE3100C13847 /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BF71E20CE3100C13847 /* ServiceTests.swift */; };
+		04E36BFA1E234C2E00C13847 /* ServiceRequestBasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BF91E234C2E00C13847 /* ServiceRequestBasicTests.swift */; };
 		2E2400741E84F7A1AB0AFA14 /* Pods_BravoTestsUnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86EA74C1469CFBF6E95A05B /* Pods_BravoTestsUnitTests.framework */; };
 		8D95E95E1DC1FC7800CC1090 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95D1DC1FC7800CC1090 /* AppDelegate.swift */; };
 		8D95E9601DC1FC7800CC1090 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95E95F1DC1FC7800CC1090 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		04E36BF11E1F73E600C13847 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		04E36BF41E1FBF0800C13847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E36BF71E20CE3100C13847 /* ServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceTests.swift; path = ServiceTests/ServiceTests.swift; sourceTree = "<group>"; };
+		04E36BF91E234C2E00C13847 /* ServiceRequestBasicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequestBasicTests.swift; sourceTree = "<group>"; };
 		47FA42C7B6BE4AE7D64F7087 /* Pods-BravoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.release.xcconfig"; sourceTree = "<group>"; };
 		56E4F39E717DA27D82D7F0CA /* Pods-BravoTestsUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTestsUnitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTestsUnitTests/Pods-BravoTestsUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		68E28863ECA63C17F497AB5B /* Pods-BravoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				04E36BF71E20CE3100C13847 /* ServiceTests.swift */,
+				04E36BF91E234C2E00C13847 /* ServiceRequestBasicTests.swift */,
 			);
 			name = ServiceTests;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E36BFA1E234C2E00C13847 /* ServiceRequestBasicTests.swift in Sources */,
 				04E36BEA1E1DA67F00C13847 /* UserTests.swift in Sources */,
 				04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */,
 				04E36BF31E1F7D0000C13847 /* Config.plist in Sources */,

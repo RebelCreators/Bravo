@@ -18,28 +18,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import Foundation
-import CoreLocation
 import Bravo
 
-public class RCUserLocation: HHModel {
+open class HHModel: RCModel {
+
+    var modelID: String?
     
-    internal var lat: String?
-    internal var lng: String?
-    
-    public static func location(coordinates: CLLocationCoordinate2D) -> RCUserLocation {
-        let userLocation = RCUserLocation()!
-        userLocation.lat = "\(coordinates.latitude)"
-        userLocation.lng = "\(coordinates.longitude)"
-        
-        return userLocation
-    }
-    
-    public func updateLocation(success:@escaping ()-> Void, failure:@escaping (RCError)->Void) {
-        WebService().put(relativePath: "loc/update", headers: nil, parameters: self, responseType: .nodata, success: { (_ : RCNullModel) in
-            success()
-        }) { error in
-            failure(error)
-            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    open override class func attributeMappings() -> [AnyHashable : Any]! {
+        return super.attributeMappings() + ["modelID" : "_id"]
     }
 }

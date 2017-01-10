@@ -21,18 +21,16 @@
 import Foundation
 import Bravo
 
-public class RCService: RCModel {
+public class RCService: HHModel {
     
-    public var serviceID: String?
+    public var serviceID: String? {
+        return modelID
+    }
     public var owner: RCUser?
     public var details: String?
     public var name: String?
     public var hourlyRate: NSNumber?
     public var minimumHours: NSNumber = 0
-    
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        return super.attributeMappings() + ["serviceID" : "_id"]
-    }
     
     open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
         return (super.mapAttributeTypes() ?? [:]) + ["owner" : RCUser.self]
@@ -81,7 +79,7 @@ public class RCService: RCModel {
             return
         }
         
-        WebService().put(relativePath: "service/save", headers: nil, parameters: self, success: { (service : RCService) in
+        WebService().post(relativePath: "service/save", headers: nil, parameters: self, success: { (service : RCService) in
             success(service)
         }) { error in
             failure(error)

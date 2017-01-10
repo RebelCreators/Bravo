@@ -21,7 +21,7 @@
 import Foundation
 import Bravo
 
-public class RCUserProfile: RCModel {
+public class RCUserProfile: HHModel {
     
     public var distance: NSNumber?
     public var birthDate: Date?

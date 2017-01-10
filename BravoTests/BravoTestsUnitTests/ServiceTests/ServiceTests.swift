@@ -14,9 +14,11 @@ var currentService: RCService?
 
 class Test0_0_0_0_2_ServiceTests: XCTestCase {
     static var user2 = "\(userName)2"
+    var me = Test0_0_0_0_2_ServiceTests.self
+    
     func test000000RegisterUser() {
         let user = RCUser()!
-        user.userName = Test0_0_0_0_2_ServiceTests.user2
+        user.userName = me.user2
         user.password = password
         let ex = expectation(description: "")
         user.register(success: { u in
@@ -30,7 +32,7 @@ class Test0_0_0_0_2_ServiceTests: XCTestCase {
     }
     
     func test0000011Login() {
-        let cred = URLCredential(user: Test0_0_0_0_2_ServiceTests.user2, password: password, persistence: .none)
+        let cred = URLCredential(user: me.user2, password: password, persistence: .none)
         let ex = expectation(description: "")
         RCUser.login(credential: cred, saveToken: true, success: { user in
             ex.fulfill()

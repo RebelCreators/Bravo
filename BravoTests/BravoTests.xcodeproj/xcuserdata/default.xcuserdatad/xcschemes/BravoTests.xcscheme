@@ -37,6 +37,14 @@
                BlueprintName = "BravoTestsUnitTests"
                ReferencedContainer = "container:BravoTests.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "Test0_0_0_0_1_UserTests">
+               </Test>
+               <Test
+                  Identifier = "Test0_0_0_0_2_ServiceTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

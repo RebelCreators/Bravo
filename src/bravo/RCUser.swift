@@ -92,7 +92,7 @@ public class RCUser: RCModel {
     }
     
     public func register(success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
-        WebService().put(relativePath: "users/register", requiresAuth: false, headers: nil, parameters: self, success: { (user : RCUser) in
+        WebService().post(relativePath: "users/register", requiresAuth: false, headers: nil, parameters: self, success: { (user : RCUser) in
             success(user)
         }) { error in
             failure(error)
@@ -240,18 +240,17 @@ public class RCUser: RCModel {
     }
     
     public static func logout(success:(() -> Void)?, failure: ((RCError) -> Void)?) {
-        WebService().get(relativePath: "oauth/logout", headers: nil, parameters: [:], responseType: .nodata, success: { (_: RCNullModel) in
+        WebService().delete(relativePath: "oauth/logout", headers: nil, parameters: [:], responseType: .nodata, success: { (_: RCNullModel) in
             success?()
         }, failure: { (error) in
             failure?(error)
         }).onFinished {
             self.authOperation = nil
+            RCAuthCredential.removeToken()
+            Bravo.sdk.credential = nil
+            currentUser = nil
+            NotificationCenter.default.post(name: Notification.RC.RCDidSignOut, object: self, userInfo: nil)
             }.exeInBackground(dependencies: [self.authOperation?.asOperation()])
-        
-        RCAuthCredential.removeToken()
-        Bravo.sdk.credential = nil
-        currentUser = nil
-        NotificationCenter.default.post(name: Notification.RC.RCDidSignOut, object: self, userInfo: nil)
     }
     
     static func register(user: RCUser, success:((RCUser) -> Void), failure:((RCError) -> Void)) {
