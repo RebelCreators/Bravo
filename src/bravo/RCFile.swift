@@ -72,16 +72,34 @@ open class RCFile: NSObject {
         })
     }
     
-    public func uploadData(success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+    public func upload(success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+        return RCFile.uploadFiles(files: [self], success: success, failure: failure)
+    }
+    
+    static public func uploadFiles(files: [RCFile], success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
-            guard let data = self.data, let contentType = self.contentType else {
+            var fileInfo = [RCFileInfo]()
+            for file in files {
+                guard let data = file.data, let contentType = file.contentType else {
+                    continue
+                }
+                let info = RCFileInfo(name: "file", contentType: contentType, data: data)
+                fileInfo.append(info)
+            }
+            guard files.count > 0 else {
                 failure(RCError.InvalidParameter(message: "Check Data and content Type"))
                 operation.finish()
                 return
             }
             
-            WebService().upload(relativePath: "files/upload", requiresAuth: true, parameters: nil, headers: nil, data: data, contentType: contentType, success: { (string: String) in
-                self.fileID = string
+            WebService().upload(relativePath: "files/upload", files: fileInfo, requiresAuth: true, parameters: nil, headers: nil, success: { (strings: [String]) in
+                //self.fileID = string
+                for i in 0..<strings.count {
+                    guard i < files.count else {
+                        continue
+                    }
+                    files[i].fileID = strings[i]
+                }
                 success()
                 operation.finish()
             }, failure: { error in

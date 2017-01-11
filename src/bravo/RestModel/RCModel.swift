@@ -49,13 +49,13 @@ extension Array: RModel {
             return nil
         }
         
-        guard let T = Element.self as? RCModel.Type else {
+        guard let T = Element.self as? RModel.Type else {
             return nil
         }
         
-        var a: [RCModel] = []
+        var a: [RModel] = []
         for o in array {
-            if let obj = T.generate(from: o) as? RCModel {
+            if let obj = T.generate(from: o) as? RModel {
                 a.append(obj)
             }
         }

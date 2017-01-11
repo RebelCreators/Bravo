@@ -134,7 +134,7 @@ class ViewController: UIViewController {
         let image = UIImage(named: "img")!
         let data = UIImagePNGRepresentation(image)!
         let file = RCFile(data: data, contentType: "image/png")
-        file.uploadData(success: {
+        file.upload(success: {
             print("file Uploaded \(file.fileID ?? "")")
             let newFile = RCFile(fileID: file.fileID!, contentType: "image/png")
             newFile.downloadData(success: { data in

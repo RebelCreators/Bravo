@@ -37,6 +37,7 @@ public class RCUser: RCModel {
     public var avatar: String?
     public var extras: [String: String]?
     public var gender: RCGenderEnum = .none
+    public var userPhotos: [String]?
     
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         return super.attributeMappings() + ["userID" : "_id"]
@@ -63,13 +64,36 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
+    public func addUserPhotos(pngDataForImages: [Data], keep: [String], success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
+        let files = pngDataForImages.map({ return RCFile(data: $0, contentType: "image/png") })
+        RCFile.uploadFiles(files: files, success: {
+            let user = self.copy() as! RCUser
+            var photos = keep
+            for file in files {
+                guard let fileID = file.fileID else {
+                    continue
+                }
+                photos.append(fileID)
+            }
+            user.userPhotos = photos
+            user.updateUser(success: { user in
+                self.userPhotos = user.userPhotos
+                success(user)
+            }, failure: failure)
+        }, failure: failure).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public func filesForUserPhotos() -> [RCFile] {
+        return userPhotos?.map( { RCFile(fileID: $0, contentType: "image/png") }) ?? []
+    }
+    
     public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
         guard userID != nil else {
             failure(.ConditionNotMet(message: "No userID"))
             return
         }
         let file = RCFile(data: pngData, contentType: "image/png")
-        file.uploadData(success: {
+        file.upload(success: {
             let user = self.copy() as! RCUser
             user.avatar = file.fileID
             user.updateUser(success: { user in

@@ -64,7 +64,7 @@ class RCMultiPartRequest: NSObject {
 
 extension WebService {
     
-    open func upload<ModelType: RModel>(relativePath: String, requiresAuth: Bool = false, parameters: RCParameter? = nil, headers: [String: String]? = nil, data: Data, contentType: String, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
+    open func upload<ModelType: RModel>(relativePath: String, files:[RCFileInfo], requiresAuth: Bool = false, parameters: RCParameter? = nil, headers: [String: String]? = nil, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
         
         let matcher = RCPatternMatcher(string: relativePath, with: parameters?.toParameterDictionary() ?? [:])
         let unmatchedParameters = matcher.unmatchedParameters ?? [:]
@@ -83,8 +83,7 @@ extension WebService {
                 return
             }
         }
-        let fileInfo = RCFileInfo(name: "file", contentType: contentType, data: data)
-        let rcRequest = RCMultiPartRequest(url: url, parameters: unmatchedParameters, headers: headers, files: [fileInfo])
+        let rcRequest = RCMultiPartRequest(url: url, parameters: unmatchedParameters, headers: headers, files: files)
         Alamofire.upload(rcRequest.data!, with: rcRequest.request!).responseJSON { response in
             guard !requiresAuth || response.response?.statusCode != 401 else {
                 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049789571E26000C00666EC6 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049789551E26000C00666EC6 /* image2.jpg */; };
+		049789581E26000C00666EC6 /* image1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 049789561E26000C00666EC6 /* image1.JPG */; };
 		04E36BEA1E1DA67F00C13847 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BE91E1DA67F00C13847 /* UserTests.swift */; };
 		04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */; };
 		04E36BEF1E1DA7A400C13847 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		049789551E26000C00666EC6 /* image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpg; sourceTree = "<group>"; };
+		049789561E26000C00666EC6 /* image1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.JPG; sourceTree = "<group>"; };
 		04E36BDC1E1D951900C13847 /* BravoTestsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BravoTestsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E36BE01E1D951900C13847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E36BE91E1DA67F00C13847 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = UserTests/UserTests.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		04E36BED1E1DA7A400C13847 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				049789551E26000C00666EC6 /* image2.jpg */,
+				049789561E26000C00666EC6 /* image1.JPG */,
 				04E36BEE1E1DA7A400C13847 /* image.png */,
 			);
 			path = images;
@@ -267,6 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049789581E26000C00666EC6 /* image1.JPG in Resources */,
+				049789571E26000C00666EC6 /* image2.jpg in Resources */,
 				04E36BEF1E1DA7A400C13847 /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
