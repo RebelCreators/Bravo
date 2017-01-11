@@ -116,7 +116,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: 15, handler: nil)
     }
     
     func test00006AddUserImagesZDownload() {
