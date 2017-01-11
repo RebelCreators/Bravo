@@ -120,7 +120,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
     }
     
     func test00006AddUserImagesZDownload() {
-        let files =  RCUser.currentUser?.filesForUserPhotos() ?? []
+        let files =  RCUser.currentUser?.pngPhotosForUser() ?? []
         
         var dependency: WebServiceOp?
         for file in files  {

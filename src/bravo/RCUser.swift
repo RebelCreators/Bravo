@@ -24,6 +24,12 @@ func ==(lhs: RCUser, rhs: RCUser) -> Bool {
     return lhs.userID == rhs.userID
 }
 
+public class PNGPhoto: RCFile {
+    init(photoID: String) {
+        super.init(fileID: photoID, contentType: "image/png")
+    }
+}
+
 @objc(RCUser)
 public class RCUser: RCModel {
     
@@ -83,8 +89,8 @@ public class RCUser: RCModel {
         }, failure: failure).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func filesForUserPhotos() -> [RCFile] {
-        return userPhotos?.map( { RCFile(fileID: $0, contentType: "image/png") }) ?? []
+    public func pngPhotosForUser() -> [PNGPhoto] {
+        return userPhotos?.map( { PNGPhoto(photoID: $0) }) ?? []
     }
     
     public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
