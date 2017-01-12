@@ -15,7 +15,7 @@ let DefaultTestTimeout: TimeInterval = 10
 var userName = "bob.\(Date().timeIntervalSince1970)"
 var password = "gogogo"
 var users = [RCUser]()
-
+var _userProfile: RCUserProfile?
 class Test0_0_0_0_1_UserTests: XCTestCase {
     
     func test00000RegisterUser() {
@@ -99,44 +99,6 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
             ex.fulfill()
         })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-    }
-    
-    func test00006AddUserImagesUpload() {
-        let ex = expectation(description: "")
-        let image1 = UIImage.init(named: "image1.JPG", in: Bundle.init(for: type(of: self)), compatibleWith: nil)!
-        let imageData1 = UIImagePNGRepresentation(image1)!
-        let image2 = UIImage.init(named: "image2.jpg", in: Bundle.init(for: type(of: self)), compatibleWith: nil)!
-        let imageData2 = UIImagePNGRepresentation(image2)!
-        
-        RCUser.currentUser?.addUserPhotos(pngDataForImages: [imageData1, imageData2], keep: [], success: { user in
-            XCTAssert(user.userPhotos?.count == 2, "userphoto count incorrect")
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
-        
-        waitForExpectations(timeout: 15, handler: nil)
-    }
-    
-    func test00006AddUserImagesZDownload() {
-        let files =  RCUser.currentUser?.pngPhotosForUser() ?? []
-        
-        var dependency: WebServiceOp?
-        for file in files  {
-            let ex = expectation(description: "")
-            let op =  file.downloadData(success: { data in
-                let image = UIImage(data: data)
-                XCTAssert(image != nil, "image not found")
-                ex.fulfill()
-            }, failure: { error in
-                XCTFail(error.localizedDescription)
-                ex.fulfill()
-            })
-            op.exeInBackground(dependencies: [dependency?.asOperation()])
-            dependency = op
-            waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-        }
     }
     
     func test00006UpdateUser() {
@@ -237,12 +199,51 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
         profile.profileType = .helper
         
         RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
+            _userProfile = profile
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test00009AddUserImagesUpload() {
+        let ex = expectation(description: "")
+        let image1 = UIImage.init(named: "image1.JPG", in: Bundle.init(for: type(of: self)), compatibleWith: nil)!
+        let imageData1 = UIImagePNGRepresentation(image1)!
+        let image2 = UIImage.init(named: "image2.jpg", in: Bundle.init(for: type(of: self)), compatibleWith: nil)!
+        let imageData2 = UIImagePNGRepresentation(image2)!
+        
+        _userProfile?.addProfileImages(pngDataForImages: [imageData1, imageData2], keep: [], success: { profile in
+            XCTAssert(profile.profileImages.count == 2, "userphoto count incorrect")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        
+        waitForExpectations(timeout: 15, handler: nil)
+    }
+    
+    func test00009AddUserImagesZDownload() {
+        let files =  _userProfile?.pngProfilePhotos() ?? []
+        
+        var dependency: WebServiceOp?
+        for file in files  {
+            let ex = expectation(description: "")
+            let op =  file.downloadData(success: { data in
+                let image = UIImage(data: data)
+                XCTAssert(image != nil, "image not found")
+                ex.fulfill()
+            }, failure: { error in
+                XCTFail(error.localizedDescription)
+                ex.fulfill()
+            })
+            op.exeInBackground(dependencies: [dependency?.asOperation()])
+            dependency = op
+            waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        }
     }
     
     func test00009UUUpdateCurrentUserLocation() {

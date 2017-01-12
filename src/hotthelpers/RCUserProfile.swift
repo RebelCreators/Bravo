@@ -21,6 +21,12 @@
 import Foundation
 import Bravo
 
+public class PNGPhoto: RCFile {
+    init(photoID: String) {
+        super.init(fileID: photoID, contentType: "image/png")
+    }
+}
+
 public class RCUserProfile: HHModel {
     
     public var distance: NSNumber?
@@ -45,6 +51,29 @@ public class RCUserProfile: HHModel {
     
     open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
         return (super.enumAttributeTypes() ?? [:]) + ["profileType" : RCProfileTypeEnumObject.self]
+    }
+    
+    public func addProfileImages(pngDataForImages: [Data], keep: [String], success:@escaping ((RCUserProfile) -> Void), failure:@escaping ((RCError)->Void)) {
+        let files = pngDataForImages.map({ return RCFile(data: $0, contentType: "image/png") })
+        RCFile.uploadFiles(files: files, success: {
+            let profile = self.copy() as! RCUserProfile
+            var photos = keep
+            for file in files {
+                guard let fileID = file.fileID else {
+                    continue
+                }
+                photos.append(fileID)
+            }
+           profile.profileImages = photos
+        RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
+                self.profileImages = profile.profileImages
+                success(profile)
+            }, failure: failure)
+        }, failure: failure).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public func pngProfilePhotos() -> [PNGPhoto] {
+        return profileImages.map( { PNGPhoto(photoID: $0) }) ?? []
     }
     
     public static func profiles(userIDs: [String], success: @escaping (([RCUserProfile]) -> Void), failure: @escaping ((RCError) -> Void)) {

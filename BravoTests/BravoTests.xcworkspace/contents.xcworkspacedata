@@ -22,6 +22,9 @@
          <FileRef
             location = "group:RCUserProfile.swift">
          </FileRef>
+         <FileRef
+            location = "group:RCUserReview.swift">
+         </FileRef>
       </Group>
       <Group
          location = "group:bravo"

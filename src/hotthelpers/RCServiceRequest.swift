@@ -103,6 +103,39 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
+    open func review(user: RCUser, review: RCUserReview, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        guard let currentUser = RCUser.currentUser else {
+            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            
+            return
+        }
+        review.user = user
+        if  client == currentUser {
+            
+            addHelperReview(review: review, success: success, failure: failure)
+            return
+        }
+        
+        var isHelper = false
+        
+        if !isHelper {
+            for helper in helpers ?? [] {
+                if helper == currentUser {
+                    isHelper = true
+                    break
+                }
+            }
+        }
+        
+        guard isHelper else {
+            failure(RCError.AccessDenied(message: "need to be helper or client to cancel"))
+            
+            return
+        }
+        
+        addClientReview(review: review, success: success, failure: failure)
+    }
+    
     open func addHelper(helper: RCUser, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         var params = self.toDictionary()
         params.setValue(helper, forKey: "helper")
@@ -236,6 +269,22 @@ open class RCServiceRequest: HHModel {
     }
     
     //MARK: Private Methods
+    
+    private func addHelperReview(review: RCUserReview, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().post(relativePath: "servicerequest/client/addhelperreview", headers: nil, parameters: review, success: { (request: RCUserReview) in
+            success()
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    private func addClientReview(review: RCUserReview, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().post(relativePath: "servicerequest/helper/addclientreview", headers: nil, parameters: review, success: { (request: RCUserReview) in
+            success()
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
     
     private func completeForHelper(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/complete", headers: nil, parameters: self, success: { (request:RCServiceRequest) in

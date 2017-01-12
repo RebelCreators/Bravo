@@ -87,7 +87,29 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
         })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
-    
+    func test000019SetupUserProfile() {
+        let ex = expectation(description: "")
+        let profile = RCUserProfile()!
+        profile.appearance = ["hair" : "BLUE"]
+        profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
+        profile.details = "this is a test"
+        profile.email = "john.doe@gmail.com"
+        profile.profileType = .helper
+        //should not save
+        let bartending = RCService()!
+        bartending.name = "bartending"
+        bartending.hourlyRate = 10
+        profile.services = [bartending]
+        
+        RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
+            XCTAssert(profile.services.count == 0, "Services should not be saved in profile")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
     func test000039fetchHelperRequests() {
         let ex = expectation(description: "")
         RCServiceRequest.helperServiceRequests(success: { requests in
@@ -219,6 +241,32 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
             XCTFail(error.localizedDescription)
             ex.fulfill()
         });
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test000999CompleteRequestReview() {
+        let ex = expectation(description: "")
+        let review = RCUserReview.review(user: me.serviceRequest.client!, serviceRequestId:me.serviceRequest.requestID!, serviceName: me.serviceRequest.name!, comments: "Great service!", rating: 5)
+        
+        me.serviceRequest.review(user: me.serviceRequest.client!, review: review, success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test000999CompleteRequestReview2() {
+        let ex = expectation(description: "")
+        let review = RCUserReview.review(user: me.serviceRequest.client!, serviceRequestId:me.serviceRequest.requestID!, serviceName: me.serviceRequest.name!, comments: "Great service!", rating: 5)
+        
+        me.serviceRequest.review(user: me.serviceRequest.client!, review: review, success: {
+            XCTFail("should not be able to rat twice")
+            ex.fulfill()
+        }, failure: { error in
+            ex.fulfill()
+        })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     

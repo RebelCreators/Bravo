@@ -116,8 +116,37 @@ ServiceCharge {
   client_id
 }
 
+can rate once per service
+helpers can rate clients once
+clients can rate any helper once
+helpers cannot rate other helpers
+
+ratings will not be included in profile
+ratings will have an agreagate total in profile
+
+you also can fetch ratings based on users
 
 Rating
+
+serviceRequest {
+  
+  func rateUser(userID: String, rating) {
+
+  }
+}
+
+getUserRatings
+
+Rating flow
+is helper or client
+get serviceID
+createRating
+Save Rating
+Update rated user agregate
+
+
+
+
 
 getCurrentUserClientServiceRequests
 getCurrentUserHelperServiceRequests
@@ -153,8 +182,9 @@ arrivingStatus/ if is in helpers *
 
 Rating {
       -- user - unique
-      -- service - unique
-      -- comments
+      -- serviceName
+      -- serviceRequest: ID
+      -- comments:
       -- rating: 0 - 5
       -- date
       -- rater - unique

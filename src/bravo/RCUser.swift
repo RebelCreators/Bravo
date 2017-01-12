@@ -24,12 +24,6 @@ func ==(lhs: RCUser, rhs: RCUser) -> Bool {
     return lhs.userID == rhs.userID
 }
 
-public class PNGPhoto: RCFile {
-    init(photoID: String) {
-        super.init(fileID: photoID, contentType: "image/png")
-    }
-}
-
 @objc(RCUser)
 public class RCUser: RCModel {
     
@@ -43,7 +37,6 @@ public class RCUser: RCModel {
     public var avatar: String?
     public var extras: [String: String]?
     public var gender: RCGenderEnum = .none
-    public var userPhotos: [String]?
     
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         return super.attributeMappings() + ["userID" : "_id"]
@@ -68,29 +61,6 @@ public class RCUser: RCModel {
         }, failure: { error in
             failure(error)
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
-    }
-    
-    public func addUserPhotos(pngDataForImages: [Data], keep: [String], success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
-        let files = pngDataForImages.map({ return RCFile(data: $0, contentType: "image/png") })
-        RCFile.uploadFiles(files: files, success: {
-            let user = self.copy() as! RCUser
-            var photos = keep
-            for file in files {
-                guard let fileID = file.fileID else {
-                    continue
-                }
-                photos.append(fileID)
-            }
-            user.userPhotos = photos
-            user.updateUser(success: { user in
-                self.userPhotos = user.userPhotos
-                success(user)
-            }, failure: failure)
-        }, failure: failure).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
-    }
-    
-    public func pngPhotosForUser() -> [PNGPhoto] {
-        return userPhotos?.map( { PNGPhoto(photoID: $0) }) ?? []
     }
     
     public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
