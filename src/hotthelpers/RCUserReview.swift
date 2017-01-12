@@ -21,6 +21,21 @@
 import Foundation
 import Bravo
 
+extension RCUser {
+    
+    public func reviews(success: @escaping ([RCUserReview]) -> Void, failure: @escaping (RCError) -> Void) {
+        guard let userID = self.userID else {
+            failure(RCError.ConditionNotMet(message: "No user ID"))
+            return
+        }
+        WebService().get(relativePath: "reviews/:userID/id", headers: nil, parameters: ["userID": userID], success: { (requests: [RCUserReview]) in
+            success(requests)
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+}
+
 public class RCUserReview: RCModel {
     public var user: RCUser?
     public var reviewer: RCUser?
@@ -48,5 +63,14 @@ public class RCUserReview: RCModel {
         review.date = date
         
         return review
+    }
+    
+    
+    static func reviewsForUser(userID: String, success: @escaping ([RCUserReview]) -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().get(relativePath: "reviews/:userID", headers: nil, parameters: ["userID": userID], success: { (requests: [RCUserReview]) in
+            success(requests)
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
 }

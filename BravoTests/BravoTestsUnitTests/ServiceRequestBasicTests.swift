@@ -281,6 +281,42 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
         });
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
+
+    func test003999testLogoutANDLogIn() {
+        var ex = expectation(description: "")
+        RCUser.logout(success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        
+        let cred = URLCredential(user: me.userName1, password: password, persistence: .none)
+        ex = expectation(description: "")
+        RCUser.login(credential: cred, saveToken: true, success: { user in
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test004999testGetReviews() {
+        let ex = expectation(description: "")
+        
+        RCUser.currentUser!.reviews(success: { reviews in
+            XCTAssert(reviews.count == 1, "There should be one review")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
     
     func testLogout() {
         let ex = expectation(description: "")
