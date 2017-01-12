@@ -94,7 +94,7 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
         profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
         profile.details = "this is a test"
         profile.email = "john.doe@gmail.com"
-        profile.profileType = .helper
+        profile.profileType = .client
         //should not save
         let bartending = RCService()!
         bartending.name = "bartending"
@@ -274,7 +274,6 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
         let ex = expectation(description: "")
         me.serviceRequest.cancel(success: {
             XCTFail("Should not cancel completed request")
-            
             ex.fulfill()
         }, failure: { error in
             XCTAssert(error.code == 403, "Should be forbidden")
