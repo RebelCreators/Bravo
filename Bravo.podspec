@@ -14,9 +14,10 @@ Pod::Spec.new do |s|
   s.public_header_files = 'src/bravo/**/*.h'
   s.frameworks = 'Foundation'
 
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0.1' }
 
   s.dependency 'Alamofire', '~> 4.0'
   s.dependency 'SwiftKeychainWrapper', '~> 3.0'
   s.dependency 'Mantle', '~> 2.1'
+  s.dependency 'Socket.IO-Client-Swift', '~> 8.2.0'
 end

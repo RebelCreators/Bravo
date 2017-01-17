@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Bravo-iOS10.2/Bravo.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HHSDK-iOS10.2/HHSDK.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Mantle-iOS10.2/Mantle.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Socket.IO-Client-Swift-iOS10.2/SocketIO.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper-iOS10.2/SwiftKeychainWrapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Bravo-iOS10.2/Bravo.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HHSDK-iOS10.2/HHSDK.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Mantle-iOS10.2/Mantle.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Socket.IO-Client-Swift-iOS10.2/SocketIO.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftKeychainWrapper-iOS10.2/SwiftKeychainWrapper.framework"
 fi

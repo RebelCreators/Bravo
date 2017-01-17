@@ -114,6 +114,12 @@
          <FileRef
             location = "group:WebServiceOp.swift">
          </FileRef>
+         <FileRef
+            location = "group:RCSocket.swift">
+         </FileRef>
+         <FileRef
+            location = "group:RCDevice.swift">
+         </FileRef>
       </Group>
    </Group>
    <FileRef

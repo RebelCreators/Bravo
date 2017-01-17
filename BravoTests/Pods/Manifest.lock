@@ -3,12 +3,14 @@ PODS:
   - Bravo (1.0.0):
     - Alamofire (~> 4.0)
     - Mantle (~> 2.1)
+    - Socket.IO-Client-Swift (~> 8.2.0)
     - SwiftKeychainWrapper (~> 3.0)
   - HHSDK (1.0.0):
     - Bravo
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
+  - Socket.IO-Client-Swift (8.2.0)
   - SwiftKeychainWrapper (3.0.0)
 
 DEPENDENCIES:
@@ -23,9 +25,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
-  Bravo: 2adbac647b3451c7a6d7791321ef80d94b64ddfc
+  Bravo: b714b97a2fc6556e1091ea15c6c9a75185a859cb
   HHSDK: 98edfc23b1149da8c324089b7337c863543c2a9c
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
+  Socket.IO-Client-Swift: 900cf511777045c80d1ce1f11f71261e87765dd1
   SwiftKeychainWrapper: aa69884eb623a6f7d644921bbf58c8cee416a9e6
 
 PODFILE CHECKSUM: a4c603ea568601288ef3dd99514a1539c1aeb94f

@@ -20,6 +20,7 @@
 
 import Foundation
 import Alamofire
+import SocketIO
 
 public func + <K,V> (lhs : [K : V], rhs : [K : V]) -> [K : V] {
     var dict = lhs
@@ -69,6 +70,7 @@ public class Bravo: NSObject {
         super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reAuthenticate(_:)), name: Notification.RC.RCNeedsAuthentication, object: nil)
+        RCSocket.shared.intitialize()
     }
     
     deinit {

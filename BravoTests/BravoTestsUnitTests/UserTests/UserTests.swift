@@ -365,6 +365,28 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
+    func test00059UpdateDevice() {
+        let ex = expectation(description: "")
+        RCDevice.updateCurrentDevice(success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test00069DeleteDevice() {
+        let ex = expectation(description: "")
+        RCDevice.deleteCurrentDevice(success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
     func testLogout() {
         let ex = expectation(description: "")
         RCUser.logout(success: {

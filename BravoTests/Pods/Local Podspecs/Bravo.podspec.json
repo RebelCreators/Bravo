@@ -21,7 +21,7 @@
   "public_header_files": "src/bravo/**/*.h",
   "frameworks": "Foundation",
   "pod_target_xcconfig": {
-    "SWIFT_VERSION": "3.0"
+    "SWIFT_VERSION": "3.0.1"
   },
   "dependencies": {
     "Alamofire": [
@@ -32,6 +32,9 @@
     ],
     "Mantle": [
       "~> 2.1"
+    ],
+    "Socket.IO-Client-Swift": [
+      "~> 8.2.0"
     ]
   }
 }
