@@ -120,6 +120,12 @@
          <FileRef
             location = "group:RCDevice.swift">
          </FileRef>
+         <FileRef
+            location = "group:RCMessage.swift">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/default/Bravo/src/bravo/RCDialog.swift">
+         </FileRef>
       </Group>
    </Group>
    <FileRef

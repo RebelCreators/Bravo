@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "480F9A8510DEF9F8BAEC9711B6EA5C85"
+               BlueprintIdentifier = "7CA4A2657B6D60D353568DFC56E76220"
                BuildableName = "Bravo.framework"
                BlueprintName = "Bravo-iOS10.0"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "480F9A8510DEF9F8BAEC9711B6EA5C85"
+            BlueprintIdentifier = "7CA4A2657B6D60D353568DFC56E76220"
             BuildableName = "Bravo.framework"
             BlueprintName = "Bravo-iOS10.0"
             ReferencedContainer = "container:Pods.xcodeproj">

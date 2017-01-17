@@ -119,7 +119,7 @@ public class RCSocket: NSObject {
                 return
             }
             let deviceToken = RCDevice.currentDevice.deviceToken!
-            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false), ]
+            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false)]
             if self.underlyingSocket == nil {
                 self.underlyingSocket = SocketIOClient(socketURL:url , config: configOptions)
             }
