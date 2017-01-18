@@ -126,18 +126,32 @@ extension NSDictionary: RCParameter {
         return self.toParameterDictionary().union(keys: strings)
     }
     
-    open static func generate<T: RModel>(fromJson: String) -> T {
+    open class func generate<T: RModel>(fromJson: String) -> T {
         let data = fromJson.data(using: .utf8)!
         let dict = try! JSONSerialization.jsonObject(with: data, options: []) as! [AnyHashable: Any]
         return T.generate(from: dict) as! T
     }
     
-    open static func generate(from: Any) -> Any? {
+    open class func generate(from: Any) -> Any? {
         guard let dict  = from as? [AnyHashable: Any] else {
             return nil
         }
         
         return try? MTLJSONAdapter.model(of: self, fromJSONDictionary: dict)
+    }
+    
+    open class func ommitKeys() -> [String] {
+        return []
+    }
+    
+    open override class func attributeMappings() -> [AnyHashable : Any]! {
+        var attributes = super.attributeMappings()
+       
+        for key in ommitKeys() {
+            attributes?.removeValue(forKey: key)
+        }
+        
+        return attributes
     }
     
     open func toParameterDictionary() -> RCParameterDictionary {

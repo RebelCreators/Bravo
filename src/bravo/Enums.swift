@@ -109,6 +109,33 @@ public final class RCRequestStatusEnum: RCEnumerable {
     }
 }
 
+public final class RCDialogPermissionsEnum: RCEnumerable {
+    public static let anyone: RCDialogPermissionsEnum = <<0
+    public static let anyParticipant: RCDialogPermissionsEnum = <<2
+    public static let onlyOwner: RCDialogPermissionsEnum = <<3
+    
+    public override var description: String {
+        switch self {
+        case RCDialogPermissionsEnum.anyone:
+            return "anyone"
+        case RCDialogPermissionsEnum.anyParticipant:
+            return "any_participant"
+        case RCDialogPermissionsEnum.onlyOwner:
+            return "only_owner"
+        default:
+            break
+        }
+        
+        return ""
+    }
+}
+
+@objc public class RCDialogPermissionsEnumObject: NSObject, MMEnumAttributeContainer {
+    public static func mappings() -> [AnyHashable : Any]! {
+        return ["anyone": RCDialogPermissionsEnum.anyone , "any_participant": RCDialogPermissionsEnum.anyParticipant, "only_owner": RCDialogPermissionsEnum.onlyOwner]
+    }
+}
+
 public final class RCHelperRequestStatusEnum: RCEnumerable {
     public static let pending: RCHelperRequestStatusEnum = <<0
     public static let accepted: RCHelperRequestStatusEnum = <<3

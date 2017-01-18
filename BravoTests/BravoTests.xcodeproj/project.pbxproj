@@ -31,6 +31,7 @@
 		E4BD126A1E2DDDA600728939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4BD12681E2DDDA600728939 /* LaunchScreen.storyboard */; };
 		E4BD12751E2DDDA700728939 /* TestTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD12741E2DDDA700728939 /* TestTargetTests.swift */; };
 		E4BD12801E2DDDA700728939 /* TestTargetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD127F1E2DDDA700728939 /* TestTargetUITests.swift */; };
+		E4BD12901E2F538800728939 /* DialogTest01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD128F1E2F538800728939 /* DialogTest01.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		E4BD127F1E2DDDA700728939 /* TestTargetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTargetUITests.swift; sourceTree = "<group>"; };
 		E4BD12811E2DDDA700728939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BD128B1E2DDDBF00728939 /* TestTarget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTarget.entitlements; sourceTree = "<group>"; };
+		E4BD128F1E2F538800728939 /* DialogTest01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogTest01.swift; path = DialogTests/DialogTest01.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		04E36BDD1E1D951900C13847 /* BravoTestsUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				E4BD128E1E2F535C00728939 /* DialogTests */,
 				04E36BF61E20C80D00C13847 /* ServiceTests */,
 				04E36BED1E1DA7A400C13847 /* images */,
 				04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */,
@@ -276,6 +279,14 @@
 				E4BD12811E2DDDA700728939 /* Info.plist */,
 			);
 			path = TestTargetUITests;
+			sourceTree = "<group>";
+		};
+		E4BD128E1E2F535C00728939 /* DialogTests */ = {
+			isa = PBXGroup;
+			children = (
+				E4BD128F1E2F538800728939 /* DialogTest01.swift */,
+			);
+			name = DialogTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -592,6 +603,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E36BFA1E234C2E00C13847 /* ServiceRequestBasicTests.swift in Sources */,
+				E4BD12901E2F538800728939 /* DialogTest01.swift in Sources */,
 				04E36BEA1E1DA67F00C13847 /* UserTests.swift in Sources */,
 				04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */,
 				04E36BF31E1F7D0000C13847 /* Config.plist in Sources */,
