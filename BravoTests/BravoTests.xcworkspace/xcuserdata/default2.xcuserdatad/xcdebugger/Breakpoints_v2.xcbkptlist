@@ -665,11 +665,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/DialogTests/DialogTest01.swift"
-            timestampString = "506421539.192408"
+            timestampString = "506425629.003637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "test000009GetMyDialogs()"
             landmarkType = "7">
          </BreakpointContent>
@@ -681,11 +681,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BravoTestsUnitTests/DialogTests/DialogTest01.swift"
-            timestampString = "506422921.145229"
+            timestampString = "506425629.003637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "test000019LeaveDialog()"
             landmarkType = "7">
          </BreakpointContent>

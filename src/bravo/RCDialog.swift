@@ -125,12 +125,46 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
+    public func addUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+        guard let dialogID = self.dialogID else {
+            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            
+            return
+        }
+        WebService().post(relativePath: "dialog/add", headers: nil, parameters: ["userId": userID, "dialogId": dialogID, "permissions": self.permissions], success: { (dialog: RCDialog) in
+            success(dialog)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public func removeUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+        guard let dialogID = self.dialogID else {
+            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            
+            return
+        }
+        WebService().delete(relativePath: "dialog/remove", headers: nil, parameters: ["userId": userID, "dialogId": dialogID, "permissions": self.permissions], success: { (dialog: RCDialog) in
+            success(dialog)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
     public func publish(message: RCMessage, success: () -> Void, failure: (RCError) -> Void) {
         
     }
     
     public func messages(offset: Int, limit: Int, success: ([RCMessage]) -> Void, failure: (RCError) -> Void) {
         
+    }
+    
+    public static func dialogWithID(dialogID: String, permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().get(relativePath: "dialog/:dialogID/id", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions], success: { (dialogs: RCDialog) in
+            success(dialogs)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public static func subscriptions(success: @escaping ([RCDialog]) -> Void, failure: @escaping (RCError) -> Void) {
