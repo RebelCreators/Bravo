@@ -9,6 +9,10 @@
 import XCTest
 import Bravo
 
+class TestPayload: RCModel {
+  var string = "this is a test!"
+}
+
 var currentDialog: RCDialog?
 class Test0_0_0_0_4_DialogTest01: XCTestCase {
     static var user2Name = "\(userName).\(Date().timeIntervalSince1970)"
@@ -164,7 +168,21 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test000399removeUserToDialog() {
+    func test000299sendMessage() {
+        let ex = expectation(description: "")
+       let message = RCMessage()!
+        //message.appendPayload(model: TestPayload())
+        currentDialog?.publish(message: message, success: { mesage in
+           // ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        
+        waitForExpectations(timeout: 30, handler: nil)
+    }
+    
+    func test000699removeUserToDialog() {
         let ex = expectation(description: "")
         currentDialog?.removeUser(userID: me.user2!.userID!, success: { dialog in
             XCTAssert(dialog.currentUsers.count == 1, "there should be one current user")

@@ -139,6 +139,10 @@ public class RCSocket: NSObject {
                 operation.finish()
             }
             
+            self.underlyingSocket!.on("com.rebel.creators.message") {data, ack in
+                print("message \(data)");
+            }
+            
             self.underlyingSocket!.on("disconnect") {data, ack in
                 self.connectionStatus = .disconnected
             }

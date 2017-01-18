@@ -21,8 +21,11 @@
 import Foundation
 
 public class RCMessage: RCModel {
-    public var dialog: RCDialog?
-    public var sender: RCUser?
+//    public var dialog: RCDialog?
+//    public var sender: RCUser?
+    
+    public var senderId: String?
+    public var dialogId: String?
     
     internal var payloads = [RCModel]()
     

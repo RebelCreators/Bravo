@@ -151,8 +151,14 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func publish(message: RCMessage, success: () -> Void, failure: (RCError) -> Void) {
-        
+    public func publish(message: RCMessage, success: @escaping (RCMessage) -> Void, failure: @escaping (RCError) -> Void) {
+        message.dialogId = self.dialogID
+        message.senderId = RCUser.currentUser?.userID
+        WebService().put(relativePath: "dialog/message/send", headers: nil, parameters: ["message": message, "dialogId": dialogID, "permissions": self.permissions], success: { (message: RCMessage) in
+            success(message)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public func messages(offset: Int, limit: Int, success: ([RCMessage]) -> Void, failure: (RCError) -> Void) {
