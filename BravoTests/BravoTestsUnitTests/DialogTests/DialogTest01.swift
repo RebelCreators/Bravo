@@ -166,16 +166,16 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
     
     func test000299sendMessage() {
         let ex = expectation(description: "")
-       let message = RCMessage()!
+        let message = RCMessage()!
         message.appendPayload(payload: TestPayload())
         currentDialog?.publish(message: message, success: { mesage in
-           // ex.fulfill()
+            ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: 30, handler: nil)
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
     func test000699removeUserToDialog() {
