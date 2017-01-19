@@ -164,6 +164,6 @@ extension NSDictionary: RCParameter {
     }
     
     open func toJsonString() -> String {
-        return String(data: try! JSONSerialization.data(withJSONObject: self.toDictionary(), options: .prettyPrinted), encoding: .utf8)!
+        return String(data: try! JSONSerialization.data(withJSONObject: self.toDictionary(), options: []), encoding: .utf8)!
     }
 }

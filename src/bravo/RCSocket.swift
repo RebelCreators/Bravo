@@ -19,6 +19,11 @@
 // THE SOFTWARE.
 
 import SocketIO
+public class TestPayload: RCModel, RCPayload {
+    public static var contentType: String { return "test" }
+   public  var string = "this is a test!"
+}
+
 
 public enum RCSocketConnectionStatus {
     case connected
@@ -119,7 +124,7 @@ public class RCSocket: NSObject {
                 return
             }
             let deviceToken = RCDevice.currentDevice.deviceToken!
-            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false)]
+            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false), .forceWebsockets(true)]
             if self.underlyingSocket == nil {
                 self.underlyingSocket = SocketIOClient(socketURL:url , config: configOptions)
             }
@@ -140,7 +145,11 @@ public class RCSocket: NSObject {
             }
             
             self.underlyingSocket!.on("com.rebel.creators.message") {data, ack in
-                print("message \(data)");
+                if let dict = data.first as? NSDictionary {
+                    let message = RCMessage.generate(from: dict) as! RCMessage
+                    let payload: TestPayload? = message.payloadForClass()
+                    print("message \(data)");
+                }
             }
             
             self.underlyingSocket!.on("disconnect") {data, ack in

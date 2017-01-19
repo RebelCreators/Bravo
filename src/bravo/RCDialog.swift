@@ -21,14 +21,14 @@
 import Foundation
 
 open class RCDialogPermission: RCModel {
-    open var postPermissions: RCDialogPermissionsEnum = .anyParticipant // enum
-    open var invitationPermissions: RCDialogPermissionsEnum = .anyParticipant // enum
-    open var updatePermissions: RCDialogPermissionsEnum = .onlyOwner // enum
+    open var read: RCDialogPermissionsEnum = .anyParticipant // enum
+    open var write: RCDialogPermissionsEnum = .anyParticipant // enum
+    open var update: RCDialogPermissionsEnum = .onlyOwner // enum
     
     open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.enumAttributeTypes() ?? [:]) + ["postPermissions" : RCDialogPermissionsEnumObject.self,
-                                                      "invitationPermissions" : RCDialogPermissionsEnumObject.self,
-                                                      "updatePermissions" : RCDialogPermissionsEnumObject.self]
+        return (super.enumAttributeTypes() ?? [:]) + ["read" : RCDialogPermissionsEnumObject.self,
+                                                      "write" : RCDialogPermissionsEnumObject.self,
+                                                      "update" : RCDialogPermissionsEnumObject.self]
     }
 }
 
