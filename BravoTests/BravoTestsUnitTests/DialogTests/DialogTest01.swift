@@ -9,6 +9,11 @@
 import XCTest
 import Bravo
 
+public class TestPayload: RCModel, RCPayload {
+    public static var contentType: String { return "test" }
+    public  var string = "this is a test!"
+}
+
 var currentDialog: RCDialog?
 class Test0_0_0_0_4_DialogTest01: XCTestCase {
     static var user2Name = "\(userName).\(Date().timeIntervalSince1970)"
