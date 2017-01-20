@@ -157,7 +157,11 @@ public class RCDialog: RCModel {
     }
     
     public func messages(offset: Int, limit: Int, success: ([RCMessage]) -> Void, failure: (RCError) -> Void) {
-        
+        //Todo implement
+    }
+    
+    public static func dialogsWithUsers(userIDs: [String], permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+        //Todo implement
     }
     
     public static func dialogWithID(dialogID: String, permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
