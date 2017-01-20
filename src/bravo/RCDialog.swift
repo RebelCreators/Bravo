@@ -36,6 +36,12 @@ func ==(lhs: RCDialog, rhs: RCDialog) -> Bool {
     return lhs.dialogID == rhs.dialogID && rhs.dialogID != nil
 }
 
+fileprivate class RCDialogListener: NSObject {
+    weak var object: AnyObject?
+    var completion: ((RCMessage) -> Void)?
+}
+
+fileprivate var messageListeners = [Int: [RCDialogListener]]()
 public class RCDialog: RCModel {
     
     public var dialogID: String?
@@ -49,41 +55,38 @@ public class RCDialog: RCModel {
     public var permissions: RCDialogPermission = RCDialogPermission()
     
     internal var _currentUsers = [String]()
-    
-    open override class func generate(from: Any) -> Any? {
-        let model = super.generate(from: from)
-        
-        if let dialog = model as? RCDialog {
-            var userMap = [String: RCUser]()
-            for user in dialog.allUsers {
-                userMap[user.userID ?? ""] = user
-            }
-            
-            for userID in dialog._currentUsers {
-                if let user = userMap[userID] {
-                    dialog.currentUsers.append(user)
-                }
-            }
+    fileprivate var onMessageListeners: [RCDialogListener] {
+        get {
+            return messageListeners[self.hashValue] ?? []
         }
-        
-        return model
+        set {
+            messageListeners[self.hashValue] = newValue
+        }
+    }
+    lazy private var registerNotifications: Void = {
+        NotificationCenter.default.addObserver(self, selector: #selector(messageReceived(_:)), name: Notification.RC.RCDidReceiveMessage, object: nil)
+    }()
+    
+    public func removeOnMessageListener(context: AnyObject) {
+        onMessageListeners.forEach({ obj in
+            if let objContext = obj.object, context === objContext {
+                obj.object = nil
+            }
+        })
+        onMessageListeners = onMessageListeners.filter({ $0.object != nil })
     }
     
-    open override class func ommitKeys() -> [String] {
-        return ["currentUsers"]
-    }
-    
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        var attributes = super.attributeMappings() + ["_currentUsers" : "currentUsers", "dialogID": "_id"]
-        return attributes
-    }
-    
-    open override class func listAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.listAttributeTypes() ?? [:]) + ["allUsers": RCUser.self]
-    }
-    
-    open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.mapAttributeTypes() ?? [:])  + ["creator": RCUser.self, "permissions": RCDialogPermission.self]
+    //context so listener can be deallocated
+    public func onMessage(context: AnyObject ,_ completion:@escaping (RCMessage) -> Void) {
+        let _ = self.registerNotifications
+        let listener = RCDialogListener()
+        listener.object = context
+        listener.completion = { message in
+            completion(message)
+        }
+        var listeners = onMessageListeners
+        listeners.append(listener)
+        onMessageListeners = listeners
     }
     
     public static func create(name: String,
@@ -179,5 +182,61 @@ public class RCDialog: RCModel {
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+        messageListeners[self.hashValue] = nil
+    }
+}
+
+extension RCDialog {
+    @objc internal func messageReceived(_ notification: Notification) {
+        if let message = notification.userInfo?[RCMessageKey] as? RCMessage {
+            if message.dialogId == self.dialogID && self.dialogID != nil {
+                for listener in onMessageListeners {
+                    if let _ = listener.object {
+                        listener.completion?(message)
+                    }
+                }
+                onMessageListeners = onMessageListeners.filter({ $0.object != nil })
+            }
+        }
+    }
+    
+    open override class func generate(from: Any) -> Any? {
+        let model = super.generate(from: from)
+        
+        if let dialog = model as? RCDialog {
+            var userMap = [String: RCUser]()
+            for user in dialog.allUsers {
+                userMap[user.userID ?? ""] = user
+            }
+            
+            for userID in dialog._currentUsers {
+                if let user = userMap[userID] {
+                    dialog.currentUsers.append(user)
+                }
+            }
+        }
+        
+        return model
+    }
+    
+    open override class func ommitKeys() -> [String] {
+        return ["currentUsers"]
+    }
+    
+    open override class func attributeMappings() -> [AnyHashable : Any]! {
+        var attributes = super.attributeMappings() + ["_currentUsers" : "currentUsers", "dialogID": "_id"]
+        return attributes
+    }
+    
+    open override class func listAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.listAttributeTypes() ?? [:]) + ["allUsers": RCUser.self]
+    }
+    
+    open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.mapAttributeTypes() ?? [:])  + ["creator": RCUser.self, "permissions": RCDialogPermission.self]
     }
 }

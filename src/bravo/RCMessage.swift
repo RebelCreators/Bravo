@@ -20,8 +20,41 @@
 
 import Foundation
 
+public let RCMessageKey = "com.rebel.creators.message.key"
+
 public protocol RCPayload {
     static var contentType: String {get}
+}
+
+public class RCMessage: RCModel {
+    
+    public var senderId: String?
+    public var dialogId: String?
+    
+    internal var payloads = [RCPayloadWrapper]()
+    
+    public func hasPayloadType<T: RCModel where T:RCPayload>(type: T.Type) -> Bool {
+        let payload: T? = payloadForClass()
+        return payload != nil
+    }
+    
+    public func appendPayload<T: RCModel where T:RCPayload>(payload: T) {
+        payloads.append(RCPayloadWrapper.create(objectType: type(of: payload).contentType, object: payload))
+    }
+    
+    public func payloadsForClass<T: RCModel where T:RCPayload>() -> [T]{
+        return payloads.filter({ return $0.objectType == T.contentType }).map({ $0.hydrateObject() })
+    }
+    
+    public func payloadForClass<T: RCModel where T:RCPayload>() -> T? {
+        return payloadsForClass().first
+    }
+}
+
+extension RCMessage {
+    open override class func listAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.listAttributeTypes() ?? [:]) + ["payloads": RCPayloadWrapper.self]
+    }
 }
 
 internal class RCPayloadWrapper: RCModel {
@@ -36,7 +69,7 @@ internal class RCPayloadWrapper: RCModel {
     fileprivate var object: RCModel?
     
     fileprivate static func create(objectType: String, object: RCModel) -> RCPayloadWrapper {
-       let wrapper = RCPayloadWrapper()!
+        let wrapper = RCPayloadWrapper()!
         wrapper.object = object
         wrapper.objectType = objectType
         return wrapper
@@ -55,36 +88,5 @@ internal class RCPayloadWrapper: RCModel {
             return object
         }
         return object as! T
-    }
-}
-
-public class RCMessage: RCModel {
-    //    public var dialog: RCDialog?
-    //    public var sender: RCUser?
-    
-    public var senderId: String?
-    public var dialogId: String?
-    
-    internal var payloads = [RCPayloadWrapper]()
-    
-    public func hasPayloadType<T: RCModel where T:RCPayload>(type: T.Type) -> Bool {
-        let payload: T? = payloadForClass()
-        return payload != nil
-    }
-    
-    open override class func listAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.listAttributeTypes() ?? [:]) + ["payloads": RCPayloadWrapper.self]
-    }
-    
-    public func appendPayload<T: RCModel where T:RCPayload>(payload: T) {
-        payloads.append(RCPayloadWrapper.create(objectType: type(of: payload).contentType, object: payload))
-    }
-    
-    public func payloadsForClass<T: RCModel where T:RCPayload>() -> [T]{
-        return payloads.filter({ return $0.objectType == T.contentType }).map({ $0.hydrateObject() })
-    }
-    
-    public func payloadForClass<T: RCModel where T:RCPayload>() -> T? {
-        return payloadsForClass().first
     }
 }

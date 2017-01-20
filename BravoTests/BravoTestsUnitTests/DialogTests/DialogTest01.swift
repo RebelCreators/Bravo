@@ -11,7 +11,7 @@ import Bravo
 
 public class TestPayload: RCModel, RCPayload {
     public static var contentType: String { return "test" }
-    public  var string = "this is a test!"
+    public  var strings:[String] = []
 }
 
 var currentDialog: RCDialog?
@@ -172,13 +172,38 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
     func test000299sendMessage() {
         let ex = expectation(description: "")
         let message = RCMessage()!
-        message.appendPayload(payload: TestPayload())
+        let testPayload = TestPayload()!
+        let firstString = "this is a test!"
+        testPayload.strings.append(firstString)
+        message.appendPayload(payload: testPayload)
         currentDialog?.publish(message: message, success: { mesage in
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
+        
+        let exBlock = expectation(description: "")
+        currentDialog?.onMessage(context: self) { message in
+            let payload: TestPayload? = message.payloadForClass()
+            XCTAssert(payload?.strings.first == firstString, "payloads should match")
+            
+            exBlock.fulfill()
+        }
+        
+        let exBlock2 = expectation(description: "")
+        currentDialog?.onMessage(context: self) { message in
+            let payload: TestPayload? = message.payloadForClass()
+            XCTAssert(payload?.strings.first == firstString, "payloads should match")
+            
+            exBlock2.fulfill()
+        }
+        
+        expectation(forNotification: Notification.RC.RCDidReceiveMessage.rawValue, object: nil) { notification in
+            let payload: TestPayload? = (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
+    
+            return payload?.strings.first == firstString
+        }
         
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }

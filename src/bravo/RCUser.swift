@@ -38,14 +38,6 @@ public class RCUser: RCModel {
     public var extras: [String: String]?
     public var gender: RCGenderEnum = .none
     
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        return super.attributeMappings() + ["userID" : "_id"]
-    }
-    
-    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.enumAttributeTypes() ?? [:]) + ["gender" : RCGenderEnumObject.self]
-    }
-    
     public func profileImage(success:@escaping ((Data?) -> Void), failure:@escaping ((RCError)->Void)) {
         guard userID != nil else {
             failure(.ConditionNotMet(message: "No userID"))
@@ -112,7 +104,7 @@ public class RCUser: RCModel {
                     operation.finish()
                     return
                 }
-             
+                
                 success(user)
                 operation.finish()
             }).exeInBackground(dependencies: [op.asOperation()])
@@ -255,5 +247,15 @@ public class RCUser: RCModel {
     
     static func register(user: RCUser, success:((RCUser) -> Void), failure:((RCError) -> Void)) {
         
+    }
+}
+
+extension RCUser {
+    open override class func attributeMappings() -> [AnyHashable : Any]! {
+        return super.attributeMappings() + ["userID" : "_id"]
+    }
+    
+    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
+        return (super.enumAttributeTypes() ?? [:]) + ["gender" : RCGenderEnumObject.self]
     }
 }

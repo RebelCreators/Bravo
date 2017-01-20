@@ -55,7 +55,7 @@ public class RCDevice: RCModel {
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
-    
+
     private func save() {
         if RCDevice.storeInKeyChain {
             KeychainWrapper.standard.set(self.toJsonString(), forKey: RCDevice.deviceKey)
