@@ -63,6 +63,7 @@ public class RCDialog: RCModel {
             messageListeners[self.hashValue] = newValue
         }
     }
+    
     lazy private var registerNotifications: Void = {
         NotificationCenter.default.addObserver(self, selector: #selector(messageReceived(_:)), name: Notification.RC.RCDidReceiveMessage, object: nil)
     }()
@@ -191,6 +192,7 @@ public class RCDialog: RCModel {
 }
 
 extension RCDialog {
+    
     @objc internal func messageReceived(_ notification: Notification) {
         if let message = notification.userInfo?[RCMessageKey] as? RCMessage {
             if message.dialogId == self.dialogID && self.dialogID != nil {
