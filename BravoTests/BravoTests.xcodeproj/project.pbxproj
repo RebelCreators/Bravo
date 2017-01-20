@@ -32,6 +32,7 @@
 		E4BD12751E2DDDA700728939 /* TestTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD12741E2DDDA700728939 /* TestTargetTests.swift */; };
 		E4BD12801E2DDDA700728939 /* TestTargetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD127F1E2DDDA700728939 /* TestTargetUITests.swift */; };
 		E4BD12901E2F538800728939 /* DialogTest01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD128F1E2F538800728939 /* DialogTest01.swift */; };
+		E4BD12921E32068600728939 /* DialogTest02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD12911E32068600728939 /* DialogTest02.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		E4BD12811E2DDDA700728939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BD128B1E2DDDBF00728939 /* TestTarget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTarget.entitlements; sourceTree = "<group>"; };
 		E4BD128F1E2F538800728939 /* DialogTest01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogTest01.swift; path = DialogTests/DialogTest01.swift; sourceTree = "<group>"; };
+		E4BD12911E32068600728939 /* DialogTest02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogTest02.swift; path = DialogTests/DialogTest02.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +286,7 @@
 		E4BD128E1E2F535C00728939 /* DialogTests */ = {
 			isa = PBXGroup;
 			children = (
+				E4BD12911E32068600728939 /* DialogTest02.swift */,
 				E4BD128F1E2F538800728939 /* DialogTest01.swift */,
 			);
 			name = DialogTests;
@@ -609,6 +612,7 @@
 				04E36BF31E1F7D0000C13847 /* Config.plist in Sources */,
 				04E36BF01E1DA8C700C13847 /* image.png in Sources */,
 				04E36BF81E20CE3100C13847 /* ServiceTests.swift in Sources */,
+				E4BD12921E32068600728939 /* DialogTest02.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

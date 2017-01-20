@@ -24,6 +24,7 @@ open class RCDialogPermission: RCModel {
     open var read: RCDialogPermissionsEnum = .anyParticipant // enum
     open var write: RCDialogPermissionsEnum = .anyParticipant // enum
     open var update: RCDialogPermissionsEnum = .onlyOwner // enum
+    //TODO: remove update and add join and remove permissions
     
     open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
         return (super.enumAttributeTypes() ?? [:]) + ["read" : RCDialogPermissionsEnumObject.self,
@@ -31,6 +32,20 @@ open class RCDialogPermission: RCModel {
                                                       "update" : RCDialogPermissionsEnumObject.self]
     }
 }
+
+public var RCDialogPermissionDefault = RCDialogPermission()!
+
+public var RCDialogPermissionAnyParticipant: RCDialogPermission = {
+    let permissions = RCDialogPermission()!
+    permissions.update = .anyParticipant
+    return permissions
+}()
+
+public var RCDialogPermissionPublic: RCDialogPermission = {
+    let permissions = RCDialogPermission()!
+    permissions.read = .anyone
+    return permissions
+}()
 
 func ==(lhs: RCDialog, rhs: RCDialog) -> Bool {
     return lhs.dialogID == rhs.dialogID && rhs.dialogID != nil
@@ -93,7 +108,7 @@ public class RCDialog: RCModel {
     public static func create(name: String,
                               details: String,
                               participants: Set<RCUser>? = nil,
-                              permissions: RCDialogPermission = RCDialogPermission(),
+                              permissions: RCDialogPermission = RCDialogPermissionDefault,
                               success: @escaping (RCDialog) -> Void,
                               failure: @escaping (RCError) -> Void) {
         guard let currentUser = RCUser.currentUser else {
