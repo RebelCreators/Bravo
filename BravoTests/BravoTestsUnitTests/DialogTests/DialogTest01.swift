@@ -194,7 +194,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
         })
         
         let exBlock = expectation(description: "")
-        currentDialog?.onMessage(context: self) { message in
+        currentDialog?.onMessage() { message in
             let payload: TestPayload? = message.payloadForClass()
             XCTAssert(payload?.strings.first == firstString, "payloads should match")
             
@@ -202,7 +202,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
         }
         
         let exBlock2 = expectation(description: "")
-        currentDialog?.onMessage(context: self) { message in
+        currentDialog?.onMessage() { message in
             let payload: TestPayload? = message.payloadForClass()
             XCTAssert(payload?.strings.first == firstString, "payloads should match")
             
@@ -306,7 +306,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
         })
         
         let exBlock = expectation(description: "")
-        currentDialog?.onMessage(context: self) { message in
+        currentDialog?.onMessage() { message in
             let payload: TestPayload? = message.payloadForClass()
             XCTAssert(payload?.strings.first == firstString, "payloads should match")
             
@@ -314,7 +314,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
         }
         
         let exBlock2 = expectation(description: "")
-        currentDialog?.onMessage(context: self) { message in
+        currentDialog?.onMessage() { message in
             let payload: TestPayload? = message.payloadForClass()
             XCTAssert(payload?.strings.first == firstString, "payloads should match")
             

@@ -51,12 +51,6 @@ func ==(lhs: RCDialog, rhs: RCDialog) -> Bool {
     return lhs.dialogID == rhs.dialogID && rhs.dialogID != nil
 }
 
-fileprivate class RCDialogListener: NSObject {
-    weak var object: AnyObject?
-    var completion: ((RCMessage) -> Void)?
-}
-
-fileprivate var messageListeners = [Int: [RCDialogListener]]()
 public class RCDialog: RCModel {
     
     public var dialogID: String?
@@ -70,40 +64,6 @@ public class RCDialog: RCModel {
     public var permissions: RCDialogPermission = RCDialogPermission()
     
     internal var _currentUsers = [String]()
-    fileprivate var onMessageListeners: [RCDialogListener] {
-        get {
-            return messageListeners[self.hashValue] ?? []
-        }
-        set {
-            messageListeners[self.hashValue] = newValue
-        }
-    }
-    
-    lazy private var registerNotifications: Void = {
-        NotificationCenter.default.addObserver(self, selector: #selector(messageReceived(_:)), name: Notification.RC.RCDidReceiveMessage, object: nil)
-    }()
-    
-    public func removeOnMessageListener(context: AnyObject) {
-        onMessageListeners.forEach({ obj in
-            if let objContext = obj.object, context === objContext {
-                obj.object = nil
-            }
-        })
-        onMessageListeners = onMessageListeners.filter({ $0.object != nil })
-    }
-    
-    //context so listener can be deallocated
-    public func onMessage(context: AnyObject ,_ completion:@escaping (RCMessage) -> Void) {
-        let _ = self.registerNotifications
-        let listener = RCDialogListener()
-        listener.object = context
-        listener.completion = { message in
-            completion(message)
-        }
-        var listeners = onMessageListeners
-        listeners.append(listener)
-        onMessageListeners = listeners
-    }
     
     public static func create(name: String,
                               details: String,
@@ -129,6 +89,22 @@ public class RCDialog: RCModel {
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public func onMessage(_ completion:@escaping (RCMessage) -> Void) {
+        DialogManager.shared.onMessage(context: self, dialogID: self.dialogID ?? "", completion)
+    }
+    
+    public func removeOnMessageListeners() {
+        DialogManager.shared.removeOnMessageListener(context: self)
+    }
+    
+    static public func onMessage(context: AnyObject, dialogID: String?, _ completion:@escaping (RCMessage) -> Void) {
+        DialogManager.shared.onMessage(context: context, dialogID: dialogID, completion)
+    }
+    
+    static public func removeOnMessageListeners(context:  AnyObject) {
+        DialogManager.shared.removeOnMessageListener(context: context)
     }
     
     public func leave(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
@@ -201,25 +177,11 @@ public class RCDialog: RCModel {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
-        messageListeners[self.hashValue] = nil
+        removeOnMessageListeners()
     }
 }
 
 extension RCDialog {
-    
-    @objc internal func messageReceived(_ notification: Notification) {
-        if let message = notification.userInfo?[RCMessageKey] as? RCMessage {
-            if message.dialogId == self.dialogID && self.dialogID != nil {
-                for listener in onMessageListeners {
-                    if let _ = listener.object {
-                        listener.completion?(message)
-                    }
-                }
-                onMessageListeners = onMessageListeners.filter({ $0.object != nil })
-            }
-        }
-    }
     
     open override class func generate(from: Any) -> Any? {
         let model = super.generate(from: from)
@@ -257,3 +219,58 @@ extension RCDialog {
         return (super.mapAttributeTypes() ?? [:])  + ["creator": RCUser.self, "permissions": RCDialogPermission.self]
     }
 }
+
+fileprivate class RCDialogListener: NSObject {
+    weak var object: AnyObject?
+    var dialogID: String?
+    var completion: ((RCMessage) -> Void)?
+}
+
+fileprivate class DialogManager {
+    static let shared: DialogManager = {
+        let manager = DialogManager()
+        NotificationCenter.default.addObserver(manager, selector: #selector(messageReceived(_:)), name: Notification.RC.RCDidReceiveMessage, object: nil)
+        
+        return manager
+    }()
+    
+    fileprivate var onMessageListeners = [RCDialogListener]()
+    
+    public func removeOnMessageListener(context: AnyObject) {
+        onMessageListeners.forEach({ obj in
+            if let objContext = obj.object, context === objContext {
+                obj.object = nil
+            }
+        })
+        onMessageListeners = onMessageListeners.filter({ $0.object != nil })
+    }
+    
+    //context so listener can be deallocated
+    public func onMessage(context: AnyObject , dialogID: String?, _ completion:@escaping (RCMessage) -> Void) {
+        let listener = RCDialogListener()
+        listener.object = context
+        listener.completion = { message in
+            completion(message)
+        }
+        listener.dialogID = dialogID
+        onMessageListeners.append(listener)
+    }
+    
+    @objc internal func messageReceived(_ notification: Notification) {
+        if let message = notification.userInfo?[RCMessageKey] as? RCMessage {
+            if let dialogId = message.dialogId {
+                for listener in onMessageListeners {
+                    if let _ = listener.object, (listener.dialogID == dialogId || listener.dialogID == nil) {
+                        listener.completion?(message)
+                    }
+                }
+                onMessageListeners = onMessageListeners.filter({ $0.object != nil })
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+

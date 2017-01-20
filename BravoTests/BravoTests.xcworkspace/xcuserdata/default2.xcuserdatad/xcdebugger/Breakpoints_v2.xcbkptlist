@@ -745,11 +745,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
+            timestampString = "506603785.707206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "subscriptions(success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -761,11 +761,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
+            timestampString = "506603785.707206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "subscriptions(success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -777,11 +777,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
+            timestampString = "506603785.707206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "leave(success:failure:)"
             landmarkType = "7">
             <Locations>
@@ -825,11 +825,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
+            timestampString = "506603785.707206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "leave(success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -889,11 +889,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCMessage.swift"
-            timestampString = "506592358.347484"
+            timestampString = "506603227.370539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "appendPayload(payload:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -921,11 +921,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCMessage.swift"
-            timestampString = "506592358.347484"
+            timestampString = "506603227.370539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "appendPayload(payload:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -937,11 +937,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCMessage.swift"
-            timestampString = "506592358.347484"
+            timestampString = "506603227.370539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "appendPayload(payload:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1080,11 +1080,11 @@
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/DialogTests/DialogTest01.swift"
-                  timestampString = "506592016.000772"
+                  timestampString = "506603478.778565"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "187"
-                  endingLineNumber = "187"
+                  startingLineNumber = "197"
+                  endingLineNumber = "197"
                   offsetFromSymbolStart = "1408">
                </Location>
                <Location
@@ -1095,11 +1095,11 @@
                   moduleName = "BravoTestsUnitTests"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/default/Bravo/BravoTests/BravoTestsUnitTests/DialogTests/DialogTest01.swift"
-                  timestampString = "506592016.004804"
+                  timestampString = "506603478.780118"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "188"
-                  endingLineNumber = "188"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
                   offsetFromSymbolStart = "38">
                </Location>
             </Locations>
@@ -1175,45 +1175,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
+            timestampString = "506603785.707206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
-            landmarkName = "messageReceived(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Bravo.RCDialog.messageReceived (Foundation.Notification) -&gt; ()"
-                  moduleName = "Bravo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/default/Bravo/src/bravo/RCDialog.swift"
-                  timestampString = "506591869.302572"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "30">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Bravo.RCDialog.messageReceived (Foundation.Notification) -&gt; ()"
-                  moduleName = "Bravo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/default/Bravo/src/bravo/RCDialog.swift"
-                  timestampString = "506591869.304248"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "230"
-                  endingLineNumber = "230"
-                  offsetFromSymbolStart = "606">
-               </Location>
-            </Locations>
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "RCDialog"
+            landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1223,59 +1191,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
+            timestampString = "506603785.707206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "messageReceived(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "registerNotifications"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "deinit"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../src/bravo/RCDialog.swift"
-            timestampString = "506595930.109779"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "deinit"
             landmarkType = "7">
          </BreakpointContent>
@@ -1518,6 +1438,22 @@
                   offsetFromSymbolStart = "89">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BravoTestsUnitTests/DialogTests/DialogTest02.swift"
+            timestampString = "506603797.346624"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "test005999sendMessage()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

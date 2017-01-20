@@ -27,7 +27,6 @@ public protocol RCPayload {
 }
 
 public class RCMessage: RCModel {
-    
     public var senderId: String?
     public var dialogId: String?
     
