@@ -84,6 +84,14 @@ public class RCUserProfile: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
+    public static func helpersNearMe(kilometers: Int, offset: Int, limit: Int, success: @escaping (([RCUserProfile]) -> Void), failure: @escaping ((RCError) -> Void)) {
+        WebService().get(relativePath: "userprofile/near", headers: nil, parameters: ["offset": offset, "limit": limit, "km": kilometers], success: { (profiles: [RCUserProfile]) in
+            success(profiles)
+        }, failure: { (error) in
+            failure(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
     public static func profiles(userNames: [String], success: @escaping (([RCUserProfile]) -> Void), failure: @escaping ((RCError) -> Void)) {
         WebService().get(relativePath: "userprofile/username", headers: nil, parameters: ["userNames": userNames], success: { (profiles: [RCUserProfile]) in
             success(profiles)

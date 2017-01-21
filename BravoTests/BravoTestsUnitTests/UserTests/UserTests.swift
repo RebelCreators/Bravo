@@ -260,8 +260,8 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
     
     func test00009UUUpdateCurrentUserLocation() {
         let ex = expectation(description: "")
-        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: -121.89452987346158,
-                                                                                   longitude: 37.336152840875776))
+        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: 37.336152840875776,
+                                                                                   longitude: -121.89452987346158))
         location.updateLocation(success: {
             ex.fulfill()
         }, failure: { error in
@@ -339,8 +339,8 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
         
         ex = expectation(description: "udate location")
-        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: -122.03132629394531,
-                                                                                   longitude: 36.9688209872153))
+        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: 36.9688209872153,
+                                                                                   longitude: -122.03132629394531))
         location.updateLocation(success: {
             ex.fulfill()
         }, failure: { error in
@@ -375,6 +375,18 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
             ex.fulfill()
         })
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test00049UUUUFetchuserDistanceNear() {
+        let ex = expectation(description: "")
+        RCUserProfile.helpersNearMe(kilometers: 50, offset: 0, limit: 5, success: { profiles in
+            XCTAssert(profiles.count > 0 && profiles.count <= 5, "distance not returned")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
     func test00059UpdateDevice() {
