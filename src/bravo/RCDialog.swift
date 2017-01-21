@@ -24,28 +24,31 @@ open class RCDialogPermission: RCModel {
     open var read: RCDialogPermissionsEnum = .anyParticipant // enum
     open var write: RCDialogPermissionsEnum = .anyParticipant // enum
     open var update: RCDialogPermissionsEnum = .onlyOwner // enum
-    //TODO: remove update and add join and remove permissions
+    open var join: RCDialogPermissionsEnum = .onlyOwner // enum
     
     open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
         return (super.enumAttributeTypes() ?? [:]) + ["read" : RCDialogPermissionsEnumObject.self,
                                                       "write" : RCDialogPermissionsEnumObject.self,
-                                                      "update" : RCDialogPermissionsEnumObject.self]
+                                                      "update" : RCDialogPermissionsEnumObject.self,
+                                                      "join" : RCDialogPermissionsEnumObject.self]
     }
 }
 
 public var RCDialogPermissionDefault = RCDialogPermission()!
 
-public var RCDialogPermissionAnyParticipant: RCDialogPermission = {
+public var RCDialogPermissionAnyParticipant: RCDialogPermission {
     let permissions = RCDialogPermission()!
     permissions.update = .anyParticipant
+    
     return permissions
-}()
+}
 
-public var RCDialogPermissionPublic: RCDialogPermission = {
+public var RCDialogPermissionPublic: RCDialogPermission {
     let permissions = RCDialogPermission()!
     permissions.read = .anyone
+    permissions.join = .anyone
     return permissions
-}()
+}
 
 func ==(lhs: RCDialog, rhs: RCDialog) -> Bool {
     return lhs.dialogID == rhs.dialogID && rhs.dialogID != nil
@@ -185,6 +188,20 @@ public class RCDialog: RCModel {
     public static func subscriptions(success: @escaping ([RCDialog]) -> Void, failure: @escaping (RCError) -> Void) {
         WebService().get(relativePath: "dialog/current", headers: nil, parameters: [:], success: { (dialogs: [RCDialog]) in
             success(dialogs)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public func join(success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+        guard let userID = RCUser.currentUser?.userID else {
+            failure(RCError.ConditionNotMet(message: "no user ID"))
+            
+            return
+        }
+        
+        WebService().post(relativePath: "dialog/join", headers: nil, parameters: ["dialogId": dialogID, "permissions": self.permissions], success: { (dialog: RCDialog) in
+            success(dialog)
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])

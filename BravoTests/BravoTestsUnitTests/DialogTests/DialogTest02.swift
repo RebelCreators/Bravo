@@ -136,7 +136,9 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
     
     func test000039createStandardDialog() {
         let ex = expectation(description: "")
-        RCDialog.create(name: "Test2", details: "this is a test2", permissions: RCDialogPermissionAnyParticipant, success: { dialog in
+        let permissions = RCDialogPermissionAnyParticipant
+        permissions.join = .anyone
+        RCDialog.create(name: "Test2", details: "this is a test2", permissions: permissions, success: { dialog in
             currentDialog = dialog
             ex.fulfill()
         }, failure: { error in
@@ -342,9 +344,32 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         }
         
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        currentDialog?.removeOnMessageListeners()
+        RCDialog.removeOnMessageListeners(context: self)
     }
     
-    func test007999leaveDialog() {
+    func test007999leaveDialogAndJoin() {
+        let ex = expectation(description: "")
+        currentDialog?.leave(success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        
+        let ex1 = expectation(description: "")
+        currentDialog?.join(success: { dialog in
+            ex1.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex1.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    
+    func test008999leaveDialog() {
         let ex = expectation(description: "")
         currentDialog?.leave(success: {
             ex.fulfill()
@@ -355,7 +380,53 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
-    func test008999sendMessage() {
+    func test009999GetMyDialogs() {
+        let ex = expectation(description: "")
+        RCDialog.subscriptions(success: { dialogs in
+            XCTAssert(dialogs.count == 0, "there should be  no dialogs")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test039999join() {
+        let ex1 = expectation(description: "")
+        currentDialog?.join(success: { dialog in
+            ex1.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex1.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test069999GetMyDialogs() {
+        let ex = expectation(description: "")
+        RCDialog.subscriptions(success: { dialogs in
+            XCTAssert(dialogs.count == 1, "there should be one dialog")
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test099999leaveDialog() {
+        let ex = expectation(description: "")
+        currentDialog?.leave(success: {
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    func test199999sendMessage() {
         let ex = expectation(description: "")
         let message = RCMessage()!
         let testPayload = TestPayload()!
