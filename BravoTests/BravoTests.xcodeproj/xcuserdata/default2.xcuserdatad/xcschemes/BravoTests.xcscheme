@@ -47,6 +47,12 @@
                <Test
                   Identifier = "Test0_0_0_0_3_ServiceRequestBasicTests">
                </Test>
+               <Test
+                  Identifier = "Test0_0_0_0_4_DialogTest01">
+               </Test>
+               <Test
+                  Identifier = "Test0_0_0_0_4_DialogTest02">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>

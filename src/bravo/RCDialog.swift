@@ -173,8 +173,12 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public static func dialogsWithUsers(userIDs: [String], permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
-        //Todo implement
+    public static func dialogsWithUsers(userIDs: [String], permissions: RCDialogPermission, success: @escaping ([RCDialog]) -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().get(relativePath: "dialog/find/users", headers: nil, parameters: ["userIds": userIDs, "permissions": permissions], success: { (dialogs: [RCDialog]) in
+            success(dialogs)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public static func dialogWithID(dialogID: String, permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
