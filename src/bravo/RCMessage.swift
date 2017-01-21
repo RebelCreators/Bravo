@@ -29,6 +29,7 @@ public protocol RCPayload {
 public class RCMessage: RCModel {
     public var senderId: String?
     public var dialogId: String?
+    public var date: Date?
     
     internal var payloads = [RCPayloadWrapper]()
     
@@ -42,7 +43,7 @@ public class RCMessage: RCModel {
     }
     
     public func payloadsForClass<T: RCModel where T:RCPayload>() -> [T]{
-        return payloads.filter({ return $0.objectType == T.contentType }).map({ $0.hydrateObject() })
+        return payloads.filter({ return $0.type == T.contentType }).map({ $0.hydrateObject() })
     }
     
     public func payloadForClass<T: RCModel where T:RCPayload>() -> T? {
@@ -60,17 +61,17 @@ internal class RCPayloadWrapper: RCModel {
     override var dictionaryValue:[AnyHashable : Any] {
         var dict = super.dictionaryValue!
         var string = object?.toJsonString() ?? ""
-        dict["objectString"] = string.toBase64()
+        dict["contents"] = string.toBase64()
         return dict
     }
-    var objectType: String?
-    var objectString: String?
+    var type: String?
+    var contents: String?
     fileprivate var object: RCModel?
     
     fileprivate static func create(objectType: String, object: RCModel) -> RCPayloadWrapper {
         let wrapper = RCPayloadWrapper()!
         wrapper.object = object
-        wrapper.objectType = objectType
+        wrapper.type = objectType
         return wrapper
     }
     
@@ -80,7 +81,7 @@ internal class RCPayloadWrapper: RCModel {
     
     fileprivate func hydrateObject<T: RCModel>() -> T {
         guard let obj = object else {
-            var string = objectString?.fromBase64() ?? ""
+            var string = contents?.fromBase64() ?? ""
             let object = T.generate(fromJson: string) as! T
             self.object = object
             

@@ -21,6 +21,7 @@
 import Foundation
 
 open class RCAsyncBlockOperation: RCAsyncOperation {
+    
     private var block: ((RCAsyncOperation) -> Void)?
     
     public init(_ block: @escaping ((RCAsyncOperation) -> Void)) {

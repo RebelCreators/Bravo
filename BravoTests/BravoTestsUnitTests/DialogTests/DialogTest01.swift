@@ -1,10 +1,22 @@
+// Copyright (c) 2016 Rebel Creators
 //
-//  DialogTest01.swift
-//  BravoTests
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-//  Created by default2 on 1/17/17.
-//  Copyright © 2017 Lorenzo Stanton. All rights reserved.
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 import XCTest
 import Bravo
@@ -328,8 +340,37 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
         }
         
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        currentDialog?.removeOnMessageListeners()
+        
+        let ex33 = expectation(description: "")
+        let message33 = RCMessage()!
+        let testPayload33 = TestPayload()!
+        let firstString33 = "this is a test!"
+        testPayload33.strings.append(firstString33)
+        message33.appendPayload(payload: testPayload33)
+        currentDialog?.publish(message: message33, success: { mesage in
+            ex33.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex33.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
     }
     
+    func test005999sendMessageGetMessages()  {
+        let ex33 = expectation(description: "")
+        currentDialog?.messages(offset: 0, limit: 1000, success: { messages in
+            XCTAssert(messages.count == 3, "there should be three messages")
+            ex33.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex33.fulfill()
+        })
+        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    }
+    
+    
+
     func test007999leaveDialog() {
         let ex = expectation(description: "")
         currentDialog?.leave(success: {

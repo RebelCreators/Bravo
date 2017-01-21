@@ -72,7 +72,7 @@ public class RCDialog: RCModel {
                               success: @escaping (RCDialog) -> Void,
                               failure: @escaping (RCError) -> Void) {
         guard let currentUser = RCUser.currentUser else {
-            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            failure(RCError.ConditionNotMet(message: "No ID"))
             
             return
         }
@@ -109,7 +109,7 @@ public class RCDialog: RCModel {
     
     public func leave(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            failure(RCError.ConditionNotMet(message: "No ID"))
             
             return
         }
@@ -122,7 +122,7 @@ public class RCDialog: RCModel {
     
     public func addUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            failure(RCError.ConditionNotMet(message: "No ID"))
             
             return
         }
@@ -135,7 +135,7 @@ public class RCDialog: RCModel {
     
     public func removeUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            failure(RCError.ConditionNotMet(message: "no ID"))
             
             return
         }
@@ -156,8 +156,18 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func messages(offset: Int, limit: Int, success: ([RCMessage]) -> Void, failure: (RCError) -> Void) {
-        //Todo implement
+    public func messages(offset: Int, limit: Int, success: @escaping ([RCMessage]) -> Void, failure: @escaping (RCError) -> Void) {
+        guard let dialogID = self.dialogID else {
+            failure(RCError.ConditionNotMet(message: "no ID"))
+            
+            return
+        }
+        
+        WebService().get(relativePath: "dialog/messages/:dialogID", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions, "offset": offset, "limit": limit], success: { (messages: [RCMessage]) in
+            success(messages)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
     public static func dialogsWithUsers(userIDs: [String], permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {

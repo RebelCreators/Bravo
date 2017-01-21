@@ -40,7 +40,8 @@ public class RCPatternMatcher: NSObject {
         if let m = results.first {
             let key = (string as NSString).substring(with: m.rangeAt(1))
             print(key)
-            if let param = dict[key] as? String {
+            let param = String(describing: dict[key]!)
+            if param.characters.count > 0 {
                 output = output.replacingCharacters(in: m.range, with: param) as NSString
                 var newDict = dict
                 newDict.removeValue(forKey: key)
