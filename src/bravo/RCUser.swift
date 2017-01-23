@@ -138,8 +138,8 @@ public class RCUser: RCModel {
         })
         
         self.authOperation = authOperation
-        authOperation.onFinished { [weak authOperation] in
-            authOperation = nil
+        authOperation.onFinished {
+            self.authOperation = nil
             }.exeInBackground()
     }
     
@@ -195,8 +195,8 @@ public class RCUser: RCModel {
         
         self.authOperation = authOperation
         
-        authOperation.onFinished { [weak authOperation] in
-            authOperation = nil
+        authOperation.onFinished {
+            self.authOperation = nil
             }.exeInBackground()
     }
     
