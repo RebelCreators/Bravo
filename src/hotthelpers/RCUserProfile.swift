@@ -29,6 +29,7 @@ public class PNGPhoto: RCFile {
 
 public class RCUserProfile: HHModel {
     
+    static public var currentProfile: RCUserProfile?
     public var distance: NSNumber?
     public var birthDate: Date?
     public var email: String?
@@ -64,8 +65,8 @@ public class RCUserProfile: HHModel {
                 }
                 photos.append(fileID)
             }
-           profile.profileImages = photos
-        RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
+            profile.profileImages = photos
+            RCUserProfile.updateCurrentUserProfile(profile: profile, success: { profile in
                 self.profileImages = profile.profileImages
                 success(profile)
             }, failure: failure)
@@ -106,6 +107,7 @@ public class RCUserProfile: HHModel {
             return
         }
         profiles(userIDs: [userID], success: { profiles in
+            self.currentProfile = profiles.first
             success(profiles.first)
         }, failure: { error in
             failure(error)
@@ -118,6 +120,7 @@ public class RCUserProfile: HHModel {
             return
         }
         WebService().put(relativePath: "userprofile/update", headers: nil, parameters: profile, success: { (profile: RCUserProfile) in
+            self.currentProfile = profile
             success(profile)
         }) { error in
             failure(error)

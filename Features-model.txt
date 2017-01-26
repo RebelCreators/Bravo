@@ -116,6 +116,10 @@ ServiceCharge {
   client_id
 }
 
+for services
+the dialog is created right away and when the helpers are accepted i.e in [helpers] they are added into the dialog
+
+
 can rate once per service
 helpers can rate clients once
 clients can rate any helper once
@@ -143,7 +147,7 @@ get serviceID
 createRating
 Save Rating
 Update rated user agregate
-
+{avg: 0-5, total: count}
 
 
 

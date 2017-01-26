@@ -112,20 +112,16 @@ public class RCUser: RCModel {
             return
         }
         
+        var rcUser: RCUser?
+        var rcCredential: RCAuthCredential?
         let authOperation = WebServiceBlockOp({ operation in
             WebService().authenticate(relativePath: "oauth/token", parameters: ["username": credential.user!, "password": credential.password!, "grant_type": "password"], success: { (credential: RCAuthCredential) in
                 
                 Bravo.sdk.credential = credential
-                
+                rcCredential = credential
                 WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
-                    credential.updateExpiry()
-                    if (saveToken) {
-                        let _ = credential.save()
-                    }
-                    
                     RCUser.currentUser = user
-                    NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
-                    success(user)
+                    rcUser = user
                     operation.finish()
                 }, failure: { (error) in
                     failure(error)
@@ -140,6 +136,24 @@ public class RCUser: RCModel {
         self.authOperation = authOperation
         authOperation.onFinished {
             self.authOperation = nil
+            
+            guard let user = rcUser, let credential = rcCredential else {
+                return
+            }
+            
+            RCDevice.updateCurrentDevice(success: {
+                credential.updateExpiry()
+                if (saveToken) {
+                    let _ = credential.save()
+                }
+                
+                NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
+                success(user)
+            }, failure: { error in
+                RCUser.currentUser = nil
+                RCAuthCredential.removeToken()
+                failure(error)
+            })
             }.exeInBackground()
     }
     
@@ -169,17 +183,15 @@ public class RCUser: RCModel {
             return
         }
         
+        var rcUser: RCUser?
+        var rcCredential: RCAuthCredential?
         let authOperation = WebServiceBlockOp({ operation in
             WebService().authenticate(relativePath: "oauth/token", parameters: ["refresh_token": credential.refreshToken, "grant_type": "refresh_token"], success: { (credential: RCAuthCredential) in
                 Bravo.sdk.credential = credential
-                
+                rcCredential = credential
                 WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
-                    credential.updateExpiry()
-                    let _ = credential.save()
-                    
                     RCUser.currentUser = user
-                    NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
-                    success(user)
+                    rcUser = user
                     operation.finish()
                 }, failure: { (error) in
                     RCAuthCredential.removeToken()
@@ -197,6 +209,20 @@ public class RCUser: RCModel {
         
         authOperation.onFinished {
             self.authOperation = nil
+            guard let user = rcUser, let credential = rcCredential  else {
+                return
+            }
+            
+            RCDevice.updateCurrentDevice(success: {
+                credential.updateExpiry()
+                let _ = credential.save()
+                NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
+                success(user)
+            }, failure: { error in
+                RCUser.currentUser = nil
+                RCAuthCredential.removeToken()
+                failure(error)
+            })
             }.exeInBackground()
     }
     
@@ -233,17 +259,21 @@ public class RCUser: RCModel {
     }
     
     public static func logout(success:(() -> Void)?, failure: ((RCError) -> Void)?) {
-        WebService().delete(relativePath: "oauth/logout", headers: nil, parameters: [:], responseType: .nodata, success: { (_: RCNullModel) in
-            success?()
-        }, failure: { (error) in
+        RCDevice.deleteCurrentDevice(success: {
+            WebService().delete(relativePath: "oauth/logout", headers: nil, parameters: [:], responseType: .nodata, success: { (_: RCNullModel) in
+                success?()
+            }, failure: { (error) in
+                failure?(error)
+            }).onFinished {
+                self.authOperation = nil
+                RCAuthCredential.removeToken()
+                Bravo.sdk.credential = nil
+                currentUser = nil
+                NotificationCenter.default.post(name: Notification.RC.RCDidSignOut, object: self, userInfo: nil)
+                }.exeInBackground(dependencies: [self.authOperation?.asOperation()])
+        }, failure: { error in
             failure?(error)
-        }).onFinished {
-            self.authOperation = nil
-            RCAuthCredential.removeToken()
-            Bravo.sdk.credential = nil
-            currentUser = nil
-            NotificationCenter.default.post(name: Notification.RC.RCDidSignOut, object: self, userInfo: nil)
-            }.exeInBackground(dependencies: [self.authOperation?.asOperation()])
+        })
     }
     
     static func register(user: RCUser, success:((RCUser) -> Void), failure:((RCError) -> Void)) {

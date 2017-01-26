@@ -14,11 +14,11 @@
 	<key>production</key>
 	<dict>
 		<key>clientID</key>
-		<string></string>
+		<string>dafdfdfdsfafdxadsfdsfafds</string>
 		<key>clientSecret</key>
-		<string></string>
+		<string>dsjfle32421jde1r23sdsfeqfwer21r324234fewqe3</string>
 		<key>baseURL</key>
-		<string></string>
+		<string>http://ec2-52-27-223-4.us-west-2.compute.amazonaws.com:3000</string>
 	</dict>
 </dict>
 </plist>
