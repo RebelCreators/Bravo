@@ -21,7 +21,7 @@
 import Foundation
 
 func ==(lhs: RCUser, rhs: RCUser) -> Bool {
-    return lhs.userID == rhs.userID
+    return lhs.isEqual(rhs)
 }
 
 @objc(RCUser)
@@ -37,17 +37,20 @@ public class RCUser: RCModel {
     public var avatar: String?
     public var extras: [String: String]?
     public var gender: RCGenderEnum = .none
+    private var uuid: String = {
+        return UUID().uuidString
+    }()
     
     public func profileImage(success:@escaping ((Data?) -> Void), failure:@escaping ((RCError)->Void)) {
         guard userID != nil else {
             failure(.ConditionNotMet(message: "No userID"))
             return
         }
-        guard let avatar = self.avatar else {
+        guard let file = profileImageFile() else {
             success(nil)
             return
         }
-        let file = RCFile(fileID: avatar, contentType: "image/png")
+        
         file.downloadData(success: { data in
             success(data)
         }, failure: { error in
@@ -55,19 +58,37 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
+    public func profileImageFile() -> RCFile? {
+        guard let avatar = self.avatar else {
+            return nil
+        }
+        
+        return RCFile(fileID: avatar, contentType: "image/png")
+    }
+    
+    public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data?, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
         guard userID != nil else {
             failure(.ConditionNotMet(message: "No userID"))
             return
         }
-        let file = RCFile(data: pngData, contentType: "image/png")
-        file.upload(success: {
-            let user = self.copy() as! RCUser
-            user.avatar = file.fileID
+        let user = self.copy() as! RCUser
+        user.avatar = nil
+        let onFinish = {
             user.updateUser(success: { user in
                 self.avatar = user.avatar
-                success(user)
+                success(self)
             }, failure: failure)
+        }
+        
+        guard let imageData = pngData else {
+            onFinish()
+            return
+        }
+        
+        let file = RCFile(data: imageData, contentType: "image/png")
+        file.upload(success: {
+            user.avatar = file.fileID
+            onFinish()
         }, failure: failure).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
@@ -276,12 +297,23 @@ public class RCUser: RCModel {
         })
     }
     
-    static func register(user: RCUser, success:((RCUser) -> Void), failure:((RCError) -> Void)) {
-        
+    open override var hashValue: Int {
+        guard let mID = userID else {
+            return uuid.hashValue
+        }
+        return mID.hashValue
     }
 }
 
 extension RCUser {
+    
+    open override func isEqual(_ object: Any!) -> Bool {
+        guard let model = object as? RCUser else {
+            return false
+        }
+        return hashValue == model.hashValue
+    }
+    
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         return super.attributeMappings() + ["userID" : "_id"]
     }

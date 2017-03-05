@@ -120,6 +120,7 @@ extension NSDictionary: RCParameter {
     }
 }
 
+
 @objc open class RCModel: MMModel, RModel, RCParameter {
     
     public subscript(strings: [String]) -> RCParameterDictionary {

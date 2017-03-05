@@ -22,7 +22,6 @@ import Foundation
 import Bravo
 
 public class RCService: HHModel {
-    
     public var serviceID: String? {
         return modelID
     }
@@ -81,6 +80,19 @@ public class RCService: HHModel {
         
         WebService().post(relativePath: "service/save", headers: nil, parameters: self, success: { (service : RCService) in
             success(service)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public func delete(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        guard let serviceID = self.serviceID else {
+            failure(RCError.InvalidParameter(message: "Service must have an id"))
+            return
+        }
+        
+        WebService().delete(relativePath: "service/:serviceID/delete", headers: nil, parameters: ["serviceID": serviceID], responseType: .nodata, success: { (service : RCNullModel) in
+            success()
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])

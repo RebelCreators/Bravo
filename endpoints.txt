@@ -6,7 +6,6 @@ name
 email
 birthdate
 gender
-
 }
 
 PUT /users/profile/update

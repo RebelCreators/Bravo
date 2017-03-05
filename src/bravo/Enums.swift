@@ -38,7 +38,23 @@ public final class RCGenderEnum: RCEnumerable {
         
         switch self {
         case RCGenderEnum.none:
-            return "None"
+            return ""
+        case RCGenderEnum.female:
+            return "Female"
+        case RCGenderEnum.male:
+            return "Male"
+        default:
+            break
+        }
+        
+        return ""
+    }
+    
+    public var localizedValue: String {
+        
+        switch self {
+        case RCGenderEnum.none:
+            return ""
         case RCGenderEnum.female:
             return "Female"
         case RCGenderEnum.male:

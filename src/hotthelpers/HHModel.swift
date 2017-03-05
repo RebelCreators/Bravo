@@ -21,10 +21,30 @@
 import Bravo
 
 open class HHModel: RCModel {
-
     var modelID: String?
+    private var uuid: String = {
+        return UUID().uuidString
+    }()
     
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         return super.attributeMappings() + ["modelID" : "_id"]
     }
+    
+    open override var hashValue: Int {
+        guard let mID = modelID else {
+            return uuid.hashValue
+        }
+        return mID.hashValue
+    }
+    
+    open override func isEqual(_ object: Any!) -> Bool {
+        guard let model = object as? HHModel else {
+            return false
+        }
+        return hashValue == model.hashValue
+    }
+}
+
+func ==(lhs: HHModel, rhs:HHModel) -> Bool {
+    return lhs.isEqual(rhs)
 }
