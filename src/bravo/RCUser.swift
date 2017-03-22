@@ -24,6 +24,12 @@ func ==(lhs: RCUser, rhs: RCUser) -> Bool {
     return lhs.isEqual(rhs)
 }
 
+public class PNGPhoto: RCFile {
+    public init(photoID: String) {
+        super.init(fileID: photoID, contentType: "image/png")
+    }
+}
+
 @objc(RCUser)
 public class RCUser: RCModel {
     
@@ -58,12 +64,12 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func profileImageFile() -> RCFile? {
+    public func profileImageFile() -> PNGPhoto? {
         guard let avatar = self.avatar else {
             return nil
         }
         
-        return RCFile(fileID: avatar, contentType: "image/png")
+        return PNGPhoto(photoID: avatar)
     }
     
     public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data?, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {

@@ -21,6 +21,7 @@
 import Foundation
 
 open class RCAsyncOperation: Operation {
+    public var onCancel: (() -> Void)?
     
     private var _executing = false
     private var _finished = false
@@ -66,26 +67,32 @@ open class RCAsyncOperation: Operation {
     }
     
     open override func start() {
-        if finishAfterStart {
-            self.finish()
-            
-            return;
-        }
-        if !self.isCancelled && self.isReady {
+        if !self.isCancelled {
+            self.isExecuting = true
             self.execute()
+        } else {
+            self.isFinished = true
         }
     }
     
     open override func cancel() {
         if !self.isCancelled && !self.isFinished {
-            self.isFinished = true
+            var shouldFinish = false
+            if isExecuting {
+                shouldFinish = true
+                isExecuting = false
+            }
+            self.isCancelled = true
+            if shouldFinish {
+                self.isFinished = true
+            }
+            onCancel?()
         }
     }
     
     open func finish() {
-        if !self.isReady {
-            finishAfterStart = true
-            return;
+        if self.isExecuting {
+            self.isExecuting = false
         }
         if !self.isCancelled && !self.isFinished {
             self.isFinished = true

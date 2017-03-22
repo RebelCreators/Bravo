@@ -52,6 +52,12 @@ open class RCServiceRequest: HHModel {
     public var helperStatus: [RCHelperStatus] = []
     public var status: RCRequestStatusEnum = .pending // enum
     public var serviceCharge: NSNumber?
+    public var expectedCharge: NSNumber?
+    public var dialogID: String?
+    
+    open override class func attributeMappings() -> [AnyHashable : Any]! {
+        return super.attributeMappings() + ["dialogID" : "dialogId"]
+    }
     
     open override class func listAttributeTypes() -> [AnyHashable : Any]! {
         return (super.listAttributeTypes() ?? [:]) + ["helpers": RCUser.self, "helperStatus": RCHelperStatus.self]

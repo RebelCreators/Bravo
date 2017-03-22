@@ -21,12 +21,6 @@
 import Foundation
 import Bravo
 
-public class PNGPhoto: RCFile {
-    init(photoID: String) {
-        super.init(fileID: photoID, contentType: "image/png")
-    }
-}
-
 public class RCUserProfile: HHModel {
     
     static public var currentProfile: RCUserProfile?
