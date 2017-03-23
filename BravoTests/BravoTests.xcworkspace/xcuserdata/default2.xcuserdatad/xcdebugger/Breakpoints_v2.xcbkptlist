@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "506592358.347484"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "login(credential:saveToken:success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "506592358.347484"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "login(credential:saveToken:success:failure:)"
             landmarkType = "7">
             <Locations>
@@ -3247,11 +3247,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "login(credential:saveToken:success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3263,11 +3263,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "506735739.273772"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "login(credential:success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3279,11 +3279,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "506735740.268105"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "login(credential:success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3375,7 +3375,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "resume(success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../src/bravo/RCUser.swift"
+            timestampString = "511951076.175554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "resume(success:failure:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../src/bravo/RCUser.swift"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "218"
@@ -3391,11 +3423,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "resume(success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3407,11 +3439,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "resume(success:failure:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3423,43 +3455,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "resume(success:failure:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
             endingLineNumber = "197"
-            landmarkName = "resume(success:failure:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
             landmarkName = "resume(success:failure:)"
             landmarkType = "7">
             <Locations>
@@ -3503,11 +3503,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "resume(success:failure:)"
             landmarkType = "7">
             <Locations>
@@ -3551,11 +3551,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "canRefresh()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3567,11 +3567,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../src/bravo/RCUser.swift"
-            timestampString = "507034194.024683"
+            timestampString = "511951076.175554"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "resume(success:failure:)"
             landmarkType = "7">
          </BreakpointContent>

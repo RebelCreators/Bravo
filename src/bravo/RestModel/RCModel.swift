@@ -147,7 +147,7 @@ extension NSDictionary: RCParameter {
     
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         var attributes = super.attributeMappings()
-       
+        
         for key in ommitKeys() {
             attributes?.removeValue(forKey: key)
         }
