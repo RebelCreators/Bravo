@@ -260,7 +260,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
     
     func test00009UUUpdateCurrentUserLocation() {
         let ex = expectation(description: "")
-        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: 37.336152840875776,
+        let location = RCLocation.location(coordinates: CLLocationCoordinate2D(latitude: 37.336152840875776,
                                                                                    longitude: -121.89452987346158))
         location.updateLocation(success: {
             ex.fulfill()
@@ -339,7 +339,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
         
         ex = expectation(description: "udate location")
-        let location = RCUserLocation.location(coordinates: CLLocationCoordinate2D(latitude: 36.9688209872153,
+        let location = RCLocation.location(coordinates: CLLocationCoordinate2D(latitude: 36.9688209872153,
                                                                                    longitude: -122.03132629394531))
         location.updateLocation(success: {
             ex.fulfill()

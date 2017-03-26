@@ -22,13 +22,13 @@ import Foundation
 import CoreLocation
 import Bravo
 
-public class RCUserLocation: HHModel {
+public class RCLocation: HHModel {
     
-    internal var lat: String?
-    internal var lng: String?
+    public var lat: String?
+    public var lng: String?
     
-    public static func location(coordinates: CLLocationCoordinate2D) -> RCUserLocation {
-        let userLocation = RCUserLocation()!
+    public static func location(coordinates: CLLocationCoordinate2D) -> RCLocation {
+        let userLocation = RCLocation()!
         userLocation.lat = "\(coordinates.latitude)"
         userLocation.lng = "\(coordinates.longitude)"
         

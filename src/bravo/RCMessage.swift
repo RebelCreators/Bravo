@@ -30,6 +30,7 @@ public class RCMessage: RCModel {
     public var senderId: String?
     public var dialogId: String?
     public var date: Date?
+    public var extras = [String: String]()
     
     internal var payloads = [RCPayloadWrapper]()
     

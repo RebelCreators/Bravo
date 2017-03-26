@@ -13,10 +13,10 @@
 		03BF02B7FB3D52809326D05F47C27570 /* NSDictionary+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 186C0A0E9449A275C789756443E58C21 /* NSDictionary+MTLManipulationAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		04D032926024284BB02ED0565A7A8056 /* MTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E008917446F7A3D5A56C11D2CD94E4 /* MTLModel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0630ED2BF723179EC8DC8A7F1098CAAA /* SocketIOClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F2AC0C7183DBC6D89E6BD435E3446E /* SocketIOClientSpec.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		06837C9A6E7C7FBB0924F0288ED2342B /* HHSDK-iOS10.2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB33177831FBB2F7264884F2DB881570 /* HHSDK-iOS10.2-dummy.m */; };
 		0691439BB3475F7D29E7979E6FE6C0FF /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3B02B0C1A787686AA4CE621505F94 /* Mantle.framework */; };
 		06C3CCD5EC1954B99E819BA80A3ED281 /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D6F1927D08EC4BC24DF98C49989823 /* SocketEventHandler.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		071FAB799B5E4753C73CEB7DC17D5EED /* NSArray+MTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6ACC0099C6601EB736533136BF98841A /* NSArray+MTLManipulationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09C4C9E705922D87C1F12539B2110202 /* RCUserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D51125476B074CB124C84F24BAC32 /* RCUserReview.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0A0CE9A0F367AD06887AE68A3F0DA73B /* MMEnumAttributeContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D38AE45D5F6763021D134AABCA50669 /* MMEnumAttributeContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C4E81316B790DFCA9F95C23FFB79A11 /* RCAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FE3FBB74890D5B5D81DC6AF4BA6DE /* RCAuthCredential.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0E40FB1332A78CA3AAD4BEF65BCCE133 /* Webservice+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1EA98A2BA0450B76C34908128F003 /* Webservice+Upload.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -32,10 +32,12 @@
 		1321487A2152FB3EA2FB93EA22042439 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7FCD6380E433DAAB4B84465C1BC20 /* KeychainWrapper.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1461938740BAD3DC2F3E8E4AE52BE37D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92AAFBFB96C50A7EC17B61CBD371EDC /* Alamofire.framework */; };
 		14FDB04AF758F967BCCAED2C72302817 /* Bravo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B08F5A1A57BBBA57C36EC5A4B31D670 /* Bravo.framework */; };
+		152A38CD3966B23E53CAB9D2CD7E5087 /* HHModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E4E97DB61DDC433367AAF6CABA49DB /* HHModel.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		15E029BDD4DC6091A272925B932530AE /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA823958DE4164AEBBAB97AEF95680 /* Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		16CD35FCC774CFACA0C89D3205379FFB /* HHSDK-iOS10.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFF487188A74B04D1A61F6D286AEF29 /* HHSDK-iOS10.0-dummy.m */; };
 		171391BE0DA8B19363C736BCAA9B8418 /* SocketStringReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F746CCC6C956DE4BC61441F4F4FDA13 /* SocketStringReader.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		195A34357BC44F056EB0E46567F643AD /* HHModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0DC64E5F40A06180118DA56B5F4E2E /* HHModel.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		198C687A0256FFF8D5434EF34AC08314 /* MTLReflection.h in Headers */ = {isa = PBXBuildFile; fileRef = DFF934EE8E0405ECD4C0473B3CA677CB /* MTLReflection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A5E3EC9F4863F5EDC77137366BC5FA7 /* RCServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8223D06E176C17E7B84B090143B15042 /* RCServiceRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1C6A647B719FD2D9590193972A822148 /* NSArray+MTLManipulationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B9008C8363AA2518F16C1B0453D9E1 /* NSArray+MTLManipulationAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1C874E2A1C123F2DEB683FDCA618807C /* Mantle-iOS10.2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C643E3E48509DBF347371502FF47EF /* Mantle-iOS10.2-dummy.m */; };
 		1D8FCF68206B135CEDD4A78B5071AA2D /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93452007E084AAA9A5CC2C3F099C15EB /* SwiftKeychainWrapper.framework */; };
@@ -51,27 +53,28 @@
 		2681E877C139CDC4E2AF03D9F79EB0D2 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36619454DBCBCDA80ACCB0E599D8B6E /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2691DC37C382DAE68EDEAB5324AEDA11 /* MMModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E0CD7441C6F264EBF3AF9AC78729B /* MMModel.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2B6ED18A6D3D300FC8A38B5A8525A36C /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2599CCBF6D57FF887DA2A9C61B9EF25B /* SocketIO.framework */; };
-		2E514D8F7856D8ADE1A88AE03CA5DA7D /* RCUserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D26BB6733E5B8BC1E42ECEE1A5040 /* RCUserReview.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2F5B29CF128BC8E0B21336C9C9696EBC /* MTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C114EF6836EE0C99871B985D6F4F55 /* MTLModel+NSCoding.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2FC6CB50C8D21F7D4C118785821D0A82 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BD1B24E45E8456BCD9947784FF766D /* NetworkReachabilityManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		30AEE5613AD4DC196AE74B90CDE06861 /* Alamofire-iOS10.2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8081D49AF192A14D8B523945ED0DB271 /* Alamofire-iOS10.2-dummy.m */; };
+		321CD7F8612580B1879BE4F4A70FF6F4 /* RCServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8223D06E176C17E7B84B090143B15042 /* RCServiceRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3347A1BF0C3A46395662593E4081066A /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D05BF5092A1856FB200C93E5BB38799F /* NSObject+MTLComparisonAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3457B1F02CCEB41311976FDEFC9EDF28 /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C37D41C3F023A33BDB83EF52E7DC1C /* NSValueTransformer+MTLInversionAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		34D47BD46DD7F87947FAC6FF364EFAAD /* RCDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE153C753338CCAB753B902E0F7934 /* RCDialog.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		35B1EF22526F3B393F809B7B4748F2C5 /* RCAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F747A494CC883C843E70A217169171 /* RCAsyncOperation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		35D6C90C02C866DE91DF0A900AB4E715 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98780EF1663680C510FA363082EF88F9 /* Foundation.framework */; };
 		36C9643475EFFC70204F815DD813A44A /* NSValueTransformer+MTLPredefinedTransformerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D3173C9EAE81756B815049524EDF4DFC /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		36F6E4FB51837C558161B1181ED11B40 /* RCServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C76577D1E7B136176ECFB6454C5408 /* RCServiceRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		37315F832A7A7B2223828E4153C9D145 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = E878C54C1635521DCE9470FAC5052A38 /* metamacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3744F2FC1769F3EED1AEB8694F889AFE /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB383642F8D03C16C55A3B7F1D0B9B73 /* Enums.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		37C112F2A33C30B1F3337034BFDBF56F /* MTLTransformerErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF4F02CDF8E76A852B7E68F455A97CC /* MTLTransformerErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37C92A9A4F586A34B26377ED5DCF6A01 /* MMModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 750295912740C6A398C7CFE3F81192ED /* MMModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		396CAD473E4B003897C8DEC3D102B584 /* Socket.IO-Client-Swift-iOS10.2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1794D5305E9D27F2E05BC47AE232BD /* Socket.IO-Client-Swift-iOS10.2-dummy.m */; };
 		399316E990E8A5799471C42A93FD292B /* SocketEnginePollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8950BBDCE2FD92B80A6151115A5E9B /* SocketEnginePollable.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		39B3134938E60E68AB3729E0B3346BAB /* RCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317B701A52B46559183BB69734D6B850 /* RCService.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3A78DE18BFA3FAF7096EE65C98171881 /* EXTRuntimeExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0664F134540B7DF107BCEA22117F5831 /* EXTRuntimeExtensions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3AF820A220E6A7D359AA833F74B4B73B /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93452007E084AAA9A5CC2C3F099C15EB /* SwiftKeychainWrapper.framework */; };
 		3BC1C753A40366B9684206AE7422C39E /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B1598AADB5CA340879F6298E88BD9 /* SocketEnginePacketType.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3C5694AD3BB53D246228D6C55568B504 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98780EF1663680C510FA363082EF88F9 /* Foundation.framework */; };
+		3C5847BD7C6E78F5A2F7ECF840F635FF /* RCUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C38023898371023100DFAA9EDA2A5 /* RCUserProfile.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3D33F6FC212EACABB3423153D13B0954 /* RCFileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861E100CAB115F8402C189B6FAAE083A /* RCFileInfo.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		3DBF23B194A87415D4207DF19FBC20AA /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2599CCBF6D57FF887DA2A9C61B9EF25B /* SocketIO.framework */; };
 		3EE84B0DC25EDA7FC6480C1DD8EDC48A /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D46FEBFDF6DC1F18C75067F74A9CB /* MultipartFormData.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -91,7 +94,6 @@
 		4DB95308984EDC78D36E9C5335700D3D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B92AAFBFB96C50A7EC17B61CBD371EDC /* Alamofire.framework */; };
 		4DC72EE5E8EB12BCA78EE1C3568DC0FE /* Mantle.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D16219FB7B6F861AE8FEB092CEEE0AA /* Mantle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4EE6B10A386D0C1A470490B751C4D0C4 /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7D7B8FE0A404A24749B2F1CEB3AB31 /* SSLSecurity.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		4F6B3A007F7FEDB37D549C754197FF2E /* RCUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC133123788B9CC2AB686258E59041AC /* RCUserProfile.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		5113E00BFD15492273DA197DCDE409D2 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACC9CA914D7813CF74A3BEE7361763C /* SessionDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		51A39996F39BA5FE1363257F957628E8 /* RCEnumerable.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F5CB11AF1F635273913CBCFE139FC1 /* RCEnumerable.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		52290B013076281F2A00B89A46A89BA9 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7FCD6380E433DAAB4B84465C1BC20 /* KeychainWrapper.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -117,6 +119,7 @@
 		61C241133CB82F3545F61001EF971177 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214093CAC56AD79466C08515E09167C3 /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6211F4FF0DE18DE6D5ADC015A7611FAE /* NSValueTransformer+MTLInversionAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C37D41C3F023A33BDB83EF52E7DC1C /* NSValueTransformer+MTLInversionAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6235D5E047DCD4618EF64101CD9E69C3 /* RCUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC961A0D28B66DF54A4A0FA2E5D7BD2C /* RCUser.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		62D8D2C88BE1B47119BE684174E9A744 /* RCUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55C38023898371023100DFAA9EDA2A5 /* RCUserProfile.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		638B9BFA0F0DC0606583C6119F4FBD01 /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72257EE77D56E99FD8E912A157C8671F /* SocketPacket.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		63C22858142C32AE780868F547E49464 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAA823958DE4164AEBBAB97AEF95680 /* Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		64EF03C7CAA24220BBFC521658CCC5F3 /* SocketEnginePacketType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B1598AADB5CA340879F6298E88BD9 /* SocketEnginePacketType.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -130,13 +133,14 @@
 		68CF4F2C6DA7DC27C22A388D875CCF4F /* MTLModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 654553504120621A3810A9D4AB2E2474 /* MTLModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68D4C241C25B05BA584C723DC874556E /* RCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88C69FA654AB0571BA41771190A987 /* RCModel.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6904947DADDF2491DCFDE39459FAE407 /* HHSDK-iOS10.2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 63F56532EFCFEF6E0128BDCC8B70FCD8 /* HHSDK-iOS10.2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6920BB4E426ECC9D5801AFABAFDBB846 /* HHModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E4E97DB61DDC433367AAF6CABA49DB /* HHModel.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		694D65F660192EA1E0B1383733FC7063 /* RCAuthCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60FE3FBB74890D5B5D81DC6AF4BA6DE /* RCAuthCredential.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6A3A8CB7861BFC7233DE6D5965CF5B32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98780EF1663680C510FA363082EF88F9 /* Foundation.framework */; };
 		6A82D97E75A7CE721BA1C983C6D57123 /* MMValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2205098B479B1F59E69D5CD4E42331F6 /* MMValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B3A75540CBE39CF63F7072F8E74F987 /* MTLJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC3F1A21B5A596149CAE43B11D45B2B /* MTLJSONAdapter.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6CF82360808FD4A48A2B00C3866DDB8D /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3B8E6AD2C19DE7E3E4F3CDEF73B5B /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6D4FFAAE9BDEBF5A21D95D971EF49A3A /* MTLValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 455540DC5910E7137EEFBC91B9D93F7E /* MTLValueTransformer.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		6DD924E63FA094B5A18A52F637429D4E /* RCUserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50D26BB6733E5B8BC1E42ECEE1A5040 /* RCUserReview.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6D98E1B370AB9C80AF564507C0DBBC67 /* RCUserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4D51125476B074CB124C84F24BAC32 /* RCUserReview.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6E08A99F5E4BB4B87DD578E64F36B111 /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AB7EF16A5C7D07D3E7A0F9FBE82D28 /* ServerTrustPolicy.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6E2EE4FCE46FC54DA2A8E71A656DA82C /* NSDictionary+MTLJSONKeyPath.h in Headers */ = {isa = PBXBuildFile; fileRef = A0E073CD4E9E08FD895F305349E61EE3 /* NSDictionary+MTLJSONKeyPath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E647C1ED45054B5531C6311E681B7AA /* NSDictionary+MTLManipulationAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 73DC308B962EA0D9DA8AA86CCC805824 /* NSDictionary+MTLManipulationAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -144,6 +148,7 @@
 		7017FA80B02F33E7BB7B0C29C727BCA1 /* NSObject+MTLComparisonAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D05BF5092A1856FB200C93E5BB38799F /* NSObject+MTLComparisonAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		70242DDDA46F914F7FCC1546AD2BA018 /* MTLModel+NSCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 38C114EF6836EE0C99871B985D6F4F55 /* MTLModel+NSCoding.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7044E2C6A2F405DACD72BDED18007ECB /* MTLTransformerErrorHandling.h in Headers */ = {isa = PBXBuildFile; fileRef = AEF4F02CDF8E76A852B7E68F455A97CC /* MTLTransformerErrorHandling.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		71D8189188399567E99E78079FBB07AA /* HHSDK-iOS10.2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB33177831FBB2F7264884F2DB881570 /* HHSDK-iOS10.2-dummy.m */; };
 		71F3E1A722B9C9A0A17A3F9331003525 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CF37836A5D36ACDB333C826A5016C /* Response.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7205D679DB6B378EA9B0A58788574900 /* RCEnumerable.m in Sources */ = {isa = PBXBuildFile; fileRef = 31F5CB11AF1F635273913CBCFE139FC1 /* RCEnumerable.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		723243F24625F8FD3B5151E7117A0CBE /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1BC3F0ED15955E24E4B64E9B3874A01 /* KeychainItemAccessibility.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -156,7 +161,6 @@
 		769C651690D5BFF6A330553DA07F8EB0 /* Mantle-iOS10.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AFF645B361714E5242DBF630E6C17BF /* Mantle-iOS10.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		775E0519CC252A39A83E59D1AADCD782 /* SocketIOClientOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64516C4DE950E270CF86ECCDFC02365E /* SocketIOClientOption.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		794CBA32F7106343D54284A847991736 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD3B02B0C1A787686AA4CE621505F94 /* Mantle.framework */; };
-		7A2C18D80A8B1140B5F4508076184F82 /* RCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34FBBDD501A8B3877E11AE8EB372B5 /* RCService.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7A53FF7C06DBF79194AFB3D7BF08FF97 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F42E053AB371C3511FB4900E393AB1 /* SocketAckEmitter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7DC18147D6F612AA421C5B7ED1B2B10B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA3B8E6AD2C19DE7E3E4F3CDEF73B5B /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		7E1FC7AFCDBB2BCD8AB07CC22C97970E /* RCSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4216661E99DF7472D5AA58C96667000 /* RCSocket.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -175,6 +179,7 @@
 		8F3967F754F748D30C48347CEAB7503E /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36619454DBCBCDA80ACCB0E599D8B6E /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		8FA3D23A632F3631D297252DA85E32A6 /* EXTRuntimeExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = C8A6DD12885325416FCF4AE73D36CA53 /* EXTRuntimeExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8FE5A169F467182CC8EE96FC7C339508 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = 1387AA637A34D6E709E001158FB6276C /* EXTScope.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		8FEE45B964E819F33BA05CB969722D57 /* RCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317B701A52B46559183BB69734D6B850 /* RCService.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		90028A342D0699EFBD8212FE98C03D2C /* NSDictionary+MTLMappingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B1787849BEEB35B3D19E7157B54AB6 /* NSDictionary+MTLMappingAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		900BB7A0BE847A641E0AA589AA96F309 /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 374EB9A01A8F91964C0F4640EA542337 /* MTLReflection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		900EE5FAFE9D64394DBEF64165E789A2 /* MTLModel+NSCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = EB4A153B12590FCD8A90B4398284A5B7 /* MTLModel+NSCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -197,9 +202,7 @@
 		A2C1B3946F6B6A2667189BFF5D183362 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98780EF1663680C510FA363082EF88F9 /* Foundation.framework */; };
 		A478BFA7BAC47CF3E627CAFE0480BD36 /* NSDictionary+MTLMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A92FB85DD5658654069557EACDBE126 /* NSDictionary+MTLMappingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A537FBA9D99EB145B4098682CCFDC44A /* EXTScope.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3B5EA18F40C56DFF810D75A08112CB /* EXTScope.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A666CB9B3773C5547D9B6A1324ECAEBC /* HHSDK-iOS10.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BDFF487188A74B04D1A61F6D286AEF29 /* HHSDK-iOS10.0-dummy.m */; };
 		A6E9EED10F0D539A187A69E0C0DC1DA7 /* RCFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD708ED89D9BA2227973441D13641055 /* RCFile.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A74A37EFEB381A9C92D0E4B55ACCBA61 /* RCUserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC133123788B9CC2AB686258E59041AC /* RCUserProfile.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A7DA8815B081BFB13F4C4E2EF5B126CB /* NSDictionary+MTLMappingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A92FB85DD5658654069557EACDBE126 /* NSDictionary+MTLMappingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A80555EFC6DA44DF269D37EB69475411 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 063C5185D8223FA7AA26569A84D21F60 /* SocketTypes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A842532B5CE5EFBD74AD61027F2B7D5B /* NSObject+MTLComparisonAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = EECB6FB5347E1754E572DD42EC0E9659 /* NSObject+MTLComparisonAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -207,7 +210,6 @@
 		A9899ECEEBE46C29D7B627A5A5226154 /* SocketIOClientConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065C16F6766669E570953C37569D23ED /* SocketIOClientConfiguration.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		A9CF982AC3EEFD653E60622DC74F7272 /* metamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = E878C54C1635521DCE9470FAC5052A38 /* metamacros.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		A9D45EE4AE0534B575CF3D047A624710 /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FF2B927DCD9CFAFA2F2C38BB3C765C /* SocketEngineClient.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		AABB10CB3414204C27BC69BAB7FEBE2A /* RCUserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9832A9EAF57DF49C598A61CC9933C0CB /* RCUserLocation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		AD11462D1BCE74CF3C8956CDDFDE7CA3 /* Bravo-iOS10.2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BD05B6E7B7E57CDAD1258D8F86C39209 /* Bravo-iOS10.2-dummy.m */; };
 		AD89C87C28E82E38DC0EB9BB38832128 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF46EB358F786A3BD222A5F9CF946F72 /* SocketAckManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		AD981DF0ECCDCC92939870A8784C662F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98780EF1663680C510FA363082EF88F9 /* Foundation.framework */; };
@@ -215,7 +217,6 @@
 		AE7F6D2BC7112EB95040DFBB21CF49F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98780EF1663680C510FA363082EF88F9 /* Foundation.framework */; };
 		AF869CE5A848D4517F1884C7D77F4760 /* SwiftKeychainWrapper-iOS10.2-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9937661DC87C10566AF3B45213A9E1 /* SwiftKeychainWrapper-iOS10.2-dummy.m */; };
 		AFD804FF7F4A590C62A66F25B6061DF3 /* RCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF88C69FA654AB0571BA41771190A987 /* RCModel.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B0C45C0B28D19E2097B94E253F4EAD1C /* RCUserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9832A9EAF57DF49C598A61CC9933C0CB /* RCUserLocation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B32BAD664101F200A5CDFFC74A5EFC08 /* RCWebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8308E1023C12ECA16DF92BF07A8FA49 /* RCWebRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B38E68FC758C54E13471EA6F7DD1FFA8 /* MMValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB1731FCF2426F2786297FA0D0E5601 /* MMValueTransformer.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B391079BABB2E63FC54F19ECC5643445 /* Webservice+Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1EA98A2BA0450B76C34908128F003 /* Webservice+Upload.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -225,7 +226,6 @@
 		B62E37F0AB6A5F11B2844897400047C8 /* Bravo.h in Headers */ = {isa = PBXBuildFile; fileRef = E64084936E17FE8038FFE029DCC059EF /* Bravo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6DF10C77F140A8891526A9C4100464B /* SwiftKeychainWrapper-iOS10.2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 565575AE9D5A6247AA0A426174FB9B64 /* SwiftKeychainWrapper-iOS10.2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B76E635C315AF761CF65E35101412F42 /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72257EE77D56E99FD8E912A157C8671F /* SocketPacket.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		B827A97347425FDFB709668CD28946A4 /* HHModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0DC64E5F40A06180118DA56B5F4E2E /* HHModel.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B91341386122E4078948A88554325C72 /* RCDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE153C753338CCAB753B902E0F7934 /* RCDialog.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B96C4217AEBFF5D40CF7EAA22FAD29BA /* NSValueTransformer+MTLInversionAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 73AE469D21F94379D8599FDEAEDBCEE8 /* NSValueTransformer+MTLInversionAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA186EBB8AA02EA01B79084A67263934 /* Socket.IO-Client-Swift-iOS10.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9940CDE285EF968C624244C69669FD /* Socket.IO-Client-Swift-iOS10.0-dummy.m */; };
@@ -237,6 +237,7 @@
 		BEFE185BC89620D891EF06F68791AADB /* NSValueTransformer+MTLPredefinedTransformerAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = C024955D083E9A519603B6760AD20280 /* NSValueTransformer+MTLPredefinedTransformerAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BF6E5B017738368DC6E1E2A5253CD6AC /* SwiftKeychainWrapper-iOS10.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D9D67ED9E3D7B9B1C9A55F9334A313 /* SwiftKeychainWrapper-iOS10.0-dummy.m */; };
 		C0AB4A672B3D89294FA2DF37CEAF3BC5 /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F42E053AB371C3511FB4900E393AB1 /* SocketAckEmitter.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C173E99D646338072027CF6569A03A9C /* RCLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC06DBACCEAA5112D932B5B7A19C0D96 /* RCLocation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C2F79308F61F8DCACE074DAC099EB338 /* SocketExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120BFCAE1CAE920860643A9886F04C9 /* SocketExtensions.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		C4FCA499F8C606AA917A792492528C1F /* EXTKeyPathCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = F817DA32E6E07A114E7B58B758C032F3 /* EXTKeyPathCoding.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C626DAA632D3ED0ABD5C6BC64684DDA6 /* Bravo.h in Headers */ = {isa = PBXBuildFile; fileRef = E64084936E17FE8038FFE029DCC059EF /* Bravo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -278,13 +279,13 @@
 		E2C5CC879E38CEAFF6E40FA25FAA84CE /* SocketEngineSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44041F931134CD0F5B0AD5B1FB93F51 /* SocketEngineSpec.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E40BBD91DCD2D3299CBE6A30658985B6 /* RCDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8CB7782A5B1F8D18455FE9F455F798 /* RCDevice.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		E5396AB80AEF93557BFE0AA86E3A8CEF /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315F175D20D66EB7CFEB5A1DCC547B5D /* Timeline.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E72AAE9F6042D9E4C01C41852A2E6BCE /* RCLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC06DBACCEAA5112D932B5B7A19C0D96 /* RCLocation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EA9316CF4AB94629C1214E759CC573B7 /* Bravo-iOS10.2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E0FD2F0607D11B5F8C7C44AF86B0C07B /* Bravo-iOS10.2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EB19E23A921DC48DE1F629D1317132E3 /* Pods-BravoTestsUnitTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E28B228FEB9609DF8091FB5F07B108F0 /* Pods-BravoTestsUnitTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EB443E448D3C76A6CE8998294D44DC2C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B5742F37B0928DC2983868789C92D5 /* Config.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EBEC13F322CF5820FC35410AC713081B /* RCSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4216661E99DF7472D5AA58C96667000 /* RCSocket.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		ECCB076A2377E5B4074073BF54E809AD /* SocketClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC03F9F3BFDF79B8E3B3772973FA776 /* SocketClientManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		ED0FFC25FC3393E43E1E00D4DFBB3B29 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ED3FF90C177A67DA4D2B7E458C4669 /* SocketEngine.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EF4068FD28746FAE9BDFD57372910F7C /* RCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F34FBBDD501A8B3877E11AE8EB372B5 /* RCService.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F297519282E04969614C59EA048BAFAB /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6703440355D3CB68B0B261B89B1074A3 /* Result.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F2C377F2E0F3465BC66B35930218498D /* MTLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E008917446F7A3D5A56C11D2CD94E4 /* MTLModel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F307C96F3062B267C8F3A02C3200BA3F /* WebServiceOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8945D2048615229F0035BC0B8EDEF7B /* WebServiceOp.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -296,7 +297,6 @@
 		F8A9D0AA9339350C4E94DE3DEBC6C26C /* RCValueTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADF85C9C37066A88B242F5A688F3B4 /* RCValueTransformer.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		F9F70EDB7A3A4020C63758FC69C118A2 /* MTLReflection.m in Sources */ = {isa = PBXBuildFile; fileRef = 374EB9A01A8F91964C0F4640EA542337 /* MTLReflection.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		FB91C345B72D892F3C64D8D6219D5FD6 /* NSDictionary+MTLJSONKeyPath.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A724EB30FD4FE923029D3EAD6CAACA /* NSDictionary+MTLJSONKeyPath.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		FC31303D55EAF832775B32087DACED1B /* RCServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40C76577D1E7B136176ECFB6454C5408 /* RCServiceRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		FC55FC69C2601BD8241FEB27FF3EBE99 /* MTLValueTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ADC8B199CC89E7B71029945C8549163 /* MTLValueTransformer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCF36331CB3D1A08B0D7C1E1BF1FCF7B /* ObjectID.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED427FAEF1C62C1973B5E8D773B50DC1 /* ObjectID.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		FF2BEE62169E791454621A9D8B3DAC4C /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D46FEBFDF6DC1F18C75067F74A9CB /* MultipartFormData.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -535,6 +535,7 @@
 		186C0A0E9449A275C789756443E58C21 /* NSDictionary+MTLManipulationAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+MTLManipulationAdditions.m"; path = "Mantle/NSDictionary+MTLManipulationAdditions.m"; sourceTree = "<group>"; };
 		196A82D8C1AA3F17FFB15B50B1196968 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		1B01B75788B2ECE081EB408E664787A5 /* Pods-BravoTestsUnitTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BravoTestsUnitTests-resources.sh"; sourceTree = "<group>"; };
+		1B4D51125476B074CB124C84F24BAC32 /* RCUserReview.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCUserReview.swift; sourceTree = "<group>"; };
 		1C0B0A932C018DDFE693C7DF413AE908 /* Pods-BravoTestsUnitTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BravoTestsUnitTests-frameworks.sh"; sourceTree = "<group>"; };
 		1D62419A63AF607C6896EB46320B0681 /* Alamofire-iOS10.2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Alamofire-iOS10.2-prefix.pch"; path = "../Alamofire-iOS10.2/Alamofire-iOS10.2-prefix.pch"; sourceTree = "<group>"; };
 		1DF91CF4B1E401738154EABEAB1CF7E1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -547,12 +548,14 @@
 		284D46FEBFDF6DC1F18C75067F74A9CB /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		28713C47995AFFDB53C8A9559705AF15 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftKeychainWrapper.framework; path = "SwiftKeychainWrapper-iOS10.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28D6F1927D08EC4BC24DF98C49989823 /* SocketEventHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEventHandler.swift; path = Source/SocketEventHandler.swift; sourceTree = "<group>"; };
+		29E4E97DB61DDC433367AAF6CABA49DB /* HHModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HHModel.swift; sourceTree = "<group>"; };
 		2BE1A8C4F436B21194C7374DE5C42A79 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../HHSDK-iOS10.2/Info.plist"; sourceTree = "<group>"; };
 		2D16219FB7B6F861AE8FEB092CEEE0AA /* Mantle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Mantle.h; path = Mantle/Mantle.h; sourceTree = "<group>"; };
 		2E927464F0186E4F178F2168F2620A42 /* Socket.IO-Client-Swift-iOS10.2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Socket.IO-Client-Swift-iOS10.2.xcconfig"; path = "../Socket.IO-Client-Swift-iOS10.2/Socket.IO-Client-Swift-iOS10.2.xcconfig"; sourceTree = "<group>"; };
 		3079952DD335EEA558A597A362D7BFF4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		314B76B83A9680F5C93B85839619D4B7 /* Socket.IO-Client-Swift-iOS10.2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Socket.IO-Client-Swift-iOS10.2-prefix.pch"; path = "../Socket.IO-Client-Swift-iOS10.2/Socket.IO-Client-Swift-iOS10.2-prefix.pch"; sourceTree = "<group>"; };
 		315F175D20D66EB7CFEB5A1DCC547B5D /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		317B701A52B46559183BB69734D6B850 /* RCService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCService.swift; sourceTree = "<group>"; };
 		31F5CB11AF1F635273913CBCFE139FC1 /* RCEnumerable.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = RCEnumerable.m; sourceTree = "<group>"; };
 		32B45666CE094C2A48F1C3285C2F30C2 /* HHSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HHSDK.framework; path = "HHSDK-iOS10.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33ED046BD274A6618C2AC06A9CAEC764 /* RCEnumerable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = RCEnumerable.h; sourceTree = "<group>"; };
@@ -569,7 +572,6 @@
 		3C897AFE1A6B11FDAD6E7DA19D185B36 /* Socket.IO-Client-Swift-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Socket.IO-Client-Swift-iOS10.2-umbrella.h"; path = "../Socket.IO-Client-Swift-iOS10.2/Socket.IO-Client-Swift-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
 		3D1794D5305E9D27F2E05BC47AE232BD /* Socket.IO-Client-Swift-iOS10.2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Socket.IO-Client-Swift-iOS10.2-dummy.m"; path = "../Socket.IO-Client-Swift-iOS10.2/Socket.IO-Client-Swift-iOS10.2-dummy.m"; sourceTree = "<group>"; };
 		3D38AE45D5F6763021D134AABCA50669 /* MMEnumAttributeContainer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MMEnumAttributeContainer.h; sourceTree = "<group>"; };
-		40C76577D1E7B136176ECFB6454C5408 /* RCServiceRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCServiceRequest.swift; sourceTree = "<group>"; };
 		417441B2EE51ADA58AC72CCAC90D09B4 /* Socket.IO-Client-Swift-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Socket.IO-Client-Swift-iOS10.2.modulemap"; path = "../Socket.IO-Client-Swift-iOS10.2/Socket.IO-Client-Swift-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		43D03ED475A08642B732048676CE33CE /* RCParameter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCParameter.swift; sourceTree = "<group>"; };
 		43E471F79EAA45AA3A6A35D35DA5030D /* SwiftKeychainWrapper-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "SwiftKeychainWrapper-iOS10.2.modulemap"; path = "../SwiftKeychainWrapper-iOS10.2/SwiftKeychainWrapper-iOS10.2.modulemap"; sourceTree = "<group>"; };
@@ -577,9 +579,7 @@
 		455540DC5910E7137EEFBC91B9D93F7E /* MTLValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLValueTransformer.m; path = Mantle/MTLValueTransformer.m; sourceTree = "<group>"; };
 		4CB1731FCF2426F2786297FA0D0E5601 /* MMValueTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MMValueTransformer.m; sourceTree = "<group>"; };
 		4CD81E752FCFD33995BE769B967DAC22 /* Pods-BravoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BravoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4D0DC64E5F40A06180118DA56B5F4E2E /* HHModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HHModel.swift; sourceTree = "<group>"; };
 		4E1E0CD7441C6F264EBF3AF9AC78729B /* MMModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MMModel.m; sourceTree = "<group>"; };
-		4F34FBBDD501A8B3877E11AE8EB372B5 /* RCService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCService.swift; sourceTree = "<group>"; };
 		4F746CCC6C956DE4BC61441F4F4FDA13 /* SocketStringReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketStringReader.swift; path = Source/SocketStringReader.swift; sourceTree = "<group>"; };
 		519F090ACBE18FECC87BEF5D6728D2D8 /* Pods-BravoTestsUnitTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BravoTestsUnitTests-dummy.m"; sourceTree = "<group>"; };
 		51E008917446F7A3D5A56C11D2CD94E4 /* MTLModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MTLModel.m; path = Mantle/MTLModel.m; sourceTree = "<group>"; };
@@ -630,6 +630,7 @@
 		7D08F76E0087C86BE1579485AB29B463 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F00F8C221C9F98852B80CB50DA831B4 /* HHSDK-iOS10.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HHSDK-iOS10.0-umbrella.h"; sourceTree = "<group>"; };
 		8081D49AF192A14D8B523945ED0DB271 /* Alamofire-iOS10.2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Alamofire-iOS10.2-dummy.m"; path = "../Alamofire-iOS10.2/Alamofire-iOS10.2-dummy.m"; sourceTree = "<group>"; };
+		8223D06E176C17E7B84B090143B15042 /* RCServiceRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCServiceRequest.swift; sourceTree = "<group>"; };
 		822CF37836A5D36ACDB333C826A5016C /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		83633FFC658467099146F5A3A3291135 /* Bravo-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Bravo-iOS10.2.modulemap"; path = "../Bravo-iOS10.2/Bravo-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		83FAAC044745705AA13A014882423D8D /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientStatus.swift; path = Source/SocketIOClientStatus.swift; sourceTree = "<group>"; };
@@ -646,7 +647,6 @@
 		91DD73B50A96620AD1EA07C3F7B374AA /* Mantle-iOS10.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mantle-iOS10.0-dummy.m"; sourceTree = "<group>"; };
 		93452007E084AAA9A5CC2C3F099C15EB /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9832A9EAF57DF49C598A61CC9933C0CB /* RCUserLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCUserLocation.swift; sourceTree = "<group>"; };
 		98780EF1663680C510FA363082EF88F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		9C2A9492244393DEB29B991E927DAAAE /* Socket.IO-Client-Swift-iOS10.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Socket.IO-Client-Swift-iOS10.0.modulemap"; sourceTree = "<group>"; };
 		9E6C225F59A5F0F95BB92B54256D58EC /* Mantle-iOS10.2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Mantle-iOS10.2.xcconfig"; path = "../Mantle-iOS10.2/Mantle-iOS10.2.xcconfig"; sourceTree = "<group>"; };
@@ -675,6 +675,7 @@
 		B6F6C9EE256858054DAA75A1638025B2 /* Socket.IO-Client-Swift-iOS10.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-iOS10.0-prefix.pch"; sourceTree = "<group>"; };
 		B8308E1023C12ECA16DF92BF07A8FA49 /* RCWebRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCWebRequest.swift; sourceTree = "<group>"; };
 		B92AAFBFB96C50A7EC17B61CBD371EDC /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC06DBACCEAA5112D932B5B7A19C0D96 /* RCLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCLocation.swift; sourceTree = "<group>"; };
 		BC961A0D28B66DF54A4A0FA2E5D7BD2C /* RCUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCUser.swift; sourceTree = "<group>"; };
 		BD05B6E7B7E57CDAD1258D8F86C39209 /* Bravo-iOS10.2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Bravo-iOS10.2-dummy.m"; path = "../Bravo-iOS10.2/Bravo-iOS10.2-dummy.m"; sourceTree = "<group>"; };
 		BD9940CDE285EF968C624244C69669FD /* Socket.IO-Client-Swift-iOS10.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Socket.IO-Client-Swift-iOS10.0-dummy.m"; sourceTree = "<group>"; };
@@ -704,6 +705,7 @@
 		D3173C9EAE81756B815049524EDF4DFC /* NSValueTransformer+MTLPredefinedTransformerAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSValueTransformer+MTLPredefinedTransformerAdditions.m"; path = "Mantle/NSValueTransformer+MTLPredefinedTransformerAdditions.m"; sourceTree = "<group>"; };
 		D3E7F579C1ABD10B94CA0794ED2FC718 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Bravo-iOS10.2/Info.plist"; sourceTree = "<group>"; };
 		D4267F6CCCD3B3007C966A014EE9D2E0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D55C38023898371023100DFAA9EDA2A5 /* RCUserProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCUserProfile.swift; sourceTree = "<group>"; };
 		D7B7FCD6380E433DAAB4B84465C1BC20 /* KeychainWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = SwiftKeychainWrapper/KeychainWrapper.swift; sourceTree = "<group>"; };
 		DADC4B9B739C546C1A2CBA1E23527765 /* Pods-BravoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BravoTests-umbrella.h"; sourceTree = "<group>"; };
 		DB383642F8D03C16C55A3B7F1D0B9B73 /* Enums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -714,7 +716,6 @@
 		E0FD2F0607D11B5F8C7C44AF86B0C07B /* Bravo-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Bravo-iOS10.2-umbrella.h"; path = "../Bravo-iOS10.2/Bravo-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
 		E1ED3FF90C177A67DA4D2B7E458C4669 /* SocketEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngine.swift; path = Source/SocketEngine.swift; sourceTree = "<group>"; };
 		E28B228FEB9609DF8091FB5F07B108F0 /* Pods-BravoTestsUnitTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BravoTestsUnitTests-umbrella.h"; sourceTree = "<group>"; };
-		E50D26BB6733E5B8BC1E42ECEE1A5040 /* RCUserReview.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCUserReview.swift; sourceTree = "<group>"; };
 		E535773D683A87B593BA5BD670519CE4 /* Pods-BravoTestsUnitTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BravoTestsUnitTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		E64084936E17FE8038FFE029DCC059EF /* Bravo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Bravo.h; sourceTree = "<group>"; };
 		E6648F71FA306C3E4360EDC48D0A703B /* MTLJSONAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MTLJSONAdapter.h; path = Mantle/MTLJSONAdapter.h; sourceTree = "<group>"; };
@@ -726,7 +727,6 @@
 		EA0B7D946B6AE8B8ABC9638AEB7BBA4A /* Mantle-iOS10.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mantle-iOS10.0-prefix.pch"; sourceTree = "<group>"; };
 		EACC9CA914D7813CF74A3BEE7361763C /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		EB4A153B12590FCD8A90B4398284A5B7 /* MTLModel+NSCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "MTLModel+NSCoding.h"; path = "Mantle/MTLModel+NSCoding.h"; sourceTree = "<group>"; };
-		EC133123788B9CC2AB686258E59041AC /* RCUserProfile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCUserProfile.swift; sourceTree = "<group>"; };
 		ED36CBEF0EE6B3505E65125F94A55B42 /* Alamofire-iOS10.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-iOS10.0-prefix.pch"; sourceTree = "<group>"; };
 		ED427FAEF1C62C1973B5E8D773B50DC1 /* ObjectID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ObjectID.swift; sourceTree = "<group>"; };
 		EE33870BB46D45850396279BAEBC9B4F /* HHSDK-iOS10.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "HHSDK-iOS10.0.modulemap"; sourceTree = "<group>"; };
@@ -883,20 +883,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		040BB4FEBD2866E5B4512D100D32B5A5 /* hotthelpers */ = {
-			isa = PBXGroup;
-			children = (
-				4D0DC64E5F40A06180118DA56B5F4E2E /* HHModel.swift */,
-				4F34FBBDD501A8B3877E11AE8EB372B5 /* RCService.swift */,
-				40C76577D1E7B136176ECFB6454C5408 /* RCServiceRequest.swift */,
-				9832A9EAF57DF49C598A61CC9933C0CB /* RCUserLocation.swift */,
-				EC133123788B9CC2AB686258E59041AC /* RCUserProfile.swift */,
-				E50D26BB6733E5B8BC1E42ECEE1A5040 /* RCUserReview.swift */,
-			);
-			name = hotthelpers;
-			path = hotthelpers;
-			sourceTree = "<group>";
-		};
 		0793EBE61E923DD38C59FE4E17BE1B0B /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,10 +1076,24 @@
 			);
 			sourceTree = "<group>";
 		};
+		81CA825F4192225F0D0BA1D172DD1005 /* hotthelpers */ = {
+			isa = PBXGroup;
+			children = (
+				29E4E97DB61DDC433367AAF6CABA49DB /* HHModel.swift */,
+				BC06DBACCEAA5112D932B5B7A19C0D96 /* RCLocation.swift */,
+				317B701A52B46559183BB69734D6B850 /* RCService.swift */,
+				8223D06E176C17E7B84B090143B15042 /* RCServiceRequest.swift */,
+				D55C38023898371023100DFAA9EDA2A5 /* RCUserProfile.swift */,
+				1B4D51125476B074CB124C84F24BAC32 /* RCUserReview.swift */,
+			);
+			name = hotthelpers;
+			path = hotthelpers;
+			sourceTree = "<group>";
+		};
 		97CE012314EC0005DC1D2F27B1EC4C42 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				040BB4FEBD2866E5B4512D100D32B5A5 /* hotthelpers */,
+				81CA825F4192225F0D0BA1D172DD1005 /* hotthelpers */,
 			);
 			name = src;
 			path = src;
@@ -1518,7 +1518,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61CA0DBFD55CBD8D30E07D4ED05639B9 /* Build configuration list for PBXNativeTarget "HHSDK-iOS10.0" */;
 			buildPhases = (
-				ABE4ACBA140BF3EA44B728394526FAC7 /* Sources */,
+				2874A1D714A746C55A45D4721F2B3DBE /* Sources */,
 				C4EC94A832C41BE9D6A54139B49DDA0C /* Frameworks */,
 				C5B8F74DB04756ECCB463A4E3E61D4DB /* Headers */,
 			);
@@ -1707,7 +1707,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 98A9C68DBCF97CAC99893370F1E1B994 /* Build configuration list for PBXNativeTarget "HHSDK-iOS10.2" */;
 			buildPhases = (
-				4016132E1C5305C3E31C7B9500129BF1 /* Sources */,
+				DC16C3B9F5AF9D13EE8794FA00714DD5 /* Sources */,
 				78AE944F74C73FD6E1A9E12B82A94A5F /* Frameworks */,
 				59A2ADF310A501ED93F6CCAE388690FC /* Headers */,
 			);
@@ -1889,17 +1889,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4016132E1C5305C3E31C7B9500129BF1 /* Sources */ = {
+		2874A1D714A746C55A45D4721F2B3DBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				195A34357BC44F056EB0E46567F643AD /* HHModel.swift in Sources */,
-				06837C9A6E7C7FBB0924F0288ED2342B /* HHSDK-iOS10.2-dummy.m in Sources */,
-				EF4068FD28746FAE9BDFD57372910F7C /* RCService.swift in Sources */,
-				36F6E4FB51837C558161B1181ED11B40 /* RCServiceRequest.swift in Sources */,
-				AABB10CB3414204C27BC69BAB7FEBE2A /* RCUserLocation.swift in Sources */,
-				4F6B3A007F7FEDB37D549C754197FF2E /* RCUserProfile.swift in Sources */,
-				2E514D8F7856D8ADE1A88AE03CA5DA7D /* RCUserReview.swift in Sources */,
+				6920BB4E426ECC9D5801AFABAFDBB846 /* HHModel.swift in Sources */,
+				16CD35FCC774CFACA0C89D3205379FFB /* HHSDK-iOS10.0-dummy.m in Sources */,
+				C173E99D646338072027CF6569A03A9C /* RCLocation.swift in Sources */,
+				39B3134938E60E68AB3729E0B3346BAB /* RCService.swift in Sources */,
+				321CD7F8612580B1879BE4F4A70FF6F4 /* RCServiceRequest.swift in Sources */,
+				62D8D2C88BE1B47119BE684174E9A744 /* RCUserProfile.swift in Sources */,
+				09C4C9E705922D87C1F12539B2110202 /* RCUserReview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2006,20 +2006,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ABE4ACBA140BF3EA44B728394526FAC7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B827A97347425FDFB709668CD28946A4 /* HHModel.swift in Sources */,
-				A666CB9B3773C5547D9B6A1324ECAEBC /* HHSDK-iOS10.0-dummy.m in Sources */,
-				7A2C18D80A8B1140B5F4508076184F82 /* RCService.swift in Sources */,
-				FC31303D55EAF832775B32087DACED1B /* RCServiceRequest.swift in Sources */,
-				B0C45C0B28D19E2097B94E253F4EAD1C /* RCUserLocation.swift in Sources */,
-				A74A37EFEB381A9C92D0E4B55ACCBA61 /* RCUserProfile.swift in Sources */,
-				6DD924E63FA094B5A18A52F637429D4E /* RCUserReview.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B8FB6A0A16E0D039454886A685F7B5A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2099,6 +2085,20 @@
 				A80555EFC6DA44DF269D37EB69475411 /* SocketTypes.swift in Sources */,
 				4AB69C1B9DF932303E224E3A7A8537A0 /* SSLSecurity.swift in Sources */,
 				D69D94A01DBD2C2C648562217335134D /* WebSocket.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC16C3B9F5AF9D13EE8794FA00714DD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				152A38CD3966B23E53CAB9D2CD7E5087 /* HHModel.swift in Sources */,
+				71D8189188399567E99E78079FBB07AA /* HHSDK-iOS10.2-dummy.m in Sources */,
+				E72AAE9F6042D9E4C01C41852A2E6BCE /* RCLocation.swift in Sources */,
+				8FEE45B964E819F33BA05CB969722D57 /* RCService.swift in Sources */,
+				1A5E3EC9F4863F5EDC77137366BC5FA7 /* RCServiceRequest.swift in Sources */,
+				3C5847BD7C6E78F5A2F7ECF840F635FF /* RCUserProfile.swift in Sources */,
+				6D98E1B370AB9C80AF564507C0DBBC67 /* RCUserReview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

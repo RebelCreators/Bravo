@@ -59,7 +59,7 @@ public class RCSocket: NSObject {
         previousOp = op
     }
     
-    private func reconnect() {
+    public func reconnect() {
         var op = connect(success: {
             self.connectionStatus = .connected
         }, failure: { error in

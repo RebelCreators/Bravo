@@ -17,7 +17,7 @@
             location = "group:HHModel.swift">
          </FileRef>
          <FileRef
-            location = "group:RCUserLocation.swift">
+            location = "group:/Users/default/Bravo/src/hotthelpers/RCLocation.swift">
          </FileRef>
          <FileRef
             location = "group:RCUserProfile.swift">
