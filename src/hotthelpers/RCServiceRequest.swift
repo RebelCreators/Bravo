@@ -55,6 +55,8 @@ open class RCServiceRequest: HHModel {
     public var expectedCharge: NSNumber?
     public var dialogID: String?
     public var latLng: RCLocation?
+    //you must hydrate yourself - water's good for you
+    public var hydratedDialog: RCDialog?
     
     open override class func attributeMappings() -> [AnyHashable : Any]! {
         return super.attributeMappings() + ["dialogID" : "dialogId"]

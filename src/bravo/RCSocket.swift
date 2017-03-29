@@ -29,7 +29,10 @@ public enum RCSocketConnectionStatus {
 public class RCSocket: NSObject {
     
     public private(set) var connectionStatus: RCSocketConnectionStatus = .disconnected
-    private var previousOp: WebServiceOp?
+    public private(set) var connectionOperation: Operation?
+    public private(set) var disconnectionOperation: Operation?
+    
+    private var currentOperation: WebServiceOp?
     static public var defaultPortNumber = 5225
     public static var shared = RCSocket()
     private var maxReconections = 5
@@ -55,15 +58,13 @@ public class RCSocket: NSObject {
     
     public func didSignOut() {
         let op = disconnect()
-        op.exeInBackground(dependencies: [previousOp?.asOperation()])
-        previousOp = op
     }
     
-    public func reconnect() {
+    public func reconnect() -> Operation {
         var op = connect(success: {
             self.connectionStatus = .connected
         }, failure: { error in
-            if (self.currentReconnections < self.maxReconections && error.code != 401) {
+            if self.currentReconnections < self.maxReconections && error.code != 401 {
                 self.connectionStatus = .reconnecting
                 self.currentReconnections += 1
                 self.reconnect()
@@ -73,30 +74,48 @@ public class RCSocket: NSObject {
             }
         })
         
-        op.exeInBackground(dependencies: [previousOp?.asOperation()])
-        previousOp = op
+        if connectionStatus != .disconnected {
+            _ = disconnect()
+        }
+        op.exeInBackground(dependencies: [currentOperation?.asOperation()])
+        connectionOperation = op.asOperation()
+        currentOperation = op
+        
+        return op.asOperation()
     }
     
-    public func disconnect() -> WebServiceOp  {
-        return WebServiceBlockOp({ operation in
+    public func disconnect() -> Operation  {
+        let op = WebServiceBlockOp({ operation in
             guard let socket = self.underlyingSocket else {
                 operation.finish()
                 return
             }
-            socket.on("disconnect") {data, ack in
-                self.connectionStatus = .disconnected
+            if (socket.status != .notConnected && socket.status != .disconnected) {
+                socket.removeAllHandlers()
+                socket.on("disconnect") {[weak self, weak socket] data, ack in
+                    self?.connectionStatus = .disconnected
+                    
+                    socket?.removeAllHandlers()
+                    operation.finish()
+                }
                 self.underlyingSocket = nil
+                socket.disconnect()
+            } else {
+                self.underlyingSocket = nil
+                self.connectionStatus = .disconnected
                 operation.finish()
             }
-            socket.disconnect()
         })
+        
+        op.exeInBackground(dependencies: [currentOperation?.asOperation()])
+        currentOperation = op
+        disconnectionOperation = op.asOperation()
+        
+        return op.asOperation()
     }
     
-    public func connect(success:@escaping () -> Void, failure: @escaping (RCError) -> Void) -> WebServiceOp {
-        if self.connectionStatus == .connected {
-            self.disconnect()
-        }
-        return WebServiceBlockOp({ operation in
+    private func connect(success:@escaping () -> Void, failure: @escaping (RCError) -> Void) -> WebServiceOp {
+        let op = WebServiceBlockOp({ operation in
             var succ: (() -> Void)? = success
             var fail: ((RCError) -> Void)? = failure
             guard let config = Bravo.sdk.config else {
@@ -119,7 +138,7 @@ public class RCSocket: NSObject {
                 return
             }
             let deviceToken = RCDevice.currentDevice.deviceToken!
-            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false), .forceWebsockets(true)]
+            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false), .forceWebsockets(true), .log(true), .forceNew(true)]
             if self.underlyingSocket == nil {
                 self.underlyingSocket = SocketIOClient(socketURL:url , config: configOptions)
             }
@@ -146,10 +165,23 @@ public class RCSocket: NSObject {
                 }
             }
             
-            self.underlyingSocket!.on("disconnect") {data, ack in
-                self.connectionStatus = .disconnected
+            var socket = self.underlyingSocket
+            self.underlyingSocket!.on("disconnect") {[weak socket] data, ack in
+                if  (socket != nil) {
+                    socket?.removeAllHandlers()
+                    self.reconnect()
+                }
+                if !operation.isFinished && !operation.isCancelled {
+                    operation.finish()
+                }
             }
-            self.underlyingSocket!.connect()
+            if self.underlyingSocket?.status != .connected && self.underlyingSocket?.status != .connecting {
+                self.underlyingSocket!.connect()
+            } else {
+                operation.finish()
+            }
         })
+        
+        return op
     }
 }

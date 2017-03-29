@@ -65,6 +65,7 @@ public class RCDialog: RCModel {
     public var name: String?
     public var numberOfmessages: NSNumber?
     public var permissions: RCDialogPermission = RCDialogPermission()
+    public var unreadMessages: Int = 0
     
     internal var _currentUsers = [String]()
     
@@ -156,21 +157,38 @@ public class RCDialog: RCModel {
             success(message)
         }) { error in
             failure(error)
-            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation(), RCSocket.shared.connectionOperation])
     }
     
     public func messages(offset: Int, limit: Int, success: @escaping ([RCMessage]) -> Void, failure: @escaping (RCError) -> Void) {
+        messages(date: nil, offset: offset, limit: limit, success: success, failure: failure)
+    }
+    
+    public func messages(date: Date?, offset: Int, limit: Int, asc: Bool = false, success: @escaping ([RCMessage]) -> Void, failure: @escaping (RCError) -> Void) {
         guard let dialogID = self.dialogID else {
             failure(RCError.ConditionNotMet(message: "no ID"))
             
             return
         }
         
-        WebService().get(relativePath: "dialog/messages/:dialogID", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions, "offset": offset, "limit": limit], success: { (messages: [RCMessage]) in
+        let dateStr = MMValueTransformer.date().reverseTransformedValue(date) as? String
+        WebService().get(relativePath: "dialog/messages/:dialogID", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions, "offset": offset, "limit": limit, "date": dateStr ?? "", "asc": asc], success: { (messages: [RCMessage]) in
             success(messages)
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public func fetchUnreadMessagesCount(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+        guard let dialogID = self.dialogID else {
+            failure(RCError.ConditionNotMet(message: "no ID"))
+            
+            return
+        }
+        
+        RCDialog.dialogWithID(dialogID: dialogID, permissions: self.permissions, success: { dialog in
+            self.unreadMessages = dialog.unreadMessages
+        }, failure: failure)
     }
     
     public static func dialogsWithUsers(userIDs: [String], permissions: RCDialogPermission, success: @escaping ([RCDialog]) -> Void, failure: @escaping (RCError) -> Void) {
@@ -182,8 +200,31 @@ public class RCDialog: RCModel {
     }
     
     public static func dialogWithID(dialogID: String, permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
-        WebService().get(relativePath: "dialog/:dialogID/id", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions], success: { (dialogs: RCDialog) in
-            success(dialogs)
+        WebService().get(relativePath: "dialog/:dialogID/id", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions], success: { (dialog: RCDialog) in
+            success(dialog)
+        }) { error in
+            failure(error)
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    }
+    
+    public static func dialogsWithIDs(dialogIDs: [String], permissions: RCDialogPermission, success: @escaping ([RCDialog?]) -> Void, failure: @escaping (RCError) -> Void) {
+        WebService().post(relativePath: "dialog/ids", headers: nil, parameters: ["dialogIds": dialogIDs, "permissions": permissions], success: { (dialogs: [RCDialog]) in
+            var dialogMap = [String: RCDialog?]()
+            for dialogID in dialogIDs {
+                dialogMap[dialogID] = nil
+            }
+            
+            for dialog in dialogs {
+                dialogMap[dialog.dialogID ?? ""] = dialog
+            }
+            
+            var outputDialogs = [RCDialog?]()
+            
+            for dialogID in dialogIDs {
+                outputDialogs.append(dialogMap[dialogID] ?? nil)
+            }
+            
+            success(outputDialogs)
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
