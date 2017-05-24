@@ -157,7 +157,7 @@ public class RCDialog: RCModel {
             success(message)
         }) { error in
             failure(error)
-            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation(), RCSocket.shared.connectionOperation])
+            }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()], requirements: [RCSocketConnectOperation()])
     }
     
     public func messages(offset: Int, limit: Int, success: @escaping ([RCMessage]) -> Void, failure: @escaping (RCError) -> Void) {

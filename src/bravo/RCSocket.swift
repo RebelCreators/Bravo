@@ -26,12 +26,31 @@ public enum RCSocketConnectionStatus {
     case reconnecting
 }
 
+public class RCSocketConnectOperation: RCAsyncOperation {
+    override public func execute() {
+        if RCSocket.shared.connectionStatus == .connected {
+            finish()
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(didConnect), name: Notification.RC.RCSocketDidConnect, object: RCSocket.shared)
+        }
+    }
+    
+    func didConnect() {
+        finish()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+}
+
 public class RCSocket: NSObject {
     
     public private(set) var connectionStatus: RCSocketConnectionStatus = .disconnected
     public private(set) var connectionOperation: Operation?
     public private(set) var disconnectionOperation: Operation?
     
+    public var debug = false
     private var currentOperation: WebServiceOp?
     static public var defaultPortNumber = 5225
     public static var shared = RCSocket()
@@ -45,6 +64,7 @@ public class RCSocket: NSObject {
     
     public func didSignIn() {
         RCDevice.updateCurrentDevice(success: {
+            self.disconnect()
             self.reconnect()
         }, failure: { error in
             if (self.currentReconnections < self.maxReconections && error.code != 401) {
@@ -61,22 +81,28 @@ public class RCSocket: NSObject {
     }
     
     public func reconnect() -> Operation {
-        var op = connect(success: {
-            self.connectionStatus = .connected
-        }, failure: { error in
-            if self.currentReconnections < self.maxReconections && error.code != 401 {
-                self.connectionStatus = .reconnecting
-                self.currentReconnections += 1
-                self.reconnect()
-            } else {
-                self.connectionStatus = .disconnected
-                self.currentReconnections = 0
+        let op = WebServiceBlockOp({ operation in
+            if self.connectionStatus == .connected {
+                operation.finish()
+                return
             }
+            self.connect(success: {
+                self.connectionStatus = .connected
+                NotificationCenter.default.post(name: Notification.RC.RCSocketDidConnect, object: self)
+                operation.finish()
+            }, failure: { error in
+                if self.currentReconnections < self.maxReconections && error.code != 401 {
+                    self.connectionStatus = .reconnecting
+                    self.currentReconnections += 1
+                    self.reconnect()
+                } else {
+                    self.connectionStatus = .disconnected
+                    self.currentReconnections = 0
+                }
+                operation.finish()
+            }).exeInBackground()
         })
         
-        if connectionStatus != .disconnected {
-            _ = disconnect()
-        }
         op.exeInBackground(dependencies: [currentOperation?.asOperation()])
         connectionOperation = op.asOperation()
         currentOperation = op
@@ -96,6 +122,7 @@ public class RCSocket: NSObject {
                     self?.connectionStatus = .disconnected
                     
                     socket?.removeAllHandlers()
+                    NotificationCenter.default.post(name: Notification.RC.RCSocketDidDisconnect, object: self)
                     operation.finish()
                 }
                 self.underlyingSocket = nil
@@ -138,7 +165,7 @@ public class RCSocket: NSObject {
                 return
             }
             let deviceToken = RCDevice.currentDevice.deviceToken!
-            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false), .forceWebsockets(true), .log(true), .forceNew(true)]
+            let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false), .forceWebsockets(true), .log(self.debug), .forceNew(true)]
             if self.underlyingSocket == nil {
                 self.underlyingSocket = SocketIOClient(socketURL:url , config: configOptions)
             }
