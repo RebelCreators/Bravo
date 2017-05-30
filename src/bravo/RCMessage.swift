@@ -67,7 +67,7 @@ internal class RCPayloadWrapper: RCModel {
     }
     var type: String?
     var contents: String?
-    fileprivate var object: RCModel?
+    private var object: RCModel?
     
     fileprivate static func create(objectType: String, object: RCModel) -> RCPayloadWrapper {
         let wrapper = RCPayloadWrapper()!
@@ -83,7 +83,7 @@ internal class RCPayloadWrapper: RCModel {
     fileprivate func hydrateObject<T: RCModel>() -> T {
         guard let obj = object else {
             var string = contents?.fromBase64() ?? ""
-            let object = T.generate(fromJson: string) as! T
+            let object: T = T.generate(fromJson: string)
             self.object = object
             
             return object

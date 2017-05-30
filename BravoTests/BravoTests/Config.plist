@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>develop</key>
+	<key>dev</key>
 	<dict>
 		<key>clientID</key>
 		<string>dafdfdfdsfafdxadsfdsfafds</string>
@@ -11,14 +11,14 @@
 		<key>baseURL</key>
 		<string>http://localhost:3000/</string>
 	</dict>
-	<key>production</key>
+	<key>prod</key>
 	<dict>
 		<key>clientID</key>
 		<string>dafdfdfdsfafdxadsfdsfafds</string>
 		<key>clientSecret</key>
 		<string>dsjfle32421jde1r23sdsfeqfwer21r324234fewqe3</string>
 		<key>baseURL</key>
-		<string>http://ec2-52-27-223-4.us-west-2.compute.amazonaws.com:3000</string>
+		<string>http://ec2-35-166-52-171.us-west-2.compute.amazonaws.com:3000</string>
 	</dict>
 </dict>
 </plist>

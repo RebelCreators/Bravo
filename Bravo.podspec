@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name               = 'Bravo'
-  s.version            =  '1.0.0'
+  s.version            =  '1.1.0'
   s.license            =  { :type => 'Apache 2.0' }
   s.summary            =  'An iOS SDK to connect to Alpha servers'
   s.homepage           =  'https://www.rebelcreators.com'
@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '~> 4.0'
   s.dependency 'SwiftKeychainWrapper', '~> 3.0'
   s.dependency 'Mantle', '~> 2.1'
-  s.dependency 'Socket.IO-Client-Swift', '~> 8.2.0'
+  s.dependency 'Socket.IO-Client-Swift', '~> 10.0.0'
 end
