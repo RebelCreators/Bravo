@@ -20,17 +20,18 @@
 
 import Foundation
 import Bravo
+import RCModel
 
 open class RCHelperStatus: HHModel {
     open var helperID: String?
     open var status: RCHelperRequestStatusEnum = .pending // enum
     
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        return super.attributeMappings() + ["helperID" : "helperId"]
+    open override class func propertyMappings() -> [String : RCPropertyKey] {
+        return super.propertyMappings() + ["helperID" : "helperId"]
     }
     
-    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.enumAttributeTypes() ?? [:]) + ["status" : RCHelperRequestStatusEnumObject.self]
+    open override class func enumClasses() -> [String : RCEnumMappable.Type] {
+        return super.enumClasses() + ["status" : RCHelperRequestStatusEnumMapper.self]
     }
 }
 
@@ -58,24 +59,23 @@ open class RCServiceRequest: HHModel {
     //you must hydrate yourself - water's good for you
     public var hydratedDialog: RCDialog?
     
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        return super.attributeMappings() + ["dialogID" : "dialogId"]
+    open override class func propertyMappings() -> [String : RCPropertyKey] {
+        return super.propertyMappings() + ["dialogID" : "dialogId"]
+    }
+    open override class func arrayClasses() -> [String : RCModelProtocol.Type] {
+        return super.arrayClasses() + ["helpers": RCUser.self, "helperStatus": RCHelperStatus.self]
     }
     
-    open override class func listAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.listAttributeTypes() ?? [:]) + ["helpers": RCUser.self, "helperStatus": RCHelperStatus.self]
+    open override class func dictionaryClasses() -> [String : RCModelProtocol.Type] {
+        return super.dictionaryClasses() + ["client": RCUser.self]
     }
     
-    open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.mapAttributeTypes() ?? [:])  + ["client": RCUser.self]
-    }
-    
-    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.enumAttributeTypes() ?? [:]) + ["status" : RCRequestStatusEnumObject.self]
+    open override class func enumClasses() -> [String : RCEnumMappable.Type] {
+        return super.enumClasses() + ["status" : RCRequestStatusEnumMapper.self]
     }
     
     open static func service(withName: String, details: String, location: String, hourlyRate: NSNumber, date: Date, duration: NSNumber, helpers: [RCUser]? = nil) -> RCServiceRequest {
-        let request = RCServiceRequest()!
+        let request = RCServiceRequest()
         request.name = withName
         request.details = details
         request.location = location
@@ -88,7 +88,7 @@ open class RCServiceRequest: HHModel {
     }
     
     
-    open static func serviceRequestsWithId(requestID: String, success: @escaping (RCServiceRequest) -> Void, failure: @escaping (RCError) -> Void) {
+    open static func serviceRequestsWithId(requestID: String, success: @escaping (RCServiceRequest) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "servicerequest/:requestID/id", headers: nil, parameters: ["requestID": requestID], success: { (requests: RCServiceRequest) in
             success(requests)
         }, failure: { (error) in
@@ -96,7 +96,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open static func clientServiceRequests(success: @escaping ([RCServiceRequest]) -> Void, failure: @escaping (RCError) -> Void) {
+    open static func clientServiceRequests(success: @escaping ([RCServiceRequest]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "servicerequest/client/list", headers: nil, parameters: [:], success: { (requests: [RCServiceRequest]) in
             success(requests)
         }, failure: { (error) in
@@ -104,7 +104,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open static func helperServiceRequests(success: @escaping ([RCServiceRequest]) -> Void, failure: @escaping (RCError) -> Void) {
+    open static func helperServiceRequests(success: @escaping ([RCServiceRequest]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "servicerequest/helper/list", headers: nil, parameters: [:], success: { (requests: [RCServiceRequest]) in
             success(requests)
         }, failure: { (error) in
@@ -112,9 +112,9 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open func review(user: RCUser, review: RCUserReview, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func review(user: RCUser, review: RCUserReview, success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         guard let currentUser = RCUser.currentUser else {
-            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            failure(BravoError.ConditionNotMet(message: "user not logged in"))
             
             return
         }
@@ -137,7 +137,7 @@ open class RCServiceRequest: HHModel {
         }
         
         guard isHelper else {
-            failure(RCError.AccessDenied(message: "need to be helper or client to cancel"))
+            failure(BravoError.AccessDenied(message: "need to be helper or client to cancel"))
             
             return
         }
@@ -145,19 +145,23 @@ open class RCServiceRequest: HHModel {
         addClientReview(review: review, success: success, failure: failure)
     }
     
-    open func addHelper(helper: RCUser, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
-        var params = self.toDictionary()
-        params.setValue(helper, forKey: "helper")
-        WebService().put(relativePath: "servicerequest/helper/add", headers: nil, parameters: params, success: { (request:RCServiceRequest) in
-            self.helpers = request.helpers
-            self.helperStatus = request.helperStatus
-            success()
-        }, failure: { (error) in
-            failure(error)
-        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+    open func addHelper(helper: RCUser, success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
+        do {
+            var params = try self.toDictionary()
+            params["helper"] = helper
+            WebService().put(relativePath: "servicerequest/helper/add", headers: nil, parameters: params, success: { (request:RCServiceRequest) in
+                self.helpers = request.helpers
+                self.helperStatus = request.helperStatus
+                success()
+            }, failure: { (error) in
+                failure(error)
+            }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+        } catch {
+            failure(BravoError.WithError(error: error))
+        }
     }
     
-    open func submit(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func submit(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().post(relativePath: "servicerequest/submit", headers: nil, parameters: self, success: { (request: RCServiceRequest) in
             self.modelID = request.modelID
             success()
@@ -166,7 +170,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open func accept(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func accept(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/accept", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.helperStatus = request.helperStatus
             success()
@@ -175,7 +179,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open func reject(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func reject(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/reject", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.helperStatus = request.helperStatus
             success()
@@ -184,9 +188,9 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open func cancel(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func cancel(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         guard let currentUser = RCUser.currentUser else {
-            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            failure(BravoError.ConditionNotMet(message: "user not logged in"))
             
             return
         }
@@ -209,7 +213,7 @@ open class RCServiceRequest: HHModel {
         }
         
         guard isHelper else {
-            failure(RCError.AccessDenied(message: "need to be helper or client to cancel"))
+            failure(BravoError.AccessDenied(message: "need to be helper or client to cancel"))
             
             return
         }
@@ -217,7 +221,7 @@ open class RCServiceRequest: HHModel {
         cancelForHelper(success: success, failure: failure)
     }
     
-    open func submitMeForConsideration(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func submitMeForConsideration(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/submit/consideration", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.consideredUsers = request.consideredUsers
             success()
@@ -226,7 +230,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open func onWay(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func onWay(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/arriving", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.helperStatus = request.helperStatus
             success()
@@ -235,7 +239,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open  func clockIn(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open  func clockIn(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/clockin", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.helperStatus = request.helperStatus
             success()
@@ -244,9 +248,9 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    open func complete(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    open func complete(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         guard let currentUser = RCUser.currentUser else {
-            failure(RCError.ConditionNotMet(message: "user not logged in"))
+            failure(BravoError.ConditionNotMet(message: "user not logged in"))
             
             return
         }
@@ -269,7 +273,7 @@ open class RCServiceRequest: HHModel {
         }
         
         guard isHelper else {
-            failure(RCError.AccessDenied(message: "need to be helper or client to complete"))
+            failure(BravoError.AccessDenied(message: "need to be helper or client to complete"))
             
             return
         }
@@ -279,7 +283,7 @@ open class RCServiceRequest: HHModel {
     
     //MARK: Private Methods
     
-    private func addHelperReview(review: RCUserReview, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    private func addHelperReview(review: RCUserReview, success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().post(relativePath: "servicerequest/client/addhelperreview", headers: nil, parameters: review, success: { (request: RCUserReview) in
             success()
         }, failure: { (error) in
@@ -287,7 +291,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    private func addClientReview(review: RCUserReview, success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    private func addClientReview(review: RCUserReview, success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().post(relativePath: "servicerequest/helper/addclientreview", headers: nil, parameters: review, success: { (request: RCUserReview) in
             success()
         }, failure: { (error) in
@@ -295,7 +299,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    private func completeForHelper(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    private func completeForHelper(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/complete", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.helperStatus = request.helperStatus
             success()
@@ -304,7 +308,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    private func completeForClient(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    private func completeForClient(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/client/complete", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.status = request.status
             success()
@@ -313,7 +317,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    private func cancelForClient(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    private func cancelForClient(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/client/cancel", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.helperStatus = request.helperStatus
             success()
@@ -322,7 +326,7 @@ open class RCServiceRequest: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    private func cancelForHelper(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    private func cancelForHelper(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().put(relativePath: "servicerequest/helper/cancel", headers: nil, parameters: self, success: { (request:RCServiceRequest) in
             self.status = request.status
             success()

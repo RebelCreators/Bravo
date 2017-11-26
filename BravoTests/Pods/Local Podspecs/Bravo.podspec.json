@@ -24,8 +24,17 @@
     "SWIFT_VERSION": "3.0.1"
   },
   "dependencies": {
+    "Alamofire": [
+      "~> 4.0"
+    ],
+    "SwiftKeychainWrapper": [
+      "~> 3.0"
+    ],
     "RCModel": [
       "~> 1.0"
+    ],
+    "Socket.IO-Client-Swift": [
+      "~> 10.0.0"
     ]
   }
 }

@@ -108,6 +108,9 @@
          <FileRef
             location = "group:ObjectID.swift">
          </FileRef>
+         <FileRef
+            location = "group:Extensions.swift">
+         </FileRef>
       </Group>
    </Group>
    <FileRef

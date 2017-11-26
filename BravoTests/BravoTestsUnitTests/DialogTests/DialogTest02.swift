@@ -31,7 +31,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
     var me = Test0_0_0_0_4_DialogTest02.self
     
     func test000000RegisterUsers() {
-        var user = RCUser()!
+        var user = RCUser()
         user.userName = me.user1Name
         user.password = password
         let ex = expectation(description: "")
@@ -43,7 +43,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
             ex.fulfill()
         })
         
-        user = RCUser()!
+        user = RCUser()
         user.userName = me.user2Name
         user.password = password
         let ex2 = expectation(description: "")
@@ -55,7 +55,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
             ex2.fulfill()
         })
         
-        user = RCUser()!
+        user = RCUser()
         user.userName = me.user3Name
         user.password = password
         let ex3 = expectation(description: "")
@@ -189,8 +189,8 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
     
     func test000299sendMessage() {
         let ex = expectation(description: "")
-        let message = RCMessage()!
-        let testPayload = TestPayload()!
+        let message = RCMessage()
+        let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         message.appendPayload(payload: testPayload)
@@ -301,8 +301,8 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
     
     func test005999sendMessage() {
         let ex = expectation(description: "")
-        let message = RCMessage()!
-        let testPayload = TestPayload()!
+        let message = RCMessage()
+        let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         message.appendPayload(payload: testPayload)
@@ -428,8 +428,8 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
     
     func test199999sendMessage() {
         let ex = expectation(description: "")
-        let message = RCMessage()!
-        let testPayload = TestPayload()!
+        let message = RCMessage()
+        let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         message.appendPayload(payload: testPayload)

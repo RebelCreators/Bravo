@@ -20,12 +20,13 @@
 
 import Foundation
 import Bravo
+import RCModel
 
 extension RCUser {
     
-    public func reviews(success: @escaping ([RCUserReview]) -> Void, failure: @escaping (RCError) -> Void) {
+    public func reviews(success: @escaping ([RCUserReview]) -> Void, failure: @escaping (BravoError) -> Void) {
         guard let userID = self.userID else {
-            failure(RCError.ConditionNotMet(message: "No user ID"))
+            failure(BravoError.ConditionNotMet(message: "No user ID"))
             return
         }
         WebService().get(relativePath: "reviews/:userID/id", headers: nil, parameters: ["userID": userID], success: { (requests: [RCUserReview]) in
@@ -54,7 +55,7 @@ public class RCUserReview: RCModel {
     public var date: Date?
     
     public static func review(user: RCUser, serviceRequestId: String, serviceName: String, comments: String?, rating: NSNumber, date: Date = Date()) -> RCUserReview {
-        let review = RCUserReview()!
+        let review = RCUserReview()
         review.user = user
         review.serviceRequestId = serviceRequestId
         review.serviceName = serviceName
@@ -66,7 +67,7 @@ public class RCUserReview: RCModel {
     }
     
     
-    static func reviewsForUser(userID: String, success: @escaping ([RCUserReview]) -> Void, failure: @escaping (RCError) -> Void) {
+    static func reviewsForUser(userID: String, success: @escaping ([RCUserReview]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "reviews/:userID", headers: nil, parameters: ["userID": userID], success: { (requests: [RCUserReview]) in
             success(requests)
         }, failure: { (error) in

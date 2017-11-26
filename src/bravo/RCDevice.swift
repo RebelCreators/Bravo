@@ -21,6 +21,8 @@
 import Foundation
 import SwiftKeychainWrapper
 
+import RCModel
+
 public class RCDevice: RCModel {
     public var deviceToken: String?
     public var apnsToken: String?
@@ -31,7 +33,7 @@ public class RCDevice: RCModel {
     
     private static var deviceKey = "com.rebelcreators.device.key"
     
-    public static func deleteCurrentDevice(success: @escaping () -> Void, failure:@escaping (RCError) -> Void) {
+    public static func deleteCurrentDevice(success: @escaping () -> Void, failure:@escaping (BravoError) -> Void) {
         let device = localDevice()
         WebService().post(relativePath: "device/delete", headers: nil, parameters: device, responseType: .nodata, success: { (_: RCNullModel) in
             success()
@@ -40,12 +42,12 @@ public class RCDevice: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public static func updateCurrentDevice(success: @escaping () -> Void, failure:@escaping (RCError) -> Void) {
+    public static func updateCurrentDevice(success: @escaping () -> Void, failure:@escaping (BravoError) -> Void) {
         let device = localDevice()
         updateCurrentDevice(apnsToken: nil, success: success, failure: failure)
     }
     
-    public static func updateCurrentDevice(apnsToken: String?, success: @escaping () -> Void, failure:@escaping (RCError) -> Void) {
+    public static func updateCurrentDevice(apnsToken: String?, success: @escaping () -> Void, failure:@escaping (BravoError) -> Void) {
         let device = localDevice()
         device.apnsToken = apnsToken
         device.save()
@@ -55,12 +57,15 @@ public class RCDevice: RCModel {
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
-
+    
     private func save() {
+        guard let jsonString = try? self.toJSONString() else {
+            return
+        }
         if RCDevice.storeInKeyChain {
-            KeychainWrapper.standard.set(self.toJsonString(), forKey: RCDevice.deviceKey)
+            KeychainWrapper.standard.set(jsonString, forKey: RCDevice.deviceKey)
         } else {
-            UserDefaults.standard.set(self.toJsonString(), forKey: RCDevice.deviceKey)
+            UserDefaults.standard.set(jsonString, forKey: RCDevice.deviceKey)
         }
     }
     
@@ -84,9 +89,9 @@ public class RCDevice: RCModel {
             return generateNewDevice()
         }
         
-        let device: RCDevice = RCDevice.generate(fromJson: deviceString)
+        let device: RCDevice? = try? RCDevice.fromJSONString(deviceString)
         
-        return device
+        return device ?? generateNewDevice()
     }
     
     private static func localDeviceFromUserDefaults() -> RCDevice {
@@ -94,13 +99,13 @@ public class RCDevice: RCModel {
             return generateNewDevice()
         }
         
-        let device: RCDevice = RCDevice.generate(fromJson: deviceString)
+        let device: RCDevice? = try? RCDevice.fromJSONString(deviceString)
         
-        return device
+        return device ?? generateNewDevice()
     }
     
     private static func generateNewDevice() -> RCDevice {
-        let device = RCDevice()!
+        let device = RCDevice()
         device.deviceToken = UUID().uuidString
         device.save()
         

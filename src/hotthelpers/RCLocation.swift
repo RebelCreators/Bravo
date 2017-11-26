@@ -28,14 +28,14 @@ public class RCLocation: HHModel {
     public var lng: String?
     
     public static func location(coordinates: CLLocationCoordinate2D) -> RCLocation {
-        let userLocation = RCLocation()!
+        let userLocation = RCLocation()
         userLocation.lat = "\(coordinates.latitude)"
         userLocation.lng = "\(coordinates.longitude)"
         
         return userLocation
     }
     
-    public func updateLocation(success:@escaping ()-> Void, failure:@escaping (RCError)->Void) {
+    public func updateLocation(success:@escaping ()-> Void, failure:@escaping (BravoError)->Void) {
         WebService().put(relativePath: "loc/update", headers: nil, parameters: self, responseType: .nodata, success: { (_ : RCNullModel) in
             success()
         }) { error in

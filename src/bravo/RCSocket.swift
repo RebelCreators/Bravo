@@ -141,18 +141,18 @@ public class RCSocket: NSObject {
         return op.asOperation()
     }
     
-    private func connect(success:@escaping () -> Void, failure: @escaping (RCError) -> Void) -> WebServiceOp {
+    private func connect(success:@escaping () -> Void, failure: @escaping (BravoError) -> Void) -> WebServiceOp {
         let op = WebServiceBlockOp({ operation in
             var succ: (() -> Void)? = success
-            var fail: ((RCError) -> Void)? = failure
+            var fail: ((BravoError) -> Void)? = failure
             guard let config = Bravo.sdk.config else {
-                failure(RCError.ConditionNotMet(message: "No configuration set"))
+                failure(BravoError.ConditionNotMet(message: "No configuration set"))
                 operation.finish()
                 return
             }
             
             guard let credential = Bravo.sdk.credential else {
-                failure(RCError.AccessDenied(message: "no credential available"))
+                failure(BravoError.AccessDenied(message: "no credential available"))
                 operation.finish()
                 return
             }
@@ -160,7 +160,7 @@ public class RCSocket: NSObject {
             components?.port = RCSocket.defaultPortNumber as NSNumber?
             
             guard let url = components?.url else {
-                failure(RCError.ConditionNotMet(message: "Could not resolve URL"))
+                failure(BravoError.ConditionNotMet(message: "Could not resolve URL"))
                 operation.finish()
                 return
             }
@@ -172,7 +172,7 @@ public class RCSocket: NSObject {
             
             self.underlyingSocket!.on("error"){data, ack in
                 let error = NSError(domain: "RCSocket", code: Int((data.first as? String) ?? "500") ?? 500, userInfo: nil)
-                fail?(RCError.OtherNSError(nsError: error))
+                fail?(BravoError.OtherNSError(nsError: error))
                 succ = nil
                 fail = nil
                 operation.finish()

@@ -20,7 +20,7 @@
 
 import Foundation
 
-public enum RCError: Error {
+public enum BravoError: Error {
     case InvalidParameter(message: String)
     case ConditionNotMet(message: String)
     case NoPassword
@@ -29,6 +29,7 @@ public enum RCError: Error {
     case UnexpectedError(message: String)
     case HttpError(message: String, code: Int)
     case OtherNSError(nsError: NSError)
+    case WithError(error: Error)
     
     public var code: Int {
         switch self {
@@ -48,8 +49,10 @@ public enum RCError: Error {
             return 404
         case let .HttpError(_, code):
             return code
+        case let .WithError(error):
+            return 1000
         }
-
+        
     }
     public var description: String {
         switch self {
@@ -69,6 +72,12 @@ public enum RCError: Error {
             return message ?? "" + " (Not Found)"
         case let .HttpError(message, code):
             return "\(message) - \(code)"
+        case let .WithError(error):
+            return error.localizedDescription
         }
+    }
+    
+    public var localizedDescription: String {
+        return description
     }
 }

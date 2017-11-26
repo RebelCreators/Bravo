@@ -20,6 +20,8 @@
 
 import Foundation
 
+import RCModel
+
 public let RCMessageKey = "com.rebel.creators.message.key"
 
 public protocol RCPayload {
@@ -34,56 +36,55 @@ public class RCMessage: RCModel {
     
     internal var payloads = [RCPayloadWrapper]()
     
-    public func hasPayloadType<T: RCModel where T:RCPayload>(type: T.Type) -> Bool {
+    public func hasPayloadType<T: RCModel>(type: T.Type) -> Bool where T:RCPayload {
         let payload: T? = payloadForClass()
         return payload != nil
     }
     
-    public func appendPayload<T: RCModel where T:RCPayload>(payload: T) {
+    public func appendPayload<T: RCModel>(payload: T) where T:RCPayload {
         payloads.append(RCPayloadWrapper.create(objectType: type(of: payload).contentType, object: payload))
     }
     
-    public func payloadsForClass<T: RCModel where T:RCPayload>() -> [T]{
-        return payloads.filter({ return $0.type == T.contentType }).map({ $0.hydrateObject() })
+    public func payloadsForClass<T: RCModel>() -> [T] where T:RCPayload {
+        return payloads.filter({ return $0.type == T.contentType }).map({ $0.hydrateObject() }).filter({ $0 != nil }) as! [T]
     }
     
-    public func payloadForClass<T: RCModel where T:RCPayload>() -> T? {
+    public func payloadForClass<T: RCModel>() -> T? where T:RCPayload {
         return payloadsForClass().first
     }
 }
 
 extension RCMessage {
-    open override class func listAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.listAttributeTypes() ?? [:]) + ["payloads": RCPayloadWrapper.self]
+    
+    open override class func arrayClasses() -> [String : RCModelProtocol.Type] {
+        return (super.arrayClasses() ?? [:]) + ["payloads": RCPayloadWrapper.self]
     }
 }
 
 internal class RCPayloadWrapper: RCModel {
-    override var dictionaryValue:[AnyHashable : Any] {
-        var dict = super.dictionaryValue!
-        var string = object?.toJsonString() ?? ""
-        dict["contents"] = string.toBase64()
-        return dict
-    }
     var type: String?
     var contents: String?
     private var object: RCModel?
     
     fileprivate static func create(objectType: String, object: RCModel) -> RCPayloadWrapper {
-        let wrapper = RCPayloadWrapper()!
+        let wrapper = RCPayloadWrapper()
         wrapper.object = object
         wrapper.type = objectType
         return wrapper
     }
     
-    override class func ommitKeys() -> [String] {
-        return super.ommitKeys() + ["object"]
+    override class func transformersForProperties() -> [String : ValueTransformer] {
+        return super.transformersForProperties() + ["contents": RCCommonTransfromers.base64StringTransformer()]
     }
     
-    fileprivate func hydrateObject<T: RCModel>() -> T {
+    override class func propertyMappings() -> [String : RCPropertyKey] {
+        return super.propertyMappings() - ["object"]
+    }
+    
+    fileprivate func hydrateObject<T: RCModel>() -> T? {
         guard let obj = object else {
             var string = contents?.fromBase64() ?? ""
-            let object: T = T.generate(fromJson: string)
+            let object: T? = T.generate(fromJson: string)
             self.object = object
             
             return object

@@ -31,4 +31,6 @@
 
 + (nonnull NSValueTransformer<RCTransformer> *)timestampDateTransformer;
 
++ (nonnull NSValueTransformer<RCTransformer> *)base64StringTransformer;
+
 @end

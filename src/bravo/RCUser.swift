@@ -20,6 +20,8 @@
 
 import Foundation
 
+import RCModel
+
 func ==(lhs: RCUser, rhs: RCUser) -> Bool {
     return lhs.isEqual(rhs)
 }
@@ -47,7 +49,7 @@ public class RCUser: RCModel {
         return UUID().uuidString
     }()
     
-    public func profileImage(success:@escaping ((Data?) -> Void), failure:@escaping ((RCError)->Void)) {
+    public func profileImage(success:@escaping ((Data?) -> Void), failure:@escaping ((BravoError)->Void)) {
         guard userID != nil else {
             failure(.ConditionNotMet(message: "No userID"))
             return
@@ -72,7 +74,7 @@ public class RCUser: RCModel {
         return PNGPhoto(photoID: avatar)
     }
     
-    public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data?, success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
+    public func setProfileImage(pngData:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Data?, success:@escaping ((RCUser) -> Void), failure:@escaping ((BravoError)->Void)) {
         guard userID != nil else {
             failure(.ConditionNotMet(message: "No userID"))
             return
@@ -98,7 +100,7 @@ public class RCUser: RCModel {
         }, failure: failure).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func updateUser(success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
+    public func updateUser(success:@escaping ((RCUser) -> Void), failure:@escaping ((BravoError)->Void)) {
         guard userID != nil else {
             failure(.ConditionNotMet(message: "No userID"))
             return
@@ -110,7 +112,7 @@ public class RCUser: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func register(success:@escaping ((RCUser) -> Void), failure:@escaping ((RCError)->Void)) {
+    public func register(success:@escaping ((RCUser) -> Void), failure:@escaping ((BravoError)->Void)) {
         WebService().post(relativePath: "users/register", requiresAuth: false, headers: nil, parameters: self, success: { (user : RCUser) in
             success(user)
         }) { error in
@@ -118,15 +120,15 @@ public class RCUser: RCModel {
             }.exeInBackground()
     }
     
-    public static func login(credential: URLCredential, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
+    public static func login(credential: URLCredential, success:@escaping ((RCUser) -> Void), failure: @escaping ((BravoError) -> Void)) {
         login(credential: credential, saveToken: false, success: success, failure: failure)
     }
     
-    public static func login(credential: URLCredential, saveToken: Bool, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
+    public static func login(credential: URLCredential, saveToken: Bool, success:@escaping ((RCUser) -> Void), failure: @escaping ((BravoError) -> Void)) {
         if let op = self.authOperation {
             WebServiceBlockOp({ operation in
                 guard let user = RCUser.currentUser else {
-                    failure(RCError.AccessDenied(message: "could not log in"))
+                    failure(BravoError.AccessDenied(message: "could not log in"))
                     
                     operation.finish()
                     return
@@ -188,11 +190,11 @@ public class RCUser: RCModel {
         return RCAuthCredential.savedToken() != nil || Bravo.sdk.credential?.refreshToken != nil
     }
     
-    public static func resume(success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
+    public static func resume(success:@escaping ((RCUser) -> Void), failure: @escaping ((BravoError) -> Void)) {
         if let op = self.authOperation {
             WebServiceBlockOp({ operation in
                 guard let user = RCUser.currentUser else {
-                    failure(RCError.AccessDenied(message: "could not resume"))
+                    failure(BravoError.AccessDenied(message: "could not resume"))
                     
                     operation.finish()
                     return
@@ -206,7 +208,7 @@ public class RCUser: RCModel {
         }
         
         guard let credential = (RCAuthCredential.savedToken() ?? Bravo.sdk.credential) else {
-            failure(RCError.InvalidParameter(message: "Token Not Found"))
+            failure(BravoError.InvalidParameter(message: "Token Not Found"))
             return
         }
         
@@ -253,7 +255,7 @@ public class RCUser: RCModel {
             }.exeInBackground()
     }
     
-    public static func userById(userID: String, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
+    public static func userById(userID: String, success:@escaping ((RCUser) -> Void), failure: @escaping ((BravoError) -> Void)) {
         WebService().get(relativePath: "users/:userID/id", headers: nil, parameters: ["userID": userID], success: { (user: RCUser) in
             success(user)
         }, failure: { (error) in
@@ -261,7 +263,7 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
     }
     
-    public static func userByIds(userIDs: [String], success:@escaping (([RCUser]) -> Void), failure: @escaping ((RCError) -> Void)) {
+    public static func userByIds(userIDs: [String], success:@escaping (([RCUser]) -> Void), failure: @escaping ((BravoError) -> Void)) {
         WebService().get(relativePath: "users/id", headers: nil, parameters: ["userIDs": userIDs], success: { (user: [RCUser]) in
             success(user)
         }, failure: { (error) in
@@ -269,7 +271,7 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
     }
     
-    public static func userByUserNames(userNames: [String], success:@escaping (([RCUser]) -> Void), failure: @escaping ((RCError) -> Void)) {
+    public static func userByUserNames(userNames: [String], success:@escaping (([RCUser]) -> Void), failure: @escaping ((BravoError) -> Void)) {
         WebService().get(relativePath: "users/username", headers: nil, parameters: ["userNames": userNames], success: { (user: [RCUser]) in
             success(user)
         }, failure: { (error) in
@@ -277,7 +279,7 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
     }
     
-    public static func userByUserName(userName: String, success:@escaping ((RCUser) -> Void), failure: @escaping ((RCError) -> Void)) {
+    public static func userByUserName(userName: String, success:@escaping ((RCUser) -> Void), failure: @escaping ((BravoError) -> Void)) {
         WebService().get(relativePath: "users/:userName/username", headers: nil, parameters: ["userName": userName], success: { (user: RCUser) in
             success(user)
         }, failure: { (error) in
@@ -285,7 +287,7 @@ public class RCUser: RCModel {
         }).exeInBackground(dependencies: [self.authOperation?.asOperation()])
     }
     
-    public static func logout(success:(() -> Void)?, failure: ((RCError) -> Void)?) {
+    public static func logout(success:(() -> Void)?, failure: ((BravoError) -> Void)?) {
         RCDevice.deleteCurrentDevice(success: {
             WebService().delete(relativePath: "oauth/logout", headers: nil, parameters: [:], responseType: .nodata, success: { (_: RCNullModel) in
                 success?()
@@ -320,11 +322,11 @@ extension RCUser {
         return hashValue == model.hashValue
     }
     
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        return super.attributeMappings() + ["userID" : "_id"]
+    open override class func propertyMappings() -> [String : RCPropertyKey] {
+        return super.propertyMappings() + ["userID" : "_id"]
     }
     
-    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.enumAttributeTypes() ?? [:]) + ["gender" : RCGenderEnumObject.self]
+    open override class func enumClasses() -> [String : RCEnumMappable.Type] {
+       return super.enumClasses() + ["gender" : RCGenderEnumMapper.self]
     }
 }

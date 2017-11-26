@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import Bravo
+import RCModel
 
 open class HHModel: RCModel {
     var modelID: String?
@@ -26,8 +27,8 @@ open class HHModel: RCModel {
         return UUID().uuidString
     }()
     
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        return super.attributeMappings() + ["modelID" : "_id"]
+    open override class func propertyMappings() -> [String : RCPropertyKey] {
+        return super.propertyMappings() + ["modelID" : "_id"]
     }
     
     open override var hashValue: Int {

@@ -29,7 +29,7 @@ class Test0_0_0_0_2_ServiceTests: XCTestCase {
     var me = Test0_0_0_0_2_ServiceTests.self
     
     func test000000RegisterUser() {
-        let user = RCUser()!
+        let user = RCUser()
         user.userName = me.user2
         user.password = password
         let ex = expectation(description: "")
@@ -58,14 +58,14 @@ class Test0_0_0_0_2_ServiceTests: XCTestCase {
     
     func test000001SetupUserProfile() {
         let ex = expectation(description: "")
-        let profile = RCUserProfile()!
+        let profile = RCUserProfile()
         profile.appearance = ["hair" : "red"]
         profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
         profile.details = "this is a test"
         profile.email = "john.doe@gmail.com"
         profile.profileType = .helper
         //should not save
-        let bartending = RCService()!
+        let bartending = RCService()
         bartending.name = "bartending"
         bartending.hourlyRate = 10
         profile.services = [bartending]
@@ -82,12 +82,12 @@ class Test0_0_0_0_2_ServiceTests: XCTestCase {
     
     func test00000createService() {
         let service = RCService()
-        service?.owner = RCUser.currentUser
-        service?.details = "I cook a mean BBQ"
-        service?.hourlyRate = 15.00
-        service?.name = "BBQ"
+        service.owner = RCUser.currentUser
+        service.details = "I cook a mean BBQ"
+        service.hourlyRate = 15.00
+        service.name = "BBQ"
         let ex = expectation(description: "")
-        service?.save(success: { service in
+        service.save(success: { service in
             currentService = service
             XCTAssert(service.serviceID != nil, "No ID")
             ex.fulfill()

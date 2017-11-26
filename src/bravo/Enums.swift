@@ -19,175 +19,105 @@
 // THE SOFTWARE.
 
 import Foundation
-prefix operator <<
 
-prefix func <<<T: RCEnumerable>(right: Int) -> T {
-    return T(1 << right)
-}
+import RCModel
 
-public func ==(lhs: RCEnumerable, rhs: RCEnumerable) -> Bool {
-    return lhs.isEqual(rhs)
-}
-
-public final class RCGenderEnum: RCEnumerable {
-    public static let none: RCGenderEnum = <<0
-    public static let female: RCGenderEnum = <<2
-    public static let male: RCGenderEnum = <<3
+@objc public enum RCGenderEnum: UInt {
+    case none,
+    female,
+    male
     
-    public override var description: String {
-        
-        switch self {
-        case RCGenderEnum.none:
-            return ""
-        case RCGenderEnum.female:
-            return "Female"
-        case RCGenderEnum.male:
-            return "Male"
-        default:
-            break
-        }
-        
-        return ""
+    public var description: String {
+        return RCGenderEnumMapper.stringValue(self) ?? ""
     }
     
     public var localizedValue: String {
-        
-        switch self {
-        case RCGenderEnum.none:
-            return ""
-        case RCGenderEnum.female:
-            return "Female"
-        case RCGenderEnum.male:
-            return "Male"
-        default:
-            break
-        }
-        
-        return ""
+        return NSLocalizedString(self.description, comment: "RCGenderEnum Localized")
     }
 }
 
-@objc public class RCGenderEnumObject: NSObject, MMEnumAttributeContainer {
-    public static func mappings() -> [AnyHashable : Any]! {
-        return ["none" : RCGenderEnum.none, "male" : RCGenderEnum.male, "female" : RCGenderEnum.female]
+@objc public class RCGenderEnumMapper: NSObject, RCEnumMappable {
+    public static func enumMappings() -> [String : NSNumber]! {
+        return self.map(["female": .female,
+                         "male": .male] as [String: RCGenderEnum])
     }
 }
 
-public final class RCProfileTypeEnum: RCEnumerable {
-    public static let client: RCProfileTypeEnum = <<0
-    public static let helper: RCProfileTypeEnum = <<2
+@objc public enum RCProfileTypeEnum: UInt {
+    case client,
+    helper
     
-    public override var description: String {
-        
-        switch self {
-        case RCProfileTypeEnum.helper:
-            return "helper"
-        case RCProfileTypeEnum.client:
-            return "client"
-        default:
-            break
-        }
-        
-        return ""
+    public var description: String {
+        return RCProfileTypeEnumMapper.stringValue(self) ?? ""
     }
 }
 
-@objc public class RCProfileTypeEnumObject: NSObject, MMEnumAttributeContainer {
-    public static func mappings() -> [AnyHashable : Any]! {
-        return ["client" : RCProfileTypeEnum.client, "helper" : RCProfileTypeEnum.helper]
+@objc public class RCProfileTypeEnumMapper: NSObject, RCEnumMappable {
+    public static func enumMappings() -> [String : NSNumber]! {
+        return self.map(["client": .client,
+                         "helper": .helper] as [String: RCProfileTypeEnum])
     }
 }
 
-public final class RCRequestStatusEnum: RCEnumerable {
-    public static let pending: RCRequestStatusEnum = <<0
-    public static let canceled: RCRequestStatusEnum = <<2
-    public static let completed: RCRequestStatusEnum = <<3
+@objc public enum RCRequestStatusEnum: UInt {
+    case pending,
+    canceled,
+    completed
     
-    public override var description: String {
-        switch self {
-        case RCRequestStatusEnum.pending:
-            return "pending"
-        case RCRequestStatusEnum.completed:
-            return "completed"
-        case RCRequestStatusEnum.canceled:
-            return "canceled"
-        default:
-            break
-        }
-        
-        return ""
+    public var description: String {
+        return RCRequestStatusEnumMapper.stringValue(self) ?? ""
     }
 }
 
-@objc public class RCRequestStatusEnumObject: NSObject, MMEnumAttributeContainer {
-    public static func mappings() -> [AnyHashable : Any]! {
-        return ["pending": RCRequestStatusEnum.pending , "completed": RCRequestStatusEnum.completed, "canceled": RCRequestStatusEnum.canceled]
+@objc public class RCRequestStatusEnumMapper: NSObject, RCEnumMappable {
+    public static func enumMappings() -> [String : NSNumber]! {
+        return self.map(["pending": .pending,
+                         "canceled": .canceled,
+                         "completed": .completed] as [String: RCRequestStatusEnum])
     }
 }
 
-public final class RCDialogPermissionsEnum: RCEnumerable {
-    public static let anyone: RCDialogPermissionsEnum = <<0
-    public static let anyParticipant: RCDialogPermissionsEnum = <<2
-    public static let onlyOwner: RCDialogPermissionsEnum = <<3
+@objc public enum RCDialogPermissionsEnum: UInt {
+    case anyone,
+    anyParticipant,
+    onlyOwner
     
-    public override var description: String {
-        switch self {
-        case RCDialogPermissionsEnum.anyone:
-            return "anyone"
-        case RCDialogPermissionsEnum.anyParticipant:
-            return "any_participant"
-        case RCDialogPermissionsEnum.onlyOwner:
-            return "only_owner"
-        default:
-            break
-        }
-        
-        return ""
+    public var description: String {
+        return RCDialogPermissionsEnumMapper.stringValue(self) ?? ""
     }
 }
 
-@objc public class RCDialogPermissionsEnumObject: NSObject, MMEnumAttributeContainer {
-    public static func mappings() -> [AnyHashable : Any]! {
-        return ["anyone": RCDialogPermissionsEnum.anyone , "any_participant": RCDialogPermissionsEnum.anyParticipant, "only_owner": RCDialogPermissionsEnum.onlyOwner]
+@objc public class RCDialogPermissionsEnumMapper: NSObject, RCEnumMappable {
+    public static func enumMappings() -> [String : NSNumber]! {
+        return self.map(["anyone": .anyone,
+                         "anyParticipant": .anyParticipant,
+                         "onlyOwner": .onlyOwner] as [String: RCDialogPermissionsEnum])
     }
 }
 
-public final class RCHelperRequestStatusEnum: RCEnumerable {
-    public static let pending: RCHelperRequestStatusEnum = <<0
-    public static let accepted: RCHelperRequestStatusEnum = <<3
-    public static let rejected: RCHelperRequestStatusEnum = <<4
-    public static let onWay: RCHelperRequestStatusEnum = <<5
-    public static let clockedIn: RCHelperRequestStatusEnum = <<6
-    public static let canceled: RCHelperRequestStatusEnum = <<7
-    public static let completed: RCHelperRequestStatusEnum = <<8
+@objc public enum RCHelperRequestStatusEnum: UInt {
+    case pending,
+    accepted,
+    rejected,
+    onWay,
+    clockedIn,
+    canceled,
+    completed
     
-    public override var description: String {
-        switch self {
-        case RCHelperRequestStatusEnum.pending:
-            return "pending"
-        case RCHelperRequestStatusEnum.completed:
-            return "completed"
-        case RCHelperRequestStatusEnum.canceled:
-            return "canceled"
-        case RCHelperRequestStatusEnum.accepted:
-            return "accepted"
-        case RCHelperRequestStatusEnum.rejected:
-            return "rejected"
-        case RCHelperRequestStatusEnum.clockedIn:
-            return "clocked_in"
-        case RCHelperRequestStatusEnum.onWay:
-            return "arriving"
-        default:
-            break
-        }
-        
-        return ""
+    public var description: String {
+        return RCHelperRequestStatusEnumMapper.stringValue(self) ?? ""
     }
 }
 
-@objc public class RCHelperRequestStatusEnumObject: NSObject, MMEnumAttributeContainer {
-    public static func mappings() -> [AnyHashable : Any]! {
-        return ["pending": RCHelperRequestStatusEnum.pending , "completed": RCHelperRequestStatusEnum.completed, "canceled": RCHelperRequestStatusEnum.canceled, "accepted": RCHelperRequestStatusEnum.accepted, "rejected": RCHelperRequestStatusEnum.rejected, "clocked_in" :RCHelperRequestStatusEnum.clockedIn, "arriving": RCHelperRequestStatusEnum.onWay]
+@objc public class RCHelperRequestStatusEnumMapper: NSObject, RCEnumMappable {
+    
+    public static func enumMappings() -> [String : NSNumber]! {
+        return self.map(["pending": .pending,
+                         "accepted": .accepted,
+                         "rejected": .rejected,
+                         "onWay": .onWay,
+                         "clockedIn": .clockedIn,
+                         "canceled": .canceled,
+                         "completed": .completed] as [String: RCHelperRequestStatusEnum])
     }
 }
-

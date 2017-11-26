@@ -1,9 +1,15 @@
 PODS:
+  - Alamofire (4.5.1)
   - Bravo (1.1.0):
+    - Alamofire (~> 4.0)
     - RCModel (~> 1.0)
+    - Socket.IO-Client-Swift (~> 10.0.0)
+    - SwiftKeychainWrapper (~> 3.0)
   - HHSDK (1.0.0):
     - Bravo
   - RCModel (1.0.1)
+  - Socket.IO-Client-Swift (10.0.1)
+  - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
   - Bravo (from `../`)
@@ -16,9 +22,12 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Bravo: c2d4247dc1ba77609fe2f2eae5a59850503eabf8
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Bravo: 8d855359bba196dab85ecb1357761f5b57788a7e
   HHSDK: 98edfc23b1149da8c324089b7337c863543c2a9c
   RCModel: a533c296527c22adf9b01beec073188543ed4947
+  Socket.IO-Client-Swift: f6553633ba6a01df8f1c8b583ec36560901e9de6
+  SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
 PODFILE CHECKSUM: a4c603ea568601288ef3dd99514a1539c1aeb94f
 

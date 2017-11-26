@@ -20,6 +20,7 @@
 
 import Foundation
 import Bravo
+import RCModel
 
 public class RCService: HHModel {
     public var serviceID: String? {
@@ -31,11 +32,11 @@ public class RCService: HHModel {
     public var hourlyRate: NSNumber?
     public var minimumHours: NSNumber = 0
     
-    open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.mapAttributeTypes() ?? [:]) + ["owner" : RCUser.self]
+    open override class func dictionaryClasses() -> [String : RCModelProtocol.Type] {
+        return super.dictionaryClasses() + ["owner" : RCUser.self]
     }
     
-    public static func servicesForCurrentUser(success: @escaping ([RCService]) -> Void, failure: @escaping (RCError) -> Void) {
+    public static func servicesForCurrentUser(success: @escaping ([RCService]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "service/own", headers: nil, parameters: [:], success: { (services: [RCService]) in
             success(services)
         }, failure: { (error) in
@@ -43,7 +44,7 @@ public class RCService: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public static func servicesForUser(userID: String, success: @escaping ([RCService]) -> Void, failure: @escaping (RCError) -> Void) {
+    public static func servicesForUser(userID: String, success: @escaping ([RCService]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "service/:userID/user", headers: nil, parameters: ["userID": userID], success: { (services: [RCService]) in
             success(services)
         }, failure: { (error) in
@@ -51,7 +52,7 @@ public class RCService: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public static func servicesByIDs(serviceIDs: [String], success: @escaping ([RCService]) -> Void, failure: @escaping (RCError) -> Void) {
+    public static func servicesByIDs(serviceIDs: [String], success: @escaping ([RCService]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "service/id", headers: nil, parameters: ["serviceIDs": serviceIDs], success: { (services: [RCService]) in
             success(services)
         }, failure: { (error) in
@@ -59,9 +60,9 @@ public class RCService: HHModel {
         }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func update(success: @escaping (RCService) -> Void, failure: @escaping (RCError) -> Void) {
+    public func update(success: @escaping (RCService) -> Void, failure: @escaping (BravoError) -> Void) {
         guard let serviceID = self.serviceID else {
-            failure(RCError.InvalidParameter(message: "Service mush have and id"))
+            failure(BravoError.InvalidParameter(message: "Service mush have and id"))
             return
         }
         
@@ -72,9 +73,9 @@ public class RCService: HHModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func save(success: @escaping (RCService) -> Void, failure: @escaping (RCError) -> Void) {
+    public func save(success: @escaping (RCService) -> Void, failure: @escaping (BravoError) -> Void) {
         guard serviceID == nil else {
-            failure(RCError.InvalidParameter(message: "Service must not have an id"))
+            failure(BravoError.InvalidParameter(message: "Service must not have an id"))
             return
         }
         
@@ -85,9 +86,9 @@ public class RCService: HHModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func delete(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    public func delete(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         guard let serviceID = self.serviceID else {
-            failure(RCError.InvalidParameter(message: "Service must have an id"))
+            failure(BravoError.InvalidParameter(message: "Service must have an id"))
             return
         }
         

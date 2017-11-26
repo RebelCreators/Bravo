@@ -31,7 +31,7 @@ class Test0_0_0_0_4_DialogTest03: XCTestCase {
     var me = Test0_0_0_0_4_DialogTest03.self
     
     func test000000RegisterUsers() {
-        var user = RCUser()!
+        var user = RCUser()
         user.userName = me.user1Name
         user.password = password
         let ex = expectation(description: "")
@@ -43,7 +43,7 @@ class Test0_0_0_0_4_DialogTest03: XCTestCase {
             ex.fulfill()
         })
         
-        user = RCUser()!
+        user = RCUser()
         user.userName = me.user2Name
         user.password = password
         let ex2 = expectation(description: "")
@@ -55,7 +55,7 @@ class Test0_0_0_0_4_DialogTest03: XCTestCase {
             ex2.fulfill()
         })
         
-        user = RCUser()!
+        user = RCUser()
         user.userName = me.user3Name
         user.password = password
         let ex3 = expectation(description: "")

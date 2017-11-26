@@ -20,6 +20,8 @@
 
 import Foundation
 
+import RCModel
+
 @objc public class RCNullModel: RCModel {
     static var null = RCNullModel()
 }
@@ -49,18 +51,11 @@ extension Array: RModel {
             return nil
         }
         
-        guard let T = Element.self as? RModel.Type else {
+        guard let T = Element.self as? RCModelProtocol.Type else {
             return nil
         }
         
-        var a: [RModel] = []
-        for o in array {
-            if let obj = T.generate(from: o) as? RModel {
-                a.append(obj)
-            }
-        }
-        
-        return a
+        return try? NSArray(forClass: T, array: array)
     }
 }
 
@@ -87,7 +82,19 @@ extension Dictionary: RCParameter {
             }
             
             guard let model = v as? RCModel else {
-                dict[key] = v
+                guard let model = v as? RCModelProtocol else {
+                    if let object = v as? AnyObject {
+                        if let transformer = RCClassTransformers.defaultTransformer(for: type(of: object)) {
+                            dict[key] = try? transformer.reverseTransformedValue(object)
+                            continue
+                        }
+                    }
+                    dict[key] = v
+                    
+                    continue
+                }
+                dict[key] = try? RCModelFactory<AnyObject>.model(toJSONObject: model)
+                
                 continue
             }
             
@@ -121,50 +128,21 @@ extension NSDictionary: RCParameter {
 }
 
 
-@objc open class RCModel: MMModel, RModel, RCParameter {
+extension RCModel: RModel, RCParameter {
     
-    public subscript(strings: [String]) -> RCParameterDictionary {
+    @objc public subscript(strings: [String]) -> RCParameterDictionary {
         return self.toParameterDictionary().union(keys: strings)
     }
     
-    open class func generate<T: RModel>(fromJson: String) -> T {
-        let data = fromJson.data(using: .utf8)!
-        let dict = try! JSONSerialization.jsonObject(with: data, options: []) as! [AnyHashable: Any]
-        return T.generate(from: dict) as! T
+    open class func generate<T: RCModel>(fromJson: String) -> T? {
+        return try? (RCModelFactory.model(forClass: T.self, json: fromJson) as T)
     }
     
-    open class func generate(from: Any) -> Any? {
-        guard let dict  = from as? [AnyHashable: Any] else {
-            return nil
-        }
-        
-        return try? MTLJSONAdapter.model(of: self, fromJSONDictionary: dict)
+    @objc open class func generate(from: Any) -> Any? {
+        return try? (RCModelFactory.model(forClass: self, jsonObject: from) as AnyObject)
     }
     
-    open class func ommitKeys() -> [String] {
-        return []
-    }
-    
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        var attributes = super.attributeMappings()
-        
-        for key in ommitKeys() {
-            attributes?.removeValue(forKey: key)
-        }
-        
-        return attributes
-    }
-    
-    open func toParameterDictionary() -> RCParameterDictionary {
-        return self.toDictionary() as! RCParameterDictionary
-    }
-    
-    open func toDictionary() -> NSDictionary {
-        let dict = (try? MTLJSONAdapter.jsonDictionary(fromModel: self)) as? NSDictionary
-        return dict ?? NSDictionary()
-    }
-    
-    open func toJsonString() -> String {
-        return String(data: try! JSONSerialization.data(withJSONObject: self.toDictionary(), options: []), encoding: .utf8)!
+    @objc open func toParameterDictionary() -> RCParameterDictionary {
+        return (try? self.toDictionary() as RCParameterDictionary) ?? [:]
     }
 }

@@ -64,7 +64,7 @@ class RCMultiPartRequest: NSObject {
 
 extension WebService {
     
-    open func upload<ModelType: RModel>(relativePath: String, files:[RCFileInfo], requiresAuth: Bool = false, parameters: RCParameter? = nil, headers: [String: String]? = nil, success:@escaping ((ModelType) -> Void), failure:@escaping ((RCError) -> Void)) {
+    open func upload<ModelType: RModel>(relativePath: String, files:[RCFileInfo], requiresAuth: Bool = false, parameters: RCParameter? = nil, headers: [String: String]? = nil, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) {
         
         let matcher = RCPatternMatcher(string: relativePath, with: parameters?.toParameterDictionary() ?? [:])
         let unmatchedParameters = matcher.unmatchedParameters ?? [:]
@@ -79,7 +79,7 @@ extension WebService {
             } else {
                 NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: nil)
                 
-                failure(RCError.AccessDenied(message: "Access Denied"))
+                failure(BravoError.AccessDenied(message: "Access Denied"))
                 return
             }
         }
@@ -89,19 +89,19 @@ extension WebService {
                 
                 NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: nil)
                 
-                failure(RCError.AccessDenied(message: "Access Denied"))
+                failure(BravoError.AccessDenied(message: "Access Denied"))
                 return
             }
             
             guard let error = response.result.error else {
                 guard let res = response.result.value else {
                     let error = AFError.responseValidationFailed(reason: .dataFileNil)
-                    failure(RCError.OtherNSError(nsError: error as NSError))
+                    failure(BravoError.OtherNSError(nsError: error as NSError))
                     return
                 }
                 
                 guard response.response?.statusCode == 200 else {
-                    failure(RCError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
+                    failure(BravoError.HttpError(message: "HTTP ERROR", code: response.response?.statusCode ?? 0))
                     
                     return
                 }
@@ -112,7 +112,7 @@ extension WebService {
                 
                 return
             }
-            failure(RCError.OtherNSError(nsError: error as NSError))
+            failure(BravoError.OtherNSError(nsError: error as NSError))
         }
     }
 }

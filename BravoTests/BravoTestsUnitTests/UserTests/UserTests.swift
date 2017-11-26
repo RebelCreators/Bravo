@@ -31,7 +31,7 @@ var _userProfile: RCUserProfile?
 class Test0_0_0_0_1_UserTests: XCTestCase {
     
     func test00000RegisterUser() {
-        let user = RCUser()!
+        let user = RCUser()
         user.userName = userName
         user.password = password
         let ex = expectation(description: "")
@@ -140,7 +140,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
         let ex = expectation(description: "")
         
         let group = DispatchGroup()
-        var user1 = RCUser()!
+        var user1 = RCUser()
         user1.userName = "user1.\(Date().timeIntervalSince1970)"
         user1.password = password
         
@@ -152,7 +152,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
             group.leave()
         })
         
-        var user2 = RCUser()!
+        var user2 = RCUser()
         user2.userName = "user2.\(Date().timeIntervalSince1970)"
         user2.password = password
         group.enter()
@@ -163,7 +163,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
             group.leave()
         })
         
-        var user3 = RCUser()!
+        var user3 = RCUser()
         user3.userName = "user3.\(Date().timeIntervalSince1970)"
         user3.password = password
         group.enter()
@@ -203,7 +203,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
     
     func test00008UpdateUserProfile() {
         let ex = expectation(description: "")
-        let profile = RCUserProfile()!
+        let profile = RCUserProfile()
         profile.appearance = ["hair" : "red"]
         profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
         profile.details = "this is a test"
@@ -286,7 +286,7 @@ class Test0_0_0_0_1_UserTests: XCTestCase {
     
     func test00029UpdateUserProfile() {
         let ex = expectation(description: "")
-        let profile = RCUserProfile()!
+        let profile = RCUserProfile()
         profile.appearance = ["hair" : "blue"]
         profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
         profile.details = "this is a test"

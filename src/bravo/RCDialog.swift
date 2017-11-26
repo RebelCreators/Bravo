@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 import Foundation
+import RCModel
 
 open class RCDialogPermission: RCModel {
     open var read: RCDialogPermissionsEnum = .anyParticipant // enum
@@ -26,25 +27,25 @@ open class RCDialogPermission: RCModel {
     open var update: RCDialogPermissionsEnum = .onlyOwner // enum
     open var join: RCDialogPermissionsEnum = .onlyOwner // enum
     
-    open override class func enumAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.enumAttributeTypes() ?? [:]) + ["read" : RCDialogPermissionsEnumObject.self,
-                                                      "write" : RCDialogPermissionsEnumObject.self,
-                                                      "update" : RCDialogPermissionsEnumObject.self,
-                                                      "join" : RCDialogPermissionsEnumObject.self]
+    open override class func enumClasses() -> [String : RCEnumMappable.Type] {
+        return super.enumClasses() + ["read" : RCDialogPermissionsEnumMapper.self,
+                                      "write" : RCDialogPermissionsEnumMapper.self,
+                                      "update" : RCDialogPermissionsEnumMapper.self,
+                                      "join" : RCDialogPermissionsEnumMapper.self]
     }
 }
 
-public var RCDialogPermissionDefault = RCDialogPermission()!
+public var RCDialogPermissionDefault = RCDialogPermission()
 
 public var RCDialogPermissionAnyParticipant: RCDialogPermission {
-    let permissions = RCDialogPermission()!
+    let permissions = RCDialogPermission()
     permissions.update = .anyParticipant
     
     return permissions
 }
 
 public var RCDialogPermissionPublic: RCDialogPermission {
-    let permissions = RCDialogPermission()!
+    let permissions = RCDialogPermission()
     permissions.read = .anyone
     permissions.join = .anyone
     return permissions
@@ -74,16 +75,16 @@ public class RCDialog: RCModel {
                               participants: Set<RCUser>? = nil,
                               permissions: RCDialogPermission = RCDialogPermissionDefault,
                               success: @escaping (RCDialog) -> Void,
-                              failure: @escaping (RCError) -> Void) {
+                              failure: @escaping (BravoError) -> Void) {
         guard let currentUser = RCUser.currentUser else {
-            failure(RCError.ConditionNotMet(message: "No ID"))
+            failure(BravoError.ConditionNotMet(message: "No ID"))
             
             return
         }
         
         var users: Set<RCUser> = participants ?? []
         users.insert(currentUser)
-        let dialog = RCDialog()!
+        let dialog = RCDialog()
         dialog.details = details
         dialog.name = name
         dialog.allUsers = Array(users)
@@ -111,9 +112,9 @@ public class RCDialog: RCModel {
         DialogManager.shared.removeOnMessageListener(context: context)
     }
     
-    public func leave(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    public func leave(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "No ID"))
+            failure(BravoError.ConditionNotMet(message: "No ID"))
             
             return
         }
@@ -124,9 +125,9 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func addUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+    public func addUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (BravoError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "No ID"))
+            failure(BravoError.ConditionNotMet(message: "No ID"))
             
             return
         }
@@ -137,9 +138,9 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func removeUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+    public func removeUser(userID: String, success: @escaping (RCDialog) -> Void, failure: @escaping (BravoError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "no ID"))
+            failure(BravoError.ConditionNotMet(message: "no ID"))
             
             return
         }
@@ -150,7 +151,7 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func publish(message: RCMessage, success: @escaping (RCMessage) -> Void, failure: @escaping (RCError) -> Void) {
+    public func publish(message: RCMessage, success: @escaping (RCMessage) -> Void, failure: @escaping (BravoError) -> Void) {
         message.dialogId = self.dialogID
         message.senderId = RCUser.currentUser?.userID
         WebService().put(relativePath: "dialog/message/send", headers: nil, parameters: ["message": message, "dialogId": dialogID, "permissions": self.permissions], success: { (message: RCMessage) in
@@ -160,28 +161,27 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()], requirements: [RCSocketConnectOperation()])
     }
     
-    public func messages(offset: Int, limit: Int, success: @escaping ([RCMessage]) -> Void, failure: @escaping (RCError) -> Void) {
+    public func messages(offset: Int, limit: Int, success: @escaping ([RCMessage]) -> Void, failure: @escaping (BravoError) -> Void) {
         messages(date: nil, offset: offset, limit: limit, success: success, failure: failure)
     }
     
-    public func messages(date: Date?, offset: Int, limit: Int, asc: Bool = false, success: @escaping ([RCMessage]) -> Void, failure: @escaping (RCError) -> Void) {
+    public func messages(date: Date?, offset: Int, limit: Int, asc: Bool = false, success: @escaping ([RCMessage]) -> Void, failure: @escaping (BravoError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "no ID"))
+            failure(BravoError.ConditionNotMet(message: "no ID"))
             
             return
         }
         
-        let dateStr = MMValueTransformer.date().reverseTransformedValue(date) as? String
-        WebService().get(relativePath: "dialog/messages/:dialogID", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions, "offset": offset, "limit": limit, "date": dateStr ?? "", "asc": asc], success: { (messages: [RCMessage]) in
+        WebService().get(relativePath: "dialog/messages/:dialogID", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions, "offset": offset, "limit": limit, "date": date, "asc": asc], success: { (messages: [RCMessage]) in
             success(messages)
         }) { error in
             failure(error)
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func fetchUnreadMessagesCount(success: @escaping () -> Void, failure: @escaping (RCError) -> Void) {
+    public func fetchUnreadMessagesCount(success: @escaping () -> Void, failure: @escaping (BravoError) -> Void) {
         guard let dialogID = self.dialogID else {
-            failure(RCError.ConditionNotMet(message: "no ID"))
+            failure(BravoError.ConditionNotMet(message: "no ID"))
             
             return
         }
@@ -191,7 +191,7 @@ public class RCDialog: RCModel {
         }, failure: failure)
     }
     
-    public static func dialogsWithUsers(userIDs: [String], permissions: RCDialogPermission, success: @escaping ([RCDialog]) -> Void, failure: @escaping (RCError) -> Void) {
+    public static func dialogsWithUsers(userIDs: [String], permissions: RCDialogPermission, success: @escaping ([RCDialog]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "dialog/find/users", headers: nil, parameters: ["userIds": userIDs, "permissions": permissions], success: { (dialogs: [RCDialog]) in
             success(dialogs)
         }) { error in
@@ -199,7 +199,7 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public static func dialogWithID(dialogID: String, permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+    public static func dialogWithID(dialogID: String, permissions: RCDialogPermission, success: @escaping (RCDialog) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "dialog/:dialogID/id", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions], success: { (dialog: RCDialog) in
             success(dialog)
         }) { error in
@@ -207,7 +207,7 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public static func dialogsWithIDs(dialogIDs: [String], permissions: RCDialogPermission, success: @escaping ([RCDialog?]) -> Void, failure: @escaping (RCError) -> Void) {
+    public static func dialogsWithIDs(dialogIDs: [String], permissions: RCDialogPermission, success: @escaping ([RCDialog?]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().post(relativePath: "dialog/ids", headers: nil, parameters: ["dialogIds": dialogIDs, "permissions": permissions], success: { (dialogs: [RCDialog]) in
             var dialogMap = [String: RCDialog?]()
             for dialogID in dialogIDs {
@@ -230,7 +230,7 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public static func subscriptions(success: @escaping ([RCDialog]) -> Void, failure: @escaping (RCError) -> Void) {
+    public static func subscriptions(success: @escaping ([RCDialog]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "dialog/current", headers: nil, parameters: [:], success: { (dialogs: [RCDialog]) in
             success(dialogs)
         }) { error in
@@ -238,9 +238,9 @@ public class RCDialog: RCModel {
             }.exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
     
-    public func join(success: @escaping (RCDialog) -> Void, failure: @escaping (RCError) -> Void) {
+    public func join(success: @escaping (RCDialog) -> Void, failure: @escaping (BravoError) -> Void) {
         guard let userID = RCUser.currentUser?.userID else {
-            failure(RCError.ConditionNotMet(message: "no user ID"))
+            failure(BravoError.ConditionNotMet(message: "no user ID"))
             
             return
         }
@@ -278,21 +278,16 @@ extension RCDialog {
         return model
     }
     
-    open override class func ommitKeys() -> [String] {
-        return ["currentUsers"]
+    open override class func propertyMappings() -> [String : RCPropertyKey] {
+        return super.propertyMappings() + ["_currentUsers" : "currentUsers", "dialogID": "_id"] - ["currentUsers"]
     }
     
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        var attributes = super.attributeMappings() + ["_currentUsers" : "currentUsers", "dialogID": "_id"]
-        return attributes
+    open override class func arrayClasses() -> [String : RCModelProtocol.Type] {
+        return super.arrayClasses() + ["allUsers": RCUser.self]
     }
     
-    open override class func listAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.listAttributeTypes() ?? [:]) + ["allUsers": RCUser.self]
-    }
-    
-    open override class func mapAttributeTypes() -> [AnyHashable : Any]! {
-        return (super.mapAttributeTypes() ?? [:])  + ["creator": RCUser.self, "permissions": RCDialogPermission.self]
+    open override class func dictionaryClasses() -> [String : RCModelProtocol.Type] {
+        return super.dictionaryClasses() + ["creator": RCUser.self, "permissions": RCDialogPermission.self]
     }
 }
 

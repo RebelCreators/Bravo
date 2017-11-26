@@ -21,9 +21,11 @@
 import Foundation
 import SwiftKeychainWrapper
 
+import RCModel
+
 @objc public class RCAuthCredential: RCModel {
     var accessToken: String = ""
-    var expiration: Date = Date()
+    var expiration: Date = Date.distantPast
     var refreshToken: String = ""
     var expires_in: NSNumber = 0
     
@@ -40,7 +42,10 @@ import SwiftKeychainWrapper
     }
     
     public func save() -> Bool {
-        return KeychainWrapper.standard.set(self.toJsonString(), forKey: RCAuthCredential.keyChainKey())
+        guard let jsonString = try? self.toJSONString() else {
+            return false
+        }
+        return KeychainWrapper.standard.set(jsonString, forKey: RCAuthCredential.keyChainKey())
     }
     
     public class func savedToken() -> RCAuthCredential? {
@@ -49,7 +54,9 @@ import SwiftKeychainWrapper
         }
         
         if let retrievedString = KeychainWrapper.standard.string(forKey: RCAuthCredential.keyChainKey()) {
-            let cred: RCAuthCredential = RCAuthCredential.generate(fromJson: retrievedString)
+            guard let cred: RCAuthCredential = try? RCAuthCredential.fromJSONString(retrievedString) else {
+                return nil
+            }
             
             if (cred.accessToken.characters.count > 0 && cred.refreshToken.characters.count > 0) {
                 return cred
@@ -77,26 +84,7 @@ import SwiftKeychainWrapper
         return KeychainWrapper.standard.removeObject(forKey: RCAuthCredential.keyChainKey())
     }
     
-    open override class func attributeMappings() -> [AnyHashable : Any]! {
-        var dict : [AnyHashable : Any] = ["accessToken": "access_token", "refreshToken": "refresh_token"]
-        return super.attributeMappings() + dict
-    }
-    
-    required convenience public init?(coder: NSCoder) {
-        self.init()
-    }
-    
-    required public override init() {
-        self.accessToken = ""
-        self.expiration = Date.distantPast
-        self.refreshToken = ""
-        super.init()
-    }
-    
-    required public init(dictionary dictionaryValue: [AnyHashable : Any]!) throws {
-        self.accessToken = ""
-        self.expiration = Date.distantPast
-        self.refreshToken = ""
-        try super.init(dictionary: dictionaryValue)
+    open override class func propertyMappings() -> [String : RCPropertyKey] {
+        return super.propertyMappings() + ["accessToken": "access_token", "refreshToken": "refresh_token"]
     }
 }

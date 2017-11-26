@@ -20,6 +20,7 @@
 
 import XCTest
 import Bravo
+import RCModel
 
 public class TestPayload: RCModel, RCPayload {
     public static var contentType: String { return "test" }
@@ -37,7 +38,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
     var me = Test0_0_0_0_4_DialogTest01.self
     
     func test000000RegisterUsers() {
-        var user = RCUser()!
+        var user = RCUser()
         user.userName = me.user1Name
         user.password = password
         let ex = expectation(description: "")
@@ -49,7 +50,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             ex.fulfill()
         })
         
-        user = RCUser()!
+        user = RCUser()
         user.userName = me.user2Name
         user.password = password
         let ex2 = expectation(description: "")
@@ -61,7 +62,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             ex2.fulfill()
         })
         
-        user = RCUser()!
+        user = RCUser()
         user.userName = me.user3Name
         user.password = password
         let ex3 = expectation(description: "")
@@ -193,8 +194,8 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
     
     func test000299sendMessage() {
         let ex = expectation(description: "")
-        let message = RCMessage()!
-        let testPayload = TestPayload()!
+        let message = RCMessage()
+        let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         message.appendPayload(payload: testPayload)
@@ -305,8 +306,8 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
     
     func test005999sendMessage() {
         let ex = expectation(description: "")
-        let message = RCMessage()!
-        let testPayload = TestPayload()!
+        let message = RCMessage()
+        let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         message.appendPayload(payload: testPayload)
@@ -343,8 +344,8 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
         currentDialog?.removeOnMessageListeners()
         
         let ex33 = expectation(description: "")
-        let message33 = RCMessage()!
-        let testPayload33 = TestPayload()!
+        let message33 = RCMessage()
+        let testPayload33 = TestPayload()
         let firstString33 = "this is a test!"
         testPayload33.strings.append(firstString33)
         message33.appendPayload(payload: testPayload33)
@@ -384,8 +385,8 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
     
     func test008999sendMessage() {
         let ex = expectation(description: "")
-        let message = RCMessage()!
-        let testPayload = TestPayload()!
+        let message = RCMessage()
+        let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         message.appendPayload(payload: testPayload)

@@ -55,10 +55,10 @@ open class RCFile: NSObject {
         super.init()
     }
     
-    public func downloadData(success:((Data) -> Void)?, failure:((RCError) -> Void)?) -> WebServiceOp {
+    public func downloadData(success:((Data) -> Void)?, failure:((BravoError) -> Void)?) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             guard let url = self.relativePath else {
-                failure?(RCError.NotFound(message: "No URL"))
+                failure?(BravoError.NotFound(message: "No URL"))
                 operation.finish()
                 return
             }
@@ -72,11 +72,11 @@ open class RCFile: NSObject {
         })
     }
     
-    public func upload(success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+    public func upload(success:@escaping (() -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
         return RCFile.uploadFiles(files: [self], success: success, failure: failure)
     }
     
-    static public func uploadFiles(files: [RCFile], success:@escaping (() -> Void), failure:@escaping ((RCError) -> Void)) -> WebServiceOp {
+    static public func uploadFiles(files: [RCFile], success:@escaping (() -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             var fileInfo = [RCFileInfo]()
             for file in files {
@@ -87,7 +87,7 @@ open class RCFile: NSObject {
                 fileInfo.append(info)
             }
             guard files.count > 0 else {
-                failure(RCError.InvalidParameter(message: "Check Data and content Type"))
+                failure(BravoError.InvalidParameter(message: "Check Data and content Type"))
                 operation.finish()
                 return
             }

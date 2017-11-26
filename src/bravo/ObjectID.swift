@@ -20,13 +20,15 @@
 
 import Foundation
 
+import RCModel
+
 open class ObjectID: RCModel, RCPayload {
     
     public var objectID: String?
     public var objectType: String?
     
     public static func create(objectID: String, objectType: String) -> ObjectID {
-        let obj = ObjectID()!
+        let obj = ObjectID()
         obj.objectID = objectID
         obj.objectType = objectType
         

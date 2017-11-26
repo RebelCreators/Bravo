@@ -31,7 +31,7 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
     var me = Test0_0_0_0_3_ServiceRequestBasicTests.self
     
     func test000000RegisterUser() {
-        let user = RCUser()!
+        let user = RCUser()
         user.userName = me.userName1
         user.password = password
         let ex = expectation(description: "")
@@ -47,7 +47,7 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
     }
     
     func test000003RegisterUser() {
-        let user = RCUser()!
+        let user = RCUser()
         user.userName = me.userName2
         user.password = password
         let ex = expectation(description: "")
@@ -101,14 +101,14 @@ class Test0_0_0_0_3_ServiceRequestBasicTests: XCTestCase {
     }
     func test000019SetupUserProfile() {
         let ex = expectation(description: "")
-        let profile = RCUserProfile()!
+        let profile = RCUserProfile()
         profile.appearance = ["hair" : "BLUE"]
         profile.birthDate = Date.init(timeIntervalSince1970: 1000000000)
         profile.details = "this is a test"
         profile.email = "john.doe@gmail.com"
         profile.profileType = .client
         //should not save
-        let bartending = RCService()!
+        let bartending = RCService()
         bartending.name = "bartending"
         bartending.hourlyRate = 10
         profile.services = [bartending]

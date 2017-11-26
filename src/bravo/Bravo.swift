@@ -22,10 +22,30 @@ import Foundation
 import Alamofire
 import SocketIO
 
+import RCModel
+
 public func + <K,V> (lhs : [K : V], rhs : [K : V]) -> [K : V] {
     var dict = lhs
     for (k,v) in rhs {
         dict[k] = v
+    }
+    
+    return dict
+}
+
+public func + (lhs : [String : RCPropertyKey], rhs : [String : String]) -> [String : RCPropertyKey] {
+    var dict = lhs
+    for (k,v) in rhs {
+        dict[k] = v as NSString
+    }
+    
+    return dict
+}
+
+public func - (lhs : [String : RCPropertyKey], rhs : [String]) -> [String : RCPropertyKey] {
+    var dict = lhs
+    for k in rhs {
+        dict[k] = nil
     }
     
     return dict
