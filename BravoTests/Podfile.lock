@@ -7,7 +7,7 @@ PODS:
     - SwiftKeychainWrapper (~> 3.0)
   - HHSDK (1.0.0):
     - Bravo
-  - RCModel (1.0.1)
+  - RCModel (1.0.2)
   - Socket.IO-Client-Swift (10.0.1)
   - SwiftKeychainWrapper (3.0.1)
 
@@ -25,7 +25,7 @@ SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bravo: 8d855359bba196dab85ecb1357761f5b57788a7e
   HHSDK: 98edfc23b1149da8c324089b7337c863543c2a9c
-  RCModel: a533c296527c22adf9b01beec073188543ed4947
+  RCModel: 032c619e790a76a9f958ab77ff9a86afa7eb3418
   Socket.IO-Client-Swift: f6553633ba6a01df8f1c8b583ec36560901e9de6
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 

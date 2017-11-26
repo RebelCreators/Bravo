@@ -25,12 +25,15 @@
 
 @interface RCCommonTransfromers : NSObject
 
-+ (nonnull NSValueTransformer<RCTransformer> *)stringTransformer;
++ (nonnull NSValueTransformer<RCTransformer> *)base64DataTransformer;
+
++ (nonnull NSValueTransformer<RCTransformer> *)base64StringTransformer;
 
 + (nonnull NSValueTransformer<RCTransformer> *)RFC3339DateTransformer;
 
++ (nonnull NSValueTransformer<RCTransformer> *)stringTransformer;
+
 + (nonnull NSValueTransformer<RCTransformer> *)timestampDateTransformer;
 
-+ (nonnull NSValueTransformer<RCTransformer> *)base64StringTransformer;
 
 @end

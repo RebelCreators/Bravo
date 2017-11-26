@@ -23,7 +23,7 @@
 
 @protocol RCEnumMappable
 
-+ (NSDictionary <NSString *, NSNumber *> *)enumMappings;
++ (nonnull NSDictionary <NSString *, NSNumber *> *)enumMappings;
 
 @end
 

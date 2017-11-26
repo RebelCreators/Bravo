@@ -60,6 +60,7 @@
     dispatch_once(&onceToken, ^{
         [RCClassTransformers setDefaultTransformerForClass:[NSString class] transformer:[RCCommonTransfromers stringTransformer]];
         [RCClassTransformers setDefaultTransformerForClass:[NSDate class] transformer:[RCCommonTransfromers RFC3339DateTransformer]];
+        [RCClassTransformers setDefaultTransformerForClass:[NSData class] transformer:[RCCommonTransfromers base64DataTransformer]];
     });
 }
 
