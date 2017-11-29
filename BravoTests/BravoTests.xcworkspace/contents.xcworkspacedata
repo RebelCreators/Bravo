@@ -25,6 +25,9 @@
          <FileRef
             location = "group:RCUserReview.swift">
          </FileRef>
+         <FileRef
+            location = "group:Enums.swift">
+         </FileRef>
       </Group>
       <Group
          location = "group:bravo"
@@ -81,7 +84,7 @@
             location = "group:RestModel"
             name = "RestModel">
             <FileRef
-               location = "group:RCModel.swift">
+               location = "group:/Users/lorenzo/Bravo/src/bravo/RestModel/RCWebResponseModel.swift">
             </FileRef>
             <FileRef
                location = "group:RCParameter.swift">

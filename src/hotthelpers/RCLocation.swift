@@ -36,7 +36,7 @@ public class RCLocation: HHModel {
     }
     
     public func updateLocation(success:@escaping ()-> Void, failure:@escaping (BravoError)->Void) {
-        WebService().put(relativePath: "loc/update", headers: nil, parameters: self, responseType: .nodata, success: { (_ : RCNullModel) in
+        WebService().put(relativePath: "loc/update", headers: nil, parameters: self, success: {
             success()
         }) { error in
             failure(error)

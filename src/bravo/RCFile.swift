@@ -62,7 +62,7 @@ open class RCFile: NSObject {
                 operation.finish()
                 return
             }
-            WebService().get(relativePath: url, headers: nil, parameters: [:], responseType: .data, success: { (data: Data) in
+            WebService().get(relativePath: url, headers: nil, parameters: [:], success: { (data: Data) in
                 success?(data)
                 operation.finish()
             }, failure: { error in

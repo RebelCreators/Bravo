@@ -193,7 +193,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
-        message.appendPayload(payload: testPayload)
+        try? message.appendPayload(payload: testPayload)
         currentDialog?.publish(message: message, success: { mesage in
             ex.fulfill()
         }, failure: { error in
@@ -203,24 +203,34 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         
         let exBlock = expectation(description: "")
         currentDialog?.onMessage() { message in
-            let payload: TestPayload? = message.payloadForClass()
-            XCTAssert(payload?.strings.first == firstString, "payloads should match")
-            
+            do {
+                let payload: TestPayload? = try message.payloadForClass()
+                XCTAssert(payload?.strings.first == firstString, "payloads should match")
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
             exBlock.fulfill()
         }
         
         let exBlock2 = expectation(description: "")
         currentDialog?.onMessage() { message in
-            let payload: TestPayload? = message.payloadForClass()
-            XCTAssert(payload?.strings.first == firstString, "payloads should match")
-            
+            do {
+                let payload: TestPayload? = try message.payloadForClass()
+                XCTAssert(payload?.strings.first == firstString, "payloads should match")
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
             exBlock2.fulfill()
         }
         
         expectation(forNotification: Notification.RC.RCDidReceiveMessage.rawValue, object: nil) { notification in
-            let payload: TestPayload? = (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
-            
-            return payload?.strings.first == firstString
+            do {
+                let payload: TestPayload? = try (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
+                return payload?.strings.first == firstString
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+            return false
         }
         
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
@@ -280,7 +290,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         currentDialog?.addUser(userID: me.user3!.userID!, success: { dialog in
             ex.fulfill()
         }, failure: { error in
-             XCTFail(error.localizedDescription)
+            XCTFail(error.localizedDescription)
             ex.fulfill()
         })
         
@@ -292,7 +302,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         currentDialog?.removeUser(userID: me.user1!.userID!, success: { dialog in
             ex.fulfill()
         }, failure: { error in
-             XCTFail(error.localizedDescription)
+            XCTFail(error.localizedDescription)
             ex.fulfill()
         })
         
@@ -305,7 +315,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
-        message.appendPayload(payload: testPayload)
+        try? message.appendPayload(payload: testPayload)
         currentDialog?.publish(message: message, success: { mesage in
             ex.fulfill()
         }, failure: { error in
@@ -315,32 +325,46 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         
         let exBlock = expectation(description: "")
         currentDialog?.onMessage() { message in
-            let payload: TestPayload? = message.payloadForClass()
-            XCTAssert(payload?.strings.first == firstString, "payloads should match")
-            
+            do {
+                let payload: TestPayload? = try message.payloadForClass()
+                XCTAssert(payload?.strings.first == firstString, "payloads should match")
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
             exBlock.fulfill()
         }
         
         let exBlock3 = expectation(description: "")
         RCDialog.onMessage(context: self, dialogID: nil) { message in
-            let payload: TestPayload? = message.payloadForClass()
-            XCTAssert(payload?.strings.first == firstString, "payloads should match")
-            
+            do {
+                let payload: TestPayload? = try message.payloadForClass()
+                XCTAssert(payload?.strings.first == firstString, "payloads should match")
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
             exBlock3.fulfill()
         }
         
         let exBlock2 = expectation(description: "")
         currentDialog?.onMessage() { message in
-            let payload: TestPayload? = message.payloadForClass()
-            XCTAssert(payload?.strings.first == firstString, "payloads should match")
-            
+            do {
+                let payload: TestPayload? = try message.payloadForClass()
+                XCTAssert(payload?.strings.first == firstString, "payloads should match")
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
             exBlock2.fulfill()
         }
         
         expectation(forNotification: Notification.RC.RCDidReceiveMessage.rawValue, object: nil) { notification in
-            let payload: TestPayload? = (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
-            
-            return payload?.strings.first == firstString
+            do {
+                let payload: TestPayload? = try (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
+                
+                return payload?.strings.first == firstString
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+            return false
         }
         
         waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
@@ -432,7 +456,7 @@ class Test0_0_0_0_4_DialogTest02: XCTestCase {
         let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
-        message.appendPayload(payload: testPayload)
+        try? message.appendPayload(payload: testPayload)
         currentDialog?.publish(message: message, success: { mesage in
             XCTFail("should not have access")
             ex.fulfill()

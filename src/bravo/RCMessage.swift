@@ -37,20 +37,23 @@ public class RCMessage: RCModel {
     internal var payloads = [RCPayloadWrapper]()
     
     public func hasPayloadType<T: RCModel>(type: T.Type) -> Bool where T:RCPayload {
-        let payload: T? = payloadForClass()
-        return payload != nil
+        let payload: T?? = (try? payloadForClass())
+        if let _playload = payload {
+            return _playload != nil
+        }
+        return false
     }
     
-    public func appendPayload<T: RCModel>(payload: T) where T:RCPayload {
-        payloads.append(RCPayloadWrapper.create(objectType: type(of: payload).contentType, object: payload))
+    public func appendPayload<T: RCModel>(payload: T) throws where T:RCPayload {
+        payloads.append(try RCPayloadWrapper.create(objectType: type(of: payload).contentType, object: payload))
     }
     
-    public func payloadsForClass<T: RCModel>() -> [T] where T:RCPayload {
-        return payloads.filter({ return $0.type == T.contentType }).map({ $0.hydrateObject() }).filter({ $0 != nil }) as! [T]
+    public func payloadsForClass<T: RCModel>() throws -> [T] where T:RCPayload {
+        return try payloads.filter({ return $0.type == T.contentType }).map({ try $0.hydrateObject() as T })
     }
     
-    public func payloadForClass<T: RCModel>() -> T? where T:RCPayload {
-        return payloadsForClass().first
+    public func payloadForClass<T: RCModel>() throws -> T? where T:RCPayload {
+        return try payloadsForClass().first
     }
 }
 
@@ -66,10 +69,12 @@ internal class RCPayloadWrapper: RCModel {
     var contents: String?
     private var object: RCModel?
     
-    fileprivate static func create(objectType: String, object: RCModel) -> RCPayloadWrapper {
+    fileprivate static func create(objectType: String, object: RCModel) throws -> RCPayloadWrapper {
         let wrapper = RCPayloadWrapper()
         wrapper.object = object
         wrapper.type = objectType
+        wrapper.contents = try object.toJSONString()
+        
         return wrapper
     }
     
@@ -81,10 +86,10 @@ internal class RCPayloadWrapper: RCModel {
         return super.propertyMappings() - ["object"]
     }
     
-    fileprivate func hydrateObject<T: RCModel>() -> T? {
+    fileprivate func hydrateObject<T: RCModel>() throws -> T {
         guard let obj = object else {
-            var string = contents?.fromBase64() ?? ""
-            let object: T? = T.generate(fromJson: string)
+            var string = contents ?? ""
+            let object: T = try T.fromJSONString(string)
             self.object = object
             
             return object

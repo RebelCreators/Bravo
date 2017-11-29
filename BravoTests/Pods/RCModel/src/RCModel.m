@@ -23,6 +23,24 @@
 
 @implementation RCModel
 
+- (nonnull instancetype)init {
+    if (self = [super init]) {
+    }
+    return self;
+}
+
+- (nonnull instancetype)copyWithZone:(NSZone *)zone {
+    id copy = [[self.class alloc] init];
+    NSArray* properties = [RCModelFactory propertiesForClass:self.class];
+    for (NSString *property in properties) {
+        id value = [self valueForKey:property];
+        if (value && [value conformsToProtocol:@protocol(NSCopying)]) {
+            [self setValue:[value copy] forKey:property];
+        }
+    }
+    return copy;
+}
+
 - (nullable NSString *)toJSONString:(NSError<RCError> * _Nullable * _Nullable)error {
     return [RCModelFactory modelToJSONString:self error:error];
 }
@@ -68,3 +86,4 @@
 }
 
 @end
+

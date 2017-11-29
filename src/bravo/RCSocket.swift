@@ -186,9 +186,10 @@ public class RCSocket: NSObject {
             }
             
             self.underlyingSocket!.on("com.rebel.creators.message") {data, ack in
-                if let dict = data.first as? NSDictionary {
-                    let message = RCMessage.generate(from: dict) as! RCMessage
-                    NotificationCenter.default.post(name: Notification.RC.RCDidReceiveMessage, object: self, userInfo: [RCMessageKey: message])
+                if let dict = data.first as? [String: NSObject] {
+                    if let message = try? RCMessage.fromDictionary(dict) {
+                        NotificationCenter.default.post(name: Notification.RC.RCDidReceiveMessage, object: self, userInfo: [RCMessageKey: message])
+                    }
                 }
             }
             

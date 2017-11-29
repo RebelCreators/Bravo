@@ -50,8 +50,11 @@ class RCMultiPartRequest: NSObject {
             uploadData.append(file.data)
             index = index != nil ? index! + 1 : 0
         }
+        
+        var params: [String: Any] = ((try? parameters?.toParameterDictionary()) ?? [:])!
+        
         // add parameters
-        for (key, value) in parameters?.toParameterDictionary() ?? [:] {
+        for (key, value) in params {
             uploadData.append("\r\n--\(boundaryConstant)\r\n".data(using: .utf8)!)
             uploadData.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)".data(using: .utf8)!)
         }
@@ -64,9 +67,17 @@ class RCMultiPartRequest: NSObject {
 
 extension WebService {
     
-    open func upload<ModelType: RModel>(relativePath: String, files:[RCFileInfo], requiresAuth: Bool = false, parameters: RCParameter? = nil, headers: [String: String]? = nil, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) {
+    open func upload<ModelType: RCWebResponseModel>(relativePath: String, files:[RCFileInfo], requiresAuth: Bool = false, parameters: RCParameter? = nil, headers: [String: String]? = nil, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) {
         
-        let matcher = RCPatternMatcher(string: relativePath, with: parameters?.toParameterDictionary() ?? [:])
+        var params = [String: Any]()
+        do {
+            params = try parameters?.toParameterDictionary() ?? [:]
+        } catch {
+            failure(BravoError.WithError(error: error))
+            return
+        }
+        
+        let matcher = RCPatternMatcher(string: relativePath, with: params)
         let unmatchedParameters = matcher.unmatchedParameters ?? [:]
         let url = URL(string: matcher.matchedString , relativeTo: Bravo.sdk.config.baseUrl)!
         var headers = headers
@@ -108,7 +119,7 @@ extension WebService {
                 
                 self.processSuccessFail(object: res, success: { (obj : ModelType) in
                     success(obj)
-                    }, failure: failure)
+                }, failure: failure)
                 
                 return
             }

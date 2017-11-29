@@ -21,28 +21,35 @@
 import Foundation
 import Alamofire
 
-open class RCWebRequest: NSObject {
-    
-    static public var rcWebRequestKey = "com.rebelcreators.url.request"
-    
+extension NSNotification {
+    static public var rcWebRequestKey: String {
+        return "com.rebelcreators.url.request"
+    }
+}
+
+public protocol RCWebRequestProtocol {
+    func begin()
+}
+
+open class RCWebRequest<T: RCWebResponseModel>: NSObject, RCWebRequestProtocol {
     open private(set) var relativePath: String
     open fileprivate(set) var requiresAuth: Bool = true
     open private(set) var method: Alamofire.HTTPMethod
     open private(set) var headers: [String : String]?
     open private(set) var parameters: RCParameter
     open private(set) var encoding: ParameterEncoding
-    open private(set) var responseType: RCResponseType = .json
+    open private(set) var responseType: T.Type
     open private(set) var success:((Any) -> Void)
     open private(set) var failure:((BravoError) -> Void)
     
-    public init(relativePath: String, requiresAuth: Bool, method: Alamofire.HTTPMethod, headers: [String : String]?, parameters: RCParameter, encoding: ParameterEncoding = JSONEncoding.default, responseType: RCResponseType = .json, success:@escaping ((Any) -> Void), failure:@escaping ((BravoError) -> Void)) {
+    public init(relativePath: String, requiresAuth: Bool, method: Alamofire.HTTPMethod, headers: [String : String]?, parameters: RCParameter, encoding: ParameterEncoding = JSONEncoding.default, success:@escaping ((Any) -> Void), failure:@escaping ((BravoError) -> Void)) {
         self.relativePath = relativePath
         self.requiresAuth = requiresAuth
         self.method = method
         self.headers = headers
         self.parameters = parameters
         self.encoding = encoding
-        self.responseType = responseType
+        self.responseType = T.self
         self.success = success
         self.failure = failure
         

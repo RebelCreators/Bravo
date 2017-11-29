@@ -300,11 +300,13 @@
                         continue;
                     }
                 } else if (type && [type conformsToProtocol:@protocol(RCModel)]) {
-                    NSError *parseError;
-                    value = [[self _modelTransformer:type] transformedValue:value error:&parseError];
-                    [RCError resolveError:parseError withPointer:error];
-                    if (parseError) {
-                        continue;
+                    if (![value isKindOfClass:type]) {
+                        NSError *parseError;
+                        value = [[self _modelTransformer:type] transformedValue:value error:&parseError];
+                        [RCError resolveError:parseError withPointer:error];
+                        if (parseError) {
+                            continue;
+                        }
                     }
                 } else if (modelDescription.arrayClasses[property]) {
                     NSError *parseError;
@@ -335,7 +337,7 @@
                 }
             }
             
-            if ([(Class)clazz respondsToSelector:@selector(validateModel:)] && object) {
+            if ([object respondsToSelector:@selector(validateModel:)] && object) {
                 NSError *validationError;
                 [object validateModel: &validationError];
                 [RCError resolveError:validationError
@@ -433,4 +435,3 @@
 }
 
 @end
-

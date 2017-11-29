@@ -37,10 +37,6 @@ public class RCUserProfile: HHModel {
     public var services = [RCService]()
     public var homeCity: String?
     
-    open override class func dictionaryClasses() -> [String : RCModelProtocol.Type] {
-        return super.dictionaryClasses() + ["user" : RCUser.self]
-    }
-    
     open override class func arrayClasses() -> [String : RCModelProtocol.Type] {
         return super.arrayClasses() + ["services" : RCService.self]
     }

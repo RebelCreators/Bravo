@@ -33,9 +33,15 @@ open class WebService: NSObject {
         super.init()
     }
     
-    open func post<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+    open func post(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, success:@escaping (() -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+        return post(relativePath: relativePath, requiresAuth: requiresAuth, headers: headers, parameters: parameters,  success: { (_: RCNullModel) in
+            success()
+        }, failure: failure)
+    }
+    
+    open func post<ModelType: RCWebResponseModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter,  success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
-            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .post, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+            self.request(webRequest: RCWebRequest<ModelType>(relativePath: relativePath, requiresAuth: requiresAuth, method: .post, headers: headers, parameters: parameters,  success: { res in
                 guard ModelType.self != RCNullModel.self else {
                     success(RCNullModel.null as! ModelType)
                     operation.finish()
@@ -55,9 +61,15 @@ open class WebService: NSObject {
         })
     }
     
-    open func get<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+    open func get(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, success:@escaping (() -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+        return get(relativePath: relativePath, requiresAuth: requiresAuth, headers: headers, parameters: parameters, success: { (_: RCNullModel) in
+            success()
+        }, failure: failure)
+    }
+    
+    open func get<ModelType: RCWebResponseModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
-            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default,responseType: responseType, success: { res in
+            self.request(webRequest: RCWebRequest<ModelType>(relativePath: relativePath, requiresAuth: requiresAuth, method: .get, headers: headers, parameters: parameters, encoding: URLEncoding.default, success: { res in
                 guard ModelType.self != RCNullModel.self else {
                     success(RCNullModel.null as! ModelType)
                     operation.finish()
@@ -77,9 +89,15 @@ open class WebService: NSObject {
         })
     }
     
-    open func put<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+    open func put(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, success:@escaping (() -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+        return put(relativePath: relativePath, requiresAuth: requiresAuth, headers: headers, parameters: parameters,  success: { (_: RCNullModel) in
+            success()
+        }, failure: failure)
+    }
+    
+    open func put<ModelType: RCWebResponseModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter,  success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
-            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .put, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+            self.request(webRequest: RCWebRequest<ModelType>(relativePath: relativePath, requiresAuth: requiresAuth, method: .put, headers: headers, parameters: parameters, success: { res in
                 guard ModelType.self != RCNullModel.self else {
                     success(RCNullModel.null as! ModelType)
                     operation.finish()
@@ -99,9 +117,15 @@ open class WebService: NSObject {
         })
     }
     
-    open func delete<ModelType: RModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, responseType: RCResponseType = .json, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+    open func delete(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter, success:@escaping (() -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+        return delete(relativePath: relativePath, requiresAuth: requiresAuth, headers: headers, parameters: parameters, success: { (_: RCNullModel) in
+            success()
+        }, failure: failure)
+    }
+    
+    open func delete<ModelType: RCWebResponseModel>(relativePath: String, requiresAuth: Bool = true, headers: [String : String]?, parameters: RCParameter,  success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
-            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: requiresAuth, method: .delete, headers: headers, parameters: parameters, responseType: responseType, success: { res in
+            self.request(webRequest: RCWebRequest<ModelType>(relativePath: relativePath, requiresAuth: requiresAuth, method: .delete, headers: headers, parameters: parameters, success: { res in
                 guard ModelType.self != RCNullModel.self else {
                     success(RCNullModel.null as! ModelType)
                     operation.finish()
@@ -121,13 +145,13 @@ open class WebService: NSObject {
         })
     }
     
-    open func authenticate<ModelType: RModel>(relativePath: String, parameters: RCParameter, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
+    open func authenticate<ModelType: RCWebResponseModel>(relativePath: String, parameters: RCParameter, success:@escaping ((ModelType) -> Void), failure:@escaping ((BravoError) -> Void)) -> WebServiceOp {
         return WebServiceBlockOp({ operation in
             let utf8str = "\(Bravo.sdk.config.clientID):\(Bravo.sdk.config.clientSecret)".data(using: .utf8)
             let base64Encoded = utf8str!.base64EncodedString()
             
             let headers = ["Authorization": "Basic \(base64Encoded)", "Content-Type": "application/x-www-form-urlencoded"]
-            self.request(webRequest: RCWebRequest(relativePath: relativePath, requiresAuth: false, method: .post, headers: headers, parameters: parameters, encoding: URLEncoding.default, success: { dict in
+            self.request(webRequest: RCWebRequest<ModelType>(relativePath: relativePath, requiresAuth: false, method: .post, headers: headers, parameters: parameters, encoding: URLEncoding.default, success: { dict in
                 self.processSuccessFail(object: dict, success: { (obj : ModelType) in
                     success(obj)
                     operation.finish()
@@ -142,7 +166,7 @@ open class WebService: NSObject {
         })
     }
     
-    internal func request(webRequest: RCWebRequest) {
+    internal func request<ModelType: RCWebResponseModel>(webRequest: RCWebRequest<ModelType>) {
         
         var headers = webRequest.headers
         
@@ -153,24 +177,30 @@ open class WebService: NSObject {
             if Bravo.sdk.hasBearerAuthToken() {
                 headers?["Authorization"] = Bravo.sdk.bearerAuthToken()
             } else {
-                NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
+                NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [NSNotification.rcWebRequestKey: webRequest])
                 
                 webRequest.failure(BravoError.AccessDenied(message: "Access Denied"))
                 return
             }
         }
-        
-        let matcher = RCPatternMatcher(string: webRequest.relativePath, with: webRequest.parameters.toParameterDictionary())
+        var params = [String: Any]()
+        do {
+            params = try webRequest.parameters.toParameterDictionary()
+        } catch {
+            webRequest.failure(BravoError.WithError(error: error))
+            return
+        }
+        let matcher = RCPatternMatcher(string: webRequest.relativePath, with: params)
         let url = URL(string: matcher.matchedString , relativeTo: Bravo.sdk.config.baseUrl)!
         let updatedParameters = matcher.unmatchedParameters
         
-        switch webRequest.responseType {
+        switch webRequest.responseType.webResponseType {
         case .data:
             Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, encoding: webRequest.encoding, headers: headers)
                 .responseData(completionHandler: { response in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
-                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
+                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [NSNotification.rcWebRequestKey: webRequest])
                         
                         webRequest.failure(BravoError.AccessDenied(message: "Access Denied"))
                         return
@@ -201,7 +231,7 @@ open class WebService: NSObject {
                 .responseJSON() { (response) -> Void in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
-                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
+                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [NSNotification.rcWebRequestKey: webRequest])
                         
                         webRequest.failure(BravoError.AccessDenied(message: "Access Denied"))
                         return
@@ -232,7 +262,7 @@ open class WebService: NSObject {
                 .response(completionHandler: { response in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
-                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [RCWebRequest.rcWebRequestKey: webRequest])
+                        NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [NSNotification.rcWebRequestKey: webRequest])
                         
                         webRequest.failure(BravoError.AccessDenied(message: "Access Denied"))
                         return
@@ -256,9 +286,16 @@ open class WebService: NSObject {
             break
         }
     }
-    internal func processSuccessFail<T: RModel>(object: Any, success: ((T) -> Void), failure:((BravoError) -> Void)) -> Void {
+    internal func processSuccessFail<T: RCWebResponseModel>(object: Any, success: ((T) -> Void), failure:((BravoError) -> Void)) -> Void {
         
-        if let o = T.generate(from: object) as? T {
+        var obj: Any?
+        do {
+            obj = try T.generate(from: object)
+        } catch {
+            failure(BravoError.WithError(error: error))
+            return
+        }
+        if let o =  obj as? T {
             success(o)
         } else {
             failure(BravoError.UnexpectedError(message: "Could Not Parse"))

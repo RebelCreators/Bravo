@@ -66,10 +66,6 @@ open class RCServiceRequest: HHModel {
         return super.arrayClasses() + ["helpers": RCUser.self, "helperStatus": RCHelperStatus.self]
     }
     
-    open override class func dictionaryClasses() -> [String : RCModelProtocol.Type] {
-        return super.dictionaryClasses() + ["client": RCUser.self]
-    }
-    
     open override class func enumClasses() -> [String : RCEnumMappable.Type] {
         return super.enumClasses() + ["status" : RCRequestStatusEnumMapper.self]
     }
@@ -119,7 +115,7 @@ open class RCServiceRequest: HHModel {
             return
         }
         review.user = user
-        if  client == currentUser {
+        if client == currentUser {
             
             addHelperReview(review: review, success: success, failure: failure)
             return

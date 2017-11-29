@@ -289,7 +289,7 @@ public class RCUser: RCModel {
     
     public static func logout(success:(() -> Void)?, failure: ((BravoError) -> Void)?) {
         RCDevice.deleteCurrentDevice(success: {
-            WebService().delete(relativePath: "oauth/logout", headers: nil, parameters: [:], responseType: .nodata, success: { (_: RCNullModel) in
+            WebService().delete(relativePath: "oauth/logout", headers: nil, parameters: [:], success: {
                 success?()
             }, failure: { (error) in
                 failure?(error)
@@ -327,6 +327,6 @@ extension RCUser {
     }
     
     open override class func enumClasses() -> [String : RCEnumMappable.Type] {
-       return super.enumClasses() + ["gender" : RCGenderEnumMapper.self]
+        return super.enumClasses() + ["gender" : RCGenderEnumMapper.self]
     }
 }

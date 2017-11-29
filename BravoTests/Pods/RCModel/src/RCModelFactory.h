@@ -63,3 +63,4 @@
 + (nonnull NSDictionary<NSString *, id<RCPropertyKey>> *)standardPropertyMappingsForClass:(nonnull Class<RCModel>)clazz;
 
 @end
+

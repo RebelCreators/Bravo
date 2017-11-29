@@ -22,31 +22,50 @@ import Foundation
 
 import RCModel
 
-@objc public class RCNullModel: RCModel {
-    static var null = RCNullModel()
+
+public protocol RCWebResponseModel {
+    
+    static func generate(from: Any) throws -> Any?
+    static var webResponseType: RCResponseType {get}
 }
 
-public protocol RModel {
+
+@objc internal class RCNullModel: NSObject, RCWebResponseModel {
+    internal static var null = RCNullModel()
     
-    static func generate(from: Any) -> Any?
+    public static func generate(from: Any) throws -> Any? {
+        return null
+    }
     
+    public static var webResponseType: RCResponseType {
+        return .nodata
+    }
 }
 
-extension String: RModel {
-    public static func generate(from: Any) -> Any? {
+
+extension String: RCWebResponseModel {
+    public static func generate(from: Any) throws -> Any? {
         return String(describing: from)
     }
-}
-
-extension Data: RModel {
-    public static func generate(from: Any) -> Any? {
-        return from as? Data
+    public static var webResponseType: RCResponseType {
+        return .json
     }
 }
 
-extension Array: RModel {
+
+extension Data: RCWebResponseModel {
+    public static func generate(from: Any) throws -> Any? {
+        return from as? Data
+    }
+    public static var webResponseType: RCResponseType {
+        return .data
+    }
+}
+
+
+extension Array: RCWebResponseModel {
     
-    public static func generate(from: Any) -> Any? {
+    public static func generate(from: Any) throws -> Any? {
         guard let array  = from as? [Any] else {
             return nil
         }
@@ -55,9 +74,14 @@ extension Array: RModel {
             return nil
         }
         
-        return try? NSArray(forClass: T, array: array)
+        return try NSArray(forClass: T, array: array)
+    }
+    
+    public static var webResponseType: RCResponseType {
+        return .json
     }
 }
+
 
 extension Dictionary {
     public func union(keys: [Key]) -> Dictionary<Key, Value> {
@@ -72,9 +96,10 @@ extension Dictionary {
     }
 }
 
+
 extension Dictionary: RCParameter {
     
-    public func toParameterDictionary() -> RCParameterDictionary {
+    public func toParameterDictionary() throws -> RCParameterDictionary {
         var dict = RCParameterDictionary()
         for (k, v) in self {
             guard let key = k as? String else {
@@ -98,7 +123,7 @@ extension Dictionary: RCParameter {
                 continue
             }
             
-            dict[key] = model.toParameterDictionary()
+            dict[key] = try model.toParameterDictionary()
         }
         
         return dict
@@ -108,7 +133,7 @@ extension Dictionary: RCParameter {
 
 extension NSDictionary: RCParameter {
     
-    public func toParameterDictionary() -> RCParameterDictionary {
+    public func toParameterDictionary() throws -> RCParameterDictionary {
         var dict = RCParameterDictionary()
         for (k, v) in self {
             guard let key = k as? String else {
@@ -120,7 +145,7 @@ extension NSDictionary: RCParameter {
                 continue
             }
             
-            dict[key] = model.toParameterDictionary()
+            dict[key] = try model.toParameterDictionary()
         }
         
         return dict
@@ -128,21 +153,21 @@ extension NSDictionary: RCParameter {
 }
 
 
-extension RCModel: RModel, RCParameter {
+extension RCModel: RCWebResponseModel, RCParameter {
     
     @objc public subscript(strings: [String]) -> RCParameterDictionary {
-        return self.toParameterDictionary().union(keys: strings)
+        return (try? self.toParameterDictionary().union(keys: strings)) ?? [:]
     }
     
-    open class func generate<T: RCModel>(fromJson: String) -> T? {
-        return try? (RCModelFactory.model(forClass: T.self, json: fromJson) as T)
+    open class func generate(from: Any) throws -> Any? {
+        return try RCModelFactory.model(forClass: self, jsonObject: from) as AnyObject
     }
     
-    @objc open class func generate(from: Any) -> Any? {
-        return try? (RCModelFactory.model(forClass: self, jsonObject: from) as AnyObject)
+    open func toParameterDictionary() throws -> RCParameterDictionary {
+        return try self.toDictionary() as RCParameterDictionary
     }
     
-    @objc open func toParameterDictionary() -> RCParameterDictionary {
-        return (try? self.toDictionary() as RCParameterDictionary) ?? [:]
+    public static var webResponseType: RCResponseType {
+        return .json
     }
 }

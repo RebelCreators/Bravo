@@ -18,8 +18,33 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-public typealias RCParameterDictionary = [String : Any]
 
-public protocol RCParameter {
-    func toParameterDictionary() throws -> RCParameterDictionary
+import Foundation
+import RCModel
+
+@objc public enum RCHelperRequestStatusEnum: UInt {
+    case pending,
+    accepted,
+    rejected,
+    onWay,
+    clockedIn,
+    canceled,
+    completed
+    
+    public var description: String {
+        return RCHelperRequestStatusEnumMapper.stringValue(self) ?? ""
+    }
+}
+
+@objc public class RCHelperRequestStatusEnumMapper: NSObject, RCEnumMappable {
+    
+    public static func enumMappings() -> [String : NSNumber]! {
+        return self.map(["pending": .pending,
+                         "accepted": .accepted,
+                         "rejected": .rejected,
+                         "arriving": .onWay,
+                         "clocked_in": .clockedIn,
+                         "canceled": .canceled,
+                         "completed": .completed] as [String: RCHelperRequestStatusEnum])
+    }
 }

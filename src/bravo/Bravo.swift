@@ -100,7 +100,7 @@ public class Bravo: NSObject {
     func reAuthenticate(_ notification: Notification) {
         if RCUser.canRefresh() {
             RCUser.resume(success: { _ in
-                if let webRequest = notification.userInfo?[RCWebRequest.rcWebRequestKey] as? RCWebRequest {
+                if let webRequest = notification.userInfo?[NSNotification.rcWebRequestKey] as? RCWebRequestProtocol {
                     webRequest.begin()
                 }
                 

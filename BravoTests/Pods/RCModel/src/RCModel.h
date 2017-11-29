@@ -23,7 +23,9 @@
 
 #import "RCModelFactory.h"
 
-@interface RCModel : NSObject <RCModel>
+@interface RCModel : NSObject <RCModel, NSCopying>
+
+- (nonnull instancetype)init;
 
 + (nullable instancetype)fromJSONString:(nonnull NSString *)jsonString error:(NSError<RCError> * _Nullable * _Nullable)error;
 + (nullable instancetype)fromDictionary:(nonnull NSDictionary<NSString *, NSObject *> *)dict error:(NSError<RCError> * _Nullable * _Nullable)error;
@@ -33,3 +35,4 @@
 
 
 @end
+

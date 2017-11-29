@@ -51,10 +51,6 @@ public var RCDialogPermissionPublic: RCDialogPermission {
     return permissions
 }
 
-func ==(lhs: RCDialog, rhs: RCDialog) -> Bool {
-    return lhs.dialogID == rhs.dialogID && rhs.dialogID != nil
-}
-
 public class RCDialog: RCModel {
     
     public var dialogID: String?
@@ -118,7 +114,7 @@ public class RCDialog: RCModel {
             
             return
         }
-        WebService().delete(relativePath: "dialog/leave", headers: nil, parameters: ["dialogId": dialogID, "permissions": self.permissions], responseType: .nodata,success: { (dialogs: RCNullModel) in
+        WebService().delete(relativePath: "dialog/leave", headers: nil, parameters: ["dialogId": dialogID, "permissions": self.permissions],success: {
             success()
         }) { error in
             failure(error)
@@ -259,23 +255,24 @@ public class RCDialog: RCModel {
 
 extension RCDialog {
     
-    open override class func generate(from: Any) -> Any? {
-        let model = super.generate(from: from)
-        
-        if let dialog = model as? RCDialog {
-            var userMap = [String: RCUser]()
-            for user in dialog.allUsers {
-                userMap[user.userID ?? ""] = user
-            }
-            
-            for userID in dialog._currentUsers {
-                if let user = userMap[userID] {
-                    dialog.currentUsers.append(user)
-                }
-            }
+    public override func isEqual(_ object: Any?) -> Bool {
+        guard let rhs = object as? RCDialog  else {
+            return false
+        }
+        return dialogID == rhs.dialogID && rhs.dialogID != nil
+    }
+    
+    open override func validate() throws {
+        var userMap = [String: RCUser]()
+        for user in allUsers {
+            userMap[user.userID ?? ""] = user
         }
         
-        return model
+        for userID in _currentUsers {
+            if let user = userMap[userID] {
+                currentUsers.append(user)
+            }
+        }
     }
     
     open override class func propertyMappings() -> [String : RCPropertyKey] {
@@ -284,10 +281,6 @@ extension RCDialog {
     
     open override class func arrayClasses() -> [String : RCModelProtocol.Type] {
         return super.arrayClasses() + ["allUsers": RCUser.self]
-    }
-    
-    open override class func dictionaryClasses() -> [String : RCModelProtocol.Type] {
-        return super.dictionaryClasses() + ["creator": RCUser.self, "permissions": RCDialogPermission.self]
     }
 }
 

@@ -35,7 +35,7 @@ public class RCDevice: RCModel {
     
     public static func deleteCurrentDevice(success: @escaping () -> Void, failure:@escaping (BravoError) -> Void) {
         let device = localDevice()
-        WebService().post(relativePath: "device/delete", headers: nil, parameters: device, responseType: .nodata, success: { (_: RCNullModel) in
+        WebService().post(relativePath: "device/delete", headers: nil, parameters: device, success: {
             success()
         }) { error in
             failure(error)
@@ -51,7 +51,7 @@ public class RCDevice: RCModel {
         let device = localDevice()
         device.apnsToken = apnsToken
         device.save()
-        WebService().put(relativePath: "device/update", headers: nil, parameters: device, responseType: .nodata, success: { (_: RCNullModel) in
+        WebService().put(relativePath: "device/update", headers: nil, parameters: device, success: {
             success()
         }) { error in
             failure(error)

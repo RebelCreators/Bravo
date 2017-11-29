@@ -32,10 +32,6 @@ public class RCService: HHModel {
     public var hourlyRate: NSNumber?
     public var minimumHours: NSNumber = 0
     
-    open override class func dictionaryClasses() -> [String : RCModelProtocol.Type] {
-        return super.dictionaryClasses() + ["owner" : RCUser.self]
-    }
-    
     public static func servicesForCurrentUser(success: @escaping ([RCService]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "service/own", headers: nil, parameters: [:], success: { (services: [RCService]) in
             success(services)
@@ -92,7 +88,7 @@ public class RCService: HHModel {
             return
         }
         
-        WebService().delete(relativePath: "service/:serviceID/delete", headers: nil, parameters: ["serviceID": serviceID], responseType: .nodata, success: { (service : RCNullModel) in
+        WebService().delete(relativePath: "service/:serviceID/delete", headers: nil, parameters: ["serviceID": serviceID], success: {
             success()
         }) { error in
             failure(error)

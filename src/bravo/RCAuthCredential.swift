@@ -37,6 +37,10 @@ import RCModel
         super.init()
     }
     
+    public required init() {
+        super.init()
+    }
+    
     static func keyChainKey() -> String {
         return NSStringFromClass(RCAuthCredential.self)
     }
