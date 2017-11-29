@@ -523,6 +523,7 @@
 				"${BUILT_PRODUCTS_DIR}/HHSDK-iOS10.2/HHSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/RCModel-iOS10.2/RCModel.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS10.2/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream-iOS10.2/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS10.2/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -532,6 +533,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HHSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,6 +553,7 @@
 				"${BUILT_PRODUCTS_DIR}/HHSDK-iOS10.0/HHSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/RCModel-iOS10.0/RCModel.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS10.0/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream-iOS10.0/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -560,6 +563,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HHSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

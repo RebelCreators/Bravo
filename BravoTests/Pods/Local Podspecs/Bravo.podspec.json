@@ -14,7 +14,7 @@
     "branch": "master"
   },
   "platforms": {
-    "ios": "9.0"
+    "ios": "10.0"
   },
   "requires_arc": true,
   "source_files": "src/bravo/**/*.{swift,h,m}",
@@ -34,7 +34,7 @@
       "~> 1.0"
     ],
     "Socket.IO-Client-Swift": [
-      "~> 10.0.0"
+      "~> 13.0"
     ]
   }
 }

@@ -3,12 +3,14 @@ PODS:
   - Bravo (1.1.0):
     - Alamofire (~> 4.0)
     - RCModel (~> 1.0)
-    - Socket.IO-Client-Swift (~> 10.0.0)
+    - Socket.IO-Client-Swift (~> 13.0)
     - SwiftKeychainWrapper (~> 3.0)
   - HHSDK (1.0.0):
     - Bravo
   - RCModel (1.0.4)
-  - Socket.IO-Client-Swift (10.0.1)
+  - Socket.IO-Client-Swift (13.0.1):
+    - Starscream (~> 3.0.2)
+  - Starscream (3.0.2)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
@@ -23,12 +25,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  Bravo: 8d855359bba196dab85ecb1357761f5b57788a7e
-  HHSDK: 98edfc23b1149da8c324089b7337c863543c2a9c
+  Bravo: a5a54fd696ea5316af6d1e264310996d3346ae67
+  HHSDK: eb6a754d9ca86e16dd345f9aab7bc4a77d585255
   RCModel: 1ca560e644195ad7f4c0f33a5000952f20b51ab6
-  Socket.IO-Client-Swift: f6553633ba6a01df8f1c8b583ec36560901e9de6
+  Socket.IO-Client-Swift: 7055c89b7a9926b343194c4cac75998329c4a95a
+  Starscream: b512c62f6706421221b5ceb2ba01a9f58aca5bea
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
 
-PODFILE CHECKSUM: a4c603ea568601288ef3dd99514a1539c1aeb94f
+PODFILE CHECKSUM: 095475e7191e4f3e11f84621794ef6a60dbfc74c
 
 COCOAPODS: 1.3.1

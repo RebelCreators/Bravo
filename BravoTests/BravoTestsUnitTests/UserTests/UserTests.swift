@@ -23,7 +23,7 @@ import Bravo
 import HHSDK
 import CoreLocation
 
-let DefaultTestTimeout: TimeInterval = 10
+let DefaultTestTimeout: TimeInterval = 15
 var userName = "bob.\(Date().timeIntervalSince1970)"
 var password = "gogogo"
 var users = [RCUser]()

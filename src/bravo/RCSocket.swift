@@ -57,6 +57,8 @@ public class RCSocket: NSObject {
     private var maxReconections = 5
     private var currentReconnections = 0
     private var underlyingSocket: SocketIOClient?
+    private var underlyingSocketManager:SocketManager?
+    
     public func intitialize() {
         NotificationCenter.default.addObserver(self, selector: #selector(didSignIn), name: Notification.RC.RCDidSignIn, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSignOut), name: Notification.RC.RCDidSignOut, object: nil)
@@ -82,6 +84,9 @@ public class RCSocket: NSObject {
     
     public func reconnect() -> Operation {
         let op = WebServiceBlockOp({ operation in
+            guard !operation.isCancelled && !operation.isFinished else {
+                return
+            }
             if self.connectionStatus == .connected {
                 operation.finish()
                 return
@@ -166,11 +171,15 @@ public class RCSocket: NSObject {
             }
             let deviceToken = RCDevice.currentDevice.deviceToken!
             let configOptions:SocketIOClientConfiguration = [.connectParams(["bearer":"\(credential.accessToken)", "deviceToken": deviceToken]), .reconnects(false), .forceWebsockets(true), .log(self.debug), .forceNew(true)]
-            if self.underlyingSocket == nil {
-                self.underlyingSocket = SocketIOClient(socketURL:url , config: configOptions)
+            var socket:SocketIOClient! = self.underlyingSocket
+            if socket == nil {
+                let manager = SocketManager(socketURL: url, config: configOptions)
+                self.underlyingSocketManager = manager
+                socket = manager.defaultSocket
+                self.underlyingSocket = socket
             }
             
-            self.underlyingSocket!.on("error"){data, ack in
+            socket.on("error"){data, ack in
                 let error = NSError(domain: "RCSocket", code: Int((data.first as? String) ?? "500") ?? 500, userInfo: nil)
                 fail?(BravoError.OtherNSError(nsError: error))
                 succ = nil
@@ -178,14 +187,14 @@ public class RCSocket: NSObject {
                 operation.finish()
             }
             
-            self.underlyingSocket!.on("connect") {data, ack in
+            socket.on("connect") {data, ack in
                 succ?()
                 succ = nil
                 fail = nil
                 operation.finish()
             }
             
-            self.underlyingSocket!.on("com.rebel.creators.message") {data, ack in
+            socket.on("com.rebel.creators.message") {data, ack in
                 if let dict = data.first as? [String: NSObject] {
                     if let message = try? RCMessage.fromDictionary(dict) {
                         NotificationCenter.default.post(name: Notification.RC.RCDidReceiveMessage, object: self, userInfo: [RCMessageKey: message])
@@ -193,8 +202,7 @@ public class RCSocket: NSObject {
                 }
             }
             
-            var socket = self.underlyingSocket
-            self.underlyingSocket!.on("disconnect") {[weak socket] data, ack in
+            socket.on("disconnect") {[weak socket] data, ack in
                 if  (socket != nil) {
                     socket?.removeAllHandlers()
                     self.reconnect()
@@ -203,8 +211,8 @@ public class RCSocket: NSObject {
                     operation.finish()
                 }
             }
-            if self.underlyingSocket?.status != .connected && self.underlyingSocket?.status != .connecting {
-                self.underlyingSocket!.connect()
+            if socket.status != .connected && socket.status != .connecting {
+                socket.connect()
             } else {
                 operation.finish()
             }

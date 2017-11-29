@@ -34,8 +34,8 @@ public class RCPatternMatcher: NSObject {
     }
     
     private class func match(string: String, with dict: [String: Any]) -> (String, [String: Any]) {
-        let regex = try? NSRegularExpression(pattern: ":([a-z0-9]+)", options: .caseInsensitive)
-        let results = regex!.matches(in: string, options: [], range: NSMakeRange(0, string.characters.count))
+        let regex = try! NSRegularExpression(pattern: ":([a-z0-9]+)", options: .caseInsensitive)
+        let results = regex.matches(in: string, options: [], range: NSMakeRange(0, string.characters.count))
         var output = string as NSString
         if let m = results.first {
             let key = (string as NSString).substring(with: m.rangeAt(1))

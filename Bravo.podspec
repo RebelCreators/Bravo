@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author             =  { 'Lorenzo Stanton' => 'lstanii@nmsu.edu' }
   s.source             =  { :git => 'git@github.com:RebelCreators/Bravo.git', :branch => "master" }
   s.platform = :ios
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
   s.requires_arc = true
 
   s.source_files = 'src/bravo/**/*.{swift,h,m}'
@@ -19,5 +19,5 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '~> 4.0'
   s.dependency 'SwiftKeychainWrapper', '~> 3.0'
   s.dependency 'RCModel', '~> 1.0'
-  s.dependency 'Socket.IO-Client-Swift', '~> 10.0.0'
+  s.dependency 'Socket.IO-Client-Swift', '~> 13.0'
 end

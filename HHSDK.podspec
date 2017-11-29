@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author             =  { 'Lorenzo Stanton' => 'lstanii@nmsu.edu' }
   s.source             =  { :git => 'git@github.com:RebelCreators/Bravo.git', :branch => "master" }
   s.platform = :ios
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
   s.requires_arc = true
 
   s.source_files = 'src/hotthelpers/**/*.{swift,h,m}'

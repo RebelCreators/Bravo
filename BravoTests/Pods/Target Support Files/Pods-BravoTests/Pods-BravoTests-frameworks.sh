@@ -107,6 +107,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS10.0/HHSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS10.0/RCModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS10.0/SocketIO.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS10.0/Starscream.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -115,6 +116,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS10.0/HHSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS10.0/RCModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS10.0/SocketIO.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS10.0/Starscream.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
