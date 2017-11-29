@@ -28,6 +28,7 @@ public enum RCResponseType {
 }
 
 open class WebService: NSObject {
+    internal static let requestResponseQueue = DispatchQueue(label: "com.rebel.creators.request.response.queue")
     
     public override init() {
         super.init()
@@ -197,7 +198,7 @@ open class WebService: NSObject {
         switch webRequest.responseType.webResponseType {
         case .data:
             Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, encoding: webRequest.encoding, headers: headers)
-                .responseData(completionHandler: { response in
+                .responseData(queue: WebService.requestResponseQueue) { response in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
                         NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [NSNotification.rcWebRequestKey: webRequest])
@@ -224,11 +225,11 @@ open class WebService: NSObject {
                         return
                     }
                     webRequest.failure(BravoError.OtherNSError(nsError: error as NSError))
-                })
+            }
             break
         case .json:
             Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, encoding: webRequest.encoding, headers: headers)
-                .responseJSON() { (response) -> Void in
+                .responseJSON(queue: WebService.requestResponseQueue) { response in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
                         NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [NSNotification.rcWebRequestKey: webRequest])
@@ -259,7 +260,7 @@ open class WebService: NSObject {
             break
         case .nodata:
             Alamofire.request(url, method: webRequest.method, parameters: updatedParameters, encoding: webRequest.encoding, headers: headers)
-                .response(completionHandler: { response in
+                .response(queue: WebService.requestResponseQueue) { response in
                     guard !webRequest.requiresAuth || response.response?.statusCode != 401 else {
                         
                         NotificationCenter.default.post(name: Notification.RC.RCNeedsAuthentication, object: self, userInfo: [NSNotification.rcWebRequestKey: webRequest])
@@ -282,7 +283,7 @@ open class WebService: NSObject {
                     }
                     
                     webRequest.failure(BravoError.OtherNSError(nsError: error as NSError))
-                })
+            }
             break
         }
     }

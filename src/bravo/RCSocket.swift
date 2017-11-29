@@ -92,9 +92,11 @@ public class RCSocket: NSObject {
                 return
             }
             self.connect(success: {
-                self.connectionStatus = .connected
-                NotificationCenter.default.post(name: Notification.RC.RCSocketDidConnect, object: self)
-                operation.finish()
+                WebService.requestResponseQueue.sync {
+                    self.connectionStatus = .connected
+                    NotificationCenter.default.post(name: Notification.RC.RCSocketDidConnect, object: self)
+                    operation.finish()
+                }
             }, failure: { error in
                 if self.currentReconnections < self.maxReconections && error.code != 401 {
                     self.connectionStatus = .reconnecting
@@ -195,9 +197,11 @@ public class RCSocket: NSObject {
             }
             
             socket.on("com.rebel.creators.message") {data, ack in
-                if let dict = data.first as? [String: NSObject] {
-                    if let message = try? RCMessage.fromDictionary(dict) {
-                        NotificationCenter.default.post(name: Notification.RC.RCDidReceiveMessage, object: self, userInfo: [RCMessageKey: message])
+                WebService.requestResponseQueue.sync {
+                    if let dict = data.first as? [String: NSObject] {
+                        if let message = try? RCMessage.fromDictionary(dict) {
+                            NotificationCenter.default.post(name: Notification.RC.RCDidReceiveMessage, object: self, userInfo: [RCMessageKey: message])
+                        }
                     }
                 }
             }
