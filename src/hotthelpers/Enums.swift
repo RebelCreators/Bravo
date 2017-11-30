@@ -38,7 +38,7 @@ import RCModel
 
 @objc public class RCHelperRequestStatusEnumMapper: NSObject, RCEnumMappable {
     
-    public static func enumMappings() -> [String : NSNumber]! {
+    public static func enumMappings() -> [String : NSNumber] {
         return self.map(["pending": .pending,
                          "accepted": .accepted,
                          "rejected": .rejected,

@@ -108,11 +108,10 @@ extension Dictionary: RCParameter {
             
             guard let model = v as? RCModel else {
                 guard let model = v as? RCModelProtocol else {
-                    if let object = v as? AnyObject {
-                        if let transformer = RCClassTransformers.defaultTransformer(for: type(of: object)) {
-                            dict[key] = try? transformer.reverseTransformedValue(object)
-                            continue
-                        }
+                    let object = v as AnyObject 
+                    if let transformer = RCClassTransformers.defaultTransformer(for: type(of: object)) {
+                        dict[key] = try? transformer.reverseTransformedValue(object)
+                        continue
                     }
                     dict[key] = v
                     

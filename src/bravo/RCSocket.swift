@@ -79,9 +79,10 @@ public class RCSocket: NSObject {
     }
     
     public func didSignOut() {
-        let op = disconnect()
+        let _ = disconnect()
     }
     
+    @discardableResult
     public func reconnect() -> Operation {
         let op = WebServiceBlockOp({ operation in
             guard !operation.isCancelled && !operation.isFinished else {
@@ -92,7 +93,7 @@ public class RCSocket: NSObject {
                 return
             }
             self.connect(success: {
-                WebService.requestResponseQueue.sync {
+                WebService.requestResponseQueue.async {
                     self.connectionStatus = .connected
                     NotificationCenter.default.post(name: Notification.RC.RCSocketDidConnect, object: self)
                     operation.finish()
@@ -117,6 +118,7 @@ public class RCSocket: NSObject {
         return op.asOperation()
     }
     
+    @discardableResult
     public func disconnect() -> Operation  {
         let op = WebServiceBlockOp({ operation in
             guard let socket = self.underlyingSocket else {
@@ -197,7 +199,7 @@ public class RCSocket: NSObject {
             }
             
             socket.on("com.rebel.creators.message") {data, ack in
-                WebService.requestResponseQueue.sync {
+                WebService.requestResponseQueue.async {
                     if let dict = data.first as? [String: NSObject] {
                         if let message = try? RCMessage.fromDictionary(dict) {
                             NotificationCenter.default.post(name: Notification.RC.RCDidReceiveMessage, object: self, userInfo: [RCMessageKey: message])

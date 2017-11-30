@@ -61,7 +61,7 @@ public class BravoPlistConfig: NSObject {
     private var data: Any?
     
     public static func loadPlist(name: String, bundle: Bundle = Bundle.main) -> BravoPlistConfig {
-        var config = BravoPlistConfig()
+        let config = BravoPlistConfig()
         guard let fileUrl = bundle.url(forResource: name, withExtension: "plist"), let data = try? Data(contentsOf: fileUrl) else {
             assertionFailure("Bravo not configured correctly, make sure \(name) exists in bundle: \(bundle.localizedInfoDictionary?["CFBundleDisplayName"] ?? "null")")
             return config

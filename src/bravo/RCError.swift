@@ -49,7 +49,7 @@ public enum BravoError: Error {
             return 404
         case let .HttpError(_, code):
             return code
-        case let .WithError(error):
+        case let .WithError(_):
             return 1000
         }
         

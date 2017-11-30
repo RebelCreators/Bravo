@@ -28,7 +28,7 @@ public enum RCResponseType {
 }
 
 open class WebService: NSObject {
-    internal static let requestResponseQueue = DispatchQueue(label: "com.rebel.creators.request.response.queue")
+    internal static let requestResponseQueue = DispatchQueue.main
     
     public override init() {
         super.init()
@@ -167,7 +167,7 @@ open class WebService: NSObject {
         })
     }
     
-    internal func request<ModelType: RCWebResponseModel>(webRequest: RCWebRequest<ModelType>) {
+    internal func request<ModelType>(webRequest: RCWebRequest<ModelType>) {
         
         var headers = webRequest.headers
         

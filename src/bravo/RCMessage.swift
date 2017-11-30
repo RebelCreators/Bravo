@@ -60,7 +60,7 @@ public class RCMessage: RCModel {
 extension RCMessage {
     
     open override class func arrayClasses() -> [String : RCModelProtocol.Type] {
-        return (super.arrayClasses() ?? [:]) + ["payloads": RCPayloadWrapper.self]
+        return super.arrayClasses() + ["payloads": RCPayloadWrapper.self]
     }
 }
 
@@ -88,12 +88,16 @@ internal class RCPayloadWrapper: RCModel {
     
     fileprivate func hydrateObject<T: RCModel>() throws -> T {
         guard let obj = object else {
-            var string = contents ?? ""
+            let string = contents ?? ""
             let object: T = try T.fromJSONString(string)
             self.object = object
             
             return object
         }
-        return object as! T
+        if let _obj = obj as? T {
+            return _obj
+        } else {
+            throw BravoError.UnexpectedError(message: "Failed to hydrate payload Object \(String(describing: T.self))")
+        }
     }
 }

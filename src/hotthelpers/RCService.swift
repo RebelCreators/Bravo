@@ -57,8 +57,8 @@ public class RCService: HHModel {
     }
     
     public func update(success: @escaping (RCService) -> Void, failure: @escaping (BravoError) -> Void) {
-        guard let serviceID = self.serviceID else {
-            failure(BravoError.InvalidParameter(message: "Service mush have and id"))
+        guard self.serviceID != nil else {
+            failure(BravoError.InvalidParameter(message: "Service must have and id"))
             return
         }
         

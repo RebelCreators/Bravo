@@ -62,12 +62,12 @@ import RCModel
                 return nil
             }
             
-            if (cred.accessToken.characters.count > 0 && cred.refreshToken.characters.count > 0) {
+            if (cred.accessToken.count > 0 && cred.refreshToken.count > 0) {
                 return cred
             }
             
             let expiry = (cred.expiration.timeIntervalSince1970 - (60 * 5) - Date().timeIntervalSince1970)
-            if cred.accessToken.characters.count > 0 && expiry > 0 {
+            if cred.accessToken.count > 0 && expiry > 0 {
                 return cred
             }
             

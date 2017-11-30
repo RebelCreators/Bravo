@@ -65,7 +65,7 @@ public class RCUserProfile: HHModel {
     }
     
     public func pngProfilePhotos() -> [PNGPhoto] {
-        return profileImages.map( { PNGPhoto(photoID: $0) }) ?? []
+        return profileImages.map( { PNGPhoto(photoID: $0) })
     }
     
     public static func profiles(userIDs: [String], success: @escaping (([RCUserProfile]) -> Void), failure: @escaping ((BravoError) -> Void)) {

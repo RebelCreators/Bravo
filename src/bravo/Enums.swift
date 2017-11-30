@@ -37,7 +37,7 @@ import RCModel
 }
 
 @objc public class RCGenderEnumMapper: NSObject, RCEnumMappable {
-    public static func enumMappings() -> [String : NSNumber]! {
+    public static func enumMappings() -> [String : NSNumber] {
         return self.map(["none": .none,
                          "female": .female,
                          "male": .male] as [String: RCGenderEnum])
@@ -54,7 +54,7 @@ import RCModel
 }
 
 @objc public class RCProfileTypeEnumMapper: NSObject, RCEnumMappable {
-    public static func enumMappings() -> [String : NSNumber]! {
+    public static func enumMappings() -> [String : NSNumber] {
         return self.map(["client": .client,
                          "helper": .helper] as [String: RCProfileTypeEnum])
     }
@@ -71,7 +71,7 @@ import RCModel
 }
 
 @objc public class RCRequestStatusEnumMapper: NSObject, RCEnumMappable {
-    public static func enumMappings() -> [String : NSNumber]! {
+    public static func enumMappings() -> [String : NSNumber] {
         return self.map(["pending": .pending,
                          "canceled": .canceled,
                          "completed": .completed] as [String: RCRequestStatusEnum])
@@ -89,7 +89,7 @@ import RCModel
 }
 
 @objc public class RCDialogPermissionsEnumMapper: NSObject, RCEnumMappable {
-    public static func enumMappings() -> [String : NSNumber]! {
+    public static func enumMappings() -> [String : NSNumber] {
         return self.map(["anyone": .anyone,
                          "any_participant": .anyParticipant,
                          "only_owner": .onlyOwner] as [String: RCDialogPermissionsEnum])

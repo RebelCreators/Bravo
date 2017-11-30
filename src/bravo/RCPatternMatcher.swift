@@ -35,12 +35,12 @@ public class RCPatternMatcher: NSObject {
     
     private class func match(string: String, with dict: [String: Any]) -> (String, [String: Any]) {
         let regex = try! NSRegularExpression(pattern: ":([a-z0-9]+)", options: .caseInsensitive)
-        let results = regex.matches(in: string, options: [], range: NSMakeRange(0, string.characters.count))
+        let results = regex.matches(in: string, options: [], range: NSMakeRange(0, string.count))
         var output = string as NSString
         if let m = results.first {
             let key = (string as NSString).substring(with: m.rangeAt(1))
             let param = String(describing: dict[key]!)
-            if param.characters.count > 0 {
+            if param.count > 0 {
                 output = output.replacingCharacters(in: m.range, with: param) as NSString
                 var newDict = dict
                 newDict.removeValue(forKey: key)

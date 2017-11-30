@@ -148,6 +148,10 @@ public class RCDialog: RCModel {
     }
     
     public func publish(message: RCMessage, success: @escaping (RCMessage) -> Void, failure: @escaping (BravoError) -> Void) {
+        guard let dialogID = self.dialogID else {
+            failure(.ConditionNotMet(message: "Dialog ID must not be nil, in order to publish message"))
+            return
+        }
         message.dialogId = self.dialogID
         message.senderId = RCUser.currentUser?.userID
         WebService().put(relativePath: "dialog/message/send", headers: nil, parameters: ["message": message, "dialogId": dialogID, "permissions": self.permissions], success: { (message: RCMessage) in
@@ -168,7 +172,7 @@ public class RCDialog: RCModel {
             return
         }
         
-        WebService().get(relativePath: "dialog/messages/:dialogID", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions, "offset": offset, "limit": limit, "date": date, "asc": asc], success: { (messages: [RCMessage]) in
+        WebService().get(relativePath: "dialog/messages/:dialogID", headers: nil, parameters: ["dialogID": dialogID, "permissions": permissions, "offset": offset, "limit": limit, "date": date ?? NSNull(), "asc": asc], success: { (messages: [RCMessage]) in
             success(messages)
         }) { error in
             failure(error)
@@ -235,12 +239,15 @@ public class RCDialog: RCModel {
     }
     
     public func join(success: @escaping (RCDialog) -> Void, failure: @escaping (BravoError) -> Void) {
-        guard let userID = RCUser.currentUser?.userID else {
+        guard RCUser.currentUser?.userID != nil else {
             failure(BravoError.ConditionNotMet(message: "no user ID"))
             
             return
         }
-        
+        guard let dialogID = self.dialogID else {
+            failure(.ConditionNotMet(message: "Dialog ID must not be nil, in order to join"))
+            return
+        }
         WebService().post(relativePath: "dialog/join", headers: nil, parameters: ["dialogId": dialogID, "permissions": self.permissions], success: { (dialog: RCDialog) in
             success(dialog)
         }) { error in
