@@ -29,13 +29,51 @@
     return self;
 }
 
++ (nonnull NSArray <NSString *> *)propertiesForNSCoding {
+    return [RCModelFactory propertiesForClass:self.class];
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    for (NSString *property in [self class].propertiesForNSCoding) {
+        id value = [self valueForKey:property];
+        if (value && [value conformsToProtocol:@protocol(NSCoding)]) {
+            @try {
+                [aCoder encodeObject:value forKey:property];
+            }
+            @catch (NSException *exception) {
+                //nothing to do
+            }
+        }
+    }
+}
+
+- (nullable instancetype)initWithCoder:(NSCoder *)aDecoder {
+    id instance = [[self.class alloc] init];
+    for (NSString *property in [self class].propertiesForNSCoding) {
+        @try {
+            id value = [aDecoder decodeObjectForKey:property];
+            if (value) {
+                [instance setValue:value forKey:property];
+            }
+        }
+        @catch (NSException *exception) {
+            //nothing to do
+        }
+    }
+}
+
 - (nonnull instancetype)copyWithZone:(NSZone *)zone {
     id copy = [[self.class alloc] init];
     NSArray* properties = [RCModelFactory propertiesForClass:self.class];
     for (NSString *property in properties) {
         id value = [self valueForKey:property];
         if (value && [value conformsToProtocol:@protocol(NSCopying)]) {
-            [self setValue:[value copy] forKey:property];
+            @try {
+                [self setValue:[value copy] forKey:property];
+            }
+            @catch (NSException *exception) {
+                //nothing to do
+            }
         }
     }
     return copy;

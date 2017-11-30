@@ -102,22 +102,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS10.0/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Bravo-iOS10.0/Bravo.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS10.0/HHSDK.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS10.0/RCModel.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS10.0/SocketIO.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS10.0/Starscream.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS11.1/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Bravo-iOS11.1/Bravo.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS11.1/HHSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS11.1/RCModel.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS11.1/SocketIO.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS11.1/Starscream.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS10.0/Alamofire.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Bravo-iOS10.0/Bravo.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS10.0/HHSDK.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS10.0/RCModel.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS10.0/SocketIO.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS10.0/Starscream.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS11.1/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Bravo-iOS11.1/Bravo.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS11.1/HHSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS11.1/RCModel.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS11.1/SocketIO.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS11.1/Starscream.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

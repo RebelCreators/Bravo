@@ -548,13 +548,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BravoTests/Pods-BravoTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS10.0/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bravo-iOS10.0/Bravo.framework",
-				"${BUILT_PRODUCTS_DIR}/HHSDK-iOS10.0/HHSDK.framework",
-				"${BUILT_PRODUCTS_DIR}/RCModel-iOS10.0/RCModel.framework",
-				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS10.0/SocketIO.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream-iOS10.0/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS10.0/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS11.1/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bravo-iOS11.1/Bravo.framework",
+				"${BUILT_PRODUCTS_DIR}/HHSDK-iOS11.1/HHSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/RCModel-iOS11.1/RCModel.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS11.1/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream-iOS11.1/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

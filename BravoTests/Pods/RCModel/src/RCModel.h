@@ -22,8 +22,14 @@
 #import <Foundation/Foundation.h>
 
 #import "RCModelFactory.h"
+#import "RCPropertyKey.h"
 
-@interface RCModel : NSObject <RCModel, NSCopying>
+
+@interface RCModel : NSObject <RCModel, NSCopying, NSCoding>
+
+//NSCoding
+
++ (nonnull NSArray <NSString *> *)propertiesForNSCoding;
 
 - (nonnull instancetype)init;
 

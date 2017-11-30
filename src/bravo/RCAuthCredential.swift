@@ -41,6 +41,10 @@ import RCModel
         super.init()
     }
     
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     static func keyChainKey() -> String {
         return NSStringFromClass(RCAuthCredential.self)
     }

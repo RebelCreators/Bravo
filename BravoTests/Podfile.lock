@@ -7,7 +7,7 @@ PODS:
     - SwiftKeychainWrapper (~> 3.0)
   - HHSDK (1.0.0):
     - Bravo
-  - RCModel (1.0.4)
+  - RCModel (1.0.5)
   - Socket.IO-Client-Swift (13.0.1):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.2)
@@ -27,7 +27,7 @@ SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bravo: a5a54fd696ea5316af6d1e264310996d3346ae67
   HHSDK: eb6a754d9ca86e16dd345f9aab7bc4a77d585255
-  RCModel: 1ca560e644195ad7f4c0f33a5000952f20b51ab6
+  RCModel: 281fc2a5406015f22f086efd6dac58bcc8fe612f
   Socket.IO-Client-Swift: 7055c89b7a9926b343194c4cac75998329c4a95a
   Starscream: b512c62f6706421221b5ceb2ba01a9f58aca5bea
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
