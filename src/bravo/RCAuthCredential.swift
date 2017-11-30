@@ -27,7 +27,7 @@ import RCModel
     @objc var accessToken: String = ""
     @objc var expiration: Date = Date.distantPast
     @objc var refreshToken: String = ""
-    @objc var expires_in: NSNumber = 0
+    @objc var expires_in: TimeInterval = 0
     
     public init(accessToken: String, expiration: Date, refreshToken: String) {
         self.accessToken = accessToken

@@ -51,7 +51,7 @@ class RCMultiPartRequest: NSObject {
             index = index != nil ? index! + 1 : 0
         }
         
-        var params: [String: Any] = ((try? parameters?.toParameterDictionary()) ?? [:])!
+        let params: [String: Any] = ((try? parameters?.toParameterDictionary()) ?? [:])!
         
         // add parameters
         for (key, value) in params {

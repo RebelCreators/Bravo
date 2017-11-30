@@ -43,7 +43,7 @@ public class RCDevice: RCModel {
     }
     
     public static func updateCurrentDevice(success: @escaping () -> Void, failure:@escaping (BravoError) -> Void) {
-        let device = localDevice()
+        _ = localDevice()
         updateCurrentDevice(apnsToken: nil, success: success, failure: failure)
     }
     
