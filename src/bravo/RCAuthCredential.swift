@@ -84,7 +84,7 @@ import RCModel
     }
     
     public func updateExpiry() {
-        expiration = Date(timeIntervalSinceNow: TimeInterval(expires_in))
+        expiration = Date(timeIntervalSinceNow: expires_in)
     }
     
     @discardableResult
