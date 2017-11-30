@@ -554,10 +554,10 @@
 
 /* Begin PBXFileReference section */
 		00298DD56E6C06BE681868CBF809F507 /* Pods-BravoTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BravoTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		01F5230554F75C5C08F4206C86031DCA /* Bravo-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Bravo-iOS10.2.modulemap"; sourceTree = "<group>"; };
+		01F5230554F75C5C08F4206C86031DCA /* Bravo-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Bravo-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		01F685FB932F013ADD38A78A34A411C0 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = src/bravo/Extensions.swift; sourceTree = "<group>"; };
 		02A9C28A3476BD12FC1FCD29FA54AD92 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		04070B7A629C01D8BC086164457FB027 /* Bravo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bravo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04070B7A629C01D8BC086164457FB027 /* Bravo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Bravo.framework; path = "Bravo-iOS10.2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DEEDBBBF4AB1509EF98BE963BF4F20 /* Pods-BravoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BravoTests.release.xcconfig"; sourceTree = "<group>"; };
 		0500338D6E45AB1C7A984B98816388F0 /* SocketStringReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketStringReader.swift; path = Source/SocketIO/Util/SocketStringReader.swift; sourceTree = "<group>"; };
 		05270F94B10725B26D5971FD2D124513 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
@@ -573,7 +573,7 @@
 		0F64E19FD3337EC3B73D9F7E823EBB87 /* Starscream-iOS11.1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Starscream-iOS11.1-dummy.m"; path = "../Starscream-iOS11.1/Starscream-iOS11.1-dummy.m"; sourceTree = "<group>"; };
 		0FC507DC5000E3F9C571F0B6AE419722 /* RCTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCTransformer.m; path = src/RCTransformer.m; sourceTree = "<group>"; };
 		0FE0DFDBF1C51A682289AD2B9CB0D2AE /* SocketEnginePollable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEnginePollable.swift; path = Source/SocketIO/Engine/SocketEnginePollable.swift; sourceTree = "<group>"; };
-		13B0D05774E61BC23A840BD8DDF34EBD /* Pods-BravoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BravoTests.modulemap"; sourceTree = "<group>"; };
+		13B0D05774E61BC23A840BD8DDF34EBD /* Pods-BravoTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BravoTests.modulemap"; sourceTree = "<group>"; };
 		13FBAE43D2D508EF59A3FC6399BC2266 /* SwiftKeychainWrapper-iOS11.1-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftKeychainWrapper-iOS11.1-prefix.pch"; path = "../SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper-iOS11.1-prefix.pch"; sourceTree = "<group>"; };
 		14EF9AC1D3CD135CE4F91829B8DA37AD /* Bravo-iOS11.1-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Bravo-iOS11.1-umbrella.h"; path = "../Bravo-iOS11.1/Bravo-iOS11.1-umbrella.h"; sourceTree = "<group>"; };
 		161C27A9BB44D5124762F6D22619EC06 /* SwiftKeychainWrapper-iOS10.2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftKeychainWrapper-iOS10.2-dummy.m"; sourceTree = "<group>"; };
@@ -592,13 +592,13 @@
 		22CAA8D518969747CF3604A357FF8ECF /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		266AB772CF3C7EA343441B7E8CE53C75 /* RCFileInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCFileInfo.swift; path = src/bravo/RCFileInfo.swift; sourceTree = "<group>"; };
 		287D8F3ED9A069B325924D193752A602 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28D7F68BC1A8361A1F5D1926BB922618 /* Socket.IO-Client-Swift-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Socket.IO-Client-Swift-iOS11.1.modulemap"; path = "../Socket.IO-Client-Swift-iOS11.1/Socket.IO-Client-Swift-iOS11.1.modulemap"; sourceTree = "<group>"; };
+		28D7F68BC1A8361A1F5D1926BB922618 /* Socket.IO-Client-Swift-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Socket.IO-Client-Swift-iOS11.1.modulemap"; path = "../Socket.IO-Client-Swift-iOS11.1/Socket.IO-Client-Swift-iOS11.1.modulemap"; sourceTree = "<group>"; };
 		297DD50C46700B1E665EB69442B6D36C /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainItemAccessibility.swift; path = SwiftKeychainWrapper/KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		29F4BEADC69D2B5A7DBC7F1AC0C7ECB0 /* Starscream-iOS10.2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-iOS10.2-prefix.pch"; sourceTree = "<group>"; };
 		2C4BFF7131CD8EE366EA9640D96658BB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SwiftKeychainWrapper-iOS11.1/Info.plist"; sourceTree = "<group>"; };
 		2C8CA84D9CC9C7E87BD65D8ED8CB181E /* Socket.IO-Client-Swift-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
 		2DB0B02E375E24279F7446D8B297B7FB /* HHSDK-iOS10.2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "HHSDK-iOS10.2.xcconfig"; sourceTree = "<group>"; };
-		2FB69CCE26A76D52928D02DCB9F1A194 /* Starscream-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Starscream-iOS11.1.modulemap"; path = "../Starscream-iOS11.1/Starscream-iOS11.1.modulemap"; sourceTree = "<group>"; };
+		2FB69CCE26A76D52928D02DCB9F1A194 /* Starscream-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Starscream-iOS11.1.modulemap"; path = "../Starscream-iOS11.1/Starscream-iOS11.1.modulemap"; sourceTree = "<group>"; };
 		302BEF9CFD87BA02BBEE061F331E55B8 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3137BDFDC1DA4B5AFF954AC1E2872E2F /* HHSDK-iOS11.1-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HHSDK-iOS11.1-prefix.pch"; path = "../HHSDK-iOS11.1/HHSDK-iOS11.1-prefix.pch"; sourceTree = "<group>"; };
 		31F5DAA46123E4ED6D81AB62E72332E5 /* Alamofire-iOS11.1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Alamofire-iOS11.1-dummy.m"; path = "../Alamofire-iOS11.1/Alamofire-iOS11.1-dummy.m"; sourceTree = "<group>"; };
@@ -607,10 +607,10 @@
 		3534B268FC9A8D6280F0AE1339E9A92C /* Alamofire-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
 		355A7766C1D466D4345AA44FA4D85816 /* RCModel-iOS10.2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "RCModel-iOS10.2.xcconfig"; sourceTree = "<group>"; };
 		35CFA43BAF0B82F50E3B4B113AAC1814 /* RCMessage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCMessage.swift; path = src/bravo/RCMessage.swift; sourceTree = "<group>"; };
-		383F6EAA0602E918083FA37F39EE8F7A /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		383F6EAA0602E918083FA37F39EE8F7A /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Starscream.framework; path = "Starscream-iOS10.2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A5DFA1D6D202C76CE87BF8FD8C51CB0 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = src/bravo/Notifications.swift; sourceTree = "<group>"; };
 		3AA69307F38D9FAEA05FA097D3599B4B /* HHModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HHModel.swift; path = src/hotthelpers/HHModel.swift; sourceTree = "<group>"; };
-		3BF7396CD58474546D535EC33FA7C504 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BF7396CD58474546D535EC33FA7C504 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SocketIO.framework; path = "Socket.IO-Client-Swift-iOS11.1.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C2CF70F8712A38B54CDE11039C980D7 /* WebServiceOp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebServiceOp.swift; path = src/bravo/WebServiceOp.swift; sourceTree = "<group>"; };
 		3C8554AE7F7472D7712B51085BA47384 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Alamofire-iOS11.1/Info.plist"; sourceTree = "<group>"; };
 		3CF5AB1952E216ABD059FE7D4A42AB91 /* NSDictionary+RCModelFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+RCModelFactory.h"; path = "src/NSDictionary+RCModelFactory.h"; sourceTree = "<group>"; };
@@ -625,7 +625,7 @@
 		47D964638D14D09AC6C704F8ADA0447A /* RCCommonTransfromers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCCommonTransfromers.h; path = src/RCCommonTransfromers.h; sourceTree = "<group>"; };
 		47E5A1905C3C100309CE777A394EB58A /* SocketAckEmitter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketAckEmitter.swift; path = Source/SocketIO/Ack/SocketAckEmitter.swift; sourceTree = "<group>"; };
 		47EC836E240F89B9AD59A849C146B26B /* NSArray+RCModelFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+RCModelFactory.h"; path = "src/NSArray+RCModelFactory.h"; sourceTree = "<group>"; };
-		484E99C0F5F21CA1830D43AAB4E8692B /* SwiftKeychainWrapper-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "SwiftKeychainWrapper-iOS11.1.modulemap"; path = "../SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper-iOS11.1.modulemap"; sourceTree = "<group>"; };
+		484E99C0F5F21CA1830D43AAB4E8692B /* SwiftKeychainWrapper-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "SwiftKeychainWrapper-iOS11.1.modulemap"; path = "../SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper-iOS11.1.modulemap"; sourceTree = "<group>"; };
 		4BDB5379A934A8FD026D11F2F96CBD5E /* Socket.IO-Client-Swift-iOS10.2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Socket.IO-Client-Swift-iOS10.2-prefix.pch"; sourceTree = "<group>"; };
 		4BFFF73E34EC1FED68D6158D843F41C7 /* KeychainWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = SwiftKeychainWrapper/KeychainWrapper.swift; sourceTree = "<group>"; };
 		4CD81E752FCFD33995BE769B967DAC22 /* Pods-BravoTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BravoTests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -651,24 +651,24 @@
 		6577C0C3941A8BFA2B1048E360736691 /* Pods-BravoTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BravoTests-dummy.m"; sourceTree = "<group>"; };
 		68148352ED0A13AA78D4E9AD74F0F162 /* WebService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebService.swift; path = src/bravo/WebService.swift; sourceTree = "<group>"; };
 		691FF12F180FF1E26E79F99672C7233E /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftKeychainWrapper.h; path = SwiftKeychainWrapper/SwiftKeychainWrapper.h; sourceTree = "<group>"; };
-		692A70DBC0F907D538CEBE25B9C5E447 /* Pods_BravoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		69A2EF8608F47502C6B159C002A34E91 /* Bravo-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Bravo-iOS11.1.modulemap"; path = "../Bravo-iOS11.1/Bravo-iOS11.1.modulemap"; sourceTree = "<group>"; };
-		69AC82A63E444435E2927B297BAB7253 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		692A70DBC0F907D538CEBE25B9C5E447 /* Pods_BravoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BravoTests.framework; path = "Pods-BravoTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69A2EF8608F47502C6B159C002A34E91 /* Bravo-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Bravo-iOS11.1.modulemap"; path = "../Bravo-iOS11.1/Bravo-iOS11.1.modulemap"; sourceTree = "<group>"; };
+		69AC82A63E444435E2927B297BAB7253 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftKeychainWrapper.framework; path = "SwiftKeychainWrapper-iOS11.1.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A534B8D04FC83B570139C22B2B6C9F0 /* SwiftKeychainWrapper-iOS11.1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SwiftKeychainWrapper-iOS11.1-dummy.m"; path = "../SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper-iOS11.1-dummy.m"; sourceTree = "<group>"; };
 		6AB62C01505A3BD68D0505D9579301CC /* RCUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCUser.swift; path = src/bravo/RCUser.swift; sourceTree = "<group>"; };
-		6B553DDF091ABECEA975B5953995FCA1 /* RCModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RCModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B553DDF091ABECEA975B5953995FCA1 /* RCModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RCModel.framework; path = "RCModel-iOS10.2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D478E1FFCC3EC75873E3FFF7FCB158F /* ObjectID.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjectID.swift; path = src/bravo/ObjectID.swift; sourceTree = "<group>"; };
 		6D54CA31903292AE26D7CCBD0AA7582B /* Socket.IO-Client-Swift-iOS10.2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Socket.IO-Client-Swift-iOS10.2.xcconfig"; sourceTree = "<group>"; };
 		6EFAFF3B438F245A352D966A8EE45EDA /* SocketEventHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEventHandler.swift; path = Source/SocketIO/Client/SocketEventHandler.swift; sourceTree = "<group>"; };
-		706CB2F94D2535F1CB22ED5AEB3E5270 /* HHSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HHSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		706CB2F94D2535F1CB22ED5AEB3E5270 /* HHSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HHSDK.framework; path = "HHSDK-iOS11.1.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		706CEE49AAF2D9BE0E81861C81496494 /* RCAuthCredential.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCAuthCredential.swift; path = src/bravo/RCAuthCredential.swift; sourceTree = "<group>"; };
-		7135DE20A4AE902D0C84525431C1D31F /* Starscream-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Starscream-iOS10.2.modulemap"; sourceTree = "<group>"; };
+		7135DE20A4AE902D0C84525431C1D31F /* Starscream-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Starscream-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		71FAD1A234D43B57C1BCF991BDD614FB /* Socket.IO-Client-Swift-iOS11.1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Socket.IO-Client-Swift-iOS11.1-dummy.m"; path = "../Socket.IO-Client-Swift-iOS11.1/Socket.IO-Client-Swift-iOS11.1-dummy.m"; sourceTree = "<group>"; };
 		72328A58BBA31C21FBCC5F7B2C526A9B /* SwiftKeychainWrapper-iOS11.1.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SwiftKeychainWrapper-iOS11.1.xcconfig"; path = "../SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper-iOS11.1.xcconfig"; sourceTree = "<group>"; };
-		72D7B6BF682EECFC10AB7D829A20D5DC /* HHSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HHSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		72D7B6BF682EECFC10AB7D829A20D5DC /* HHSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HHSDK.framework; path = "HHSDK-iOS10.2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72DADA3FD2B4D1871162F13D53F96679 /* SwiftKeychainWrapper-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftKeychainWrapper-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
 		7339383527D732DD1B57C8EFB3FBEC2D /* RCPropertyKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCPropertyKey.h; path = src/RCPropertyKey.h; sourceTree = "<group>"; };
-		75284660BC9A704492105B16238671C5 /* Alamofire-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "Alamofire-iOS11.1.modulemap"; path = "../Alamofire-iOS11.1/Alamofire-iOS11.1.modulemap"; sourceTree = "<group>"; };
+		75284660BC9A704492105B16238671C5 /* Alamofire-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "Alamofire-iOS11.1.modulemap"; path = "../Alamofire-iOS11.1/Alamofire-iOS11.1.modulemap"; sourceTree = "<group>"; };
 		778EE44DD2C42C544A29CB79E06E499F /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		79521A087D45698594BACA8A77A87E22 /* RCLocation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCLocation.swift; path = src/hotthelpers/RCLocation.swift; sourceTree = "<group>"; };
 		7962990130728CA5C722488E89E6EC03 /* HHSDK-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HHSDK-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
@@ -677,18 +677,18 @@
 		7D3BC06ED4C23C0695B9F5F8B798FA0E /* SocketManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketManager.swift; path = Source/SocketIO/Manager/SocketManager.swift; sourceTree = "<group>"; };
 		7E601E5B1B94851460C807A0A112A415 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		7F90FD2905BA6071C19AA105ACBE01D0 /* SocketIOClientSpec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOClientSpec.swift; path = Source/SocketIO/Client/SocketIOClientSpec.swift; sourceTree = "<group>"; };
-		81070070C724540AE635E453F910C05F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		81070070C724540AE635E453F910C05F /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = "Alamofire-iOS10.2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		810F775CA146984145711785EF205A24 /* Alamofire-iOS10.2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-iOS10.2-dummy.m"; sourceTree = "<group>"; };
 		811B3BC11955CD1E32C1DDC37A1E8230 /* NSDictionary+RCModelFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+RCModelFactory.m"; path = "src/NSDictionary+RCModelFactory.m"; sourceTree = "<group>"; };
 		825DA41DA1384FB34AC6CD1BA761DD39 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		843225ABC6DF691909E277D802DE2E67 /* Pods-BravoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BravoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		848F78C1F2EEC4416DB3FB8C1E80AD07 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8561689DEAB525A97DABEC81B90DCBE7 /* RCTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCTransformer.h; path = src/RCTransformer.h; sourceTree = "<group>"; };
-		8A98472BD1DDBAA6CD15FD29852FD4AA /* Socket.IO-Client-Swift-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Socket.IO-Client-Swift-iOS10.2.modulemap"; sourceTree = "<group>"; };
-		8AA37EDAF2D36AA118856E320E84440E /* HHSDK-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "HHSDK-iOS10.2.modulemap"; sourceTree = "<group>"; };
+		8A98472BD1DDBAA6CD15FD29852FD4AA /* Socket.IO-Client-Swift-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Socket.IO-Client-Swift-iOS10.2.modulemap"; sourceTree = "<group>"; };
+		8AA37EDAF2D36AA118856E320E84440E /* HHSDK-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "HHSDK-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		8B3320861A2258D166692C98B5FE00B8 /* SwiftKeychainWrapper-iOS11.1-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SwiftKeychainWrapper-iOS11.1-umbrella.h"; path = "../SwiftKeychainWrapper-iOS11.1/SwiftKeychainWrapper-iOS11.1-umbrella.h"; sourceTree = "<group>"; };
 		8C30B7D778CD11A1ABD3FD86A7F348ED /* Pods-BravoTestsUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BravoTestsUnitTests.release.xcconfig"; sourceTree = "<group>"; };
-		8CAF67359ABBAE6C7D31604B0425CA47 /* SwiftKeychainWrapper-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "SwiftKeychainWrapper-iOS10.2.modulemap"; sourceTree = "<group>"; };
+		8CAF67359ABBAE6C7D31604B0425CA47 /* SwiftKeychainWrapper-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "SwiftKeychainWrapper-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		8F2E94D28371F6CE4BE782C2814FD9BA /* RCError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCError.m; path = src/RCError.m; sourceTree = "<group>"; };
 		90492DCF97A11F93BEAD51AA4C792BF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		91032B508280F517989736E206E01CCD /* SocketEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngine.swift; path = Source/SocketIO/Engine/SocketEngine.swift; sourceTree = "<group>"; };
@@ -696,7 +696,7 @@
 		9343437746BB7E4839C1F92D5E0F98BD /* RCClassTransformers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCClassTransformers.m; path = src/RCClassTransformers.m; sourceTree = "<group>"; };
 		937ECCDD16974F8C3E36B91813B10E69 /* RCDialog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCDialog.swift; path = src/bravo/RCDialog.swift; sourceTree = "<group>"; };
 		93A30D6E2972814BA286D9F001E4CC46 /* RCService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCService.swift; path = src/hotthelpers/RCService.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9403EFE8AE63D09AFE7F184CB05AE389 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9542087027F8094CF704D78C9766582C /* Starscream-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
 		9859E2DD2931EB2A3300BBCD695A1F06 /* HHSDK-iOS11.1-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "HHSDK-iOS11.1-umbrella.h"; path = "../HHSDK-iOS11.1/HHSDK-iOS11.1-umbrella.h"; sourceTree = "<group>"; };
@@ -714,19 +714,19 @@
 		ACE7FFFFC1FA1FF3B9D165AF5C0A8610 /* Alamofire-iOS10.2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-iOS10.2-prefix.pch"; sourceTree = "<group>"; };
 		AE203BD3D24BAEBEA8F14CAE9FBBD26B /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		B0313745721A90C3164DAA083E8DED6D /* HHSDK-iOS11.1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "HHSDK-iOS11.1-dummy.m"; path = "../HHSDK-iOS11.1/HHSDK-iOS11.1-dummy.m"; sourceTree = "<group>"; };
-		B343DBC17D5DFA154CA2873B981CEF1C /* RCModel-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "RCModel-iOS10.2.modulemap"; sourceTree = "<group>"; };
+		B343DBC17D5DFA154CA2873B981CEF1C /* RCModel-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "RCModel-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		B576DA70470B6289359118F1A02A70C0 /* SocketEngineClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEngineClient.swift; path = Source/SocketIO/Engine/SocketEngineClient.swift; sourceTree = "<group>"; };
 		B63B8BAE2A1EBBADA58BE387547D9A46 /* RCCommonTransfromers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCCommonTransfromers.m; path = src/RCCommonTransfromers.m; sourceTree = "<group>"; };
 		B6B2EA24A4AABFBEA8590170F28CA1EE /* Socket.IO-Client-Swift-iOS11.1-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Socket.IO-Client-Swift-iOS11.1-prefix.pch"; path = "../Socket.IO-Client-Swift-iOS11.1/Socket.IO-Client-Swift-iOS11.1-prefix.pch"; sourceTree = "<group>"; };
-		B6EDC54C228EDE637108FC27043F4ED5 /* RCModel-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "RCModel-iOS11.1.modulemap"; path = "../RCModel-iOS11.1/RCModel-iOS11.1.modulemap"; sourceTree = "<group>"; };
+		B6EDC54C228EDE637108FC27043F4ED5 /* RCModel-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "RCModel-iOS11.1.modulemap"; path = "../RCModel-iOS11.1/RCModel-iOS11.1.modulemap"; sourceTree = "<group>"; };
 		B7D7F294193DE2C2DBA5572EE20F5C74 /* Alamofire-iOS11.1-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Alamofire-iOS11.1-prefix.pch"; path = "../Alamofire-iOS11.1/Alamofire-iOS11.1-prefix.pch"; sourceTree = "<group>"; };
 		B93E21518F57518DD1C832AD5696333C /* RCModelFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCModelFactory.m; path = src/RCModelFactory.m; sourceTree = "<group>"; };
 		BB13DDF0F10A7DC91197D093A7DC0D68 /* Socket.IO-Client-Swift-iOS11.1.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Socket.IO-Client-Swift-iOS11.1.xcconfig"; path = "../Socket.IO-Client-Swift-iOS11.1/Socket.IO-Client-Swift-iOS11.1.xcconfig"; sourceTree = "<group>"; };
 		BD6D6D90DF5490B09E76E1A0E14F158C /* SocketIOStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketIOStatus.swift; path = Source/SocketIO/Client/SocketIOStatus.swift; sourceTree = "<group>"; };
 		BDC6598D814B6258377958123F7D042C /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLSecurity.swift; path = Sources/SSLSecurity.swift; sourceTree = "<group>"; };
-		C0FE8F61106BC2BF01EDA0487225A4D9 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0FE8F61106BC2BF01EDA0487225A4D9 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Starscream.framework; path = "Starscream-iOS11.1.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F3D3C66C496285911AE88F7C019A17 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		C2E00AE46990D465776E073EAD78ADCA /* Pods_BravoTestsUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTestsUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2E00AE46990D465776E073EAD78ADCA /* Pods_BravoTestsUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BravoTestsUnitTests.framework; path = "Pods-BravoTestsUnitTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4037D63F8F58C5ECB572BFE36B1C5C1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4BC2C7F0433ADB661B5E30B5FDAB091 /* Bravo-iOS10.2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bravo-iOS10.2-prefix.pch"; sourceTree = "<group>"; };
 		C4FCDA6C7B70E118E2B0FDAEE5F2AF2E /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -735,14 +735,14 @@
 		C85BBEDB04361D5FFC2E8C58E19D1209 /* Pods-BravoTestsUnitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BravoTestsUnitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9808D683D5C5536DF90637D76416831 /* RCPatternMatcher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCPatternMatcher.swift; path = src/bravo/RCPatternMatcher.swift; sourceTree = "<group>"; };
 		CA26C24497E724B489E32D38D2B63CA2 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		CA33775876D21027ABA2B23E5BC5E9E8 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA33775876D21027ABA2B23E5BC5E9E8 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SocketIO.framework; path = "Socket.IO-Client-Swift-iOS10.2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3E46A53E848CCE53421EF7155B2400 /* RCOrPropertyKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RCOrPropertyKey.m; path = src/RCOrPropertyKey.m; sourceTree = "<group>"; };
 		CC6B955D43DAACB1EBE8A33CD4DF18DB /* RCServiceRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCServiceRequest.swift; path = src/hotthelpers/RCServiceRequest.swift; sourceTree = "<group>"; };
 		D3CF0F10DFD4E2158109B67E46370CD1 /* RCModel-iOS11.1.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "RCModel-iOS11.1.xcconfig"; path = "../RCModel-iOS11.1/RCModel-iOS11.1.xcconfig"; sourceTree = "<group>"; };
-		D3D1A6B1DB05C09EF683DD642C6023F5 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3D1A6B1DB05C09EF683DD642C6023F5 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = "Alamofire-iOS11.1.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D516ACC28FB91DF02472BD7CB4E42AAE /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLSecurity.swift; path = Source/SocketIO/Util/SSLSecurity.swift; sourceTree = "<group>"; };
 		D81E5EB001C95C194360558E71B7F54C /* Bravo-iOS10.2-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Bravo-iOS10.2-umbrella.h"; sourceTree = "<group>"; };
-		DAD7E94AC77B8D635C095355A5F21A5B /* Bravo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bravo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAD7E94AC77B8D635C095355A5F21A5B /* Bravo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Bravo.framework; path = "Bravo-iOS11.1.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DADC4B9B739C546C1A2CBA1E23527765 /* Pods-BravoTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BravoTests-umbrella.h"; sourceTree = "<group>"; };
 		DB25AA9F140D9541378F263A56CD749E /* SocketTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = Source/SocketIO/Util/SocketTypes.swift; sourceTree = "<group>"; };
 		DB36FD9BF887B691E78AA997203D2EB9 /* SocketParsable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketParsable.swift; path = Source/SocketIO/Parse/SocketParsable.swift; sourceTree = "<group>"; };
@@ -758,7 +758,7 @@
 		E58E67A3F3B72BF137CD941C7A75FB72 /* Starscream-iOS11.1-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Starscream-iOS11.1-prefix.pch"; path = "../Starscream-iOS11.1/Starscream-iOS11.1-prefix.pch"; sourceTree = "<group>"; };
 		E735CE5DD7E40EE717D570EBACE799D8 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
 		E8A8055B78EF6F1D723AC98EE36A2F12 /* Starscream-iOS10.2.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Starscream-iOS10.2.xcconfig"; sourceTree = "<group>"; };
-		E90B8525F059295EF65754B7FBA15627 /* Pods-BravoTestsUnitTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-BravoTestsUnitTests.modulemap"; sourceTree = "<group>"; };
+		E90B8525F059295EF65754B7FBA15627 /* Pods-BravoTestsUnitTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BravoTestsUnitTests.modulemap"; sourceTree = "<group>"; };
 		EBDDA9D66BB2ABCEA8F81A2A1D1CC7A0 /* RCModel-iOS10.2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RCModel-iOS10.2-prefix.pch"; sourceTree = "<group>"; };
 		ECF77D813E69D315B44E56CB849E846B /* Bravo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Bravo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFCC0FFCE59667308F9303385DE5FB95 /* RCWebRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RCWebRequest.swift; path = src/bravo/RCWebRequest.swift; sourceTree = "<group>"; };
@@ -767,20 +767,20 @@
 		F10B68BD6D2DC520BFC43688FB096DC4 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
 		F2841AA6AEB2845C1049E9D527E2A00B /* Bravo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Bravo.swift; path = src/bravo/Bravo.swift; sourceTree = "<group>"; };
 		F2979AC1F460D8C242DCE6F198DF70F9 /* Bravo-iOS11.1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Bravo-iOS11.1-dummy.m"; path = "../Bravo-iOS11.1/Bravo-iOS11.1-dummy.m"; sourceTree = "<group>"; };
-		F35256E66F24C72408CB8F5F561191D2 /* Alamofire-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Alamofire-iOS10.2.modulemap"; sourceTree = "<group>"; };
+		F35256E66F24C72408CB8F5F561191D2 /* Alamofire-iOS10.2.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Alamofire-iOS10.2.modulemap"; sourceTree = "<group>"; };
 		F465EEB5F58610FF08FBE50937A1E69D /* RCClassTransformers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCClassTransformers.h; path = src/RCClassTransformers.h; sourceTree = "<group>"; };
-		F46C15180BE275698E62B801A73554F1 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46C15180BE275698E62B801A73554F1 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftKeychainWrapper.framework; path = "SwiftKeychainWrapper-iOS10.2.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F50F75F0C961A6D42C5B9669ADE0E215 /* RCModelFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCModelFactory.h; path = src/RCModelFactory.h; sourceTree = "<group>"; };
 		F52B309DA6F8229E0D27D45DCBFCAE40 /* Bravo-iOS10.2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Bravo-iOS10.2-dummy.m"; sourceTree = "<group>"; };
 		F5EDD78D4503D31F79E83CAAEBE30D9D /* Pods-BravoTestsUnitTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BravoTestsUnitTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F66D71FF648292E71C2BCDE8FA17D443 /* RCEnumMappable.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RCEnumMappable.h; path = src/RCEnumMappable.h; sourceTree = "<group>"; };
-		F6A561E8B8D56F7B0776606853182475 /* HHSDK-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "HHSDK-iOS11.1.modulemap"; path = "../HHSDK-iOS11.1/HHSDK-iOS11.1.modulemap"; sourceTree = "<group>"; };
+		F6A561E8B8D56F7B0776606853182475 /* HHSDK-iOS11.1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "HHSDK-iOS11.1.modulemap"; path = "../HHSDK-iOS11.1/HHSDK-iOS11.1.modulemap"; sourceTree = "<group>"; };
 		F7BD5E79638045E6CF2D735876CBF011 /* SocketEnginePacketType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SocketEnginePacketType.swift; path = Source/SocketIO/Engine/SocketEnginePacketType.swift; sourceTree = "<group>"; };
 		F89E4BCED5F45719D6F02DCB87115CBC /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Sources/WebSocket.swift; sourceTree = "<group>"; };
 		F9648CD9920B03103EECE1B04B2FBD9D /* RCWebResponseModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RCWebResponseModel.swift; sourceTree = "<group>"; };
 		FC4D86705E50E9D3D7BF22F03FC13F9A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../RCModel-iOS11.1/Info.plist"; sourceTree = "<group>"; };
 		FCF159BD330F6BC47D2580BEC42ECE64 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../Bravo-iOS11.1/Info.plist"; sourceTree = "<group>"; };
-		FE1E80EFF88D0A54070B954B3A18CF28 /* RCModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RCModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE1E80EFF88D0A54070B954B3A18CF28 /* RCModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RCModel.framework; path = "RCModel-iOS11.1.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF38047900F3029C5978B2EFEAD0D881 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1046,6 +1046,7 @@
 				F89E4BCED5F45719D6F02DCB87115CBC /* WebSocket.swift */,
 				8C256E5FE821AE9FB1096DAD1DDC6215 /* Support Files */,
 			);
+			name = Starscream;
 			path = Starscream;
 			sourceTree = "<group>";
 		};
@@ -1181,6 +1182,7 @@
 				C1F3D3C66C496285911AE88F7C019A17 /* Validation.swift */,
 				2A045FAD014901C7B82296FB15E15184 /* Support Files */,
 			);
+			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -1213,6 +1215,7 @@
 				D516ACC28FB91DF02472BD7CB4E42AAE /* SSLSecurity.swift */,
 				47F5DC16B3DD312CCA6C6D21BDF07D59 /* Support Files */,
 			);
+			name = "Socket.IO-Client-Swift";
 			path = "Socket.IO-Client-Swift";
 			sourceTree = "<group>";
 		};
@@ -1324,6 +1327,7 @@
 				0FC507DC5000E3F9C571F0B6AE419722 /* RCTransformer.m */,
 				7D0BB884ABB2DB260B17C369CA2F7622 /* Support Files */,
 			);
+			name = RCModel;
 			path = RCModel;
 			sourceTree = "<group>";
 		};
@@ -1359,6 +1363,7 @@
 				691FF12F180FF1E26E79F99672C7233E /* SwiftKeychainWrapper.h */,
 				1778BB0855A7CC9C3567388AA3C6D089 /* Support Files */,
 			);
+			name = SwiftKeychainWrapper;
 			path = SwiftKeychainWrapper;
 			sourceTree = "<group>";
 		};
@@ -1850,7 +1855,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -2598,7 +2603,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;

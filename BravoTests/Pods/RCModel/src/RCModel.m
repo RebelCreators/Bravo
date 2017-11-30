@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -69,7 +69,7 @@
         id value = [self valueForKey:property];
         if (value && [value conformsToProtocol:@protocol(NSCopying)]) {
             @try {
-                [self setValue:[value copy] forKey:property];
+                [copy setValue:[value copy] forKey:property];
             }
             @catch (NSException *exception) {
                 //nothing to do
