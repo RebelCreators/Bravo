@@ -174,7 +174,7 @@ class ViewController: UIViewController {
         })
     }
     
-    func didLogout() {
+    @objc func didLogout() {
         loginBtn.isHidden = false
         logoutBtn.isHidden = true
     }

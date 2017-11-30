@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,8 @@ import SwiftKeychainWrapper
 import RCModel
 
 public class RCDevice: RCModel {
-    public var deviceToken: String?
-    public var apnsToken: String?
+    @objc public var deviceToken: String?
+    @objc public var apnsToken: String?
     public static var storeInKeyChain = true
     public static var currentDevice: RCDevice {
         return localDevice()

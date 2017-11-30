@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ public class RCPatternMatcher: NSObject {
         let results = regex.matches(in: string, options: [], range: NSMakeRange(0, string.count))
         var output = string as NSString
         if let m = results.first {
-            let key = (string as NSString).substring(with: m.rangeAt(1))
+            let key = (string as NSString).substring(with: m.range(at: 1))
             let param = String(describing: dict[key]!)
             if param.count > 0 {
                 output = output.replacingCharacters(in: m.range, with: param) as NSString

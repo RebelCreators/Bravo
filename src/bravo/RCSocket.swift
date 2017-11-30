@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,7 +35,7 @@ public class RCSocketConnectOperation: RCAsyncOperation {
         }
     }
     
-    func didConnect() {
+    @objc func didConnect() {
         finish()
     }
     
@@ -64,7 +64,7 @@ public class RCSocket: NSObject {
         NotificationCenter.default.addObserver(self, selector: #selector(didSignOut), name: Notification.RC.RCDidSignOut, object: nil)
     }
     
-    public func didSignIn() {
+    @objc public func didSignIn() {
         RCDevice.updateCurrentDevice(success: {
             self.disconnect()
             self.reconnect()
@@ -78,7 +78,7 @@ public class RCSocket: NSObject {
         })
     }
     
-    public func didSignOut() {
+    @objc public func didSignOut() {
         let _ = disconnect()
     }
     

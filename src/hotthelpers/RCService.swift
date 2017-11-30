@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@ public class RCService: HHModel {
     public var serviceID: String? {
         return modelID
     }
-    public var owner: RCUser?
-    public var details: String?
-    public var name: String?
-    public var hourlyRate: NSNumber?
-    public var minimumHours: NSNumber = 0
+    @objc public var owner: RCUser?
+    @objc public var details: String?
+    @objc public var name: String?
+    @objc public var hourlyRate: NSNumber?
+    @objc public var minimumHours: NSNumber = 0
     
     public static func servicesForCurrentUser(success: @escaping ([RCService]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "service/own", headers: nil, parameters: [:], success: { (services: [RCService]) in

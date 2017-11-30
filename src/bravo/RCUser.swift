@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,19 +32,18 @@ public class PNGPhoto: RCFile {
     }
 }
 
-@objc(RCUser)
-public class RCUser: RCModel {
+@objc public class RCUser: RCModel {
     
     static public private(set) var authOperation: WebServiceOp?
     public fileprivate(set) static var currentUser: RCUser?
-    public var firstName: String?
-    public var lastName: String?
-    public var userID: String?
-    public var userName: String?
-    public var password: String?
-    public var avatar: String?
-    public var extras: [String: String]?
-    public var gender: RCGenderEnum = .none
+    @objc public var firstName: String?
+    @objc public var lastName: String?
+    @objc public var userID: String?
+    @objc public var userName: String?
+    @objc public var password: String?
+    @objc public var avatar: String?
+    @objc public var extras: [String: String]?
+    @objc public var gender: RCGenderEnum = .none
     private var uuid: String = {
         return UUID().uuidString
     }()

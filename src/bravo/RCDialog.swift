@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +22,10 @@ import Foundation
 import RCModel
 
 open class RCDialogPermission: RCModel {
-    open var read: RCDialogPermissionsEnum = .anyParticipant // enum
-    open var write: RCDialogPermissionsEnum = .anyParticipant // enum
-    open var update: RCDialogPermissionsEnum = .onlyOwner // enum
-    open var join: RCDialogPermissionsEnum = .onlyOwner // enum
+    @objc open var read: RCDialogPermissionsEnum = .anyParticipant // enum
+    @objc open var write: RCDialogPermissionsEnum = .anyParticipant // enum
+    @objc open var update: RCDialogPermissionsEnum = .onlyOwner // enum
+    @objc open var join: RCDialogPermissionsEnum = .onlyOwner // enum
     
     open override class func enumClasses() -> [String : RCEnumMappable.Type] {
         return super.enumClasses() + ["read" : RCDialogPermissionsEnumMapper.self,
@@ -53,18 +53,18 @@ public var RCDialogPermissionPublic: RCDialogPermission {
 
 public class RCDialog: RCModel {
     
-    public var dialogID: String?
-    public var allUsers = [RCUser]()
-    public var creator: RCUser?
+    @objc public var dialogID: String?
+    @objc public var allUsers = [RCUser]()
+    @objc public var creator: RCUser?
     public var currentUsers = [RCUser]()
-    public var details: String?
-    public var lastMessageTime: Date?
-    public var name: String?
-    public var numberOfmessages: NSNumber?
-    public var permissions: RCDialogPermission = RCDialogPermission()
-    public var unreadMessages: Int = 0
+    @objc public var details: String?
+    @objc public var lastMessageTime: Date?
+    @objc public var name: String?
+    @objc public var numberOfmessages: NSNumber?
+    @objc public var permissions: RCDialogPermission = RCDialogPermission()
+    @objc public var unreadMessages: Int = 0
     
-    internal var _currentUsers = [String]()
+    @objc internal var _currentUsers = [String]()
     
     public static func create(name: String,
                               details: String,

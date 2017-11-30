@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,12 @@ public protocol RCPayload {
 }
 
 public class RCMessage: RCModel {
-    public var senderId: String?
-    public var dialogId: String?
-    public var date: Date?
-    public var extras = [String: String]()
+    @objc public var senderId: String?
+    @objc public var dialogId: String?
+    @objc public var date: Date?
+    @objc public var extras = [String: String]()
     
-    internal var payloads = [RCPayloadWrapper]()
+    @objc internal var payloads = [RCPayloadWrapper]()
     
     public func hasPayloadType<T: RCModel>(type: T.Type) -> Bool where T:RCPayload {
         let payload: T?? = (try? payloadForClass())
@@ -65,8 +65,8 @@ extension RCMessage {
 }
 
 internal class RCPayloadWrapper: RCModel {
-    var type: String?
-    var contents: String?
+    @objc var type: String?
+    @objc var contents: String?
     private var object: RCModel?
     
     fileprivate static func create(objectType: String, object: RCModel) throws -> RCPayloadWrapper {

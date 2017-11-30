@@ -60,7 +60,7 @@
             location = "group:RCAuthCredential.swift">
          </FileRef>
          <FileRef
-            location = "group:RCError.swift">
+            location = "group:/Users/lorenzo/Bravo/src/bravo/BravoError.swift">
          </FileRef>
          <FileRef
             location = "group:RCFile.swift">
@@ -73,9 +73,6 @@
          </FileRef>
          <FileRef
             location = "group:RCUser.swift">
-         </FileRef>
-         <FileRef
-            location = "group:RCValueTransformer.swift">
          </FileRef>
          <FileRef
             location = "group:RCWebRequest.swift">

@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,13 +38,13 @@ extension RCUser {
 }
 
 public class RCUserReview: RCModel {
-    public var user: RCUser?
-    public var reviewer: RCUser?
-    public var serviceName: String?
-    public var comments: String?
-    public var serviceRequestId: String?
+    @objc public var user: RCUser?
+    @objc public var reviewer: RCUser?
+    @objc public var serviceName: String?
+    @objc public var comments: String?
+    @objc public var serviceRequestId: String?
     private var _rating: NSNumber = 0
-    public var rating: NSNumber {
+    @objc public var rating: NSNumber {
         set {
             _rating = (newValue.intValue > 0) ? (newValue.intValue < 5) ? newValue : 5 : 0
         }
@@ -52,7 +52,7 @@ public class RCUserReview: RCModel {
             return _rating
         }
     }
-    public var date: Date?
+    @objc public var date: Date?
     
     public static func review(user: RCUser, serviceRequestId: String, serviceName: String, comments: String?, rating: NSNumber, date: Date = Date()) -> RCUserReview {
         let review = RCUserReview()
@@ -65,7 +65,6 @@ public class RCUserReview: RCModel {
         
         return review
     }
-    
     
     static func reviewsForUser(userID: String, success: @escaping ([RCUserReview]) -> Void, failure: @escaping (BravoError) -> Void) {
         WebService().get(relativePath: "reviews/:userID", headers: nil, parameters: ["userID": userID], success: { (requests: [RCUserReview]) in

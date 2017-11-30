@@ -4,10 +4,10 @@ source 'https://github.com/RebelCreators/BravoSpecs.git'
 inhibit_all_warnings!
 
 target 'BravoTests' do
-  use_frameworks!
-
-  pod 'Bravo', :path => '../'
-  pod 'HHSDK', :path => '../'
+    use_frameworks!
+    
+    pod 'Bravo', :path => '../'
+    pod 'HHSDK', :path => '../'
 end
 
 target 'BravoTestsUnitTests' do
@@ -19,10 +19,8 @@ end
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
-        if target.name.start_with?( 'Socket.IO-Client-Swift')
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '4.0'
-            end
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '4.0'
         end
     end
 end

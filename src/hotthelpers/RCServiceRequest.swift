@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,8 @@ import Bravo
 import RCModel
 
 open class RCHelperStatus: HHModel {
-    open var helperID: String?
-    open var status: RCHelperRequestStatusEnum = .pending // enum
+    @objc open var helperID: String?
+    @objc open var status: RCHelperRequestStatusEnum = .pending // enum
     
     open override class func propertyMappings() -> [String : RCPropertyKey] {
         return super.propertyMappings() + ["helperID" : "helperId"]
@@ -39,23 +39,23 @@ open class RCServiceRequest: HHModel {
     public var requestID: String? {
         return modelID
     }
-    public var client: RCUser?
-    public var helpers: [RCUser]?
-    public var location: String?
-    public var hourlyRate: NSNumber?
-    public var duration: NSNumber? // in hours
-    public var details: String?
-    public var name: String?
-    public var date: Date?
-    public var clientCompleted = false
-    public var helpersCompleted: [String] = []
-    public var consideredUsers: [String] = []
-    public var helperStatus: [RCHelperStatus] = []
-    public var status: RCRequestStatusEnum = .pending // enum
-    public var serviceCharge: NSNumber?
-    public var expectedCharge: NSNumber?
-    public var dialogID: String?
-    public var latLng: RCLocation?
+    @objc public var client: RCUser?
+    @objc public var helpers: [RCUser]?
+    @objc public var location: String?
+    @objc public var hourlyRate: NSNumber?
+    @objc public var duration: NSNumber? // in hours
+    @objc public var details: String?
+    @objc public var name: String?
+    @objc public var date: Date?
+    @objc public var clientCompleted = false
+    @objc public var helpersCompleted: [String] = []
+    @objc public var consideredUsers: [String] = []
+    @objc public var helperStatus: [RCHelperStatus] = []
+    @objc public var status: RCRequestStatusEnum = .pending // enum
+    @objc public var serviceCharge: NSNumber?
+    @objc public var expectedCharge: NSNumber?
+    @objc public var dialogID: String?
+    @objc public var latLng: RCLocation?
     //you must hydrate yourself - water's good for you
     public var hydratedDialog: RCDialog?
     

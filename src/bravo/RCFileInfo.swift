@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,10 +21,10 @@
 import Foundation
 
 public class RCFileInfo: NSObject {
-
-    public private(set) var name: String
-    public private(set) var contentType: String
-    public private(set) var data: Data
+    
+    @objc public private(set) var name: String
+    @objc public private(set) var contentType: String
+    @objc public private(set) var data: Data
     
     public init(name: String, contentType: String, data: Data) {
         self.name = name

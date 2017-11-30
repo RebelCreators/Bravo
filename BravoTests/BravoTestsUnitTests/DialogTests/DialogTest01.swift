@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,8 @@ import Bravo
 import RCModel
 
 public class TestPayload: RCModel, RCPayload {
-    public static var contentType: String { return "test" }
-    public  var strings:[String] = []
+   @objc public static var contentType: String { return "test" }
+   @objc public  var strings:[String] = []
 }
 
 var currentDialog: RCDialog?
@@ -228,7 +228,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             exBlock2.fulfill()
         }
         
-        expectation(forNotification: Notification.RC.RCDidReceiveMessage.rawValue, object: nil) { notification in
+        expectation(forNotification: NSNotification.Name(rawValue: Notification.RC.RCDidReceiveMessage.rawValue), object: nil) { notification in
             do {
                 let payload: TestPayload? = try (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
                 return payload?.strings.first == firstString
@@ -350,7 +350,7 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             exBlock2.fulfill()
         }
         
-        expectation(forNotification: Notification.RC.RCDidReceiveMessage.rawValue, object: nil) { notification in
+        expectation(forNotification: NSNotification.Name(rawValue: Notification.RC.RCDidReceiveMessage.rawValue), object: nil) { notification in
             do {
                 let payload: TestPayload? = try (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
                 return payload?.strings.first == firstString

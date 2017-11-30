@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,8 @@ import Bravo
 
 public class RCLocation: HHModel {
     
-    public var lat: String?
-    public var lng: String?
+    @objc public var lat: String?
+    @objc public var lng: String?
     
     public static func location(coordinates: CLLocationCoordinate2D) -> RCLocation {
         let userLocation = RCLocation()

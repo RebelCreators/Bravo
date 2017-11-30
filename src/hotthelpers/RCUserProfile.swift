@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,17 +25,17 @@ import RCModel
 public class RCUserProfile: HHModel {
     
     static public var currentProfile: RCUserProfile?
-    public var distance: NSNumber?
-    public var birthDate: Date?
-    public var email: String?
-    public var details: String?
-    public var user: RCUser?
-    public var profileImages = [String]()
-    public var profileType: RCProfileTypeEnum = .client
-    public var appearance = [String: String]()
+    @objc public var distance: NSNumber?
+    @objc public var birthDate: Date?
+    @objc public var email: String?
+    @objc public var details: String?
+    @objc public var user: RCUser?
+    @objc public var profileImages = [String]()
+    @objc public var profileType: RCProfileTypeEnum = .client
+    @objc public var appearance = [String: String]()
     //owners are not included in profile services
-    public var services = [RCService]()
-    public var homeCity: String?
+    @objc public var services = [RCService]()
+    @objc public var homeCity: String?
     
     open override class func arrayClasses() -> [String : RCModelProtocol.Type] {
         return super.arrayClasses() + ["services" : RCService.self]

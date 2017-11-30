@@ -1,4 +1,4 @@
-// Copyright (c) 2016 Rebel Creators
+// Copyright (c) 2017 Rebel Creators
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,10 @@ import SwiftKeychainWrapper
 import RCModel
 
 @objc public class RCAuthCredential: RCModel {
-    var accessToken: String = ""
-    var expiration: Date = Date.distantPast
-    var refreshToken: String = ""
-    var expires_in: NSNumber = 0
+    @objc var accessToken: String = ""
+    @objc var expiration: Date = Date.distantPast
+    @objc var refreshToken: String = ""
+    @objc var expires_in: NSNumber = 0
     
     public init(accessToken: String, expiration: Date, refreshToken: String) {
         self.accessToken = accessToken
