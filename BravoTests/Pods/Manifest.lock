@@ -5,7 +5,7 @@ PODS:
     - RCModel (~> 1.0)
     - Socket.IO-Client-Swift (~> 13.0)
     - SwiftKeychainWrapper (~> 3.0)
-  - RCModel (1.0.6)
+  - RCModel (1.0.7)
   - Socket.IO-Client-Swift (13.1.0):
     - Starscream (~> 3.0.2)
   - Starscream (3.0.2)
@@ -21,7 +21,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bravo: a5a54fd696ea5316af6d1e264310996d3346ae67
-  RCModel: 765cb1adb81c74504b95aac7887620d86ef521e7
+  RCModel: 162e6116a82816a43ca23252b1df1f4188e3160b
   Socket.IO-Client-Swift: b67a96d6a9e5f271bceb93e99779d2cf77c74868
   Starscream: b512c62f6706421221b5ceb2ba01a9f58aca5bea
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a

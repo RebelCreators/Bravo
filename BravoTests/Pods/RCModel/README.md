@@ -1,2 +1,2 @@
-# RCModel 1.0.6
+# RCModel 1.0.7
 JSON Serialization

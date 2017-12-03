@@ -91,7 +91,7 @@
         dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
         transformer = [[RCTransformer alloc] initWithForwardBlock:^id _Nullable(id  _Nullable value, NSError *__autoreleasing  _Nullable * _Nullable error) {
             if (!value) {
                 return nil;
