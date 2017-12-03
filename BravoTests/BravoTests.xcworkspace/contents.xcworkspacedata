@@ -5,31 +5,6 @@
       location = "group:../src"
       name = "src">
       <Group
-         location = "group:hotthelpers"
-         name = "hotthelpers">
-         <FileRef
-            location = "group:RCLocation.swift">
-         </FileRef>
-         <FileRef
-            location = "group:RCServiceRequest.swift">
-         </FileRef>
-         <FileRef
-            location = "group:RCService.swift">
-         </FileRef>
-         <FileRef
-            location = "group:HHModel.swift">
-         </FileRef>
-         <FileRef
-            location = "group:RCUserProfile.swift">
-         </FileRef>
-         <FileRef
-            location = "group:RCUserReview.swift">
-         </FileRef>
-         <FileRef
-            location = "group:Enums.swift">
-         </FileRef>
-      </Group>
-      <Group
          location = "group:bravo"
          name = "bravo">
          <FileRef

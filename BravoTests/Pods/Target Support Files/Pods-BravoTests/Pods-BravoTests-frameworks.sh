@@ -104,7 +104,6 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS11.1/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bravo-iOS11.1/Bravo.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS11.1/HHSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS11.1/RCModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS11.1/SocketIO.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS11.1/Starscream.framework"
@@ -113,7 +112,6 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-iOS11.1/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bravo-iOS11.1/Bravo.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/HHSDK-iOS11.1/HHSDK.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RCModel-iOS11.1/RCModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift-iOS11.1/SocketIO.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Starscream-iOS11.1/Starscream.framework"

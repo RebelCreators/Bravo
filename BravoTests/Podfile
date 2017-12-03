@@ -7,14 +7,12 @@ target 'BravoTests' do
     use_frameworks!
     
     pod 'Bravo', :path => '../'
-    pod 'HHSDK', :path => '../'
 end
 
 target 'BravoTestsUnitTests' do
     use_frameworks!
     
     pod 'Bravo', :path => '../'
-    pod 'HHSDK', :path => '../'
 end
 
 post_install do |installer|
