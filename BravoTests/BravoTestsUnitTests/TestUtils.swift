@@ -129,9 +129,8 @@ class Utils {
 extension Bravo {
     
     static func reConfig() {
-        Bravo.reset()
         let config = BravoPlistConfig.loadPlist(name: "Config", bundle: Bundle(for: Utils.self))
-        Bravo.sdk.configure(dictionary: config.asDictionary()!["dev"] ?? [:])
+        Bravo.reset().configure(dictionary: config.asDictionary()!["dev"] ?? [:])
         RCDevice.storeInKeyChain = false
     }
 }

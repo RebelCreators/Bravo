@@ -82,12 +82,14 @@ public class BravoPlistConfig: NSObject {
 
 public class Bravo: NSObject {
     
-    public static var sdk = Bravo()
-    var config: Config!
+    public private(set) static var sdk = Bravo()
+    private(set) var config: Config!
     public var credential: RCAuthCredential?
     
-    public static func reset() {
+    @discardableResult
+    public static func reset() -> Bravo {
         sdk = Bravo()
+        return sdk
     }
     
     private override init() {
