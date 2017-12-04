@@ -47,17 +47,27 @@ public class RCSocketConnectOperation: RCAsyncOperation {
 public class RCSocket: NSObject {
     
     public private(set) var connectionStatus: RCSocketConnectionStatus = .disconnected
-    public private(set) var connectionOperation: Operation?
-    public private(set) var disconnectionOperation: Operation?
-    
     public var debug = false
-    private var currentOperation: WebServiceOp?
     static public var defaultPortNumber = 5225
-    public static var shared = RCSocket()
-    private var maxReconections = 5
+    public static internal(set) var shared = RCSocket()
+    
+    
+    private var currentOperation: WebServiceOp?
     private var currentReconnections = 0
+    private var maxReconections = 5
     private var underlyingSocket: SocketIOClient?
     private var underlyingSocketManager:SocketManager?
+    
+    private struct SocketEventKeys {
+        static let connected = "connect"
+        static let disconnected = "disconnect"
+        static let error = "error"
+        static let messageReceived = "com.rebel.creators.message"
+    }
+    
+    internal override init() {
+        super.init()
+    }
     
     public func intitialize() {
         NotificationCenter.default.addObserver(self, selector: #selector(didSignIn), name: Notification.RC.RCDidSignIn, object: nil)
@@ -103,16 +113,17 @@ public class RCSocket: NSObject {
                     self.connectionStatus = .reconnecting
                     self.currentReconnections += 1
                     self.reconnect()
+                    
                 } else {
                     self.connectionStatus = .disconnected
                     self.currentReconnections = 0
+                    
+                    operation.finish()
                 }
-                operation.finish()
             }).exeInBackground()
         })
         
         op.exeInBackground(dependencies: [currentOperation?.asOperation()])
-        connectionOperation = op.asOperation()
         currentOperation = op
         
         return op.asOperation()
@@ -127,15 +138,15 @@ public class RCSocket: NSObject {
             }
             if (socket.status != .notConnected && socket.status != .disconnected) {
                 socket.removeAllHandlers()
-                socket.on("disconnect") {[weak self, weak socket] data, ack in
-                    self?.connectionStatus = .disconnected
-                    
+                
+                socket.on(SocketEventKeys.disconnected) {[weak self, weak socket] data, ack in
                     socket?.removeAllHandlers()
-                    NotificationCenter.default.post(name: Notification.RC.RCSocketDidDisconnect, object: self)
-                    operation.finish()
                 }
                 self.underlyingSocket = nil
                 socket.disconnect()
+                self.connectionStatus = .disconnected
+                NotificationCenter.default.post(name: Notification.RC.RCSocketDidDisconnect, object: self)
+                operation.finish()
             } else {
                 self.underlyingSocket = nil
                 self.connectionStatus = .disconnected
@@ -145,7 +156,6 @@ public class RCSocket: NSObject {
         
         op.exeInBackground(dependencies: [currentOperation?.asOperation()])
         currentOperation = op
-        disconnectionOperation = op.asOperation()
         
         return op.asOperation()
     }
@@ -183,7 +193,7 @@ public class RCSocket: NSObject {
                 self.underlyingSocket = socket
             }
             
-            socket.on("error"){data, ack in
+            socket.on(SocketEventKeys.error){data, ack in
                 let error = NSError(domain: "RCSocket", code: Int((data.first as? String) ?? "500") ?? 500, userInfo: nil)
                 fail?(BravoError.OtherNSError(nsError: error))
                 succ = nil
@@ -191,14 +201,14 @@ public class RCSocket: NSObject {
                 operation.finish()
             }
             
-            socket.on("connect") {data, ack in
+            socket.on(SocketEventKeys.connected) {data, ack in
                 succ?()
                 succ = nil
                 fail = nil
                 operation.finish()
             }
             
-            socket.on("com.rebel.creators.message") {data, ack in
+            socket.on(SocketEventKeys.messageReceived) {data, ack in
                 WebService.requestResponseQueue.async {
                     if let dict = data.first as? [String: NSObject] {
                         if let message = try? RCMessage.fromDictionary(dict) {
@@ -208,7 +218,7 @@ public class RCSocket: NSObject {
                 }
             }
             
-            socket.on("disconnect") {[weak socket] data, ack in
+            socket.on(SocketEventKeys.disconnected) {[weak socket] data, ack in
                 if  (socket != nil) {
                     socket?.removeAllHandlers()
                     self.reconnect()

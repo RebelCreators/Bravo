@@ -23,102 +23,82 @@ import Bravo
 import RCModel
 
 public class TestPayload: RCModel, RCPayload {
-   @objc public static var contentType: String { return "test" }
-   @objc public  var strings:[String] = []
+    @objc public static var contentType: String { return "test" }
+    @objc public  var strings:[String] = []
 }
 
-var currentDialog: RCDialog?
-class Test0_0_0_0_4_DialogTest01: XCTestCase {
-    static var user2Name = "\(userName).\(Date().timeIntervalSince1970)"
-    static var user1Name = "\(userName).\(Date().timeIntervalSince1970)"
-    static var user3Name = "\(userName).\(Date().timeIntervalSince1970)"
-    static var user2: RCUser?
-    static var user1: RCUser?
-    static var user3: RCUser?
-    var me = Test0_0_0_0_4_DialogTest01.self
+
+class DialogTest1: XCTestCase {
     
-    func test000000RegisterUsers() {
-        var user = RCUser()
-        user.userName = me.user1Name
-        user.password = password
-        let ex = expectation(description: "")
-        user.register(success: { u in
-            self.me.user1 = u
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
+    var user2: RCUser!
+    var user1: RCUser!
+    var currentUser: RCUser!
+    var currentDialog: RCDialog?
+    
+    override func setUp() {
+        super.setUp()
         
-        user = RCUser()
-        user.userName = me.user2Name
-        user.password = password
-        let ex2 = expectation(description: "")
-        user.register(success: { u in
-            self.me.user2 = u
-            ex2.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex2.fulfill()
-        })
+        Bravo.reConfig()
         
-        user = RCUser()
-        user.userName = me.user3Name
-        user.password = password
-        let ex3 = expectation(description: "")
-        user.register(success: { u in
-            self.me.user3 = u
-            ex3.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex3.fulfill()
-        })
+        var currentUser = Utils.newRandomUser()
+        XCTAssertNil(Utils.registerUser(user: &currentUser, test: self))
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        XCTAssertNil(Utils.loginUser(user: &currentUser, test: self))
+        XCTAssertTrue(Utils.usersEqual(currentUser, RCUser.currentUser!))
+        self.currentUser = currentUser
+        
+        var user1 = Utils.newRandomUser()
+        XCTAssertNil(Utils.registerUser(user: &user1, test: self))
+        self.user1 = user1
+        
+        var user2 = Utils.newRandomUser()
+        XCTAssertNil(Utils.registerUser(user: &user2, test: self))
+        self.user2 = user2
     }
     
-    func test000003Login() {
-        let cred = URLCredential(user: me.user1Name, password: password, persistence: .none)
+    override func tearDown() {
+        currentUser = nil
+        _ = Utils.logoutCurrentUser(test: self)
+        
+        super.tearDown()
+    }
+    
+    func testCreateStandardDialog() {
         let ex = expectation(description: "")
-        RCUser.login(credential: cred, saveToken: true, success: { user in
+        RCDialog.create(name: "Test", details: "this is a test dialog", participants: [currentUser!], success: { dialog in
+            self.currentDialog = dialog
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test000006createStandardDialog() {
-        let ex = expectation(description: "")
-        RCDialog.create(name: "Test", details: "this is a test", participants:[RCUser.currentUser!] ,success: { dialog in
-            currentDialog = dialog
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
+    func testGetMyDialogs() {
+        testCreateStandardDialog()
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-    }
-    
-    func test000009GetMyDialogs() {
         let ex = expectation(description: "")
         RCDialog.subscriptions(success: { dialogs in
             XCTAssert(dialogs.count == 1, "there should be one dialog")
-            XCTAssert(dialogs.first == currentDialog, "dialogs should be equal")
+            XCTAssert(dialogs.first == self.currentDialog, "dialogs should be equal")
             XCTAssert(dialogs.first?.currentUsers.count == 1, "there should be one current user")
+            XCTAssert(dialogs.first?.allUsers.count == 1, "there should be one current user")
+            XCTAssert( Utils.usersEqual(dialogs.first?.creator, self.currentUser), "current user should be creator")
+            
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
     
-    func test000019LeaveDialog() {
+    func testLeaveDialog() {
+        testCreateStandardDialog()
+        
         let ex = expectation(description: "")
         currentDialog?.leave(success: {
             ex.fulfill()
@@ -126,10 +106,13 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test000029GetMyDialogs() {
+    
+    func testGetMyDialogsAfterLeaving() {
+        testLeaveDialog()
+        
         let ex = expectation(description: "")
         RCDialog.subscriptions(success: { dialogs in
             XCTAssert(dialogs.count == 0, "there should be no dialogs")
@@ -138,26 +121,16 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test000039createStandardDialog() {
-        let ex = expectation(description: "")
-        RCDialog.create(name: "Test2", details: "this is a test2", success: { dialog in
-            currentDialog = dialog
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
+    
+    func testAddUserToDialog() {
+        testCreateStandardDialog()
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-    }
-    
-    func test000069addUserToDialog() {
         let ex = expectation(description: "")
-        currentDialog?.addUser(userID: me.user2!.userID!, success: { dialog in
-            currentDialog = dialog
+        currentDialog?.addUser(userID: user1.userID!, success: { dialog in
+            self.currentDialog = dialog
             XCTAssert(dialog.currentUsers.count == 2, "there should be two current users")
             ex.fulfill()
         }, failure: { error in
@@ -165,11 +138,13 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test000099GetMyDialogs() {
-        let ex = expectation(description: "")
+    func testGetMyDialogsAfterAddingUser() {
+        testAddUserToDialog()
+        
+        let ex = expectation(description: "should get dialogs")
         RCDialog.subscriptions(success: { dialogs in
             XCTAssert(dialogs.first?.currentUsers.count == 2, "there should be two current users")
             ex.fulfill()
@@ -177,34 +152,57 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout:  Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test000199GetDialogByID() {
+    func testFindDialogs() {
+        testAddOtherUserToDialog()
+        let ex = expectation(description: "should get dialogs")
+        RCDialog.dialogsWithUsers(userIDs: [currentUser.userID!, user1.userID!, user2.userID!], permissions: RCDialogPermissionDefault, success: { (dialogs) in
+            XCTAssert(dialogs.count == 1, "there should be one dialog")
+            ex.fulfill()
+        }) { (error) in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        }
+        waitForExpectations(timeout:  Utils.DefaultTestTimeout, handler: nil)
+    }
+    
+    func testFindDialogsWithWrongPermissions() {
+        testAddOtherUserToDialog()
+        let ex = expectation(description: "should not get dialogs")
+        RCDialog.dialogsWithUsers(userIDs: [currentUser.userID!, user1.userID!, user2.userID!], permissions: RCDialogPermissionPublic, success: { (dialogs) in
+            XCTAssert(dialogs.count == 0, "there should be no dialogs")
+            ex.fulfill()
+        }) { (error) in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        }
+        waitForExpectations(timeout:  Utils.DefaultTestTimeout, handler: nil)
+    }
+    
+    func testGetDialogByID() {
+        testAddUserToDialog()
+        
         let ex = expectation(description: "")
-        RCDialog.dialogWithID(dialogID: currentDialog!.dialogID!, permissions: RCDialogPermission(), success: { dialog in
+        RCDialog.dialogWithID(dialogID: currentDialog!.dialogID!, permissions: RCDialogPermissionDefault, success: { dialog in
             XCTAssert(dialog.currentUsers.count == 2, "there should be two current users")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test000299sendMessage() {
-        let ex = expectation(description: "")
+    func testSendMessage() {
+        testCreateStandardDialog()
+        
         let message = RCMessage()
         let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         try? message.appendPayload(payload: testPayload)
-        currentDialog?.publish(message: message, success: { mesage in
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
         
         let exBlock = expectation(description: "")
         currentDialog?.onMessage() { message in
@@ -238,12 +236,21 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             return false
         }
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        let ex = expectation(description: "should send message")
+        currentDialog?.publish(message: message, success: { mesage in
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
+        
+        waitForExpectations(timeout: Utils.DefaultTestTimeout + 10, handler: nil)
     }
     
-    func test000699removeUserToDialog() {
+    func testRemoveUserFromDialog() {
+        testAddUserToDialog()
         let ex = expectation(description: "")
-        currentDialog?.removeUser(userID: me.user2!.userID!, success: { dialog in
+        currentDialog?.removeUser(userID: user1.userID!, success: { dialog in
             XCTAssert(dialog.currentUsers.count == 1, "there should be one current user")
             ex.fulfill()
         }, failure: { error in
@@ -251,82 +258,68 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test000999addUserToDialog() {
+    func testAddOtherUserToDialog() {
+        testAddUserToDialog()
         let ex = expectation(description: "")
-        currentDialog?.addUser(userID: me.user2!.userID!, success: { dialog in
-            currentDialog = dialog
-            XCTAssert(dialog.currentUsers.count == 2, "there should be two current users")
+        currentDialog?.addUser(userID: user2.userID!, success: { dialog in
+            XCTAssert(dialog.currentUsers.count == 3, "there should be three current users")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test001999testLogoutANDLogIn() {
-        var ex = expectation(description: "")
-        RCUser.logout(success: {
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+    func testAddUserToDialogWhenUnauthorized() {
+        testAddUserToDialog()
+        XCTAssertNil(Utils.logoutCurrentUser(test: self))
+        var user = self.user1!
+        XCTAssertNil(Utils.loginUser(user: &user, test: self))
         
-        let cred = URLCredential(user: me.user2!.userName!, password: password, persistence: .none)
-        ex = expectation(description: "")
-        RCUser.login(credential: cred, saveToken: true, success: { user in
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
-        
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-    }
-    
-    func test003999addUserToDialog() {
-        let ex = expectation(description: "")
-        currentDialog?.addUser(userID: me.user3!.userID!, success: { dialog in
+        let ex = expectation(description: "Should not be able to add user")
+        currentDialog?.addUser(userID: user2.userID!, success: { dialog in
             XCTFail("should not have access")
             ex.fulfill()
         }, failure: { error in
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test004999removeUserFromDialog() {
+    func testRemoveUserFromDialogWhenUnauthorized() {
+        testAddOtherUserToDialog()
+        XCTAssertNil(Utils.logoutCurrentUser(test: self))
+        var user = self.user1!
+        XCTAssertNil(Utils.loginUser(user: &user, test: self))
+        
         let ex = expectation(description: "")
-        currentDialog?.removeUser(userID: me.user1!.userID!, success: { dialog in
+        currentDialog?.removeUser(userID: user2.userID!, success: { dialog in
             XCTFail("should not have access")
             ex.fulfill()
         }, failure: { error in
             ex.fulfill()
         })
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func test005999sendMessage() {
-        let ex = expectation(description: "")
+    func testSendMessageAsParticipant() {
+        testAddUserToDialog()
+        XCTAssertNil(Utils.logoutCurrentUser(test: self))
+        var user = self.user1!
+        XCTAssertNil(Utils.loginUser(user: &user, test: self))
+        
         let message = RCMessage()
         let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         try? message.appendPayload(payload: testPayload)
-        currentDialog?.publish(message: message, success: { mesage in
-            ex.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex.fulfill()
-        })
         
         let exBlock = expectation(description: "")
         currentDialog?.onMessage() { message in
@@ -360,39 +353,23 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             return false
         }
         
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-        currentDialog?.removeOnMessageListeners()
+        let ex = expectation(description: "should send message")
+        currentDialog?.publish(message: message, success: { mesage in
+            ex.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        })
         
-        let ex33 = expectation(description: "")
-        let message33 = RCMessage()
-        let testPayload33 = TestPayload()
-        let firstString33 = "this is a test!"
-        testPayload33.strings.append(firstString33)
-        try? message33.appendPayload(payload: testPayload33)
-        currentDialog?.publish(message: message33, success: { mesage in
-            ex33.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex33.fulfill()
-        })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout + 30, handler: nil)
     }
     
-    func test005999sendMessageGetMessages()  {
-        let ex33 = expectation(description: "")
-        currentDialog?.messages(offset: 0, limit: 1000, success: { messages in
-            XCTAssert(messages.count == 3, "there should be three messages")
-            ex33.fulfill()
-        }, failure: { error in
-            XCTFail(error.localizedDescription)
-            ex33.fulfill()
-        })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-    }
-    
-    
-    
-    func test007999leaveDialog() {
+    func testLeaveDialogAndSendMessage() {
+        testAddUserToDialog()
+        XCTAssertNil(Utils.logoutCurrentUser(test: self))
+        var user = self.user1!
+        XCTAssertNil(Utils.loginUser(user: &user, test: self))
+        
         let ex = expectation(description: "")
         currentDialog?.leave(success: {
             ex.fulfill()
@@ -400,33 +377,83 @@ class Test0_0_0_0_4_DialogTest01: XCTestCase {
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
-    }
-    
-    func test008999sendMessage() {
-        let ex = expectation(description: "")
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
+        
         let message = RCMessage()
         let testPayload = TestPayload()
         let firstString = "this is a test!"
         testPayload.strings.append(firstString)
         try? message.appendPayload(payload: testPayload)
+        
+        let ex2 = expectation(description: "should send message")
         currentDialog?.publish(message: message, success: { mesage in
             XCTFail("should not have access")
-            ex.fulfill()
+            ex2.fulfill()
         }, failure: { error in
-            ex.fulfill()
+            ex2.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
     
-    func testLogout() {
+    func testGetMessages() {
+        testAddUserToDialog()
+        
+        let message = RCMessage()
+        let testPayload = TestPayload()
+        let firstString = "this is a test!"
+        testPayload.strings.append(firstString)
+        try? message.appendPayload(payload: testPayload)
+        
+        let ex1 = expectation(description: "should send message")
+        currentDialog?.publish(message: message, success: { mesage in
+            ex1.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex1.fulfill()
+        })
+        
+        let ex2 = expectation(description: "should send message")
+        currentDialog?.publish(message: message, success: { mesage in
+            ex2.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex2.fulfill()
+        })
+        
+        let ex3 = expectation(description: "should send message")
+        currentDialog?.publish(message: message, success: { mesage in
+            ex3.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex3.fulfill()
+        })
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
+        
+        let ex4 = expectation(description: "")
+        currentDialog?.messages(offset: 0, limit: 1000, success: { messages in
+            XCTAssert(messages.count == 3, "there should be three messages")
+            ex4.fulfill()
+        }, failure: { error in
+            XCTFail(error.localizedDescription)
+            ex4.fulfill()
+        })
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
+    }
+    
+    func testGetMessagesAsParticipant() {
+        testGetMessages()
+        XCTAssertNil(Utils.logoutCurrentUser(test: self))
+        var user = self.user1!
+        XCTAssertNil(Utils.loginUser(user: &user, test: self))
+        
         let ex = expectation(description: "")
-        RCUser.logout(success: {
+        currentDialog?.messages(offset: 0, limit: 1000, success: { messages in
+            XCTAssert(messages.count == 3, "there should be three messages")
             ex.fulfill()
         }, failure: { error in
             XCTFail(error.localizedDescription)
             ex.fulfill()
         })
-        waitForExpectations(timeout: DefaultTestTimeout, handler: nil)
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
     }
 }

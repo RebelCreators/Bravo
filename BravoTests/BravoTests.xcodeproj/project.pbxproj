@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		049789571E26000C00666EC6 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049789551E26000C00666EC6 /* image2.jpg */; };
 		049789581E26000C00666EC6 /* image1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 049789561E26000C00666EC6 /* image1.JPG */; };
-		04E36BEA1E1DA67F00C13847 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BE91E1DA67F00C13847 /* UserTests.swift */; };
 		04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */; };
 		04E36BEF1E1DA7A400C13847 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
 		04E36BF01E1DA8C700C13847 /* image.png in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
@@ -22,7 +21,6 @@
 		8D95E9631DC1FC7800CC1090 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9611DC1FC7800CC1090 /* Main.storyboard */; };
 		8D95E9681DC1FC7800CC1090 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D95E9661DC1FC7800CC1090 /* LaunchScreen.storyboard */; };
 		D82F927D8D942A23E0B4EA6E /* Pods_BravoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */; };
-		E473695E1E33509100ACD596 /* DialogTest03.swift in Sources */ = {isa = PBXBuildFile; fileRef = E473695D1E33509100ACD596 /* DialogTest03.swift */; };
 		E4BD12601E2DDDA600728939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD125F1E2DDDA600728939 /* AppDelegate.swift */; };
 		E4BD12621E2DDDA600728939 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD12611E2DDDA600728939 /* ViewController.swift */; };
 		E4BD12651E2DDDA600728939 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4BD12631E2DDDA600728939 /* Main.storyboard */; };
@@ -31,7 +29,8 @@
 		E4BD12751E2DDDA700728939 /* TestTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD12741E2DDDA700728939 /* TestTargetTests.swift */; };
 		E4BD12801E2DDDA700728939 /* TestTargetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD127F1E2DDDA700728939 /* TestTargetUITests.swift */; };
 		E4BD12901E2F538800728939 /* DialogTest01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD128F1E2F538800728939 /* DialogTest01.swift */; };
-		E4BD12921E32068600728939 /* DialogTest02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD12911E32068600728939 /* DialogTest02.swift */; };
+		ED25AB761FD48D21007CCE6D /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED25AB751FD48D21007CCE6D /* TestUtils.swift */; };
+		ED25AB781FD4924D007CCE6D /* RCUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED25AB771FD4924D007CCE6D /* RCUserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +69,6 @@
 		049789561E26000C00666EC6 /* image1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.JPG; sourceTree = "<group>"; };
 		04E36BDC1E1D951900C13847 /* BravoTestsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BravoTestsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E36BE01E1D951900C13847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04E36BE91E1DA67F00C13847 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTests.swift; path = UserTests/UserTests.swift; sourceTree = "<group>"; };
 		04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllConfig.swift; sourceTree = "<group>"; };
 		04E36BEE1E1DA7A400C13847 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		04E36BF11E1F73E600C13847 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 		A86EA74C1469CFBF6E95A05B /* Pods_BravoTestsUnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTestsUnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEACAA3CA04FFA3DEAF8FE24 /* Pods_BravoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BravoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D146D24147894875BBF796 /* Pods-BravoTestsUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BravoTestsUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BravoTestsUnitTests/Pods-BravoTestsUnitTests.release.xcconfig"; sourceTree = "<group>"; };
-		E473695D1E33509100ACD596 /* DialogTest03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogTest03.swift; path = DialogTests/DialogTest03.swift; sourceTree = "<group>"; };
 		E4BD125D1E2DDDA600728939 /* TestTarget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTarget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4BD125F1E2DDDA600728939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4BD12611E2DDDA600728939 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +101,8 @@
 		E4BD12811E2DDDA700728939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BD128B1E2DDDBF00728939 /* TestTarget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTarget.entitlements; sourceTree = "<group>"; };
 		E4BD128F1E2F538800728939 /* DialogTest01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogTest01.swift; path = DialogTests/DialogTest01.swift; sourceTree = "<group>"; };
-		E4BD12911E32068600728939 /* DialogTest02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogTest02.swift; path = DialogTests/DialogTest02.swift; sourceTree = "<group>"; };
+		ED25AB751FD48D21007CCE6D /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		ED25AB771FD4924D007CCE6D /* RCUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RCUserTests.swift; path = UserTests/RCUserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +154,7 @@
 				04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */,
 				04E36BE01E1D951900C13847 /* Info.plist */,
 				04E36BE81E1D965400C13847 /* UserTests */,
+				ED25AB751FD48D21007CCE6D /* TestUtils.swift */,
 			);
 			path = BravoTestsUnitTests;
 			sourceTree = "<group>";
@@ -163,7 +162,7 @@
 		04E36BE81E1D965400C13847 /* UserTests */ = {
 			isa = PBXGroup;
 			children = (
-				04E36BE91E1DA67F00C13847 /* UserTests.swift */,
+				ED25AB771FD4924D007CCE6D /* RCUserTests.swift */,
 			);
 			name = UserTests;
 			sourceTree = "<group>";
@@ -274,8 +273,6 @@
 		E4BD128E1E2F535C00728939 /* DialogTests */ = {
 			isa = PBXGroup;
 			children = (
-				E473695D1E33509100ACD596 /* DialogTest03.swift */,
-				E4BD12911E32068600728939 /* DialogTest02.swift */,
 				E4BD128F1E2F538800728939 /* DialogTest01.swift */,
 			);
 			name = DialogTests;
@@ -628,12 +625,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4BD12901E2F538800728939 /* DialogTest01.swift in Sources */,
-				04E36BEA1E1DA67F00C13847 /* UserTests.swift in Sources */,
 				04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */,
+				ED25AB781FD4924D007CCE6D /* RCUserTests.swift in Sources */,
+				ED25AB761FD48D21007CCE6D /* TestUtils.swift in Sources */,
 				04E36BF31E1F7D0000C13847 /* Config.plist in Sources */,
 				04E36BF01E1DA8C700C13847 /* image.png in Sources */,
-				E473695E1E33509100ACD596 /* DialogTest03.swift in Sources */,
-				E4BD12921E32068600728939 /* DialogTest02.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

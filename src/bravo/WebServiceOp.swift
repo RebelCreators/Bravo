@@ -38,6 +38,7 @@ open class WebServiceBlockOp: RCAsyncBlockOperation, WebServiceOp {
         return queue
     }()
     
+    var queue: OperationQueue = WebServiceBlockOp.queue
     private var didFinish: (() -> Void)?
     
     public func asOperation() -> Operation {
@@ -80,11 +81,11 @@ open class WebServiceBlockOp: RCAsyncBlockOperation, WebServiceOp {
         
         for op in requirements ?? [] {
             if let op = op {
-                WebServiceBlockOp.queue.addOperation(op)
+                queue.addOperation(op)
                 addDependency(op)
             }
         }
         
-        WebServiceBlockOp.queue.addOperation(self)
+        queue.addOperation(self)
     }
 }

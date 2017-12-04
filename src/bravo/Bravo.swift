@@ -86,10 +86,15 @@ public class Bravo: NSObject {
     var config: Config!
     public var credential: RCAuthCredential?
     
+    public static func reset() {
+        sdk = Bravo()
+    }
+    
     private override init() {
         super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reAuthenticate(_:)), name: Notification.RC.RCNeedsAuthentication, object: nil)
+        RCSocket.shared = RCSocket()
         RCSocket.shared.intitialize()
     }
     
