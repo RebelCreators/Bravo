@@ -139,50 +139,61 @@ public class PNGPhoto: RCFile {
             
             return
         }
-        
-        var rcUser: RCUser?
-        var rcCredential: RCAuthCredential?
-        let authOperation = WebServiceBlockOp({ operation in
-            WebService().authenticate(relativePath: "oauth/token", parameters: ["username": credential.user!, "password": credential.password!, "grant_type": "password"], success: { (credential: RCAuthCredential) in
-                
-                Bravo.sdk.credential = credential
-                rcCredential = credential
-                WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
-                    RCUser.currentUser = user
-                    rcUser = user
-                    operation.finish()
-                }, failure: { (error) in
+        let loginBlock = {
+            var rcUser: RCUser?
+            var rcCredential: RCAuthCredential?
+            let authOperation = WebServiceBlockOp({ operation in
+                WebService().authenticate(relativePath: "oauth/token", parameters: ["username": credential.user!, "password": credential.password!, "grant_type": "password"], success: { (credential: RCAuthCredential) in
+                    
+                    Bravo.sdk.credential = credential
+                    rcCredential = credential
+                    WebService().get(relativePath: "users/current", headers: nil, parameters: [:], success: { (user: RCUser) in
+                        RCUser.currentUser = user
+                        rcUser = user
+                        operation.finish()
+                    }, failure: { (error) in
+                        failure(error)
+                        operation.finish()
+                    }).exeInBackground()
+                }, failure: { error in
                     failure(error)
                     operation.finish()
                 }).exeInBackground()
-            }, failure: { error in
-                failure(error)
-                operation.finish()
-            }).exeInBackground()
-        })
-        
-        self.authOperation = authOperation
-        authOperation.onFinished {
-            self.authOperation = nil
+            })
             
-            guard let user = rcUser, let credential = rcCredential else {
-                return
-            }
-            
-            RCDevice.updateCurrentDevice(success: {
-                credential.updateExpiry()
-                if (saveToken) {
-                    let _ = credential.save()
+            self.authOperation = authOperation
+            authOperation.onFinished {
+                self.authOperation = nil
+                
+                guard let user = rcUser, let credential = rcCredential else {
+                    return
                 }
                 
-                NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
-                success(user)
-            }, failure: { error in
-                RCUser.currentUser = nil
-                RCAuthCredential.removeToken()
+                RCDevice.updateCurrentDevice(success: {
+                    credential.updateExpiry()
+                    if (saveToken) {
+                        let _ = credential.save()
+                    }
+                    
+                    NotificationCenter.default.post(name: Notification.RC.RCDidSignIn, object: self, userInfo: nil)
+                    success(user)
+                }, failure: { error in
+                    RCUser.currentUser = nil
+                    RCAuthCredential.removeToken()
+                    failure(error)
+                })
+                }.exeInBackground()
+        }
+        
+        if currentUser != nil {
+            logout(success: {
+                loginBlock()
+            }, failure: { (error) in
                 failure(error)
             })
-            }.exeInBackground()
+        } else {
+            loginBlock()
+        }
     }
     
     public static func canRefresh() -> Bool {

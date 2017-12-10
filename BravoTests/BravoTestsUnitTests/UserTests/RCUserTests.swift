@@ -26,8 +26,24 @@ class RCUserTests: XCTestCase {
         self.currentUser = currentUser
     }
     
+    func testLoginWithoutLoggingOut() {
+        var user = Utils.newRandomUser()
+        XCTAssertTrue(Utils.usersEqual(RCUser.currentUser, self.currentUser))
+        XCTAssertNil(Utils.registerUser(user: &user, test: self))
+        XCTAssertNil(Utils.loginUser(user: &user, test: self))
+        XCTAssertTrue(Utils.usersEqual(RCUser.currentUser, user))
+        XCTAssertFalse(Utils.usersEqual(RCUser.currentUser, self.currentUser, assert: false))
+    }
+    
+    func testRegisteringUserTwice() {
+        var user = self.currentUser!
+        let error = Utils.registerUser(user: &user, test: self)
+        XCTAssertNotNil(error)
+        XCTAssertEqual(error?.code, 409)
+    }
+    
     func testFetchUserByUserName() {
-       var newUser = Utils.newRandomUser()
+        var newUser = Utils.newRandomUser()
         XCTAssertNil(Utils.registerUser(user: &newUser, test: self))
         
         let ex = expectation(description: "should fetch user")
@@ -195,9 +211,4 @@ class RCUserTests: XCTestCase {
         
         super.tearDown()
     }
-    
-    
-    
-    
-    
 }

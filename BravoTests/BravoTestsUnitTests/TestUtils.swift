@@ -24,9 +24,10 @@ class Utils {
     }
     
     
-    static func registerUser(user: inout RCUser, test: XCTestCase) -> Error? {
+    static func registerUser(user: inout RCUser, test: XCTestCase) -> BravoError? {
         let expectation = test.expectation(description: "register user")
-        var error: Error?
+        var error: BravoError?
+        user.password = Utils.password
         var updatedUser: RCUser?
         user.register(success: { _user in
             updatedUser = _user
@@ -43,9 +44,9 @@ class Utils {
     }
     
     
-    static func loginUser(user: inout RCUser, test: XCTestCase) -> Error? {
+    static func loginUser(user: inout RCUser, test: XCTestCase) -> BravoError? {
         let expectation = test.expectation(description: "log in User")
-        var error: Error?
+        var error: BravoError?
         guard let userName = user.userName else {
             XCTFail("No user name")
             return BravoError.ConditionNotMet(message: "Username not set")
@@ -68,12 +69,12 @@ class Utils {
     }
     
     
-    static func logoutCurrentUser(test: XCTestCase) -> Error? {
+    static func logoutCurrentUser(test: XCTestCase) -> BravoError? {
         if RCUser.currentUser == nil {
             return BravoError.ConditionNotMet(message: "No user logged in")
         }
         let expectation = test.expectation(description: "log in User")
-        var error: Error?
+        var error: BravoError?
         RCUser.logout(success: {
             expectation.fulfill()
         }) { (_error) in

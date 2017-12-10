@@ -28,7 +28,7 @@
 		E4BD126A1E2DDDA600728939 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4BD12681E2DDDA600728939 /* LaunchScreen.storyboard */; };
 		E4BD12751E2DDDA700728939 /* TestTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD12741E2DDDA700728939 /* TestTargetTests.swift */; };
 		E4BD12801E2DDDA700728939 /* TestTargetUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD127F1E2DDDA700728939 /* TestTargetUITests.swift */; };
-		E4BD12901E2F538800728939 /* DialogTest01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD128F1E2F538800728939 /* DialogTest01.swift */; };
+		E4BD12901E2F538800728939 /* BasicDialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD128F1E2F538800728939 /* BasicDialogTests.swift */; };
 		ED25AB761FD48D21007CCE6D /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED25AB751FD48D21007CCE6D /* TestUtils.swift */; };
 		ED25AB781FD4924D007CCE6D /* RCUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED25AB771FD4924D007CCE6D /* RCUserTests.swift */; };
 /* End PBXBuildFile section */
@@ -100,7 +100,7 @@
 		E4BD127F1E2DDDA700728939 /* TestTargetUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTargetUITests.swift; sourceTree = "<group>"; };
 		E4BD12811E2DDDA700728939 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4BD128B1E2DDDBF00728939 /* TestTarget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TestTarget.entitlements; sourceTree = "<group>"; };
-		E4BD128F1E2F538800728939 /* DialogTest01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DialogTest01.swift; path = DialogTests/DialogTest01.swift; sourceTree = "<group>"; };
+		E4BD128F1E2F538800728939 /* BasicDialogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicDialogTests.swift; path = DialogTests/BasicDialogTests.swift; sourceTree = "<group>"; };
 		ED25AB751FD48D21007CCE6D /* TestUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		ED25AB771FD4924D007CCE6D /* RCUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RCUserTests.swift; path = UserTests/RCUserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -273,7 +273,7 @@
 		E4BD128E1E2F535C00728939 /* DialogTests */ = {
 			isa = PBXGroup;
 			children = (
-				E4BD128F1E2F538800728939 /* DialogTest01.swift */,
+				E4BD128F1E2F538800728939 /* BasicDialogTests.swift */,
 			);
 			name = DialogTests;
 			sourceTree = "<group>";
@@ -624,7 +624,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4BD12901E2F538800728939 /* DialogTest01.swift in Sources */,
+				E4BD12901E2F538800728939 /* BasicDialogTests.swift in Sources */,
 				04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */,
 				ED25AB781FD4924D007CCE6D /* RCUserTests.swift in Sources */,
 				ED25AB761FD48D21007CCE6D /* TestUtils.swift in Sources */,

@@ -28,7 +28,7 @@ public class TestPayload: RCModel, RCPayload {
 }
 
 
-class DialogTest1: XCTestCase {
+class BasicDialogTests: XCTestCase {
     
     var user2: RCUser!
     var user1: RCUser!
