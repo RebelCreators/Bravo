@@ -71,7 +71,16 @@ extension Array: RCWebResponseModel {
         }
         
         guard let T = Element.self as? RCModelProtocol.Type else {
-            return nil
+            guard let T = Element.self as? RCWebResponseModel.Type else {
+                return nil
+            }
+            var newArray = [Any]()
+            for elm in array {
+                if let elm = try T.generate(from: elm) {
+                newArray.append(elm)
+                }
+            }
+            return newArray
         }
         
         return try NSArray(forClass: T, array: array)
