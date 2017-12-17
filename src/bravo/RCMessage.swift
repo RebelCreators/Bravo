@@ -58,7 +58,6 @@ public class RCMessage: RCModel {
         return try payloadsForClass().first
     }
     
-    
     public func pingServer(success:(() -> Void)?, failure:((Error) -> Void)?) {
         WebService().post(relativePath: "device/ping", headers: nil, parameters: self, success: {
             success?()
