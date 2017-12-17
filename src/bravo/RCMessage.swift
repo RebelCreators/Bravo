@@ -35,6 +35,8 @@ public class RCMessage: RCModel {
     @objc public var extras = [String: String]()
     
     @objc internal var payloads = [RCPayloadWrapper]()
+    @objc internal var uuid = UUID().uuidString
+    
     
     public func hasPayloadType<T: RCModel>(type: T.Type) -> Bool where T:RCPayload {
         let payload: T?? = (try? payloadForClass())
@@ -54,6 +56,15 @@ public class RCMessage: RCModel {
     
     public func payloadForClass<T: RCModel>() throws -> T? where T:RCPayload {
         return try payloadsForClass().first
+    }
+    
+    
+    public func pingServer(success:(() -> Void)?, failure:((Error) -> Void)?) {
+        WebService().post(relativePath: "device/ping", headers: nil, parameters: self, success: {
+            success?()
+        }, failure: { (error) in
+            failure?(error)
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
     }
 }
 

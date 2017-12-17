@@ -5,20 +5,20 @@
 	<key>dev</key>
 	<dict>
 		<key>clientID</key>
-		<string>dafdfdfdsfafdxadsfdsfafds</string>
+		<string>ZGFES1NMSERXMjEzMTI</string>
 		<key>clientSecret</key>
-		<string>dsjfle32421jde1r23sdsfeqfwer21r324234fewqe3</string>
+		<string>ZHNhZHNrYWRzYTIzMjFxcXdlYXNkc3NkYWZrYWJza25ka3NqZGtEQVNEQVNEU0FEU0Fkc2Q</string>
 		<key>baseURL</key>
 		<string>http://localhost:3000/</string>
 	</dict>
 	<key>prod</key>
 	<dict>
 		<key>clientID</key>
-		<string>dafdfdfdsfafdxadsfdsfafds</string>
+		<string>ZGFES1NMSERXMjEzMTI</string>
 		<key>clientSecret</key>
-		<string>dsjfle32421jde1r23sdsfeqfwer21r324234fewqe3</string>
+		<string>ZHNhZHNrYWRzYTIzMjFxcXdlYXNkc3NkYWZrYWJza25ka3NqZGtEQVNEQVNEU0FEU0Fkc2Q</string>
 		<key>baseURL</key>
-		<string>http://ec2-35-166-52-171.us-west-2.compute.amazonaws.com:3000</string>
+		<string>http://ec2-34-213-253-218.us-west-2.compute.amazonaws.com:3000</string>
 	</dict>
 </dict>
 </plist>

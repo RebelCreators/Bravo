@@ -11,10 +11,10 @@ import Bravo
 
 class Test0_0_0_0_0_AllConfig: XCTestCase {
     
-//    func test111Configure() {
-//        let config = BravoPlistConfig.loadPlist(name: "Config", bundle: Bundle(for: type(of: self)))
-//        Bravo.sdk.configure(dictionary: config.asDictionary()!["dev"] ?? [:])
-//        RCDevice.storeInKeyChain = false
-//    }
+    func test111Configure() {
+        let config = BravoPlistConfig.loadPlist(name: "Config", bundle: Bundle(for: type(of: self)))
+        Bravo.sdk.configure(dictionary: config.asDictionary()!["dev"] ?? [:])
+        RCDevice.storeInKeyChain = false
+    }
     
 }

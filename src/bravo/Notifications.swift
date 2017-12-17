@@ -24,6 +24,7 @@ public extension Notification {
     public class RC {
         public static let RCNeedsAuthentication = Notification.Name("Notification.RC.RCNeedsAuthentication")
         public static let RCDidReceiveMessage = Notification.Name("RCDidReceiveMessage")
+        public static let RCDidReceiveServerMessage = Notification.Name("RCDidReceiveServerMessage")
         public static let RCDidSignIn = Notification.Name("Notification.RC.RCDidSignIn")
         public static let RCDidSignOut = Notification.Name("Notification.RC.RCDidSignOut")
         public static let RCSocketDidConnect = Notification.Name("Notification.RC.RCSocketDidConnect")

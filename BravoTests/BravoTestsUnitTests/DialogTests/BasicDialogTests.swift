@@ -63,6 +63,35 @@ class BasicDialogTests: XCTestCase {
         super.tearDown()
     }
     
+    func testServerPingMessage() {
+        let ex = expectation(description: "when pinging all devices")
+        let message = RCMessage()
+        let testPayload = TestPayload()
+        let firstString = "this is a test!"
+        testPayload.strings.append(firstString)
+        try? message.appendPayload(payload: testPayload)
+        
+        message.pingServer(success: {
+            ex.fulfill()
+        }) { (error) in
+            XCTFail(error.localizedDescription)
+            ex.fulfill()
+        }
+        waitForExpectations(timeout: Utils.DefaultTestTimeout, handler: nil)
+        
+        expectation(forNotification: Notification.RC.RCDidReceiveServerMessage, object: nil) { notification in
+            do {
+                let payload: TestPayload? = try (notification.userInfo?[RCMessageKey] as? RCMessage)?.payloadForClass()
+                return payload?.strings.first == firstString
+            } catch {
+                XCTFail(error.localizedDescription)
+            }
+            return false
+        }
+        
+        waitForExpectations(timeout: Utils.DefaultTestTimeout + 30, handler: nil)
+    }
+    
     func testCreateStandardDialog() {
         let ex = expectation(description: "")
         RCDialog.create(name: "Test", details: "this is a test dialog", participants: [currentUser!], success: { dialog in

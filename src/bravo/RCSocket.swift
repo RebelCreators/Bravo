@@ -63,6 +63,7 @@ public class RCSocket: NSObject {
         static let disconnected = "disconnect"
         static let error = "error"
         static let messageReceived = "com.rebel.creators.message"
+        static let serverMessageReceived = "com.rebel.creators.server.message"
     }
     
     internal override init() {
@@ -213,6 +214,16 @@ public class RCSocket: NSObject {
                     if let dict = data.first as? [String: NSObject] {
                         if let message = try? RCMessage.fromDictionary(dict) {
                             NotificationCenter.default.post(name: Notification.RC.RCDidReceiveMessage, object: self, userInfo: [RCMessageKey: message])
+                        }
+                    }
+                }
+            }
+            
+            socket.on(SocketEventKeys.serverMessageReceived) {data, ack in
+                WebService.requestResponseQueue.async {
+                    if let dict = data.first as? [String: NSObject] {
+                        if let message = try? RCMessage.fromDictionary(dict) {
+                            NotificationCenter.default.post(name: Notification.RC.RCDidReceiveServerMessage, object: self, userInfo: [RCMessageKey: message])
                         }
                     }
                 }
