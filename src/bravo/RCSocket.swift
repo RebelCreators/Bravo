@@ -140,7 +140,7 @@ public class RCSocket: NSObject {
             if (socket.status != .notConnected && socket.status != .disconnected) {
                 socket.removeAllHandlers()
                 
-                socket.on(SocketEventKeys.disconnected) {[weak self, weak socket] data, ack in
+                socket.on(SocketEventKeys.disconnected) {[weak socket] data, ack in
                     socket?.removeAllHandlers()
                 }
                 self.underlyingSocket = nil

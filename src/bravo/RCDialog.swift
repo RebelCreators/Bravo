@@ -62,6 +62,7 @@ public class RCDialog: RCModel {
     @objc public var name: String?
     @objc public var numberOfmessages: NSNumber?
     @objc public var permissions: RCDialogPermission = RCDialogPermission()
+    @objc public var pushConfig: String?
     @objc public var unreadMessages: Int = 0
     
     @objc internal var _currentUsers = [String]()
@@ -154,6 +155,7 @@ public class RCDialog: RCModel {
         }
         message.dialogId = self.dialogID
         message.senderId = RCUser.currentUser?.userID
+        message.pushConfig = message.pushConfig ?? self.pushConfig
         WebService().put(relativePath: "dialog/message/send", headers: nil, parameters: ["message": message, "dialogId": dialogID, "permissions": self.permissions], success: { (message: RCMessage) in
             success(message)
         }) { error in

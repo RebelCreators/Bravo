@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		049789571E26000C00666EC6 /* image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049789551E26000C00666EC6 /* image2.jpg */; };
 		049789581E26000C00666EC6 /* image1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 049789561E26000C00666EC6 /* image1.JPG */; };
-		04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */; };
 		04E36BEF1E1DA7A400C13847 /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
 		04E36BF01E1DA8C700C13847 /* image.png in Sources */ = {isa = PBXBuildFile; fileRef = 04E36BEE1E1DA7A400C13847 /* image.png */; };
 		04E36BF21E1F73E600C13847 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04E36BF11E1F73E600C13847 /* Config.plist */; };
@@ -69,7 +68,6 @@
 		049789561E26000C00666EC6 /* image1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.JPG; sourceTree = "<group>"; };
 		04E36BDC1E1D951900C13847 /* BravoTestsUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BravoTestsUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E36BE01E1D951900C13847 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllConfig.swift; sourceTree = "<group>"; };
 		04E36BEE1E1DA7A400C13847 /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		04E36BF11E1F73E600C13847 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		04E36BF41E1FBF0800C13847 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 			children = (
 				E4BD128E1E2F535C00728939 /* DialogTests */,
 				04E36BED1E1DA7A400C13847 /* images */,
-				04E36BEB1E1DA6DA00C13847 /* AllConfig.swift */,
 				04E36BE01E1D951900C13847 /* Info.plist */,
 				04E36BE81E1D965400C13847 /* UserTests */,
 				ED25AB751FD48D21007CCE6D /* TestUtils.swift */,
@@ -625,7 +622,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4BD12901E2F538800728939 /* BasicDialogTests.swift in Sources */,
-				04E36BEC1E1DA6DA00C13847 /* AllConfig.swift in Sources */,
 				ED25AB781FD4924D007CCE6D /* RCUserTests.swift in Sources */,
 				ED25AB761FD48D21007CCE6D /* TestUtils.swift in Sources */,
 				04E36BF31E1F7D0000C13847 /* Config.plist in Sources */,

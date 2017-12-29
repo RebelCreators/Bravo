@@ -117,22 +117,34 @@ public class Bravo: NSObject {
         }
     }
     
-    public func configure(baseURL: URL, clientID: String, clientSecret: String) {
-        config = Config(baseUrl: baseURL, clientID: clientID, clientSecret: clientSecret)
+    @discardableResult
+    public func observeAndReconnect() -> Bravo {
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(_:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        return self
     }
     
-    public func configure(withString baseURL: String, clientID: String, clientSecret: String) {
+    @discardableResult
+    public func configure(baseURL: URL, clientID: String, clientSecret: String) -> Bravo {
+        config = Config(baseUrl: baseURL, clientID: clientID, clientSecret: clientSecret)
+        return self
+    }
+    
+    @discardableResult
+    public func configure(withString baseURL: String, clientID: String, clientSecret: String) -> Bravo {
         let url = URL(string: baseURL)!
         config = Config(baseUrl: url, clientID: clientID, clientSecret: clientSecret)
+        return self
     }
     
-    public func configure(dictionary: [String: Any]) {
+    @discardableResult
+    public func configure(dictionary: [String: Any]) -> Bravo {
         guard  let baseURL = dictionary["baseURL"] as? String, let clientID = dictionary["clientID"] as? String, let clientSecret = dictionary["clientSecret"] as? String else {
             assertionFailure("Bravo not configured correctly")
-            return
+            return self
         }
         
-        configure(withString: baseURL, clientID: clientID, clientSecret: clientSecret)
+        return configure(withString: baseURL, clientID: clientID, clientSecret: clientSecret)
     }
     
     public func hasBearerAuthToken() -> Bool {
@@ -143,6 +155,19 @@ public class Bravo: NSObject {
         return "Bearer \(credential?.accessToken ?? "")"
     }
 }
+
+
+extension Bravo {
+    
+    @objc public func applicationDidBecomeActive(_ notification: Notification) {
+        RCSocket.shared.reconnect()
+    }
+    
+    @objc public func applicationDidEnterBackground(_ notification: Notification) {
+        RCSocket.shared.disconnect()
+    }
+}
+
 
 extension String {
     

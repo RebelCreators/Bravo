@@ -33,7 +33,7 @@ public class RCMessage: RCModel {
     @objc public var dialogId: String?
     @objc public var date: Date?
     @objc public var extras = [String: String]()
-    
+    @objc public var pushConfig: String?
     @objc internal var payloads = [RCPayloadWrapper]()
     @objc internal var uuid = UUID().uuidString
     
@@ -63,7 +63,7 @@ public class RCMessage: RCModel {
             success?()
         }, failure: { (error) in
             failure?(error)
-        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()])
+        }).exeInBackground(dependencies: [RCUser.authOperation?.asOperation()], requirements:[RCSocketConnectOperation()])
     }
 }
 
