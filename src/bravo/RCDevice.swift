@@ -47,6 +47,12 @@ public class RCDevice: RCModel {
         updateCurrentDevice(apnsToken: nil, success: success, failure: failure)
     }
     
+    public static func updateCurrentDeviceLocally(apnsToken: String?) {
+        let device = localDevice()
+        device.apnsToken = apnsToken
+        device.save()
+    }
+    
     public static func updateCurrentDevice(apnsToken: String?, success: @escaping () -> Void, failure:@escaping (BravoError) -> Void) {
         let device = localDevice()
         device.apnsToken = apnsToken
