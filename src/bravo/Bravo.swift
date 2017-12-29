@@ -232,7 +232,7 @@ extension Bravo {
 
 extension NSObject {
     
-    @objc public func RCApplication(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    @objc fileprivate func RCApplication(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
