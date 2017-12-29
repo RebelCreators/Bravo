@@ -111,3 +111,10 @@ internal class RCPayloadWrapper: RCModel {
         }
     }
 }
+
+extension RCMessage {
+    
+    public static var DisabledPushConfig: String {
+        return "com.rebel.creators.none"
+    }
+}
