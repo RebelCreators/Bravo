@@ -21,10 +21,7 @@
 import Foundation
 import Alamofire
 import SocketIO
-import UserNotifications
 import RCModel
-import UIKit
-
 
 public func + <K,V> (lhs : [K : V], rhs : [K : V]) -> [K : V] {
     var dict = lhs
@@ -170,83 +167,6 @@ extension Bravo {
     }
 }
 
-extension Bravo {
-    
-    fileprivate static let once: Bool = {
-        guard let delegate = UIApplication.shared.delegate else {
-            return false
-        }
-        let appRegisterForRemoteNotifications = #selector(UIApplicationDelegate.application(_:didRegisterForRemoteNotificationsWithDeviceToken:))
-        
-        let rcAppRegisterForRemoteNotifications = #selector(Bravo.RCApplication(_:didRegisterForRemoteNotificationsWithDeviceToken:))
-        
-        return swizzle(originalType: type(of: delegate),
-                       originalSelector: appRegisterForRemoteNotifications,
-                       swizzledType: type(of: delegate),
-                       swizzledSelector: rcAppRegisterForRemoteNotifications)
-    }()
-    
-    public func registerForPushNotifications() {
-        _ = Bravo.once
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
-            print("Permission granted: \(granted)")
-            self.getNotificationSettings()
-        }
-    }
-    
-    @discardableResult
-    private static func swizzle(originalType: AnyClass, originalSelector: Selector, swizzledType: AnyClass, swizzledSelector: Selector) -> Bool {
-        
-        guard let swizzledMethod = class_getInstanceMethod(swizzledType, swizzledSelector) else {
-            return false
-        }
-        
-        let didAddMethod = class_addMethod(originalType, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
-        
-        guard let originalMethod = class_getInstanceMethod(originalType, originalSelector) else {
-            return false
-        }
-        
-        if didAddMethod {
-            class_replaceMethod(originalType, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
-            return true
-        } else {
-            method_exchangeImplementations(originalMethod, swizzledMethod)
-        }
-        return false
-    }
-    
-    private func getNotificationSettings() {
-        DispatchQueue.main.async {
-            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                print("Notification settings: \(settings)")
-                guard settings.authorizationStatus == .authorized else { return }
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-            }
-        }
-    }
-}
-
-extension NSObject {
-    
-    @objc fileprivate func RCApplication(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
-        let tokenParts = deviceToken.map { data -> String in
-            return String(format: "%02.2hhx", data)
-        }
-        
-        let token = tokenParts.joined()
-        print("Device Token: \(token)")
-        RCDevice.updateCurrentDevice(apnsToken: token, success: { }) { (error) in }
-        
-        if !Bravo.once {
-            self.RCApplication(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
-        }
-    }
-}
 
 extension String {
     

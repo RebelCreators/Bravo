@@ -86,6 +86,9 @@
          <FileRef
             location = "group:Extensions.swift">
          </FileRef>
+         <FileRef
+            location = "group:RCPushManager.swift">
+         </FileRef>
       </Group>
    </Group>
    <FileRef
