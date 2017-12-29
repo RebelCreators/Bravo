@@ -22,13 +22,11 @@ import UserNotifications
 import UIKit
 import Foundation
 
-public class RCPushManager: NSObject {
-    public static let shared = RCPushManager()
+@objc public class RCPushManager: NSObject {
     
     public enum Error: Swift.Error {
         case registrationInProgress
         case unauthorized
-        case error(Swift.Error)
     }
     
     private var success:(() -> Void)?
@@ -37,9 +35,12 @@ public class RCPushManager: NSObject {
     private var successContext: AnyObject?
     private var failureContext: AnyObject?
     
-    public func registerForPushNotifications(success: @escaping () -> Void, failure: @escaping (Error) -> Void) {
+    
+    internal override init() { super.init() }
+    
+    @objc public func registerForPushNotifications(success: @escaping () -> Void, failure: @escaping (Swift.Error) -> Void) {
         guard !isProccessing else {
-            failure(.registrationInProgress)
+            failure(Error.registrationInProgress)
             return
         }
         isProccessing = true
@@ -50,7 +51,7 @@ public class RCPushManager: NSObject {
                 (granted, error) in
                 self.notificationSettings { settings in
                     guard settings.authorizationStatus == .authorized else {
-                        failure(.unauthorized)
+                        failure(Error.unauthorized)
                         self.isProccessing = false
                         return
                     }
@@ -81,7 +82,7 @@ public class RCPushManager: NSObject {
                                         self.isProccessing = false
                                     }
                                 }) { (error) in
-                                    failure(.error(error))
+                                    failure(error)
                                     self.isProccessing = false
                                 }
                             } else {
@@ -104,7 +105,7 @@ public class RCPushManager: NSObject {
                                 return
                             }
                             
-                            failure(.error(error))
+                            failure(error)
                             self.isProccessing = false
                         })
                         UIApplication.shared.registerForRemoteNotifications()
@@ -114,7 +115,7 @@ public class RCPushManager: NSObject {
         }
     }
     
-    public func notificationSettings(success: @escaping (UNNotificationSettings) -> Void ) {
+    @objc public func notificationSettings(success: @escaping (UNNotificationSettings) -> Void ) {
         UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             DispatchQueue.main.async {
                 success(settings)

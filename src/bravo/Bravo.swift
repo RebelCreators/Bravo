@@ -84,7 +84,7 @@ public class Bravo: NSObject {
     public private(set) static var sdk = Bravo()
     private(set) var config: Config!
     public var credential: RCAuthCredential?
-    
+    public let pushManager = RCPushManager()
     @discardableResult
     public static func reset() -> Bravo {
         sdk = Bravo()
