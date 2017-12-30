@@ -159,7 +159,9 @@ public class Bravo: NSObject {
 extension Bravo {
     
     @objc public func applicationDidBecomeActive(_ notification: Notification) {
-        RCSocket.shared.reconnect()
+        if RCUser.currentUser != nil {
+            RCSocket.shared.reconnect()
+        }
     }
     
     @objc public func applicationDidEnterBackground(_ notification: Notification) {
